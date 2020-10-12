@@ -1,0 +1,10 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime">
+	<sys:Double x:Key="fontSizeSmaller">10</sys:Double>
+	<sys:Double x:Key="fontSizeSmall">13</sys:Double>
+    <sys:Double x:Key="fontSizeMedium">16</sys:Double>
+	<sys:Double x:Key="fontSizeLarge">19</sys:Double>
+    <sys:Double x:Key="fontSizeVeryLarge">23</sys:Double>
+	<sys:Double x:Key="fontSizeExtremelyLarge">30</sys:Double>
+</ResourceDictionary>

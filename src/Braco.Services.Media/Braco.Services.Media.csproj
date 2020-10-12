@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+    <Version>0.1.5</Version>
+    <Authors>Josip Horvat</Authors>
+    <Company>Josip Horvat</Company>
+    <Description>Media service implementations used for downloading and splitting media.</Description>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/HorvatJosip/braco</PackageProjectUrl>
+    <PackageIcon>icon_big.png</PackageIcon>
+    <RepositoryUrl>https://github.com/HorvatJosip/braco</RepositoryUrl>
+    <PackageTags>braco services media josip horvat</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>D:\Coding\braco\src\Braco.Services.Media\Braco.Services.Media.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\..\res\icon_big.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Braco.Services" Version="0.6.7" />
+    <PackageReference Include="Braco.Services.Media.Abstractions" Version="0.1.2" />
+    <PackageReference Include="MediaToolkit" Version="1.1.0.1" />
+    <PackageReference Include="NAudio" Version="1.10.0" />
+    <PackageReference Include="VideoLibrary" Version="3.0.6" />
+  </ItemGroup>
+
+</Project>

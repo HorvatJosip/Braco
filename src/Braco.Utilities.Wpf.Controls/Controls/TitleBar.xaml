@@ -1,0 +1,63 @@
+<UserControl x:Class="Braco.Utilities.Wpf.Controls.TitleBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:Braco.Utilities.Wpf.Controls"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:utils="clr-namespace:Braco.Utilities.Wpf;assembly=Braco.Utilities.Wpf" d:DesignHeight="60"
+             d:DesignWidth="800" mc:Ignorable="d">
+	<!-- Title bar -->
+	<Grid Background="Transparent">
+		<!-- Title -->
+		<StackPanel Orientation="Horizontal">
+			<!-- Logo -->
+			<Image Width="{utils:RelativeBinding LogoWidth}"
+			       Height="{utils:RelativeBinding LogoHeight}"
+			       VerticalAlignment="Center"
+			       Source="{utils:RelativeBinding Logo}" />
+
+			<!-- Text -->
+			<TextBlock Margin="10 0 0 0" VerticalAlignment="Center"
+			           FontSize="{DynamicResource fontSizeLarge}"
+			           Text="{utils:RelativeBinding Title}" />
+		</StackPanel>
+
+		<!-- Buttons -->
+		<StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+			<!-- Settings -->
+			<local:ImageButton ButtonSize="{utils:RelativeBinding IconSize}"
+			                   Command="{Binding SettingsCommand}"
+			                   FileName="{x:Static local:ResourceKeys.SettingsIcon}"
+			                   ToolTip="{DynamicResource {x:Static local:ResourceKeys.TitleBarSettingsButtonToolTip}}"
+			                   Visibility="{utils:RelativeBinding SettingsVisibility}" />
+
+			<!-- Minimize -->
+			<local:ImageButton Margin="10 0 0 0"
+			                   ButtonSize="{utils:RelativeBinding IconSize}"
+			                   Command="{Binding MinimizeCommand}"
+			                   FileName="{x:Static local:ResourceKeys.MinimizeIcon}"
+			                   ToolTip="{DynamicResource {x:Static local:ResourceKeys.TitleBarMinimizeButtonToolTip}}"
+			                   Visibility="{utils:RelativeBinding MinimizeVisibility}" />
+
+			<!-- Maximize -->
+			<local:ImageButton Margin="10 0 0 0"
+			                   ButtonSize="{utils:RelativeBinding IconSize}"
+			                   Command="{Binding MaximizeCommand}"
+			                   FileName="{Binding IsMaximized, Converter={utils:WindowSizeIconConverter}}"
+			                   Visibility="{utils:RelativeBinding MaximizeVisibility}" />
+
+			<!-- Close -->
+			<local:ImageButton Margin="10 0 0 0"
+			                   ButtonSize="{utils:RelativeBinding IconSize}"
+			                   Command="{Binding CloseCommand}"
+			                   FileName="{x:Static local:ResourceKeys.CloseIcon}"
+			                   ToolTip="{utils:RelativeBinding CloseToolTip}" />
+		</StackPanel>
+
+		<!-- Title bar input bindings -->
+		<Grid.InputBindings>
+			<!-- Drag window on left click -->
+			<MouseBinding Command="{Binding DragCommand}" Gesture="LeftClick" />
+		</Grid.InputBindings>
+	</Grid>
+</UserControl>

@@ -1,0 +1,798 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Braco.Services.Abstractions</name>
+    </assembly>
+    <members>
+        <member name="T:Braco.Services.Abstractions.AuthAction">
+            <summary>
+            Auth actions that might be executed.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.Abstractions.AuthAction.LogIn">
+            <summary>
+            Logging in.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.Abstractions.AuthAction.LogOut">
+            <summary>
+            Logging out.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.Abstractions.AuthAction.Register">
+            <summary>
+            Registering.
+            </summary>
+        </member>
+        <member name="T:Braco.Services.Abstractions.AuthEventArgs">
+            <summary>
+            Arguments for the <see cref="T:Braco.Services.Abstractions.IAuthService"/> actions.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Abstractions.AuthEventArgs.Action">
+            <summary>
+            Action that occurred.
+            </summary>
+        </member>
+        <member name="M:Braco.Services.Abstractions.AuthEventArgs.#ctor(Braco.Services.Abstractions.AuthAction)">
+            <summary>
+            Creates an instance of the arguments.
+            </summary>
+            <param name="action">Action that was performed.</param>
+        </member>
+        <member name="T:Braco.Services.Abstractions.LanguageChangedEventArgs">
+            <summary>
+            Arguments for the <see cref="E:Braco.Services.Abstractions.ILocalizer.LanguageChanged"/> event.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Abstractions.LanguageChangedEventArgs.Culture">
+            <summary>
+            Culture to which we changed.
+            </summary>
+        </member>
+        <member name="M:Braco.Services.Abstractions.LanguageChangedEventArgs.#ctor(System.String)">
+            <summary>
+            Creates an instance of the arguments.
+            </summary>
+            <param name="culture">Culture to which we changed.</param>
+        </member>
+        <member name="T:Braco.Services.Abstractions.SettingChangedEventArgs">
+            <summary>
+            Arguments for the <see cref="E:Braco.Services.Abstractions.IConfigurationService.SettingChanged"/> event.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Abstractions.SettingChangedEventArgs.Setting">
+            <summary>
+            Setting that changed.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Abstractions.SettingChangedEventArgs.OldValue">
+            <summary>
+            Old value of the setting.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Abstractions.SettingChangedEventArgs.NewValue">
+            <summary>
+            New value of the setting.
+            </summary>
+        </member>
+        <member name="M:Braco.Services.Abstractions.SettingChangedEventArgs.#ctor(System.String,System.Object,System.Object)">
+            <summary>
+            Creates an instance of the arguments.
+            </summary>
+            <param name="setting">Setting that changed.</param>
+            <param name="oldValue">Old value of the setting.</param>
+            <param name="newValue">New value of the setting.</param>
+        </member>
+        <member name="T:Braco.Services.Abstractions.IAuthService">
+            <summary>
+            Handles auth logic and stores the currently logged in user.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Abstractions.IAuthService.CurrentUser">
+            <summary>
+            String representation of the currently logged in user.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Abstractions.IAuthService.IsAuthenticated">
+            <summary>
+            Defines if the user is currently authenticated.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Abstractions.IAuthService.UnauthenticatedLocation">
+            <summary>
+            Location where the user should be redirected in case
+            they aren't authenticated.
+            </summary>
+        </member>
+        <member name="E:Braco.Services.Abstractions.IAuthService.AuthActionOccurred">
+            <summary>
+            Raised whenever an auth action occurrs.
+            </summary>
+        </member>
+        <member name="M:Braco.Services.Abstractions.IAuthService.Register(System.String,System.String)">
+            <summary>
+            Tries to register a new user.
+            </summary>
+            <param name="identifier">Identifier (username or email) to use for the user.</param>
+            <param name="password">Password to register for the user.</param>
+            <returns>If the user was registered or not.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.IAuthService.LogIn(System.String,System.String)">
+            <summary>
+            Tries to log the user in with the given credentials.
+            </summary>
+            <param name="identifier">Identifier (username or email) of the user to check.</param>
+            <param name="password">Password of the user to check.</param>
+            <returns>If the user was authenticated or not.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.IAuthService.LogOut">
+            <summary>
+            Tries to log the user out.
+            </summary>
+            <returns>If the user was logged out or not.</returns>
+        </member>
+        <member name="T:Braco.Services.Abstractions.IConfigurationService">
+            <summary>
+            Used for working with configuration.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Abstractions.IConfigurationService.Item(System.String)">
+            <summary>
+            Gets a string from the configuration.
+            </summary>
+            <param name="key">Key used for getting a string from configuration.</param>
+            <returns>Value from the setting at the given key or null if nothing is found.</returns>
+        </member>
+        <member name="E:Braco.Services.Abstractions.IConfigurationService.SettingChanged">
+            <summary>
+            Fired when a setting has changed.
+            </summary>
+        </member>
+        <member name="M:Braco.Services.Abstractions.IConfigurationService.Get``1(System.String)">
+            <summary>
+            Gets a value from the configuration.
+            </summary>
+            <typeparam name="T">Type of value to get.</typeparam>
+            <param name="key">Key used to get the value from configuration.</param>
+            <returns>Value from the configuration at given key converted into
+            the type <typeparamref name="T"/>.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.IConfigurationService.Set(System.String,System.Object)">
+            <summary>
+            Sets a value in the configuration by key.
+            </summary>
+            <param name="key">Key used to identify the setting.</param>
+            <param name="value">Value to store under the given key.</param>
+            <returns>If the value was set or not.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.IConfigurationService.Load">
+            <summary>
+            Loads the configuration.
+            </summary>
+            <returns>If the configuration was loaded or not.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.IConfigurationService.Save">
+            <summary>
+            Saves the configuration.
+            </summary>
+            <returns>If the configuration was saved or not.</returns>
+        </member>
+        <member name="T:Braco.Services.Abstractions.ILocalizer">
+            <summary>
+            Defines logic of a localizer
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Abstractions.ILocalizer.Culture">
+            <summary>
+            Current language culture.
+            </summary>
+        </member>
+        <member name="E:Braco.Services.Abstractions.ILocalizer.LanguageChanged">
+            <summary>
+            Fired when the <see cref="M:Braco.Services.Abstractions.ILocalizer.ChangeLanguage(System.String)"/>
+            goes through successfully.
+            </summary>
+        </member>
+        <member name="M:Braco.Services.Abstractions.ILocalizer.GetAllValues(System.String)">
+            <summary>
+            Gets localized strings in all languages for the given key.
+            </summary>
+            <param name="key">Key used to get the localized strings.</param>
+            <returns></returns>
+        </member>
+        <member name="P:Braco.Services.Abstractions.ILocalizer.Item(System.String)">
+            <summary>
+            Gets a localized string by key.
+            </summary>
+            <param name="key">Key used to get a localized string.</param>
+            <returns>A localized string.</returns>
+        </member>
+        <member name="P:Braco.Services.Abstractions.ILocalizer.Item(System.String,System.String)">
+            <summary>
+            Gets a localized string by key from specific section.
+            </summary>
+            <param name="sectionName">Name of the section to use.</param>
+            <param name="key">Key used to get a localized string.</param>
+            <returns>A localized string.</returns>
+        </member>
+        <member name="P:Braco.Services.Abstractions.ILocalizer.Item(System.String,System.Int32)">
+            <summary>
+            Gets a localized string from an array at a specific index by key.
+            </summary>
+            <param name="key">Key of the array.</param>
+            <param name="index">Index of the string in the array.</param>
+            <returns>A localized string.</returns>
+        </member>
+        <member name="P:Braco.Services.Abstractions.ILocalizer.Item(System.String,System.String,System.Int32)">
+            <summary>
+            Gets a localized string from an array at a specific index
+            by key from specific section.
+            </summary>
+            <param name="sectionName">Name of the section to use.</param>
+            <param name="key">Key of the array.</param>
+            <param name="index">Index of the string in the array.</param>
+            <returns>A localized string.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.ILocalizer.Format(System.String,System.Collections.Generic.IEnumerable{System.Object})">
+            <summary>
+            Formats the localized string using the <see cref="M:System.String.Format(System.String,System.Object[])"/> method.
+            </summary>
+            <param name="key">Key used to get a localized string.</param>
+            <param name="parameters">Parameters that will be used to fill placeholders.</param>
+            <returns>A localized formatted string.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.ILocalizer.Format(System.String,System.String,System.Collections.Generic.IEnumerable{System.Object})">
+            <summary>
+            Formats the localized string using the <see cref="M:System.String.Format(System.String,System.Object[])"/> method.
+            </summary>
+            <param name="sectionName">Name of the section to use.</param>
+            <param name="key">Key used to get a localized string.</param>
+            <param name="parameters">Parameters that will be used to fill placeholders.</param>
+            <returns>A localized formatted string.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.ILocalizer.Format(System.String,System.Int32,System.Collections.Generic.IEnumerable{System.Object})">
+            <summary>
+            Formats the localized string using the <see cref="M:System.String.Format(System.String,System.Object[])"/> method.
+            </summary>
+            <param name="key">Key of the array.</param>
+            <param name="index">Index of the string in the array.</param>
+            <param name="parameters">Parameters that will be used to fill placeholders.</param>
+            <returns>A localized formatted string.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.ILocalizer.Format(System.String,System.String,System.Int32,System.Collections.Generic.IEnumerable{System.Object})">
+            <summary>
+            Formats the localized string using the <see cref="M:System.String.Format(System.String,System.Object[])"/> method.
+            </summary>
+            <param name="sectionName">Name of the section to use.</param>
+            <param name="key">Key of the array.</param>
+            <param name="index">Index of the string in the array.</param>
+            <param name="parameters">Parameters that will be used to fill placeholders.</param>
+            <returns>A localized formatted string.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.ILocalizer.ChangeLanguage(System.String)">
+            <summary>
+            Tries to change culture to the specified one.
+            </summary>
+            <param name="culture">Culture identifier (e.g. en-US).</param>
+            <returns></returns>
+        </member>
+        <member name="T:Braco.Services.Abstractions.IMethodService">
+            <summary>
+            Defines specific method invokation logic.
+            </summary>
+        </member>
+        <member name="M:Braco.Services.Abstractions.IMethodService.InvokeOnUIThread``1(System.Func{``0})">
+            <summary>
+            Invokes the given method on UI thread.
+            </summary>
+            <typeparam name="T">Return type for the method.</typeparam>
+            <param name="method">Method to invoke on UI thread.</param>
+            <returns>Method result.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.IMethodService.InvokeOnUIThread(System.Action)">
+            <summary>
+            Invokes the given method on UI thread.
+            </summary>
+            <param name="method">Method to invoke on UI thread.</param>
+        </member>
+        <member name="T:Braco.Services.Abstractions.IPathManager">
+            <summary>
+            Used for managing paths.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.Abstractions.IPathManager.AppDirectoryKey">
+            <summary>
+            Directory key for the application directory.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.Abstractions.IPathManager.AppDataDirectoryKey">
+            <summary>
+            Directory key for the AppData directory.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Abstractions.IPathManager.AppDirectory">
+            <summary>
+            <see cref="T:System.IO.DirectoryInfo"/> about application directory.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Abstractions.IPathManager.AppDataDirectory">
+            <summary>
+            <see cref="T:System.IO.DirectoryInfo"/> about AppData directory.
+            </summary>
+        </member>
+        <member name="M:Braco.Services.Abstractions.IPathManager.GetFile(System.String)">
+            <summary>
+            Gets info about a file by key.
+            </summary>
+            <param name="key">Key used for the file.</param>
+            <returns><see cref="T:System.IO.FileInfo"/> about desired file.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.IPathManager.GetDirectory(System.String)">
+            <summary>
+            Gets info about a directory by key.
+            </summary>
+            <param name="key">Key used for the directory.</param>
+            <returns><see cref="T:System.IO.DirectoryInfo"/> about desired directory.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.IPathManager.AddFileToDirectory(System.String,System.IO.DirectoryInfo,System.String,System.Boolean)">
+            <summary>
+            Adds file to the directory.
+            </summary>
+            <param name="key">Key used for the file.</param>
+            <param name="directory">Directory in which to place the file.</param>
+            <param name="fileName">Name of the file to add.</param>
+            <param name="removeInvalidChars">Should the invalid file name characters be removed?</param>
+            <returns><see cref="T:System.IO.FileInfo"/> about added file or null if it wasn't added.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.IPathManager.AddFile(System.String,System.String,System.Boolean)">
+            <summary>
+            Adds a file to the collection.
+            </summary>
+            <param name="key">Key used to identify the file.</param>
+            <param name="path">Path of the file.</param>
+            <param name="removeInvalidChars">Should the invalid characters be removed from the file name?</param>
+            <returns><see cref="T:System.IO.FileInfo"/> about added file or null if it wasn't added.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.IPathManager.AddDirectory(System.String,System.String,System.Boolean)">
+            <summary>
+            Adds a directory to the collection.
+            </summary>
+            <param name="key">Key used to identify the directory.</param>
+            <param name="path">Path of the directory.</param>
+            <param name="removeInvalidChars">Should the invalid characters be removed from the directory path?</param>
+            <returns><see cref="T:System.IO.DirectoryInfo"/> about added directory or null if it wasn't added.</returns>
+        </member>
+        <member name="T:Braco.Services.Abstractions.IProcessStarter">
+            <summary>
+            Defines process starting on an OS.
+            </summary>
+        </member>
+        <member name="M:Braco.Services.Abstractions.IProcessStarter.OpenDirectory(System.IO.DirectoryInfo)">
+            <summary>
+            Used for opening a directory.
+            </summary>
+            <param name="directory">Directory to open.</param>
+            <returns>Process that was started by opening the directory.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.IProcessStarter.OpenFile(System.IO.FileInfo)">
+            <summary>
+            Used for opening a file.
+            </summary>
+            <param name="file">File to open.</param>
+            <returns>Process that was started by opening the file.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.IProcessStarter.ExecuteCommand(System.String,System.IO.DirectoryInfo)">
+            <summary>
+            Used for executing a command.
+            </summary>
+            <param name="command">Command to execute.</param>
+            <param name="workingDirectory">Working directory in which to execute the command.</param>
+            <returns>Process that was started by running the command.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.IProcessStarter.ExecuteCommand(System.String)">
+            <summary>
+            Used for executing a command in the current directory.
+            </summary>
+            <param name="command">Command to execute.</param>
+            <returns>Process that was started by running the command.</returns>
+        </member>
+        <member name="T:Braco.Services.Abstractions.IResourceManager">
+            <summary>
+            Used for setting up resource getters.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Abstractions.IResourceManager.Item(System.Type)">
+            <summary>
+            Gets resource getter by type.
+            </summary>
+            <param name="resourceType">Type of resources to get.</param>
+            <returns><see cref="T:Braco.Services.Abstractions.ResourceGetter"/> instance, if it exists. Otherwise null.</returns>
+        </member>
+        <member name="P:Braco.Services.Abstractions.IResourceManager.Location">
+            <summary>
+            Base location for all of the resources.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Abstractions.IResourceManager.LocationSeparator">
+            <summary>
+            Used for separating multiple locations.
+            </summary>
+        </member>
+        <member name="M:Braco.Services.Abstractions.IResourceManager.Add``1(``0)">
+            <summary>
+            Adds the resource getter if it isn't already added.
+            </summary>
+            <typeparam name="TResourceGetter">Type of resources.</typeparam>
+            <param name="instance">Instance of the class that inherits <see cref="T:Braco.Services.Abstractions.ResourceGetter"/>.
+            <para>If left null, it will be created using the parameterless constructor.</para></param>
+            <returns>True if added, false if there is already a getter for the given type.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.IResourceManager.AddFromAppDomain(System.AppDomain)">
+            <summary>
+            Adds all <see cref="T:Braco.Services.Abstractions.ResourceGetter"/>s found in the given app domain.
+            </summary>
+            <param name="appDomain">App domain from which to add <see cref="T:Braco.Services.Abstractions.ResourceGetter"/>s.</param>
+            <returns>List of <see cref="T:Braco.Services.Abstractions.ResourceGetter"/> types that were added.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.IResourceManager.AddFromAssembly(System.Reflection.Assembly)">
+            <summary>
+            Adds all <see cref="T:Braco.Services.Abstractions.ResourceGetter"/>s found in the given assembly.
+            </summary>
+            <param name="assembly">Assembly to use for type lookup.</param>
+            <returns>List of <see cref="T:Braco.Services.Abstractions.ResourceGetter"/> types that were added.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.IResourceManager.AddRange(System.Object[])">
+            <summary>
+            Adds the given resource getters to the collection.
+            </summary>
+            <param name="instances">Instances of resource getters.</param>
+            <returns>Array that specifies which given getters were added and which were not,
+            in the order in which they were passed in as parameters.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.IResourceManager.AddRange(System.Type[])">
+            <summary>
+            Adds the given resource getters to the collection.
+            </summary>
+            <param name="resourceGetterTypes">Type list of <see cref="T:Braco.Services.Abstractions.ResourceGetter"/>
+            implementations.</param>
+            <returns>Array that specifies which given getters were added and which were not,
+            in the order in which they were passed in as parameters.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.IResourceManager.Get``1(System.Object[])">
+            <summary>
+            Gets value from resource getter of given type.
+            </summary>
+            <typeparam name="TResourceGetter">Resource getter to use.</typeparam>
+            <param name="parameters">Parameters that will be passed into the appropriate
+            getter on the <see cref="T:Braco.Services.Abstractions.ResourceGetter"/> implementation.</param>
+            <returns>Value fetched by the getter.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.IResourceManager.Get``2(System.Object[])">
+            <summary>
+            Gets value from resources of given type.
+            </summary>
+            <typeparam name="TResourceGetter">Resource getter to use.</typeparam>
+            <typeparam name="TResourceType">Return type for the getter method.</typeparam>
+            <param name="parameters">Parameters that will be passed into the appropriate
+            getter on the <see cref="T:Braco.Services.Abstractions.ResourceGetter"/> implementation.</param>
+            <returns>Value fetched by the getter.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.IResourceManager.Set``1(``0)">
+            <summary>
+            Sets the resource getter for type <typeparamref name="TResourceGetter"/>.
+            </summary>
+            <typeparam name="TResourceGetter">Type of resources.</typeparam>
+            <param name="instance">Instance of the class that inherits <see cref="T:Braco.Services.Abstractions.ResourceGetter"/>.
+            <para>If left null, it will be created using the parameterless constructor.</para></param>
+        </member>
+        <member name="M:Braco.Services.Abstractions.IResourceManager.Set(System.Type)">
+            <summary>
+            Tries to set the resource getter for given type.
+            </summary>
+            <param name="resourceGetterType">Type of resource getter to set.</param>
+            <returns>If the resource getter was added for given type.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.IResourceManager.Set(System.Type,System.Object)">
+            <summary>
+            Tries to set the resource getter for given type
+            and add it using the given instance.
+            </summary>
+            <param name="resourceGetterType">Type of resource getter to set.</param>
+            <param name="instance">Instance of the resource getter.</param>
+            <returns>If the resource getter was added for given type.</returns>
+        </member>
+        <member name="T:Braco.Services.Abstractions.ISecurityService">
+            <summary>
+            Deals with security such as logging in.
+            </summary>
+        </member>
+        <member name="M:Braco.Services.Abstractions.ISecurityService.Encrypt(System.String,System.String)">
+            <summary>
+            Encrypts a plain string.
+            </summary>
+            <param name="plainText">String to encrypt.</param>
+            <param name="password">Password to use for encryption.</param>
+            <returns>Encrypted text.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.ISecurityService.Decrypt(System.String,System.String)">
+            <summary>
+            Decrypts an already encrypted text.
+            </summary>
+            <param name="encryptedText">String to decrypt.</param>
+            <param name="password">Password to use for decryption.</param>
+            <returns>Plain text.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.ISecurityService.Hash(System.String)">
+            <summary>
+            Secures a plain string using a secure hashing algorithm.
+            </summary>
+            <param name="plainText">String to hash.</param>
+            <returns>Secure hashed string.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.ISecurityService.Hash(System.Security.SecureString)">
+            <summary>
+            Hashes a secure string using a secure hashing algorithm.
+            </summary>
+            <param name="secureString">Secure string to hash.</param>
+            <returns>Secure hashed string.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.ISecurityService.MatchesHash(System.String,System.String)">
+            <summary>
+            Checks if the given text matches the given hash.
+            <para>Common use case: verifying password.</para>
+            </summary>
+            <param name="plainText">String to check against the hash.</param>
+            <param name="hashToCheck">Hash used for comparing with the given string.</param>
+            <returns>True if the text matches the hash. Otherwise false.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.ISecurityService.MatchesHash(System.Security.SecureString,System.String)">
+            <summary>
+            Checks if the given text matches the given hash.
+            <para>Common use case: verifying password.</para>
+            </summary>
+            <param name="secureString">Secure string to check against the hash.</param>
+            <param name="hashToCheck">Hash used for comparing with the given string.</param>
+            <returns>True if the text matches the hash. Otherwise false.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.ISecurityService.GenerateSecureRandomByteArray(System.Int32)">
+            <summary>
+            Generates a random byte array with cryptographically
+            secure random bytes.
+            </summary>
+            <param name="count">Number of bytes to generate. Example:
+            32 bytes will produce 256 bits.</param>
+            <returns>Secure random byte array.</returns>
+        </member>
+        <member name="T:Braco.Services.Abstractions.Message">
+            <summary>
+            Message that contains a specific type and content.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.Abstractions.Message.Error">
+            <summary>
+            An error occurred.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.Abstractions.Message.Warning">
+            <summary>
+            Something that didn't make the request end, but should be avioded.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.Abstractions.Message.Information">
+            <summary>
+            Simply an informational message.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Abstractions.Message.Type">
+            <summary>
+            Type of message.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Abstractions.Message.IsCustom">
+            <summary>
+            Defines if <see cref="P:Braco.Services.Abstractions.Message.Type"/> is custom (isn't <see cref="F:Braco.Services.Abstractions.Message.Error"/>,
+            <see cref="F:Braco.Services.Abstractions.Message.Warning"/> or <see cref="F:Braco.Services.Abstractions.Message.Information"/>).
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Abstractions.Message.Content">
+            <summary>
+            Content of the message.
+            </summary>
+        </member>
+        <member name="M:Braco.Services.Abstractions.Message.#ctor(System.String,System.String)">
+            <summary>
+            Creates a message with given type and content.
+            </summary>
+            <param name="type">Type of message.</param>
+            <param name="content">Content of the message.</param>
+        </member>
+        <member name="M:Braco.Services.Abstractions.Message.FromError(System.String)">
+            <summary>
+            Generates an instance that has <see cref="P:Braco.Services.Abstractions.Message.Type"/>
+            set to <see cref="F:Braco.Services.Abstractions.Message.Error"/>.
+            </summary>
+            <param name="content">Content of the message-</param>
+            <returns><see cref="T:Braco.Services.Abstractions.Message"/> instance.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.Message.FromWarning(System.String)">
+            <summary>
+            Generates an instance that has <see cref="P:Braco.Services.Abstractions.Message.Type"/>
+            set to <see cref="F:Braco.Services.Abstractions.Message.Warning"/>.
+            </summary>
+            <param name="content">Content of the message-</param>
+            <returns><see cref="T:Braco.Services.Abstractions.Message"/> instance.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.Message.FromInformation(System.String)">
+            <summary>
+            Generates an instance that has <see cref="P:Braco.Services.Abstractions.Message.Type"/>
+            set to <see cref="F:Braco.Services.Abstractions.Message.Information"/>.
+            </summary>
+            <param name="content">Content of the message-</param>
+            <returns><see cref="T:Braco.Services.Abstractions.Message"/> instance.</returns>
+        </member>
+        <member name="T:Braco.Services.Abstractions.ResourceGetter">
+            <summary>
+            Base class for fetching logic of a specific resource.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.Abstractions.ResourceGetter.GetterMethodPrefix">
+            <summary>
+            If a method that inherits this class starts with this string,
+            it will be placed into the collection of available methods for
+            getting a resource.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.Abstractions.ResourceGetter.DefaultGetterFlags">
+            <summary>
+            Default flags that will be used for getting methods for fetching
+            resources in the inheriting class.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.Abstractions.ResourceGetter._definedGetters">
+            <summary>
+            List of getters that are defined in the current class.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Abstractions.ResourceGetter.Location">
+            <summary>
+            Where the resources of this type are located.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Abstractions.ResourceGetter.Extension">
+            <summary>
+            Extension used for this resource type.
+            </summary>
+        </member>
+        <member name="M:Braco.Services.Abstractions.ResourceGetter.#ctor(System.Reflection.BindingFlags)">
+            <summary>
+            Creates an instance of the getter with specified getter flags.
+            </summary>
+            <param name="getterFlags">Flags used for getting getter methods.</param>
+        </member>
+        <member name="M:Braco.Services.Abstractions.ResourceGetter.#ctor(System.String,System.Reflection.BindingFlags)">
+            <summary>
+            Creates an instance of the getter with specified getter flags and location.
+            </summary>
+            <param name="location">Location where the resources reside.</param>
+            <param name="getterFlags">Flags used for getting getter methods.</param>
+        </member>
+        <member name="M:Braco.Services.Abstractions.ResourceGetter.#ctor(System.String,System.String,System.Reflection.BindingFlags)">
+            <summary>
+            Creates an instance of the getter with specified getter flags, location and extension.
+            </summary>
+            <param name="location">Location where the resources reside.</param>
+            <param name="extension">Extension used for the resources.</param>
+            <param name="getterFlags">Flags used for getting getter methods.</param>
+        </member>
+        <member name="M:Braco.Services.Abstractions.ResourceGetter.Get(System.Object[])">
+            <summary>
+            Gets resource using one of the predefined getters
+            that matches the given parameter list.
+            </summary>
+            <param name="parameters">Parameters for a predefined getter method.</param>
+            <returns>Result of the getter method or null if one isn't found.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.ResourceGetter.Get``1(System.Object[])">
+            <summary>
+            Gets resource using one of the predefined getters
+            that matches the given parameter list.
+            </summary>
+            <typeparam name="T">Type of resource that is fetched.</typeparam>
+            <param name="parameters">Parameters for a predefined getter method.</param>
+            <returns>Result of the getter method or null if one isn't found.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.ResourceGetter.GetMatchingGetter(System.Object[],System.Func{System.Type,System.Boolean})">
+            <summary>
+            Gets a getter from <see cref="F:Braco.Services.Abstractions.ResourceGetter._definedGetters"/> that corresponds to the
+            given <paramref name="parameters"/> and, if <paramref name="returnTypeMatches"/>
+            is given, whose return type matches.
+            </summary>
+            <param name="parameters">Parameters for the getter.</param>
+            <param name="returnTypeMatches">Method that defines if the return type
+            of the getter is the target one.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.ResourceGetter.ShouldGetterBeIncluded(System.Reflection.MethodInfo)">
+            <summary>
+            Used for determining if the getter should be included (it shouldn't if
+            it is one of predefined methods that start with <see cref="F:Braco.Services.Abstractions.ResourceGetter.GetterMethodPrefix"/>).
+            </summary>
+            <param name="method">Getter method to check.</param>
+            <returns>If the getter should be included or not.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.ResourceGetter.IsAGetter(System.Reflection.MethodInfo)">
+            <summary>
+            Used for determining if the given method is a getter.
+            </summary>
+            <param name="method">Method to test if it is a getter.</param>
+            <returns>If the method is a getter or not.</returns>
+        </member>
+        <member name="T:Braco.Services.Abstractions.Response`1">
+            <summary>
+            Represents a response from a service.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.Abstractions.Response`1.RequestCancelled">
+            <summary>
+            Request was cancelled.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Abstractions.Response`1.Messages">
+            <summary>
+            Response messages.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Abstractions.Response`1.Finished">
+            <summary>
+            Flag that indicates if the request finished or not.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Abstractions.Response`1.UnfinishedReason">
+            <summary>
+            Reason why the request didn't finish.
+            </summary>
+        </member>
+        <member name="M:Braco.Services.Abstractions.Response`1.HasSpecificTypeOfMessage(System.String)">
+            <summary>
+            Checks if there are any messages with type <paramref name="messageType"/>.
+            </summary>
+            <param name="messageType">Type of message to find.</param>
+            <returns>If there are any messages with given type.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.Response`1.HasErrors">
+            <summary>
+            Checks if there are any messages with type <see cref="F:Braco.Services.Abstractions.Message.Error"/>.
+            </summary>
+            <returns>If there are any messages with type <see cref="F:Braco.Services.Abstractions.Message.Error"/>.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.Response`1.Unfinished(System.String,Braco.Services.Abstractions.Message[])">
+            <summary>
+            Creates a response with <see cref="P:Braco.Services.Abstractions.Response`1.Finished"/> set to false.
+            </summary>
+            <typeparam name="T">Type of response to create.</typeparam>
+            <param name="unfinishedReason">Reason why the request didn't finish.</param>
+            <param name="messages">Messages to add to the response.</param>
+            <returns>Instance of the response that is unfinished.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.Response`1.Cancelled(Braco.Services.Abstractions.Message[])">
+            <summary>
+            The request didn't finish because it was cancelled
+            (this will have <see cref="P:Braco.Services.Abstractions.Response`1.UnfinishedReason"/> as <see cref="F:Braco.Services.Abstractions.Response`1.RequestCancelled"/>).
+            </summary>
+            <typeparam name="T">Type of response to create.</typeparam>
+            <param name="messages">Messages to add to the response.</param>
+            <returns>Instance of the response that is unfinished because it was cancelled.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.Response`1.FromErrors(System.String,System.String[])">
+            <summary>
+            Creates a response with <see cref="P:Braco.Services.Abstractions.Response`1.Finished"/> set to false
+            and messages that have type <see cref="F:Braco.Services.Abstractions.Message.Error"/>.
+            </summary>
+            <typeparam name="T">Type of response to create.</typeparam>
+            <param name="unfinishedReason">Reason why the request didn't finish.</param>
+            <param name="errors">Error messages to add to the response.</param>
+            <returns>Instance of the response that is unfinished.</returns>
+        </member>
+    </members>
+</doc>

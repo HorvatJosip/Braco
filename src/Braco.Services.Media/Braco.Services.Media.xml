@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Braco.Services.Media</name>
+    </assembly>
+    <members>
+        <member name="T:Braco.Services.Media.ConfigurationKeys">
+            <summary>
+            Keys for the configuration.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.Media.ConfigurationKeys.VideoDownloadDirectory">
+            <summary>
+            Where the video files will be downloaded.
+            </summary>
+        </member>
+        <member name="T:Braco.Services.Media.UnfinishedReasons">
+            <summary>
+            List of reasons a request didn't finish.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.Media.UnfinishedReasons.InvalidYouTubeUri">
+            <summary>
+            The provided YouTube uri is invalid.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.Media.UnfinishedReasons.VideoNotFound">
+            <summary>
+            Requested video wasn't found.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.Media.UnfinishedReasons.VideoFileWritingError">
+            <summary>
+            There was an error writing video's bytes to the file.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.Media.UnfinishedReasons.VideoDownloadError">
+            <summary>
+            An error occurred while downloading the video.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.Media.UnfinishedReasons.AudioDownloadError">
+            <summary>
+            An error occurred while downloading the audio.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.Media.UnfinishedReasons.VideoToAudioConversionError">
+            <summary>
+            An error occurred while converting video to audio.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.Media.UnfinishedReasons.AudioSplitError">
+            <summary>
+            An error occurred while splitting the audio.
+            </summary>
+        </member>
+        <member name="T:Braco.Services.Media.YouTubeUriValidator">
+            <summary>
+            Used for validating YouTube uris.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.Media.YouTubeUriValidator.RequiredHostChars">
+            <summary>
+            Characters required to be in a YouTube uri.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.Media.YouTubeUriValidator.UriSchemeSeparator">
+            <summary>
+            Scheme separator of any uri.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.Media.YouTubeUriValidator.WWW">
+            <summary>
+            www.
+            </summary>
+        </member>
+        <member name="M:Braco.Services.Media.YouTubeUriValidator.IsUriInValidFormat(System.String,System.String@)">
+            <summary>
+            Determines if the uri is in valid format.
+            <para>If there is a minor tweak required, true will be returned and
+            the uri given out as <paramref name="formatted"/> parameter.</para>
+            </summary>
+            <param name="uri">Uri to check if it is valid.</param>
+            <param name="formatted">Tweaked uri to be correct.</param>
+            <returns>If the given uri is in valid format or not.</returns>
+        </member>
+        <member name="T:Braco.Services.Media.ServicesSetup">
+            <summary>
+            Sets up the service implementations for the specific abstractions:
+            <para><see cref="T:Braco.Services.Media.MP3AudioSplitter"/> for <see cref="T:Braco.Services.Media.Abstractions.IMediaSplitter"/>.</para>
+            <para><see cref="T:Braco.Services.Media.YouTubeAudioDownloader"/> for <see cref="T:Braco.Services.Media.Abstractions.IMediaDownloader"/>.</para>
+            <para><see cref="T:Braco.Services.Media.YouTubeVideoDownloader"/> for itself.</para>
+            <para><see cref="T:Braco.Services.Media.YouTubeAudioDownloader"/> for itself.</para>
+            <para>Note: adding to the service collection for the same abstraction twice will make
+            the second call for adding the service override the first one.</para>
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Media.ServicesSetup.ConfigurationSection">
+            <summary>
+            Not used.
+            </summary>
+        </member>
+        <member name="M:Braco.Services.Media.ServicesSetup.Setup(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Configuration.IConfigurationSection)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Services.Media.MP3AudioSplitter">
+            <summary>
+            Implementation of <see cref="T:Braco.Services.Media.Abstractions.IMediaSplitter"/> that works with MP3 files.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.Media.MP3AudioSplitter.Mp3Extension">
+            <summary>
+            Extension for MP3 files.
+            </summary>
+        </member>
+        <member name="M:Braco.Services.Media.MP3AudioSplitter.SplitAsync(Braco.Services.Media.Abstractions.MediaSplitRequest,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Services.Media.YouTubeAudioDownloader">
+            <summary>
+            Used for extracting audio from a YouTube video.
+            </summary>
+        </member>
+        <member name="M:Braco.Services.Media.YouTubeAudioDownloader.#ctor(Braco.Services.Media.YouTubeVideoDownloader)">
+            <summary>
+            Creates an instance of the downloader with required YouTube video downloader.
+            </summary>
+            <param name="youTubeVideoDownloader">YouTube video downloader.</param>
+        </member>
+        <member name="M:Braco.Services.Media.YouTubeAudioDownloader.DownloadAsync(Braco.Services.Media.Abstractions.MediaDownloadRequest,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.Media.YouTubeAudioDownloader.IsUriInValidFormat(System.String,System.String@)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Services.Media.YouTubeVideoDownloader">
+            <summary>
+            Implementation of <see cref="T:Braco.Services.Media.Abstractions.IMediaDownloader"/> that works with YouTube videos.
+            </summary>
+        </member>
+        <member name="M:Braco.Services.Media.YouTubeVideoDownloader.#ctor(VideoLibrary.YouTube)">
+            <summary>
+            Creates the downloader.
+            </summary>
+            <param name="youTube"><see cref="T:VideoLibrary.YouTube"/> instance (You can use <see cref="P:VideoLibrary.YouTube.Default"/>).</param>
+        </member>
+        <member name="M:Braco.Services.Media.YouTubeVideoDownloader.DownloadAsync(Braco.Services.Media.Abstractions.MediaDownloadRequest,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.Media.YouTubeVideoDownloader.IsUriInValidFormat(System.String,System.String@)">
+            <inheritdoc/>
+        </member>
+    </members>
+</doc>

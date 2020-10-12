@@ -1,0 +1,46 @@
+<Window x:Class="Braco.Utilities.Wpf.Controls.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Braco.Utilities.Wpf.Controls"
+        xmlns:utils="clr-namespace:Braco.Utilities.Wpf;assembly=Braco.Utilities.Wpf"
+        Title="{DynamicResource {x:Static local:ResourceKeys.ApplicationName}}"
+        Width="1200" Height="800"
+        ResizeMode="{Binding ResizeMode}"
+        WindowStartupLocation="CenterScreen" WindowStyle="None">
+	<!-- Border around the window -->
+	<Border Padding="10 6"
+	        Background="{DynamicResource brushSecondary}"
+	        BorderBrush="{DynamicResource brushPrimaryHover}"
+	        BorderThickness="2">
+		<!-- Window content holder -->
+		<local:BracoGrid Background="{DynamicResource brushSecondary}" Rows="Auto, 10, *">
+			<local:TitleBar Title="{DynamicResource {x:Static local:ResourceKeys.ApplicationName}}"
+			                CloseToolTip="{DynamicResource {x:Static local:ResourceKeys.ApplicationCloseToolTip}}"
+			                Logo="{Binding LogoPath, Converter={utils:StringToRootPackUriConverter}}"
+			                SettingsVisibility="{Binding SettingsCommand, Converter={utils:NullToVisibilityConverter}}" />
+
+			<Grid Grid.Row="2">
+				<!-- Page -->
+				<Frame local:NoNavigation.Value="True" Source="{Binding Page, Converter={utils:PageTypeToFrameSourceConverter}}" />
+
+				<!-- Info Box -->
+				<local:InfoBox Title="{Binding InfoBox.Title}"
+				               HorizontalAlignment="Right"
+				               Dismiss="{Binding InfoBox.Dismissed}"
+				               DismissCommand="{Binding DismissInfoBoxCommand}"
+				               Message="{Binding InfoBox.Message}"
+				               OuterBorderBrush="{Binding InfoBox.Type, Converter={utils:InfoBoxTypeToBrushConverter}}"
+				               OuterBorderThickness="2"
+				               SeparatorBrush="{Binding InfoBox.Type, Converter={utils:InfoBoxTypeToBrushConverter}}" />
+
+				<!-- Previous page button -->
+				<local:ImageButton HorizontalAlignment="Left" VerticalAlignment="Top"
+				                   ButtonSize="{Binding PreviousPageButtonSize}"
+				                   Command="{Binding GoToPreviousPageCommand}"
+				                   FileName="{x:Static local:ResourceKeys.PreviousPageIcon}"
+				                   ToolTip="{DynamicResource {x:Static local:ResourceKeys.WindowPreviousPageButtonToolTip}}"
+				                   Visibility="{Binding CanGoToPreviousPage, Converter={utils:BoolToVisibilityConverter}}" />
+			</Grid>
+		</local:BracoGrid>
+	</Border>
+</Window>

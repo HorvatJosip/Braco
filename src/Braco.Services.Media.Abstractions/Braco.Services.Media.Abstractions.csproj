@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+    <Version>0.1.2</Version>
+    <Authors>Josip Horvat</Authors>
+    <Description>Abstractions for media services.</Description>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/HorvatJosip/braco</PackageProjectUrl>
+    <PackageIcon>icon_big.png</PackageIcon>
+    <RepositoryUrl>https://github.com/HorvatJosip/braco</RepositoryUrl>
+    <PackageTags>braco services media abstractions josip horvat</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>D:\Coding\braco\src\Braco.Services.Media.Abstractions\Braco.Services.Media.Abstractions.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\..\res\icon_big.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Braco.Services.Abstractions" Version="0.6.2" />
+  </ItemGroup>
+
+</Project>

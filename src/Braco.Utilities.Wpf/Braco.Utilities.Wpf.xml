@@ -1,0 +1,1953 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Braco.Utilities.Wpf</name>
+    </assembly>
+    <members>
+        <member name="T:Braco.Utilities.Wpf.AuthorizeAttribute">
+            <summary>
+            Using this on a <see cref="T:Braco.Utilities.Wpf.PageViewModel"/> will make sure
+            that the user is authenticated (<see cref="P:Braco.Services.Abstractions.IAuthService.IsAuthenticated"/>).
+            If the user isn't authenticated, they will be redirected to
+            <see cref="P:Braco.Services.Abstractions.IAuthService.UnauthenticatedLocation"/>.
+            </summary>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.PageAttribute">
+            <summary>
+            Specifies certain information about a page.
+            <para>Should be used on a <see cref="T:Braco.Utilities.Wpf.PageViewModel"/>.</para>
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.PageAttribute.Subfolders">
+            <summary>
+            Subfolders the page is placed in.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.PageAttribute.Name">
+            <summary>
+            Name of the page.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.PageAttribute.AllowGoingToPreviousPage">
+            <summary>
+            If set to true, previous page button will show up (on click, it
+            executes the <see cref="P:Braco.Utilities.Wpf.WindowViewModel.GoToPreviousPageCommand"/>).
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.PageAttribute.#ctor(System.String[])">
+            <summary>
+            Creates an instance of the attribute which specifies subfolders
+            that the page is placed in.
+            </summary>
+            <param name="subfolders">Subfolders the page is placed in.</param>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.WindowAttribute">
+            <summary>
+            Specifies certain information about a window.
+            <para>Should be used on a <see cref="T:Braco.Utilities.Wpf.WindowViewModel"/>.</para>
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.WindowAttribute.Type">
+            <summary>
+            Type of window to instantiate. Should inherit from <see cref="T:System.Windows.Window"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.WindowAttribute.TypeName">
+            <summary>
+            Name of the type of window (e.g. MainWindow).
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowAttribute.#ctor(System.Type)">
+            <summary>
+            Generates an instance of the attribute with given type.
+            </summary>
+            <param name="type">Type of window to instantiate. Should inherit <see cref="T:System.Windows.Window"/>.</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowAttribute.#ctor(System.String)">
+            <summary>
+            Generates an instance of the attribute with type name.
+            </summary>
+            <param name="typeName">Name of the type of window (e.g. MainWindow).</param>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.BaseAttachedProperty`2">
+            <summary>
+            Wrapper around vanilla attached property to make
+            the usage simpler and more readable.
+            </summary>
+            <typeparam name="TOwner">Owner class that this property will attach to.</typeparam>
+            <typeparam name="TPropertyType">Type of the property that will be attached to the parent.</typeparam>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.BaseAttachedProperty`2.PropertyName">
+            <summary>
+            Name of the attached property.
+            </summary>
+        </member>
+        <member name="E:Braco.Utilities.Wpf.BaseAttachedProperty`2.ValueChanged">
+            <summary>
+            Fired when the value of the attached property changes.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.BaseAttachedProperty`2.Instance">
+            <summary>
+            Singleton of the owner of the property.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.BaseAttachedProperty`2.ValueProperty">
+            <summary>
+            The property that will be attached to the owner.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.BaseAttachedProperty`2.OnValuePropertyChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>
+            Callback for when the value of the property changes.
+            </summary>
+            <param name="d">UI element that had its property changed.</param>
+            <param name="e">Arguments for the event.</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.BaseAttachedProperty`2.GetValue(System.Windows.DependencyObject)">
+            <summary>
+            Gets the value stored in the attached property of the given element.
+            </summary>
+            <param name="d">The element for which to get the value of the attached property.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.BaseAttachedProperty`2.SetValue(System.Windows.DependencyObject,`1)">
+            <summary>
+            Sets the value of the attached property of the given element.
+            </summary>
+            <param name="d">Element for which to set the attached property.</param>
+            <param name="value">Value used for setting the attached property.</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.BaseAttachedProperty`2.OnValueChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>
+            Method that is called when the attached property changes.
+            </summary>
+            <param name="sender">UI element that had its property changed.</param>
+            <param name="e">Arguments for the event.</param>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.BaseConverter`1">
+            <summary>
+            Base class for any converters used in XAML.
+            </summary>
+            <typeparam name="Converter">Type of the converter that is inheriting this class.</typeparam>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.BaseConverter`1.Instance">
+            <summary>
+            Instance of the converter.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.BaseConverter`1.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Implementation of <see cref="M:System.Windows.Data.IValueConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)"/>.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.BaseConverter`1.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Implementation of <see cref="M:System.Windows.Data.IValueConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)"/>.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.BaseConverter`1.ProvideValue(System.IServiceProvider)">
+            <summary>
+            Implementation of <see cref="M:System.Windows.Markup.MarkupExtension.ProvideValue(System.IServiceProvider)"/>.
+            </summary>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.BaseMultiValueConverter`1">
+            <summary>
+            Base class for any multi value converters used in XAML.
+            </summary>
+            <typeparam name="Converter">Type of the converter that is inheriting this class.</typeparam>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.BaseMultiValueConverter`1.Instance">
+            <summary>
+            Instance of the converter.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.BaseMultiValueConverter`1.Convert(System.Object[],System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Implementation of <see cref="M:System.Windows.Data.IMultiValueConverter.Convert(System.Object[],System.Type,System.Object,System.Globalization.CultureInfo)"/>.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.BaseMultiValueConverter`1.ConvertBack(System.Object,System.Type[],System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Implementation of <see cref="M:System.Windows.Data.IMultiValueConverter.ConvertBack(System.Object,System.Type[],System.Object,System.Globalization.CultureInfo)"/>.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.BaseMultiValueConverter`1.ProvideValue(System.IServiceProvider)">
+            <summary>
+            Implementation of <see cref="M:System.Windows.Markup.MarkupExtension.ProvideValue(System.IServiceProvider)"/>.
+            </summary>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.BasePage`1">
+            <summary>
+            Page that sets up the view model as DataContext.
+            </summary>
+            <typeparam name="VM">View model to use for DataContext.</typeparam>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.BasePage`1.#ctor">
+            <summary>
+            Creates an instance of the page.
+            </summary>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.BoolToVisibilityConverter">
+            <summary>
+            Used for converting bool value to <see cref="T:System.Windows.Visibility"/>.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.BoolToVisibilityConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.BoolToVisibilityConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.CollectionToVisibilityConverter">
+            <summary>
+            Converts state of the collection to <see cref="T:System.Windows.Visibility"/> based on
+            it being empty or not.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.CollectionToVisibilityConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.CollectionToVisibilityConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.ComboBoxItemConverter">
+            <summary>
+            Used for extracting text of the item from the <see cref="T:System.Windows.Controls.ComboBox"/>
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.ComboBoxItemConverter.Convert(System.Object[],System.Type,System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.ComboBoxItemConverter.ConvertBack(System.Object,System.Type[],System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.EnumToStringConverter">
+            <summary>
+            Used for converting enums to localized strings and vice versa.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.EnumToStringConverter.EnumAllExtension">
+            <summary>
+            Suffix for "all" option of enums.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.EnumToStringConverter.EnumAllFallback">
+            <summary>
+            Fallback localization key for "all" option of enums.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.EnumToStringConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.EnumToStringConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.EnumToStringConverter.LocalizedValueForAll(System.Type)">
+            <summary>
+            Gets a localized value for the 'all option' for
+            the enum of given type (If the type is null,
+            a fallback value is given).
+            </summary>
+            <param name="type">Type of enum.</param>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.InfoBoxTypeToBrushConverter">
+            <summary>
+            Used for getting a brush based on info box type.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.InfoBoxTypeToBrushConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.InfoBoxTypeToBrushConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.InverseBoolConverter">
+            <summary>
+            Used for converting a bool to its opposite state.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.InverseBoolConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.InverseBoolConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.ItemsPanelConverter">
+            <summary>
+            Used for <see cref="T:System.Windows.Controls.ItemsControl"/> to specify its <see cref="P:System.Windows.Controls.ItemsControl.ItemsPanel"/>
+            through binding. The result depends on the binding on boolean property - if the
+            property returns true, <see cref="T:System.Windows.Controls.StackPanel"/> will be the panel for the items. If
+            it returns false, <see cref="T:System.Windows.Controls.WrapPanel"/> will be the panel for the items.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.ItemsPanelConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.ItemsPanelConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.NullToVisibilityConverter">
+            <summary>
+            Used for converting nullable object to <see cref="T:System.Windows.Visibility"/>.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.NullToVisibilityConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.NullToVisibilityConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.PageTypeToFrameSourceConverter">
+            <summary>
+            Used for converting a page type into a <see cref="T:System.Windows.Controls.Frame"/> source.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.PageTypeToFrameSourceConverter.PagesFolder">
+            <summary>
+            Folder in which the pages should reside.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.PageTypeToFrameSourceConverter.PageSuffix">
+            <summary>
+            Suffix for all of the created pages.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.PageTypeToFrameSourceConverter.FolderSeparator">
+            <summary>
+            Separator used to specify subfolders in the project.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.PageTypeToFrameSourceConverter.AssemblyName">
+            <summary>
+            Name of the assembly for full pack uri.
+            If left null, <see cref="T:Braco.Utilities.AssemblyGetter"/> will be used.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.PageTypeToFrameSourceConverter.PageLocationFormat">
+            <summary>
+            Format used for constructing a <see cref="T:System.Uri"/> to appropriate page.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.PageTypeToFrameSourceConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.PageTypeToFrameSourceConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.PasswordBoxesToSecurePasswordsConverter">
+            <summary>
+            Used for converting <see cref="T:System.Windows.Controls.PasswordBox"/>es into <see cref="T:System.Security.SecureString"/>s. Basically,
+            just for extracting the passwords from the <see cref="T:System.Windows.Controls.PasswordBox"/>es.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.PasswordBoxesToSecurePasswordsConverter.Convert(System.Object[],System.Type,System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.PasswordBoxesToSecurePasswordsConverter.ConvertBack(System.Object,System.Type[],System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.PasswordBoxToSecurePasswordConverter">
+            <summary>
+            Used for converting <see cref="T:System.Windows.Controls.PasswordBox"/> into <see cref="T:System.Security.SecureString"/>. Basically,
+            just for extracting the password from the <see cref="T:System.Windows.Controls.PasswordBox"/>.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.PasswordBoxToSecurePasswordConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            If the <paramref name="value"/> is a <see cref="T:System.Windows.Controls.PasswordBox"/>,
+            its secure password getter is returned.
+            </summary>
+            <param name="value">A <see cref="T:System.Windows.Controls.PasswordBox"/>.</param>
+            <param name="targetType">Not used.</param>
+            <param name="parameter">Not used.</param>
+            <param name="culture">Not used.</param>
+            <returns></returns>
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.PasswordBoxToSecurePasswordConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.StringToRootPackUriConverter">
+            <summary>
+            Used for converting a <see cref="T:System.String"/> into root pack uri.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.StringToRootPackUriConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.StringToRootPackUriConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.StringToVisibilityConverter">
+            <summary>
+            Used for converting <see cref="T:System.String"/> into <see cref="T:System.Windows.Visibility"/>.
+            <para>Checks a string if it's null or empty. If it is, <see cref="F:System.Windows.Visibility.Collapsed"/> is returned.
+            Otherwise, <see cref="F:System.Windows.Visibility.Visible"/> is returned.</para>
+            <para>In order to change this default behaviour, you can pass in a specific string as parameter.
+            The capitalization doesn't matter.</para>
+            <para>"hide" - this will return <see cref="F:System.Windows.Visibility.Hidden"/> instead of <see cref="F:System.Windows.Visibility.Collapsed"/>
+            when there is no text in the string.</para>
+            <para>"invert" - this will invert the behavior (when there is some text, it will return
+            <see cref="F:System.Windows.Visibility.Collapsed"/>, but when there isn't any, it will return <see cref="F:System.Windows.Visibility.Visible"/>).</para>
+            <para>"hide and invert" - this will combine the "hide" and "invert" options. So, when there is some text,
+            it will return <see cref="F:System.Windows.Visibility.Hidden"/> and when there isn't any,
+            it will return <see cref="F:System.Windows.Visibility.Visible"/>).</para>
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.StringToVisibilityConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.StringToVisibilityConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <exception cref="T:System.NotImplementedException"/>
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.WindowSizeIconConverter">
+            <summary>
+            Used for getting appropriate icon for window size.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowSizeIconConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowSizeIconConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.WindowAction">
+            <summary>
+            Actions that can be performed on a window.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.WindowAction.Close">
+            <summary>
+            Close the window.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.WindowAction.Hide">
+            <summary>
+            Hide the window.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.WindowAction.LeaveShown">
+            <summary>
+            Leave the window shown, but don't let it be interactable.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.WindowAction.LeaveShownAndInteractable">
+            <summary>
+            Leave the window shown and interactable.
+            </summary>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.MaximizedChangedEventArgs">
+            <summary>
+            Arguments for maximized event on a window.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.MaximizedChangedEventArgs.IsMaximized">
+            <summary>
+            True if the window is now maximized.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.MaximizedChangedEventArgs.Window">
+            <summary>
+            Window on which the state changed.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.MaximizedChangedEventArgs.#ctor(System.Boolean,System.Type)">
+            <summary>
+            Creates an instance of the arguments.
+            </summary>
+            <param name="isMaximized">Is the window maximized?</param>
+            <param name="window">Window that had the maximized state changed.</param>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.PageChangedEventArgs">
+            <summary>
+            Event args for <see cref="E:Braco.Utilities.Wpf.IWindowService.PageChanged"/> event.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.PageChangedEventArgs.Page">
+            <summary>
+            Page that changed.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.PageChangedEventArgs.Window">
+            <summary>
+            Window on which the page changed.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.PageChangedEventArgs.#ctor(System.Type,System.Type)">
+            <summary>
+            Creates an instance of the arguments.
+            </summary>
+            <param name="page">Page that changed.</param>
+            <param name="window">Window on which the page changed.</param>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.WindowChangedEventArgs">
+            <summary>
+            Event args for <see cref="E:Braco.Utilities.Wpf.IWindowService.WindowChanged"/> event.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.WindowChangedEventArgs.Window">
+            <summary>
+            Window that changed.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowChangedEventArgs.#ctor(System.Type)">
+            <summary>
+            Creates an instance of the arguments.
+            </summary>
+            <param name="window">Window that changed.</param>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.Extensions.ComboBoxExtensions">
+            <summary>
+            Extension used for <see cref="T:System.Windows.Controls.ComboBox"/>es.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Extensions.ComboBoxExtensions.GetItemText(System.Windows.Controls.ComboBox,System.Object)">
+            <summary>
+            Extracts text out of the <see cref="T:System.Windows.Controls.ComboBox"/> item.
+            </summary>
+            <param name="comboBox"><see cref="T:System.Windows.Controls.ComboBox"/> to get the text from.</param>
+            <param name="item">Item that contains the text.</param>
+            <returns>Text of the item in the <see cref="T:System.Windows.Controls.ComboBox"/>.</returns>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Extensions.ComboBoxExtensions.GetSelectedItemText(System.Windows.Controls.ComboBox)">
+            <summary>
+            Gets text from the selected item in the <see cref="T:System.Windows.Controls.ComboBox"/>.
+            </summary>
+            <param name="comboBox"><see cref="T:System.Windows.Controls.ComboBox"/> to get the text from.</param>
+            <returns>Text of the selected item in the <see cref="T:System.Windows.Controls.ComboBox"/>.</returns>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.Extensions.ResourceDictionaryExtensions">
+            <summary>
+            Extensions for <see cref="T:System.Windows.ResourceDictionary"/>ies.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Extensions.ResourceDictionaryExtensions.NewUri(System.Windows.ResourceDictionary,System.String,System.String)">
+            <summary>
+            Gets a new uri for the dictionary after the keyword.
+            </summary>
+            <param name="dictionary">Dictionary from which to extract the current uri.</param>
+            <param name="keyword">Keyword to look for.</param>
+            <param name="newValue">Value used to replace the part after the keyword.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.Extensions.TextBoxExtensions">
+            <summary>
+            Extensions for <see cref="T:System.Windows.Controls.TextBox"/>.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Extensions.TextBoxExtensions.SetTextAndMoveCaretToEnd(System.Windows.Controls.TextBox,System.String)">
+            <summary>
+            Sets the text inside the given <see cref="T:System.Windows.Controls.TextBox"/> and
+            moves the cursor to the end.
+            </summary>
+            <param name="textBox"><see cref="T:System.Windows.Controls.TextBox"/> to use.</param>
+            <param name="text">Text to set inside it.</param>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.ControlTree">
+            <summary>
+            Helper class used for working with control tree.
+            It also contains helper methods used for finding an ancestor or
+            child of some object.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.ControlTree.Elements">
+            <summary>
+            Elements that were found.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.ControlTree.#ctor(System.Windows.DependencyObject)">
+            <summary>
+            Creates an instance of the control tree.
+            </summary>
+            <param name="root">Root from which to find the elements.</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.ControlTree.FindVisualChildren``1(System.Windows.DependencyObject)">
+            <summary>
+            Gets all the children of specified type from given parent.
+            </summary>
+            <typeparam name="T">Type of child to look for.</typeparam>
+            <param name="parent">Parent from which to start the search.</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.ControlTree.FindAncestor``1(System.Windows.DependencyObject)">
+            <summary>
+            Returns the first ancester of specified type.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.ControlTree.FindAncestor``1(System.Windows.DependencyObject,``0)">
+            <summary>
+            Returns a specific ancester of an object.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.ControlTree.FindAncestor``1(System.Windows.DependencyObject,System.String)">
+            <summary>
+            Finds an ancestor object by name and type.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.ControlTree.FindChild``1(System.Windows.DependencyObject,System.String)">
+            <summary>
+            Looks for a child control within a parent by name.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.ControlTree.FindChild``1(System.Windows.DependencyObject)">
+            <summary>
+            Looks for a child control within a parent by type.
+            </summary>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.EnumCollectionExtension">
+            <summary>
+            Markup extensions for getting a collection of values for
+            the specified enum type.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.EnumCollectionExtension.Type">
+            <summary>
+            Type of enum.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.EnumCollectionExtension.PrependTheAllOption">
+            <summary>
+            Indicates if the first option be "all".
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.EnumCollectionExtension.#ctor(System.Type)">
+            <summary>
+            Creates an instance of the extension.
+            </summary>
+            <param name="type">Type of enum to use</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.EnumCollectionExtension.ProvideValue(System.IServiceProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.RelativeBinding">
+            <summary>
+            Shorthand way for writing binding with relative type
+            that searches for an ancestor. By default, searches
+            for ancestor that is a <see cref="T:System.Windows.Controls.UserControl"/>.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.RelativeBinding.DataContextPathPrefix">
+            <summary>
+            Prefix for a path representing something on DataContext.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.RelativeBinding.AncestorType">
+            <summary>
+            Type of the ancestor to use.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.RelativeBinding.#ctor">
+            <summary>
+            Creates a default instance of the binding.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.RelativeBinding.#ctor(System.String)">
+            <summary>
+            Creates an instance of the binding that looks for
+            <see cref="T:System.Windows.Controls.UserControl"/> at given <paramref name="path"/>.
+            </summary>
+            <param name="path">Path of the bound member.</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.RelativeBinding.#ctor(System.String,System.Type)">
+            <summary>
+            Creates an instance of the binding that looks for
+            <paramref name="type"/> at given <paramref name="path"/>.
+            </summary>
+            <param name="path">Path of the bound member.</param>
+            <param name="type">Type of the ancestor to look for.</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.RelativeBinding.#ctor(System.String,System.Type,System.Boolean)">
+            <summary>
+            Creates an instance of the binding that looks for
+            <paramref name="type"/> at given <paramref name="path"/> and
+            optionally prepends data context prefix to the path.
+            </summary>
+            <param name="path">Path of the bound member.</param>
+            <param name="type">Type of the ancestor to look for.</param>
+            <param name="prependDataContext">Should <see cref="F:Braco.Utilities.Wpf.RelativeBinding.DataContextPathPrefix"/>
+            be prepended to <paramref name="path"/>?</param>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.ResourceKeys">
+            <summary>
+            Resource keys used in the project.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.ResourceKeys.RestoreIcon">
+            <summary>
+            Restore icon for title bar.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.ResourceKeys.MaximizeIcon">
+            <summary>
+            Maximize icon for title bar.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.ResourceKeys.InfoBoxDurationKey">
+            <summary>
+            Configuration key for info box duration.
+            </summary>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.TwoWayBinding">
+            <summary>
+            Shorthand way for making a binding that binds two way
+            and updates when the property changes.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.TwoWayBinding.#ctor">
+            <summary>
+            Creates a default instance of the binding.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.TwoWayBinding.#ctor(System.String)">
+            <summary>
+            Creates an instance of the binding that binds to
+            member at given path using <see cref="F:System.Windows.Data.BindingMode.TwoWay"/>.
+            </summary>
+            <param name="path">Path of the bound member.</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.TwoWayBinding.#ctor(System.String,System.Type)">
+            <summary>
+            Creates an instance of the binding that binds to
+            member at given path using <see cref="F:System.Windows.Data.BindingMode.TwoWay"/>
+            and looks for the member in the ancestor of given
+            <paramref name="type"/>.
+            </summary>
+            <param name="path">Path of the bound member.</param>
+            <param name="type">Type of the ancestor to look for.</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.TwoWayBinding.#ctor(System.String,System.Type,System.Boolean)">
+            <summary>
+            Creates an instance of the binding that binds to
+            member at given path using <see cref="F:System.Windows.Data.BindingMode.TwoWay"/>
+            and looks for the member in the ancestor of given
+            <paramref name="type"/>. Optionally, it prepends
+            data context prefix to the path.
+            </summary>
+            <param name="path">Path of the bound member.</param>
+            <param name="type">Type of the ancestor to look for.</param>
+            <param name="prependDataContext">Should <see cref="F:Braco.Utilities.Wpf.RelativeBinding.DataContextPathPrefix"/>
+            be prepended to <paramref name="path"/>?</param>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.VisibilityHelpers">
+            <summary>
+            Helpers used for converting to <see cref="T:System.Windows.Visibility"/>.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.VisibilityHelpers.InvertParam">
+            <summary>
+            Constant to use for inverting the logic.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.VisibilityHelpers.HideParam">
+            <summary>
+            Constant to use if <see cref="F:System.Windows.Visibility.Hidden"/>
+            should be used instead of <see cref="F:System.Windows.Visibility.Collapsed"/>.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.VisibilityHelpers.HideAndInvertParam">
+            <summary>
+            Constant to use if <see cref="F:System.Windows.Visibility.Hidden"/>
+            should be used instead of <see cref="F:System.Windows.Visibility.Collapsed"/>
+            and the logic should be inverted.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.VisibilityHelpers.Convert(System.Boolean,System.Object)">
+            <summary>
+            Converts to <see cref="T:System.Windows.Visibility"/> based on given values.
+            </summary>
+            <param name="visible">Should <see cref="F:System.Windows.Visibility.Visible"/> be the result?</param>
+            <param name="param">Logic alteration parameter. Can be
+            <see cref="F:Braco.Utilities.Wpf.VisibilityHelpers.InvertParam"/>, <see cref="F:Braco.Utilities.Wpf.VisibilityHelpers.HideParam"/>, <see cref="F:Braco.Utilities.Wpf.VisibilityHelpers.HideAndInvertParam"/>
+            or anything else to not alter the logic.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.WindowHelper">
+            <summary>
+            Helper for dealing with <see cref="T:System.Windows.Window"/>.
+            <para>Handles maximization issues.</para>
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowHelper.Initialize(System.Windows.Window,System.Boolean)">
+            <summary>
+            Initializes the given window and optionally performs
+            helper methods.
+            </summary>
+            <param name="window">Window to initialize.</param>
+            <param name="fixMaximization">Should the maximization bug be fixed?</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowHelper.FixMaximization(System.Windows.Window)">
+            <summary>
+            Used to fix maximization hiding taskbar.
+            </summary>
+            <param name="window">Window for which to fix the
+            maximization issue.</param>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.POINT">
+            <summary>
+            Point structure.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.POINT.x">
+            <summary>
+            x coordinate of point.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.POINT.y">
+            <summary>
+            y coordinate of point.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.POINT.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Construct a point of coordinates (x,y).
+            </summary>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.MINMAXINFO">
+            <summary>
+            Min Max Info structure.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.MINMAXINFO.ptReserved">
+            <summary>
+            Reserved.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.MINMAXINFO.ptMaxSize">
+            <summary>
+            MaxSize.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.MINMAXINFO.ptMaxPosition">
+            <summary>
+            MaxPosition.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.MINMAXINFO.ptMinTrackSize">
+            <summary>
+            MinTrackSize.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.MINMAXINFO.ptMaxTrackSize">
+            <summary>
+            MaxTrackSize.
+            </summary>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.MONITORINFO">
+            <summary>
+            Monitor info class.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.MONITORINFO.cbSize">
+            <summary>
+            </summary>            
+        </member>
+        <member name="F:Braco.Utilities.Wpf.MONITORINFO.rcMonitor">
+            <summary>
+            </summary>            
+        </member>
+        <member name="F:Braco.Utilities.Wpf.MONITORINFO.rcWork">
+            <summary>
+            </summary>            
+        </member>
+        <member name="F:Braco.Utilities.Wpf.MONITORINFO.dwFlags">
+            <summary>
+            </summary>            
+        </member>
+        <member name="T:Braco.Utilities.Wpf.RECT">
+            <summary>
+            Rect structure.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.RECT.left">
+            <summary> Win32 </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.RECT.top">
+            <summary> Win32 </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.RECT.right">
+            <summary> Win32 </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.RECT.bottom">
+            <summary> Win32 </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.RECT.Empty">
+            <summary> Win32 </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.RECT.Width">
+            <summary> Win32 </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.RECT.Height">
+            <summary> Win32 </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.RECT.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary> Win32 </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.RECT.#ctor(Braco.Utilities.Wpf.RECT)">
+            <summary> Win32 </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.RECT.IsEmpty">
+            <summary> Win32 </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.RECT.ToString">
+            <summary> Return a user friendly representation of this struct </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.RECT.Equals(System.Object)">
+            <summary> Determine if 2 RECT are equal (deep compare) </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.RECT.GetHashCode">
+            <summary>Return the HashCode for this struct (not garanteed to be unique)</summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.RECT.op_Equality(Braco.Utilities.Wpf.RECT,Braco.Utilities.Wpf.RECT)">
+            <summary> Determine if 2 RECT are equal (deep compare)</summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.RECT.op_Inequality(Braco.Utilities.Wpf.RECT,Braco.Utilities.Wpf.RECT)">
+            <summary> Determine if 2 RECT are different(deep compare)</summary>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.WindowInfo">
+            <summary>
+            Contains information about the window and handles the common interactions.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.WindowInfo.Page">
+            <summary>
+            Page that is currently being displayed.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.WindowInfo.Window">
+            <summary>
+            Window id.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.WindowInfo.UI">
+            <summary>
+            Actual window that can be displayed.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.WindowInfo.PageHolder">
+            <summary>
+            Frame control that holds the page.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.WindowInfo.WindowViewModel">
+            <summary>
+            View model used for the current window.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.WindowInfo.PreviousPageViewModel">
+            <summary>
+            Page view model for the previously shown page.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowInfo.GetPageViewModel">
+            <summary>
+            Gets the view model from the <see cref="P:Braco.Utilities.Wpf.WindowInfo.PageHolder"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.WindowInfo.State">
+            <summary>
+            State of the window.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.WindowInfo.IsMaximized">
+            <summary>
+            True if the <see cref="P:Braco.Utilities.Wpf.WindowInfo.State"/> is set to
+            <see cref="F:System.Windows.WindowState.Maximized"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.WindowInfo.Active">
+            <summary>
+            Is this window active or not right now?
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowInfo.#ctor(System.Action{System.Object,System.Type},Braco.Services.Abstractions.IConfigurationService,Braco.Services.Abstractions.IAuthService,Braco.Utilities.Wpf.IWindowService)">
+            <summary>
+            Creates an instance of <see cref="T:Braco.Utilities.Wpf.WindowInfo"/> 
+            with page changed event handler.
+            </summary>
+            <param name="pageChanged">Method to execute when page changes</param>
+            <param name="configurationService">Configuration of the project.</param>
+            <param name="authService">Auth service used for the project.</param>
+            <param name="windowService">Window service used for the project.</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowInfo.Maximize">
+            <summary>
+            Maximizes the window.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowInfo.Restore">
+            <summary>
+            Restores the window to its original size.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowInfo.MaximizeOrRestore">
+            <summary>
+            Maximizes or restores the window.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowInfo.GoToPreviousPage">
+            <summary>
+            Returns to the previous page.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowInfo.Close">
+            <summary>
+            Closes the window.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowInfo.DragMove">
+            <summary>
+            Tries to drag-move the window.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowInfo.Center">
+            <summary>
+            Centers the window on screen if it isn't maximized.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowInfo.Minimize">
+            <summary>
+            Minimizes the window
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowInfo.ChangeSize(System.Double,System.Double)">
+            <summary>
+            Sets the width and height of the window.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowInfo.ChangePage(System.Type,System.Object)">
+            <summary>
+            Changes page to the new one.
+            </summary>
+            <param name="page">Page to change to.</param>
+            <param name="data">(optional) Additional data to pass in.</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowInfo.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowInfo.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.ResourceManagerInitializer">
+            <summary>
+            Used for initializing the project's <see cref="T:Braco.Services.Abstractions.IResourceManager"/>
+            with all of the <see cref="T:Braco.Services.Abstractions.ResourceGetter"/>s that have been defined
+            and added to the service collection.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.ResourceManagerInitializer.ConfigurationSection">
+            <summary>
+            Not used.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.ResourceManagerInitializer.#ctor(Braco.Services.Abstractions.IResourceManager)">
+            <summary>
+            Creates an instance of the initializer with project's resource manager.
+            </summary>
+            <param name="resourceManager">Resource manager used by the project.</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.ResourceManagerInitializer.Initialize(System.IServiceProvider,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Configuration.IConfigurationSection)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.IChooserDialogsService">
+            <summary>
+            Service used for working with dialogs that allow
+            the user to choose a file or directory location.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.IChooserDialogsService.ChooseFile(System.String,System.String,System.ValueTuple{System.String,System.String}[])">
+            <summary>
+            Allows the user to choose a file.
+            </summary>
+            <param name="title">Title displayed on file chooser dialog.</param>
+            <param name="selectedFile">File that is selected in advance.</param>
+            <param name="filters">Extensions for files that can be picked.</param>
+            <returns>Picked file path or null if nothing was picked.</returns>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.IChooserDialogsService.ChooseFiles(System.String,System.String,System.ValueTuple{System.String,System.String}[])">
+            <summary>
+            Allows the user to choose multiple files.
+            </summary>
+            <param name="title">Title displayed on file chooser dialog.</param>
+            <param name="selectedFile">File that is selected in advance.</param>
+            <param name="filters">Extensions for files that can be picked.</param>
+            <returns>Picked file paths or null if nothing was picked.</returns>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.IChooserDialogsService.ChooseDirectory(System.String,System.String)">
+            <summary>
+            Allows the user to choose a directory.
+            </summary>
+            <param name="title">Title of the directory chooser dialog.</param>
+            <param name="initialDirectory">Directory that is selected initially.</param>
+            <returns>Picked directory path or null if nothing was picked.</returns>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.IWindowService">
+            <summary>
+            Service used for working with window.
+            </summary>
+        </member>
+        <member name="E:Braco.Utilities.Wpf.IWindowService.WindowChanged">
+            <summary>
+            Event that triggers once a window is changed.
+            </summary>
+        </member>
+        <member name="E:Braco.Utilities.Wpf.IWindowService.PageChanged">
+            <summary>
+            Event that triggers once a page is changed.
+            </summary>
+        </member>
+        <member name="E:Braco.Utilities.Wpf.IWindowService.MaximizedChanged">
+            <summary>
+            Event that triggers once a window has its state changed
+            to or from maximized.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.IWindowService.Open``1(Braco.Utilities.Wpf.OpenWindowOptions)">
+            <summary>
+            Opens a window if it isn't already open.
+            </summary>
+            <param name="options">Options for opening the window.</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.IWindowService.Open``2(Braco.Utilities.Wpf.OpenWindowOptions)">
+            <summary>
+            Opens a window if it isn't already open and sets its page.
+            </summary>
+            <param name="options">Options for opening the window.</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.IWindowService.IsMaximized(System.Type)">
+            <summary>
+            Checks if the window is maximized or not.
+            </summary>
+            <param name="window">Window to check.
+            <para>If left null, current window will be used.</para>
+            </param>
+            <returns>True if the given window is maximized, false if it isn't
+            and null if the window isn't open.</returns>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.IWindowService.ChangePage``1(System.Object,System.Type)">
+            <summary>
+            Changes the page to the specified one on the specified window.
+            </summary>
+            <param name="data">(optional) Additional data to pass in.</param>
+            <param name="window">Window on which the page should be changed.
+            <para>If left null, current window will be used.</para>
+            </param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.IWindowService.GoToPreviousPage(System.Type)">
+            <summary>
+            Changes page to the previous one on the specified window.
+            </summary>
+            <param name="window">Window on which the page should be changed.
+            <para>If left null, current window will be used.</para>
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.IWindowService.Close(System.Type)">
+            <summary>
+            Closes the specified window if it is currently open.
+            </summary>
+            <param name="window">Window to close.
+            <para>If left null, current window will be used.</para>
+            </param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.IWindowService.DragMove(System.Type)">
+            <summary>
+            Tries to move the specified window on drag.
+            </summary>
+            <param name="window">Window to move.
+            <para>If left null, current window will be used.</para>
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.IWindowService.Center(System.Type)">
+            <summary>
+            Centers the given window on the screen.
+            </summary>
+            <param name="window">Window to center.
+            <para>If left null, current window will be used.</para>
+            </param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.IWindowService.Minimize(System.Type)">
+            <summary>
+            Minimizes the specified window.
+            </summary>
+            <param name="window">Window to minimize.
+            <para>If left null, current window will be used.</para>
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.IWindowService.MaximizeOrRestore(System.Type)">
+            <summary>
+            Maximizes or restores the specified window's size.
+            </summary>
+            <param name="window">Window to maximize or restore.
+            <para>If left null, current window will be used.</para>
+            </param>
+            <returns>True if maximized, false if restored to normal, null if action didn't go through.</returns>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.IWindowService.Maximize(System.Type)">
+            <summary>
+            Maximizes the specified window.
+            </summary>
+            <param name="window">Window to maximize or restore.
+            <para>If left null, current window will be used.</para>
+            </param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.IWindowService.Restore(System.Type)">
+            <summary>
+            Restores the specified window to its original size.
+            </summary>
+            <param name="window">Window to maximize or restore.
+            <para>If left null, current window will be used.</para>
+            </param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.IWindowService.ChangeSize(System.Double,System.Double,System.Type)">
+            <summary>
+            Changes the size of the specified window.
+            </summary>
+            <param name="width">Desired width of the window.</param>
+            <param name="height">Desired height of the window.</param>
+            <param name="window">Window whose size needs to be changed.
+            <para>If left null, current window will be used.</para>
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.IWindowService.DismissInfoBox">
+            <summary>
+            Used for dismissing the current info box.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.IWindowService.ShowInfoBox(Braco.Utilities.InfoBoxType,System.String,System.String,System.Nullable{System.Int32})">
+            <summary>
+            Shows info box on the current window.
+            </summary>
+            <param name="type">Type of info box.</param>
+            <param name="title">Title for the info box.</param>
+            <param name="message">Message for the info box.</param>
+            <param name="duration">Duration in seconds until it dismisses.</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.IWindowService.ShowInfoBox(Braco.Utilities.InfoBoxType,System.String,System.Nullable{System.Int32})">
+            <summary>
+            Shows info box on the current window.
+            Title is fetched from the type.
+            </summary>
+            <param name="type">Type of info box.</param>
+            <param name="message">Message for the info box.</param>
+            <param name="duration">Duration in seconds until it dismisses.</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.IWindowService.ShowErrorInInfoBox(System.String,System.String,System.Nullable{System.Int32})">
+            <summary>
+            Shows error in the info box on the current window.
+            </summary>
+            <param name="title">Title for the info box.</param>
+            <param name="message">Message for the info box.</param>
+            <param name="duration">Duration in seconds until it dismisses.</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.IWindowService.ShowErrorInInfoBox(System.String,System.Nullable{System.Int32})">
+            <summary>
+            Shows error in the info box on the current window.
+            </summary>
+            <param name="message">Message for the info box.</param>
+            <param name="duration">Duration in seconds until it dismisses.</param>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.OpenWindowOptions">
+            <summary>
+            Defines options about opening a window.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.OpenWindowOptions.PreviousWindowAction">
+            <summary>
+            What should be done with the previously active window.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.OpenWindowOptions.Size">
+            <summary>
+            Size of the window.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.OpenWindowOptions.StayOnTop">
+            <summary>
+            Should the opened window be always on top?
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.OpenWindowOptions.Center">
+            <summary>
+            Should the window be centered?
+            <para>Defaults to true.</para>
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.OpenWindowOptions.AdditionalOptions">
+            <summary>
+            Any required additional options.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.OpenWindowOptions.PageData">
+            <summary>
+            Data that should be passed into the page.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.OpenWindowOptions.OnClosed">
+            <summary>
+            Triggered when the window closes.
+            </summary>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.ImageGetter">
+            <summary>
+            <see cref="T:Braco.Services.Abstractions.ResourceGetter"/> for images.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.ImageGetter.DefaultLocation">
+            <summary>
+            Default location for images.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.ImageGetter.#ctor(System.String)">
+            <summary>
+            Creates the instance of the getter with given location.
+            </summary>
+            <param name="location">Location where the images are stored.</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.ImageGetter.GetImagePath(System.String,System.String)">
+            <summary>
+            Used for getting the image path.
+            </summary>
+            <param name="subfolder">Subfolder of the image.</param>
+            <param name="fileName">Image's file name.</param>
+            <returns>Path to the image resource.</returns>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.ImageGetter.GetImagePath(System.String)">
+            <summary>
+            Used for getting the image path.
+            </summary>
+            <param name="fileName">Image's file name.</param>
+            <returns>Path to the image resource.</returns>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.PageGetter">
+            <summary>
+            <see cref="T:Braco.Services.Abstractions.ResourceGetter"/> used for getting data
+            about a page.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.PageGetter.GetPageType(System.String)">
+            <summary>
+            Used for getting <see cref="T:Braco.Utilities.Wpf.PageViewModel"/> type for an identifier.
+            </summary>
+            <param name="identifier">Identifier from which to determine the type.</param>
+            <returns>Type of page.</returns>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.ToolTipGetter">
+            <summary>
+            <see cref="T:Braco.Services.Abstractions.ResourceGetter"/> for tooltips by image names.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.ToolTipGetter._toolTipKeyMap">
+            <summary>
+            Map of keys for tooltips based on image file names.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.ToolTipGetter.#ctor(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Creates the getter using the initial dictionary of values.
+            </summary>
+            <param name="toolTipKeyMap">Map of keys for tooltips based on image file names.</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.ToolTipGetter.AddKeyGetter(System.String,System.String)">
+            <summary>
+            Adds a tooltip key based on image file name.
+            <para>Note: null or empty strings not allowed.</para>
+            </summary>
+            <param name="imageFileName">File name of the image.</param>
+            <param name="toolTipKey">Key for the tooltip.</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.ToolTipGetter.AddKeyGetterRange(System.ValueTuple{System.String,System.String}[])">
+            <summary>
+            Adds a range of tooltip keys based on image file names.
+            <para>Note: null or empty strings not allowed.</para>
+            </summary>
+            <param name="toolTipKeyMap">Map of keys for tooltips based on image file names.</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.ToolTipGetter.AddKeyGetterRange(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+            <summary>
+            Adds a range of tooltip keys based on image file names.
+            <para>Note: null or empty strings not allowed.</para>
+            </summary>
+            <param name="toolTipKeyMap">Map of keys for tooltips based on image file names.</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.ToolTipGetter.GetToolTipKey(System.String)">
+            <summary>
+            Gets tooltip key based on the image file name.
+            </summary>
+            <param name="imageFileName">File name of the image whose tooltip key
+            needs to be found.</param>
+            <returns>Localization key for the tooltip based on image file name.</returns>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.ImageGetterSetup">
+            <summary>
+            Used for setting up <see cref="T:Braco.Utilities.Wpf.ImageGetter"/>.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.ImageGetterSetup.SectionName">
+            <summary>
+            Name of the section used for <see cref="P:Braco.Utilities.Wpf.ImageGetterSetup.ConfigurationSection"/>.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.ImageGetterSetup.LocationKey">
+            <summary>
+            Key for the location configuration value inside current section.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.ImageGetterSetup.ConfigurationSection">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.ImageGetterSetup.Setup(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Configuration.IConfigurationSection)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.OtherServicesSetup">
+            <summary>
+            Sets up the service implementations for the specific abstractions:
+            <para><see cref="T:Braco.Utilities.Wpf.ChooserDialogsService"/> for <see cref="T:Braco.Utilities.Wpf.IChooserDialogsService"/>.</para>
+            <para><see cref="T:Braco.Utilities.Wpf.WpfMethodService"/> for <see cref="T:Braco.Services.Abstractions.IMethodService"/>.</para>
+            <para><see cref="T:Braco.Utilities.Wpf.WindowService"/> for <see cref="T:Braco.Utilities.Wpf.IWindowService"/>.</para>
+            <para>Note: adding to the service collection for the same abstraction twice will make
+            the second call for adding the service override the first one.</para>
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.OtherServicesSetup.ConfigurationSection">
+            <summary>
+            Not used.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.OtherServicesSetup.Setup(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Configuration.IConfigurationSection)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.ToolTipGetterSetup">
+            <summary>
+            Used for setting up <see cref="T:Braco.Utilities.Wpf.ToolTipGetterSetup"/>.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.ToolTipGetterSetup.SectionName">
+            <summary>
+            Name of the section used for <see cref="P:Braco.Utilities.Wpf.ToolTipGetterSetup.ConfigurationSection"/>.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.ToolTipGetterSetup.KeyMapSectionName">
+            <summary>
+            Key for the key map section nested inside current section.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.ToolTipGetterSetup.ConfigurationSection">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.ToolTipGetterSetup.Setup(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Configuration.IConfigurationSection)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.ViewModelsSetup">
+            <summary>
+            Adds <see cref="T:Braco.Utilities.Wpf.ContentViewModel"/>s, <see cref="T:Braco.Utilities.Wpf.PageViewModel"/>s and
+            <see cref="T:Braco.Utilities.Wpf.WindowViewModel"/>s to the service collection.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.ViewModelsSetup.ConfigurationSection">
+            <summary>
+            Not used.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.ViewModelsSetup.Setup(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Configuration.IConfigurationSection)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.WpfDictionaryLocalizerSetup">
+            <summary>
+            Used for setting up <see cref="T:Braco.Utilities.Wpf.WpfDictionaryLocalizer"/> as <see cref="T:Braco.Services.Abstractions.ILocalizer"/>.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.WpfDictionaryLocalizerSetup.SectionName">
+            <summary>
+            Name of the section used for <see cref="P:Braco.Utilities.Wpf.WpfDictionaryLocalizerSetup.ConfigurationSection"/>.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.WpfDictionaryLocalizerSetup.CulturesSectionName">
+            <summary>
+            Name of the section for the culture collection inside current section.
+            This should be an array of strings.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.WpfDictionaryLocalizerSetup.ConfigurationSection">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WpfDictionaryLocalizerSetup.Setup(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Configuration.IConfigurationSection)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.ChooserDialogsService">
+            <summary>
+            Implementation of <see cref="T:Braco.Utilities.Wpf.IChooserDialogsService"/> using
+            <see cref="N:Microsoft.WindowsAPICodePack.Dialogs"/>.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.ChooserDialogsService.ChooseDirectory(System.String,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.ChooserDialogsService.ChooseFiles(System.String,System.String,System.ValueTuple{System.String,System.String}[])">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.ChooserDialogsService.ChooseFile(System.String,System.String,System.ValueTuple{System.String,System.String}[])">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.WindowService">
+            <summary>
+            Default imeplementation of <see cref="T:Braco.Utilities.Wpf.IWindowService"/>.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.WindowService.WindowSuffix">
+            <summary>
+            Suffix used for windows.
+            </summary>
+        </member>
+        <member name="E:Braco.Utilities.Wpf.WindowService.PageChanged">
+            <summary>
+            Event used for singalling that the page changed.
+            </summary>
+        </member>
+        <member name="E:Braco.Utilities.Wpf.WindowService.WindowChanged">
+            <summary>
+            Event used for singalling that the window changed.
+            </summary>
+        </member>
+        <member name="E:Braco.Utilities.Wpf.WindowService.MaximizedChanged">
+            <summary>
+            Event used for singalling that the window had its
+            <see cref="P:System.Windows.Window.WindowState"/> changed to or
+            from <see cref="F:System.Windows.WindowState.Maximized"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.WindowService.CurrentWindow">
+            <summary>
+            Currently active window or null if there aren't any.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowService.#ctor(Braco.Services.Abstractions.IMethodService,AutoMapper.IMapper,Braco.Services.Abstractions.ILocalizer,Braco.Services.Abstractions.IConfigurationService)">
+            <summary>
+            Creates an instance of the service.
+            </summary>
+            <param name="methodService">Service used for method invokations.</param>
+            <param name="mapper">Service for mapping values between objects.</param>
+            <param name="localizer">Localizer used for the project.</param>
+            <param name="configuration">Configuration used for the project.</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowService.ChangePage``1(System.Object,System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowService.ChangePage(System.Type,System.Object,System.Type)">
+            <summary>
+            Non generic version of <see cref="M:Braco.Utilities.Wpf.WindowService.ChangePage``1(System.Object,System.Type)"/>.
+            </summary>
+            <param name="page">Page to change to.</param>
+            <param name="data">(optional) Additional data to pass in.</param>
+            <param name="window">Window on which the page should be changed.
+            <para>If left null, current window will be used.</para>
+            <returns>If the page was changed to the desired one.</returns>
+            </param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowService.GoToPreviousPage(System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowService.Close(System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowService.DragMove(System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowService.Center(System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowService.Minimize(System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowService.MaximizeOrRestore(System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowService.Maximize(System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowService.Restore(System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowService.IsMaximized(System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowService.ChangeSize(System.Double,System.Double,System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowService.DismissInfoBox">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowService.ShowInfoBox(Braco.Utilities.InfoBoxType,System.String,System.String,System.Nullable{System.Int32})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowService.ShowInfoBox(Braco.Utilities.InfoBoxType,System.String,System.Nullable{System.Int32})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowService.ShowErrorInInfoBox(System.String,System.String,System.Nullable{System.Int32})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowService.ShowErrorInInfoBox(System.String,System.Nullable{System.Int32})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowService.Open``1(System.Type,Braco.Utilities.Wpf.OpenWindowOptions)">
+            <summary>
+            Page non generic implementation of <see cref="M:Braco.Utilities.Wpf.WindowService.Open``2(Braco.Utilities.Wpf.OpenWindowOptions)"/>.
+            </summary>
+            <typeparam name="TWindow">Window to open.</typeparam>
+            <param name="page">Page to change to after opening the window.</param>
+            <param name="options">Options for opening the window.</param>
+            <returns>If the window was opened.</returns>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowService.Open``2(Braco.Utilities.Wpf.OpenWindowOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowService.Open``1(Braco.Utilities.Wpf.OpenWindowOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.WpfDictionaryLocalizer">
+            <summary>
+            Implementation of <see cref="T:Braco.Services.Abstractions.ILocalizer"/> using <see cref="T:System.Windows.ResourceDictionary"/>ies.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.WpfDictionaryLocalizer.Keyword">
+            <summary>
+            Used for identifying resource dictionaries used for localization.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.WpfDictionaryLocalizer.Culture">
+            <inheritdoc/>
+        </member>
+        <member name="E:Braco.Utilities.Wpf.WpfDictionaryLocalizer.LanguageChanged">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WpfDictionaryLocalizer.#ctor(System.String[])">
+            <summary>
+            Creates an instance of the localizer.
+            </summary>
+            <param name="cultures">Cultures that are defined for the project.</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WpfDictionaryLocalizer.ChangeLanguage(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.WpfDictionaryLocalizer.Item(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.WpfDictionaryLocalizer.Item(System.String,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.WpfDictionaryLocalizer.Item(System.String,System.String,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.WpfDictionaryLocalizer.Item(System.String,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WpfDictionaryLocalizer.Format(System.String,System.Collections.Generic.IEnumerable{System.Object})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WpfDictionaryLocalizer.Format(System.String,System.String,System.Collections.Generic.IEnumerable{System.Object})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WpfDictionaryLocalizer.Format(System.String,System.Int32,System.Collections.Generic.IEnumerable{System.Object})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WpfDictionaryLocalizer.Format(System.String,System.String,System.Int32,System.Collections.Generic.IEnumerable{System.Object})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WpfDictionaryLocalizer.GetAllValues(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.WpfMethodService">
+            <summary>
+            Implementation of <see cref="T:Braco.Services.Abstractions.IMethodService"/> using
+            WPF's dispatchers.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WpfMethodService.InvokeOnUIThread``1(System.Func{``0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WpfMethodService.InvokeOnUIThread(System.Action)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.PackUtilities">
+            <summary>
+            Utilties for WPF pack.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.PackUtilities.PackUri">
+            <summary>
+            Constant that defines root uri of a WPF application.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.PackUtilities.GetRootPackUri(System.String)">
+            <summary>
+            Gets root pack uri of the given assembly (which should be a WPF app).
+            </summary>
+            <param name="assemblyName">Name of the assembly for which to get the
+            root pack uri.</param>
+            <returns>Root pack uri from given assembly.</returns>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.PackUtilities.GetRootPackUri">
+            <summary>
+            Gets root pack uri of the assembly registered in <see cref="T:Braco.Utilities.AssemblyGetter"/>.
+            </summary>
+            <returns>Root pack uri with assembly from <see cref="T:Braco.Utilities.AssemblyGetter"/>.</returns>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.PackUtilities.GetRootPackUriForCallingAssembly">
+            <summary>
+            Gets root pack uri of the calling assembly (which should be a WPF app).
+            </summary>
+            <returns>Root pack uri of the calling assembly.</returns>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.PackUtilities.GetRootPackUriWithSuffix(System.String,System.String)">
+            <summary>
+            Appends the given string to the root pack uri.
+            </summary>
+            <param name="assemblyName">Name of the assembly for which to get the
+            root pack uri.</param>
+            <param name="suffix">String to append to root pack uri.</param>
+            <returns>Root pack uri with <paramref name="suffix"/> appended at the end.</returns>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.PackUtilities.GetRootPackUriWithSuffix(System.String)">
+            <summary>
+            Appends the given string to the root pack uri that is obtained
+            using the <see cref="T:Braco.Utilities.AssemblyGetter"/>.
+            </summary>
+            <param name="suffix">String to append to root pack uri.</param>
+            <returns>Root pack uri with <paramref name="suffix"/> appended at the end.</returns>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.PackUtilities.GetRootPackUriForCallingAssemblyWithSuffix(System.String)">
+            <summary>
+            Appends the given string to the root pack uri that is obtained
+            using the <see cref="M:System.Reflection.Assembly.GetCallingAssembly"/> method.
+            </summary>
+            <param name="suffix">String to append to root pack uri.</param>
+            <returns>Root pack uri with <paramref name="suffix"/> appended at the end.</returns>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.StyleUtilities">
+            <summary>
+            Utilities focused on WPF styles.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.StyleUtilities.OverrideStyles(System.Type[])">
+            <summary>
+            Overrides metadata for given style types.
+            <para>You may want to define a style with target type <see cref="T:System.Windows.Window"/>
+            and then use it by calling this method.</para>
+            </summary>
+            <param name="types">Types to override styles for.</param>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.ContentViewModel">
+            <summary>
+            Base view model for content view models (like window or page).
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.ContentViewModel.ViewModelSuffix">
+            <summary>
+            Suffix that should be used for view models.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.ContentViewModel._localizer">
+            <summary>
+            Localizer.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.ContentViewModel._windowService">
+            <summary>
+            Window service.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.ContentViewModel._config">
+            <summary>
+            Configuration.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.ContentViewModel._readOnlyConfig">
+            <summary>
+            Read-only configuration.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.ContentViewModel._validator">
+            <summary>
+            Validator.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.ContentViewModel._mapper">
+            <summary>
+            Mapper.
+            </summary>
+        </member>
+        <member name="E:Braco.Utilities.Wpf.ContentViewModel.ValidationPerformed">
+            <summary>
+            Event that is fired after a validation has been performed.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.ContentViewModel.#ctor">
+            <summary>
+            Creates an instance of the view model.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.ContentViewModel.OnLanguageChanged(System.String)">
+            <summary>
+            Fired when the <see cref="E:Braco.Services.Abstractions.ILocalizer.LanguageChanged"/> fires.
+            </summary>
+            <param name="culture">Culture that was set.</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.ContentViewModel.OnSettingChanged(System.String,System.Object,System.Object)">
+            <summary>
+            Fired when the <see cref="E:Braco.Services.Abstractions.IConfigurationService.SettingChanged"/> fires.
+            </summary>
+            <param name="setting">Setting that changed.</param>
+            <param name="oldValue">Old value of the setting.</param>
+            <param name="newValue">New value of the setting.</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.ContentViewModel.ShowInfoBox(Braco.Utilities.InfoBoxType,System.String,System.String,System.Nullable{System.Int32})">
+            <summary>
+            Shows the info box.
+            </summary>
+            <param name="type">Type of info box.</param>
+            <param name="title">Title for the info box.</param>
+            <param name="message">Message for the info box.</param>
+            <param name="duration">Duration in seconds until it dismisses.</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.ContentViewModel.ShowInfoBox(Braco.Utilities.InfoBoxType,System.String,System.Nullable{System.Int32})">
+            <summary>
+            Shows the info box.
+            </summary>
+            <param name="type">Type of info box.</param>
+            <param name="message">Message for the info box.</param>
+            <param name="duration">Duration in seconds until it dismisses.</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.ContentViewModel.ShowErrorInInfoBox(System.String,System.String,System.Nullable{System.Int32})">
+            <summary>
+            Shows an error in the info box.
+            </summary>
+            <param name="title">Title for the info box.</param>
+            <param name="message">Message for the info box.</param>
+            <param name="duration">Duration in seconds until it dismisses.</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.ContentViewModel.ShowErrorInInfoBox(System.String,System.Nullable{System.Int32})">
+            <summary>
+            Shows an error in the info box.
+            </summary>
+            <param name="message">Message for the info box.</param>
+            <param name="duration">Duration in seconds until it dismisses.</param>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.PageViewModel">
+            <summary>
+            View model that is a base for page view models.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.PageViewModel.Accepted">
+            <summary>
+            Used for specifying the result.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.PageViewModel.OnLoaded(Braco.Utilities.Wpf.WindowViewModel,System.Object,Braco.Utilities.Wpf.PageViewModel)">
+            <summary>
+            Occurrs when the page is loaded.
+            </summary>
+            <param name="windowVM">View model of window on which the page loaded.</param>
+            <param name="pageData">Data used for the page.</param>
+            <param name="previousPage">Page that was previously active.</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.PageViewModel.OnClosing(Braco.Utilities.Wpf.WindowViewModel)">
+            <summary>
+            Occurs when the page is closing.
+            </summary>
+            <param name="windowVM">View model of window on which the page is closing.</param>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.WindowViewModel">
+            <summary>
+            View model that is a base for window view models.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.WindowViewModel.Page">
+            <summary>
+            Page that is active on this window.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.WindowViewModel.LogoPath">
+            <summary>
+            Path to the logo image.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.WindowViewModel.IsMaximized">
+            <summary>
+            Flag that indicates if the window is currently in <see cref="F:System.Windows.WindowState.Maximized"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.WindowViewModel.InfoBox">
+            <summary>
+            Used for setting up and triggering the info box.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.WindowViewModel.CanGoToPreviousPage">
+            <summary>
+            Flag that indicates if the user can go to previous page or not.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.WindowViewModel.ResizeMode">
+            <summary>
+            Defines the resize mode for the window.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.WindowViewModel.PreviousPageButtonSize">
+            <summary>
+            Size of the previous page button.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.WindowViewModel.SettingsCommand">
+            <summary>
+            Command that will fire when the settings button is clicked.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.WindowViewModel.MinimizeCommand">
+            <summary>
+            Command that will fire when the window is set to <see cref="F:System.Windows.WindowState.Minimized"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.WindowViewModel.MaximizeCommand">
+            <summary>
+            Command that will fire when the window is set to <see cref="F:System.Windows.WindowState.Maximized"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.WindowViewModel.CloseCommand">
+            <summary>
+            Command that will fire when the window is closed.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.WindowViewModel.DragCommand">
+            <summary>
+            Command that will fire when the window is being dragged.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.WindowViewModel.DismissInfoBoxCommand">
+            <summary>
+            Command that will fire when the info box is dismissed.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.WindowViewModel.GoToPreviousPageCommand">
+            <summary>
+            Command that will fire when the previous page button is clicked.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowViewModel.#ctor">
+            <summary>
+            Creates an instance of the view model.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowViewModel.OnLoaded">
+            <summary>
+            Occurs when the window loads.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowViewModel.OnClosed">
+            <summary>
+            Occurs when the window gets closed.
+            </summary>
+        </member>
+    </members>
+</doc>

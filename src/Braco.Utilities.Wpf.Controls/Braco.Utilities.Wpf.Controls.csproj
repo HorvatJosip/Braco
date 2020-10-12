@@ -1,0 +1,101 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>0.6.8</Version>
+    <Authors>Josip Horvat</Authors>
+    <Company>Josip Horvat</Company>
+    <Description>Controls and some helpers for them that may be commonly used for WPF projects.</Description>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/HorvatJosip/braco</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/HorvatJosip/braco</RepositoryUrl>
+    <PackageIcon>icon_big.png</PackageIcon>
+    <PackageTags>braco utilities wpf controls josip horvat</PackageTags>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>D:\Coding\braco\src\Braco.Utilities.Wpf.Controls\Braco.Utilities.Wpf.Controls.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\..\res\icon_big.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Braco.Utilities.Wpf" Version="0.6.9" />
+    <PackageReference PrivateAssets="All" Include="PropertyChanged.Fody" Version="3.2.9" />
+    <PackageReference Include="SharpVectors.Reloaded" Version="1.6.0" />
+    <PackageReference Include="System.Windows.Interactivity.WPF" Version="2.0.20525" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Controls\DropContainer.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\ImageButton.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\InfoBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\Menu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\Pagination.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\TitleBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\Validator.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Constants\Brushes.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Constants\Colors.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Constants\Numbers.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Styles\Buttons.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Styles\Controls.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Styles\Inputs.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Styles\Labels.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Styles\Panels.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Styles\ProgressBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Styles\ScrollBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\PopupWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
+</Project>

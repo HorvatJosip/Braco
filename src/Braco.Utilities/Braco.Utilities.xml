@@ -1,0 +1,1709 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Braco.Utilities</name>
+    </assembly>
+    <members>
+        <member name="T:Braco.Utilities.LocalizedAttribute">
+            <summary>
+            Attribute used for specifying that a field or a property is localized.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.LocalizedAttribute.Key">
+            <summary>
+            Key for localization.
+            </summary>
+        </member>
+        <member name="T:Braco.Utilities.SearchAttribute">
+            <summary>
+            Indicates that the decorated property should be
+            included when performing search.
+            </summary>
+        </member>
+        <member name="T:Braco.Utilities.SettingAttribute">
+            <summary>
+            Indicates that the decorated property is a setting
+            that can be retrieved on load and change the settings
+            when its value changes.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.SettingAttribute.Load">
+            <summary>
+            Specifies that the property should be set from the settings
+            on load. Defaults to true.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.SettingAttribute.UpdateOnValueChanged">
+            <summary>
+            Specifies that whenever the property's value changes, the
+            setting should be changed as well. Defaults to true.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.SettingAttribute.Key">
+            <summary>
+            Key used for identifying the setting. If not specified,
+            property name will be used.
+            </summary>
+        </member>
+        <member name="T:Braco.Utilities.TableColumnAttribute">
+            <summary>
+            Specifies that the marked property is shown
+            in a table.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.TableColumnAttribute.ResourceName">
+            <summary>
+            Name of the resource for getting localized header value.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.TableColumnAttribute.DisplayIndex">
+            <summary>
+            Column index in the table.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.TableColumnAttribute.#ctor(System.String,System.Int32)">
+            <summary>
+            Creates an instance of the <see cref="T:Braco.Utilities.TableColumnAttribute"/>
+            with specific resource name and display index.
+            </summary>
+            <param name="resourceName">Name of the resource for getting localized header value.</param>
+            <param name="displayIndex">Column index in the table.</param>
+        </member>
+        <member name="T:Braco.Utilities.RelayCommand">
+            <summary>
+            Command used for executing an action.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.RelayCommand.#ctor(System.Action)">
+            <summary>
+            Creates a relay command with specific action.
+            </summary>
+            <param name="execute">Action to execute.</param>
+        </member>
+        <member name="M:Braco.Utilities.RelayCommand.#ctor(System.Action{System.Object})">
+            <summary>
+            Creates a relay command with specific action.
+            </summary>
+            <param name="execute">Action to execute.</param>
+        </member>
+        <member name="M:Braco.Utilities.RelayCommand.#ctor(System.Action,System.Func{System.Boolean})">
+            <summary>
+            Creates a relay command with specific action.
+            </summary>
+            <param name="execute">Action to execute.</param>
+            <param name="canExecute">Method that determines if the command can execute.</param>
+        </member>
+        <member name="M:Braco.Utilities.RelayCommand.#ctor(System.Action{System.Object},System.Func{System.Boolean})">
+            <summary>
+            Creates a relay command with specific action.
+            </summary>
+            <param name="execute">Action to execute.</param>
+            <param name="canExecute">Method that determines if the command can execute.</param>
+        </member>
+        <member name="M:Braco.Utilities.RelayCommand.#ctor(System.Action,System.Func{System.Object,System.Boolean})">
+            <summary>
+            Creates a relay command with specific action.
+            </summary>
+            <param name="execute">Action to execute.</param>
+            <param name="canExecute">Method that determines if the command can execute.</param>
+        </member>
+        <member name="M:Braco.Utilities.RelayCommand.#ctor(System.Action{System.Object},System.Func{System.Object,System.Boolean})">
+            <summary>
+            Creates a relay command with specific action.
+            </summary>
+            <param name="execute">Action to execute.</param>
+            <param name="canExecute">Method that determines if the command can execute.</param>
+        </member>
+        <member name="E:Braco.Utilities.RelayCommand.CanExecuteChanged">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.RelayCommand.CanExecute(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.RelayCommand.Execute(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Utilities.RelayCommand`1">
+            <summary>
+            Generic version of <see cref="T:Braco.Utilities.RelayCommand"/> that
+            converts the parameter into the given type.
+            </summary>
+            <typeparam name="T">Type used for the parameter.</typeparam>
+        </member>
+        <member name="M:Braco.Utilities.RelayCommand`1.#ctor(System.Action{`0})">
+            <summary>
+            Creates an instance of <see cref="T:Braco.Utilities.RelayCommand"/> that can
+            execute an action with parameter of type <typeparamref name="T"/>.
+            </summary>
+            <param name="execute">Method to execute.</param>
+        </member>
+        <member name="M:Braco.Utilities.RelayCommand`1.#ctor(System.Action{`0},System.Func{`0,System.Boolean})">
+            <summary>
+            Creates an instance of <see cref="T:Braco.Utilities.RelayCommand"/> that can
+            execute an action with parameter of type <typeparamref name="T"/>.
+            </summary>
+            <param name="execute">Method to execute.</param>
+            <param name="canExecute">Method that determines if the command can execute.</param>
+        </member>
+        <member name="T:Braco.Utilities.InclusionOptions">
+            <summary>
+            Specifies interval inclusion.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.InclusionOptions.BothInclusive">
+            <summary>
+            Both left and right are included.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.InclusionOptions.OnlyLeftInclusive">
+            <summary>
+            Only left is included, right is excluded.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.InclusionOptions.OnlyRightInclusive">
+            <summary>
+            Only right is included, left is excluded.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.InclusionOptions.BothExclusive">
+            <summary>
+            Both left and right are excluded.
+            </summary>
+        </member>
+        <member name="T:Braco.Utilities.InfoBoxType">
+            <summary>
+            Defines types for the InfoBox component.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.InfoBoxType.Information">
+            <summary>
+            Information.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.InfoBoxType.Error">
+            <summary>
+            Error.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.InfoBoxType.Warning">
+            <summary>
+            Warning.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.InfoBoxType.Success">
+            <summary>
+            Success.
+            </summary>
+        </member>
+        <member name="T:Braco.Utilities.SortDirection">
+            <summary>
+            Defines directions in which items can be sorted.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.SortDirection.None">
+            <summary>
+            The state where sort isn't active. If this is set on a column, icon that represents
+            sorting in ascending order should be shown.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.SortDirection.Ascending">
+            <summary>
+            The state where sort is active and the items are sorted in ascending order.
+            If this is set on a column, icon that represents sorting in descending order should be shown.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.SortDirection.Descending">
+            <summary>
+            The state where sort is active and the items are sorted in descending order.
+            If this is set on a column, either icon that represents sorting in ascending order 
+            should be shown or an icon that represents resetting the sorting to default sort.
+            </summary>
+        </member>
+        <member name="T:Braco.Utilities.PageDataEventArgs">
+            <summary>
+            Event arguments for page events.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.PageDataEventArgs.Page">
+            <summary>
+            Page ordinal number.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.PageDataEventArgs.PageSize">
+            <summary>
+            Number of rows to be displayed on the page.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.PageDataEventArgs.NumPages">
+            <summary>
+            Total number of pages that exist.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.PageDataEventArgs.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Creates an instance of event arguments for page events.
+            </summary>
+            <param name="page">page ordinal number.</param>
+            <param name="pageSize">number of rows to be displayed on the page.</param>
+            <param name="numPages">total number of pages that exist.</param>
+        </member>
+        <member name="T:Braco.Utilities.ValidationPerformedEventArgs">
+            <summary>
+            Event arguments for the event that will be raised
+            after a validation has been performed.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.ValidationPerformedEventArgs.ValidationErrors">
+            <summary>
+            List of validations for every property.
+            </summary>
+        </member>
+        <member name="T:Braco.Utilities.Extensions.CollectionExtensions">
+            <summary>
+            Extensions that can be used on different collections.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Extensions.CollectionExtensions.TopLevel">
+            <summary>
+            Top level of recursion when using <see cref="M:Braco.Utilities.Extensions.CollectionExtensions.LoopThroughHierarchy``1(System.Collections.Generic.IList{``0},System.Func{``0,``0,System.Int32,System.Collections.Generic.IList{``0},System.Int32,System.Boolean})"/>.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.CollectionExtensions.IsNotNullOrEmpty``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Checks if collection is not null and has some elements.
+            </summary>
+            <typeparam name="T">Type used in collection.</typeparam>
+            <param name="collection">Collection to check.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.CollectionExtensions.IsNullOrEmpty``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Checks if collection is null or has no elements.
+            </summary>
+            <typeparam name="T">Type used in collection.</typeparam>
+            <param name="collection">Collection to check.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.CollectionExtensions.IsNullOrEmpty(System.Collections.IEnumerable)">
+            <summary>
+            Checks if collection is null or has no elements.
+            </summary>
+            <param name="collection">Collection to check.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.CollectionExtensions.IsNotNullOrEmpty(System.Collections.IEnumerable)">
+            <summary>
+            Checks if collection is not null and has some elements.
+            </summary>
+            <param name="collection">Collection to check.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.CollectionExtensions.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
+            <summary>
+            Loops through the collection and performs
+            the <paramref name="action"/> on each item.
+            </summary>
+            <typeparam name="T">Type of items in the collection.</typeparam>
+            <param name="collection">Collection to loop through.</param>
+            <param name="action">Action to perform on each element of the colleciton.</param>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.CollectionExtensions.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0,System.Int32})">
+            <summary>
+            Loops through the collection and performs
+            the <paramref name="action"/> on each item.
+            </summary>
+            <typeparam name="T">Type of items in the collection.</typeparam>
+            <param name="collection">Collection to loop through.</param>
+            <param name="action">Action to perform on each element of the colleciton.
+            The second parameter that is given is index of the item in the collection.</param>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.CollectionExtensions.LoopThroughHierarchy``1(System.Collections.Generic.IList{``0},System.Func{``0,``0,System.Int32,System.Collections.Generic.IList{``0},System.Int32,System.Boolean})">
+            <summary>
+            Generic implementation for recursively going through a hierarchy of parent-children structure.
+            If the type (<typeparamref name="T"/>) isn't a <see cref="T:Braco.Utilities.IHierarchy`1"/>, this will only
+            loop through the collection.
+            </summary>
+            <typeparam name="T">Type of item.</typeparam>
+            <param name="collection">Initial collection.</param>
+            <param name="recursion">Method that will be executed every time a new item is found. The provided data is:
+            current item, parent of the current item, index in the loop through current collection, current collection and level of recursion.
+            The returned bool should signal if the recursion should be continued for the given item.</param>
+            <returns>Items in the hierarchy through which the method has gone through.</returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.CollectionExtensions.LoopThroughHierarchy``1(System.Collections.Generic.IList{``0},System.Action{``0,System.Int32})">
+            <summary>
+            Generic implementation for recursively going through a hierarchy of parent-children structure.
+            If the type (<typeparamref name="T"/>) isn't a <see cref="T:Braco.Utilities.IHierarchy`1"/>, this will only
+            loop through the collection.
+            </summary>
+            <typeparam name="T">Type of item.</typeparam>
+            <param name="collection">Initial collection.</param>
+            <param name="onItem">Method that will be executed every time a new item is found. The provided data is:
+            current item and level of recursion.</param>
+            <returns>Items in the hierarchy through which the method has gone through.</returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.CollectionExtensions.FindMatchInHierarchy``1(System.Collections.Generic.IList{``0},``0)">
+            <summary>
+            Goes through hierarchy and tries to locate the given item.
+            </summary>
+            <typeparam name="T">Type of item.</typeparam>
+            <param name="items">Initial collection.</param>
+            <param name="toFind">Item to locate in the hierarchy.</param>
+            <returns>Collection in which the item resides and at which index.</returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.CollectionExtensions.FindParent``1(System.Collections.Generic.IList{``0},``0)">
+            <summary>
+            Tries to find the parent using the <see cref="M:System.Object.Equals(System.Object,System.Object)"/>
+            for comparison.
+            </summary>
+            <typeparam name="T">Type used in collection.</typeparam>
+            <param name="items">Collection where the item should exist.</param>
+            <param name="item">Item to find in the collection.</param>
+            <returns>Item from the collection, if found.</returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.CollectionExtensions.RandomElement``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Picks a random element from the collection
+            </summary>
+            <typeparam name="T">Type used in collection.</typeparam>
+            <param name="collection">Collection from which the element will be picked.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.CollectionExtensions.IndexOf``1(System.Collections.Generic.IEnumerable{``0},System.Predicate{``0})">
+            <summary>
+            Finds index of item that matches the given <paramref name="predicate"/>.
+            </summary>
+            <typeparam name="T">Type used in collection.</typeparam>
+            <param name="collection">Collection to test.</param>
+            <param name="predicate">Test that is used for finding the index.</param>
+            <returns>Index of the item, if it exists. Otherwise -1.</returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.CollectionExtensions.IndexOf``1(System.Collections.Generic.IEnumerable{``0},``0)">
+            <summary>
+            Gets index of the item in the collection by using
+            <see cref="M:System.Object.Equals(System.Object,System.Object)"/> as comparison.
+            </summary>
+            <typeparam name="T">Type used in collection.</typeparam>
+            <param name="collection">Collection in which the item might be.</param>
+            <param name="item">Item whose index needs to be found.</param>
+            <returns>Index of the item, if it exists. Otherwise -1.</returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.CollectionExtensions.AddOrInsert``1(System.Collections.Generic.IList{``0},System.Int32,``0)">
+            <summary>
+            Adds an item into the collection at given index. If the index
+            is outside the bounds of the collection, item will just be added
+            using <see cref="M:System.Collections.IList.Add(System.Object)"/> method.
+            </summary>
+            <typeparam name="T">Type used in collection.</typeparam>
+            <param name="list">List used for inserting the item.</param>
+            <param name="index">Index at which to insert the item.</param>
+            <param name="item">Item to insert.</param>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.CollectionExtensions.AddOrInsert(System.Collections.IList,System.Int32,System.Object)">
+            <summary>
+            Adds an item into the collection at given index. If the index
+            is outside the bounds of the collection, item will just be added
+            using <see cref="M:System.Collections.IList.Add(System.Object)"/> method.
+            </summary>
+            <param name="list">List used for inserting the item.</param>
+            <param name="index">Index at which to insert the item.</param>
+            <param name="item">Item to insert.</param>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.CollectionExtensions.RenewData``1(System.Collections.Generic.ICollection{``0},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Takes in a collection, removes old items from it and adds new items to it.
+            </summary>
+            <typeparam name="T">Type of item in the collection.</typeparam>
+            <param name="collection">Collection to renew.</param>
+            <param name="newItems">Items to use to populate the collection.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.CollectionExtensions.GetNextId``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Int32})">
+            <summary>
+            Generates the next integer id based on the ids in the given collection.
+            </summary>
+            <typeparam name="T">Type of object.</typeparam>
+            <param name="collection">Collection from which to read already present ids.</param>
+            <param name="idGetter">Function that returns id of the item of type <typeparamref name="T"/>.</param>
+            <returns>Next id based on the collection.</returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.CollectionExtensions.In``1(``0,``0[])">
+            <summary>
+            Checks if the item is inside a collection of values.
+            </summary>
+            <typeparam name="T">Type to check.</typeparam>
+            <param name="item">Item to check.</param>
+            <param name="targetValues">Collection to check the item against.</param>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.CollectionExtensions.Join``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+            <summary>
+            Shorthand for calling <see cref="M:System.String.Join``1(System.String,System.Collections.Generic.IEnumerable{``0})"/>.
+            </summary>
+            <typeparam name="T">Type of object.</typeparam>
+            <param name="collection">Collection from which to get strings.</param>
+            <param name="separator">Separator used for members of the collection.</param>
+            <returns>Members of the collection separated by <paramref name="separator"/>.</returns>
+        </member>
+        <member name="T:Braco.Utilities.Extensions.NumberExtensions">
+            <summary>
+            Extensions for number types such as <see cref="T:System.Int32"/>,
+            <see cref="T:System.Double"/>, <see cref="T:System.Decimal"/>.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.NumberExtensions.Between(System.Decimal,System.Decimal,System.Decimal,Braco.Utilities.InclusionOptions)">
+            <summary>
+            Determines if a number is in the interval.
+            </summary>
+            <param name="number">Number to test.</param>
+            <param name="left">Left side of the interval.</param>
+            <param name="right">Right side of the interval.</param>
+            <param name="options">Interval inclusion option.</param>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.NumberExtensions.Between(System.Double,System.Decimal,System.Decimal,Braco.Utilities.InclusionOptions)">
+            <summary>
+            Determines if a number is in the interval.
+            </summary>
+            <param name="number">Number to test.</param>
+            <param name="left">Left side of the interval.</param>
+            <param name="right">Right side of the interval.</param>
+            <param name="options">Interval inclusion option.</param>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.NumberExtensions.Between(System.Single,System.Decimal,System.Decimal,Braco.Utilities.InclusionOptions)">
+            <summary>
+            Determines if a number is in the interval.
+            </summary>
+            <param name="number">Number to test.</param>
+            <param name="left">Left side of the interval.</param>
+            <param name="right">Right side of the interval.</param>
+            <param name="options">Interval inclusion option.</param>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.NumberExtensions.Between(System.Int64,System.Decimal,System.Decimal,Braco.Utilities.InclusionOptions)">
+            <summary>
+            Determines if a number is in the interval.
+            </summary>
+            <param name="number">Number to test.</param>
+            <param name="left">Left side of the interval.</param>
+            <param name="right">Right side of the interval.</param>
+            <param name="options">Interval inclusion option.</param>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.NumberExtensions.Between(System.Int32,System.Decimal,System.Decimal,Braco.Utilities.InclusionOptions)">
+            <summary>
+            Determines if a number is in the interval.
+            </summary>
+            <param name="number">Number to test.</param>
+            <param name="left">Left side of the interval.</param>
+            <param name="right">Right side of the interval.</param>
+            <param name="options">Interval inclusion option.</param>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.NumberExtensions.Format(System.Decimal,System.Boolean)">
+            <summary>
+            Formats the number by separating thousands with the culture specific separator.
+            </summary>
+            <param name="number">Number to format.</param>
+            <param name="useDecimalPlaces">Should the decimal places be used?</param>
+            <returns></returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.NumberExtensions.Format(System.Double,System.Boolean)">
+            <summary>
+            Formats the number by separating thousands with the culture specific separator.
+            </summary>
+            <param name="number">Number to format.</param>
+            <param name="useDecimalPlaces">Should the decimal places be used?</param>
+            <returns></returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.NumberExtensions.Format(System.Single,System.Boolean)">
+            <summary>
+            Formats the number by separating thousands with the culture specific separator.
+            </summary>
+            <param name="number">Number to format.</param>
+            <param name="useDecimalPlaces">Should the decimal places be used?</param>
+            <returns></returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.NumberExtensions.Format(System.Int64,System.Boolean)">
+            <summary>
+            Formats the number by separating thousands with the culture specific separator.
+            </summary>
+            <param name="number">Number to format.</param>
+            <param name="useDecimalPlaces">Should the decimal places be used?</param>
+            <returns></returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.NumberExtensions.Format(System.Int32,System.Boolean)">
+            <summary>
+            Formats the number by separating thousands with the culture specific separator.
+            </summary>
+            <param name="number">Number to format.</param>
+            <param name="useDecimalPlaces">Should the decimal places be used?</param>
+            <returns></returns>
+        </member>
+        <member name="T:Braco.Utilities.Extensions.SecureStringExtensions">
+            <summary>
+            Extensions for <see cref="T:System.Security.SecureString"/>.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.SecureStringExtensions.Unsecure(System.Security.SecureString)">
+            <summary>
+            Takes in a <see cref="T:System.Security.SecureString"/> and returns its data
+            converted to <see cref="T:System.String"/>.
+            </summary>
+            <param name="value"><see cref="T:System.Security.SecureString"/> to unsecure.</param>
+            <returns>Unsecured <see cref="T:System.Security.SecureString"/>.</returns>
+        </member>
+        <member name="T:Braco.Utilities.Extensions.StreamExtensions">
+            <summary>
+            Extensions for <see cref="T:System.IO.Stream"/>.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.StreamExtensions.WriteChunk(System.IO.Stream,System.Byte[])">
+            <summary>
+            Writes a chunk of bytes from start to finish into the stream.
+            </summary>
+            <param name="stream">Stream into which to write the bytes.</param>
+            <param name="chunk">Chunk of bytes to write to the stream.</param>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.StreamExtensions.WriteChunkAsync(System.IO.Stream,System.Byte[])">
+            <summary>
+            Writes a chunk of bytes from start to finish into the stream asynchronously.
+            </summary>
+            <param name="stream">Stream into which to write the bytes.</param>
+            <param name="chunk">Chunk of bytes to write to the stream.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.StreamExtensions.WriteInChunksAsync(System.IO.Stream,System.Byte[],System.Int32,System.Threading.CancellationToken,Braco.Utilities.PercentageProgress)">
+            <summary>
+            Writes given <paramref name="bytes"/> to the <paramref name="stream"/>
+            in chunks of <paramref name="chunkSize"/>.
+            </summary>
+            <param name="stream">Stream to write to in chunks.</param>
+            <param name="bytes">Collection of bytes to write in chunks into the stream.</param>
+            <param name="chunkSize">Number of bytes that will be written to the stream at once.</param>
+            <param name="cancellationToken">Token that can signal cancellation of writing operation.</param>
+            <param name="progress">Progress reporting instance.</param>
+            <returns>True if all of the bytes have been written to the stream. False if the cancellation was requested by the token.</returns>
+        </member>
+        <member name="T:Braco.Utilities.Extensions.StringExtensions">
+            <summary>
+            Extension methods for <see cref="T:System.String"/>.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.StringExtensions.IsNullOrEmpty(System.String)">
+            <summary>
+            Indicates whether the specified string is null or a <see cref="F:System.String.Empty"/> string.
+            </summary>
+            <param name="value">The string to test.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.StringExtensions.IsNotNullOrEmpty(System.String)">
+            <summary>
+            Indicates whether the specified string is not null or a <see cref="F:System.String.Empty"/> string.
+            </summary>
+            <param name="value">The string to test.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.StringExtensions.IsNullOrWhiteSpace(System.String)">
+            <summary>
+            Indicates whether a specified string is null, empty,
+            or consists only of white-space characters.
+            </summary>
+            <param name="value">The string to test.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.StringExtensions.IsNotNullOrWhiteSpace(System.String)">
+            <summary>
+            Indicates whether a specified string is not null, empty,
+            or doesn't consist only of white-space characters.
+            </summary>
+            <param name="value">The string to test.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.StringExtensions.ReplaceIfNull(System.String,System.String)">
+            <summary>
+            If the string is null, <paramref name="newValue"/> is returned.
+            </summary>
+            <param name="value">Current value.</param>
+            <param name="newValue">Value to return if the <paramref name="value"/> is null.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.StringExtensions.ReplaceIfNullOrEmpty(System.String,System.String)">
+            <summary>
+            If the string is null or empty, <paramref name="newValue"/> is returned.
+            </summary>
+            <param name="value">Current value.</param>
+            <param name="newValue">Value to return if the <paramref name="value"/> is null or empty.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.StringExtensions.ReplaceIfNullOrWhiteSpace(System.String,System.String)">
+            <summary>
+            If the string is null or whiteSpace, <paramref name="newValue"/> is returned.
+            </summary>
+            <param name="value">Current value.</param>
+            <param name="newValue">Value to return if the <paramref name="value"/> is null or whiteSpace.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.StringExtensions.ToBase64(System.String)">
+            <summary>
+            Converts the given value to base64 encoded version.
+            </summary>
+            <param name="value">Value to convert to base64.</param>
+            <returns>base64 encoded version of <paramref name="value"/>.</returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.StringExtensions.FromBase64(System.String)">
+            <summary>
+            Converts the given value from base64 encoded version.
+            </summary>
+            <param name="value">Value that is base64 encoded.</param>
+            <returns>Decoded version of <paramref name="value"/> that was previously base64 encoded.</returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.StringExtensions.SurroundWith(System.String,System.String,System.String)">
+            <summary>
+            Takes in a string and surrounds it with two other strings.
+            </summary>
+            <param name="value">Current string.</param>
+            <param name="before">String to prepend to the current string.</param>
+            <param name="after">String to append to the current string.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.StringExtensions.WithoutWhiteSpace(System.String)">
+            <summary>
+            Removes all of the whitespace from a string.
+            </summary>
+            <param name="value">String to remove the whitespace from.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.StringExtensions.Without(System.String,System.Collections.Generic.IEnumerable{System.Char})">
+            <summary>
+            Removes all of the characters given in <paramref name="charactersToRemove"/>.
+            </summary>
+            <param name="value">Value from which to remove the characters.</param>
+            <param name="charactersToRemove">Characters to remove from <paramref name="value"/>.
+            <para>Note: you can pass in a <see cref="T:System.String"/> because it implements <see cref="T:System.Collections.IEnumerable"/>&lt;<see cref="T:System.Char"/>&gt;.</para></param>
+            <returns><paramref name="value"/> without <paramref name="charactersToRemove"/>.</returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.StringExtensions.SubstringCount(System.String,System.String)">
+            <summary>
+            Finds how many times does a given "target" substring occurr
+            in the current string.
+            </summary>
+            <param name="value">String to search.</param>
+            <param name="target">Substring to find the count of.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.StringExtensions.Convert(System.String,System.Type,System.Globalization.CultureInfo,System.ComponentModel.ITypeDescriptorContext)">
+            <summary>
+            Converts a string into an object of the specified type.
+            </summary>
+            <param name="value">String to convert into an object.</param>
+            <param name="type">Type of object to convert the string into.</param>
+            <param name="culture">Culture used for converting to string.</param>
+            <param name="context">Context info about the <see cref="T:System.ComponentModel.TypeDescriptor"/> for the type.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.StringExtensions.Convert``1(System.String,System.Globalization.CultureInfo,System.ComponentModel.ITypeDescriptorContext)">
+            <summary>
+            Converts a string into an object of the specified type.
+            </summary>
+            <typeparam name="T">Type of object to convert the string into.</typeparam>
+            <param name="value">String to convert into an object.</param>
+            <param name="culture">Culture used for converting to string.</param>
+            <param name="context">Context info about the <see cref="T:System.ComponentModel.TypeDescriptor"/> for the type <typeparamref name="T"/>.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.StringExtensions.ReplaceWhiteSpace(System.String,System.Boolean,System.String)">
+            <summary>
+            Replaces whitespace inside a string with a given string.
+            </summary>
+            <param name="value">String to replace the whitespace in.</param>
+            <param name="trim">Should the given string also be trimmed before replacement?</param>
+            <param name="with">Replacement for whitespace.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.StringExtensions.Secure(System.String)">
+            <summary>
+            Creates a secure string out of the given one.
+            </summary>
+            <param name="str">String to secure.</param>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.StringExtensions.PartialSearch(System.String,System.StringComparison,System.String[])">
+            <summary>
+            Performs a partial search using the search query on each of the given items.
+            </summary>
+            <param name="search">Query to check against.</param>
+            <param name="comparison">Comparison to use.</param>
+            <param name="testValues">Values to check the query against.</param>
+            <returns>True if some of the values partially match the search query.</returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.StringExtensions.PartialSearch(System.String,System.String[])">
+            <summary>
+            Performs a partial search using the search query on each of the given items
+            with <see cref="F:System.StringComparison.InvariantCultureIgnoreCase"/>.
+            </summary>
+            <param name="search">Query to check against.</param>
+            <param name="testValues">Values to check the query against.</param>
+            <returns>True if some of the values partially match the search query.</returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.StringExtensions.FuzzySearch(System.String,System.Int32,System.String[])">
+            <summary>
+            Performs fuzzy search on the given string.
+            </summary>
+            <param name="search">Search term to check.</param>
+            <param name="maxDiff">Maximum character difference in a compared word.</param>
+            <param name="testValues">Values to test.</param>
+            <returns>If the search term matched some of the test values.</returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.StringExtensions.FuzzySearch(System.String,System.String[])">
+            <summary>
+            Performs fuzzy search on the given string.
+            </summary>
+            <param name="search">Search term to check.</param>
+            <param name="testValues">Values to test.</param>
+            <returns>If the search term matched some of the test values.</returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.StringExtensions.Unformat(System.String,System.String)">
+            <summary>
+            Takes the formatted string in with its format and replaces all
+            of the fixed parts that are defined by the format.
+            </summary>
+            <param name="value">String to unformat.</param>
+            <param name="format">Format that the string was formatted by.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Braco.Utilities.Extensions.TypeExtensions">
+            <summary>
+            Extensions for <see cref="T:System.Type"/> class.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Extensions.TypeExtensions.DefaultPrieldFlags">
+            <summary>
+            Default <see cref="T:System.Reflection.BindingFlags"/> used for getting fields and properties.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Extensions.TypeExtensions.DefaultMethodFlags">
+            <summary>
+            Default <see cref="T:System.Reflection.BindingFlags"/> used for getting methods.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Extensions.TypeExtensions.BackingFieldIndicator">
+            <summary>
+            Indicator that means a field is a backing field.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Extensions.TypeExtensions.NestedPrieldSeparator">
+            <summary>
+            Separator used for nested prield format.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.TypeExtensions.GetPrields(System.Type,System.Boolean,System.Reflection.BindingFlags)">
+            <summary>
+            Used to get all the fields and properties defined by a type.
+            </summary>
+            <param name="type">Type to get the fields and properties from.</param>
+            <param name="skipBackingFields">If there are backing fields for the properties,
+            should they be skipped or not?</param>
+            <param name="flags"><see cref="T:System.Reflection.BindingFlags"/> used for accessing the fields and properties.</param>
+            <returns>Collection of fields and properties.</returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.TypeExtensions.GetNestedPrield(System.Type,System.Object,System.String)">
+            <summary>
+            Takes in an object and the property path separated by dots and extracts
+            value from the ending property.
+            </summary>
+            <param name="type">Type from which to get the nested property.</param>
+            <param name="target">Target object from which to extract the ending property value.</param>
+            <param name="dotSeparatedNotation">Path to the property separated using <see cref="F:Braco.Utilities.Extensions.TypeExtensions.NestedPrieldSeparator"/>.
+            <para>Example: "Person.Age"</para></param>
+            <returns></returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.TypeExtensions.GetValue(System.Type,System.String,System.Object,System.Object[])">
+            <summary>
+            Gets a value from a field or a property on a target object.
+            </summary>
+            <param name="type">Type that declares the field or property.</param>
+            <param name="prieldName">Name of the field or property to get the value from.</param>
+            <param name="target">Object to get the value from.</param>
+            <param name="indexerParams">Parameters for the indexer (if the property is an indexer).</param>
+            <returns>Value from the target object of the specified field or property</returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.TypeExtensions.SetValue(System.Type,System.String,System.Object,System.Object,System.Object[])">
+            <summary>
+            Sets a value of a field or a property on a target object.
+            </summary>
+            <param name="type">Type that declares the field or property.</param>
+            <param name="prieldName">Name of the field or property to get the value from.</param>
+            <param name="target">Object to get the value from.</param>
+            <param name="value">Value to set the prield to.</param>
+            <param name="indexerParams">Parameters for the indexer (if the property is an indexer).</param>
+            <returns>Value from the target object of the specified field or property</returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.TypeExtensions.GetAMethod(System.Type,System.String,System.Func{System.Reflection.MethodInfo,System.Reflection.ParameterInfo[],System.Boolean},System.Reflection.BindingFlags)">
+            <summary>
+            Gets a method based on name and conditions for the parameters.
+            </summary>
+            <param name="type">Type to get the method from.</param>
+            <param name="name">Name of the method.</param>
+            <param name="conditions">Defines conditions based on the method and its parameters.</param>
+            <returns>Method that matches the given name and conditions.</returns>
+            <param name="flags"><see cref="T:System.Reflection.BindingFlags"/> used for accessing the methods.</param>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.TypeExtensions.GetAMethod(System.Type,System.String,System.Func{System.Reflection.ParameterInfo[],System.Boolean},System.Reflection.BindingFlags)">
+            <summary>
+            Gets a method based on name and conditions for method and its parameters.
+            </summary>
+            <param name="type">Type to get the method from.</param>
+            <param name="name">Name of the method.</param>
+            <param name="parameterConditions">Defines conditions for parameters of the method.</param>
+            <returns>Method that matches the given name and parameter conditions.</returns>
+            <param name="flags"><see cref="T:System.Reflection.BindingFlags"/> used for accessing the methods.</param>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.TypeExtensions.GetAMethod(System.Type,System.String,System.Type[])">
+            <summary>
+            Gets a method based on name and the types it takes in as parameters.
+            </summary>
+            <param name="type">Type to get the method from.</param>
+            <param name="name">Name of the method.</param>
+            <param name="parameterTypes">Types that the method takes in as parameters.</param>
+            <returns>Method that matches the given name and parameter types.</returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.TypeExtensions.GetAMethod(System.Type,System.Func{System.Reflection.MethodInfo,System.Reflection.ParameterInfo[],System.Boolean},System.Reflection.BindingFlags)">
+            <summary>
+            Gets a method based on conditions for it and its parameters.
+            </summary>
+            <param name="type">Type to get the method from.</param>
+            <param name="conditions">Defines conditions based on the method and its parameters.</param>
+            <returns>Method that matches the given conditions.</returns>
+            <param name="flags"><see cref="T:System.Reflection.BindingFlags"/> used for accessing the methods.</param>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.TypeExtensions.GetAMethod(System.Type,System.Func{System.Reflection.ParameterInfo[],System.Boolean},System.Reflection.BindingFlags)">
+            <summary>
+            Gets a method based on conditions for the parameters.
+            </summary>
+            <param name="type">Type to get the method from.</param>
+            <param name="parameterConditions">Defines conditions for parameters of the method.</param>
+            <returns>Method that matches the given name and parameter conditions.</returns>
+            <param name="flags"><see cref="T:System.Reflection.BindingFlags"/> used for accessing the methods.</param>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.TypeExtensions.GetAMethod(System.Type,System.Type[])">
+            <summary>
+            Gets a method based on the types it takes in as parameters.
+            </summary>
+            <param name="type">Type to get the method from.</param>
+            <param name="parameterTypes">Types that the method takes in as parameters.</param>
+            <returns>Method that matches the given name and parameter types.</returns>
+        </member>
+        <member name="M:Braco.Utilities.Extensions.TypeExtensions.GetCollectionInfo(System.Type)">
+            <summary>
+            Gets collection information about a type.
+            </summary>
+            <param name="type">Type to test if it is a collection.</param>
+            <returns>Instance of <see cref="T:Braco.Utilities.CollectionInfo"/> about the <paramref name="type"/>.</returns>
+        </member>
+        <member name="T:Braco.Utilities.IHierarchy`1">
+            <summary>
+            Defines what a type needs to do in order
+            to allow for looping through its hierarchy.
+            </summary>
+            <typeparam name="T">Type that will be used for hierarchy operations.</typeparam>
+        </member>
+        <member name="M:Braco.Utilities.IHierarchy`1.IsParentOf(`0)">
+            <summary>
+            Receives another item of type <typeparamref name="T"/> and
+            checks if that item is child of the current type.
+            </summary>
+            <param name="item">Item to test if it is a child of
+            the current item.</param>
+            <returns>True if current item is parent of the given item.</returns>
+        </member>
+        <member name="M:Braco.Utilities.IHierarchy`1.GetChildren">
+            <summary>
+            Gets children of the current item.
+            </summary>
+            <returns>Children collection.</returns>
+        </member>
+        <member name="T:Braco.Utilities.DataManager`1">
+            <summary>
+            Data manager that performs some common functions on a data set.
+            </summary>
+            <typeparam name="T">Type of data to use.</typeparam>
+        </member>
+        <member name="P:Braco.Utilities.DataManager`1.ColumnInfos">
+            <summary>
+            Information about all columns that should be created
+            for the type <typeparamref name="T"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.DataManager`1.DisplayColumnInfos">
+            <summary>
+            Information about display columns that should be created
+            for the type <typeparamref name="T"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.DataManager`1.Page">
+            <summary>
+            Current page.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.DataManager`1.PageSize">
+            <summary>
+            Number of records that can be placed on a page.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.DataManager`1.NumPages">
+            <summary>
+            Number of pages currently being displayed.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.DataManager`1.MaxPages">
+            <summary>
+            Number of pages that can be displayed.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.DataManager`1.PageItems">
+            <summary>
+            Data that is defined on the current page. If page is 0 or below,
+            this will be empty.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.DataManager`1.FilteredItems">
+            <summary>
+            Items that are result of filtering using, for example, a search query.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.DataManager`1.AllItems">
+            <summary>
+            Data that is being managed. This is the only collection that should be altered from outside.
+            Others are managed using the appropriate methods.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.DataManager`1.OriginalCollection">
+            <summary>
+            Collection that contains data that was given when
+            constructing the paged collection.
+            </summary>
+        </member>
+        <member name="E:Braco.Utilities.DataManager`1.PageChanged">
+            <summary>
+            Raised when the current page changes.
+            </summary>
+        </member>
+        <member name="E:Braco.Utilities.DataManager`1.NumPagesChanged">
+            <summary>
+            Raised when number of pages changes.
+            </summary>
+        </member>
+        <member name="E:Braco.Utilities.DataManager`1.PageSizeChanged">
+            <summary>
+            Raised when page size changes.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.DataManager`1.#ctor(Braco.Services.Abstractions.ILocalizer,System.Collections.Generic.IEnumerable{`0},System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Creates a new instance of <see cref="T:Braco.Utilities.DataManager`1"/> with
+            optional starting data.
+            </summary>
+            <param name="localizer">Localizer to use inside the manager.</param>
+            <param name="originalCollection">Starting data to use.</param>
+            <param name="pageSize">Number of rows per page.</param>
+            <param name="page">Page ordinal number.</param>
+        </member>
+        <member name="M:Braco.Utilities.DataManager`1.NotifyNumPagesChanged">
+            <summary>
+            Invokes property changed for <see cref="P:Braco.Utilities.DataManager`1.NumPages"/> and
+            raises <see cref="E:Braco.Utilities.DataManager`1.NumPagesChanged"/> event.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.DataManager`1.UpdateAlterations">
+            <summary>
+            Applies all alterations that have been previously applied
+            using <see cref="M:Braco.Utilities.DataManager`1.Filter(System.Func{`0,System.Boolean})"/>, <see cref="M:Braco.Utilities.DataManager`1.Search(System.String)"/>
+            and <see cref="M:Braco.Utilities.DataManager`1.Sort(System.String)"/> methods.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.DataManager`1.SetDataSource(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Sets the given items as data source that
+            will be managed.
+            </summary>
+            <param name="dataSource">Collection of items to manage.</param>
+        </member>
+        <member name="M:Braco.Utilities.DataManager`1.Filter(System.Func{`0,System.Boolean})">
+            <summary>
+            Filters data based on the given filter.
+            </summary>
+            <param name="filter">Filter to use for filtering the data.</param>
+        </member>
+        <member name="M:Braco.Utilities.DataManager`1.Search(System.String)">
+            <summary>
+            Performs fuzzy search on the given query using
+            properties on type <typeparamref name="T"/>
+            decorated with <see cref="T:Braco.Utilities.SearchAttribute"/>.
+            </summary>
+            <param name="query">Query to check the properties against.</param>
+        </member>
+        <member name="M:Braco.Utilities.DataManager`1.Sort(System.String)">
+            <summary>
+            Sorts items for the specified column name.
+            </summary>
+            <param name="columnName">Name of the column used for sorting.</param>
+        </member>
+        <member name="M:Braco.Utilities.DataManager`1.MultiSort(System.Func{System.Collections.Generic.IEnumerable{`0},System.Collections.Generic.IEnumerable{`0}})">
+            <summary>
+            Performs a sort of multiple columns.
+            </summary>
+            <param name="multiSort">Method that does the sorting.</param>
+        </member>
+        <member name="M:Braco.Utilities.DataManager`1.GetDisplayColumn(System.String)">
+            <summary>
+            Gets a display column with given display name.
+            </summary>
+            <param name="columnName">Display name of the column to find.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Braco.Utilities.EnumItemManager">
+            <summary>
+            Used for localization of enums.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.EnumItemManager.#ctor(Braco.Services.Abstractions.ILocalizer)">
+            <summary>
+            Creates a new instance the manager.
+            </summary>
+            <param name="localizer">Localizer to use.</param>
+        </member>
+        <member name="M:Braco.Utilities.EnumItemManager.ExtractLocalizedValues``1">
+            <summary>
+            Used for extracting localized values from an enum.
+            </summary>
+            <typeparam name="TEnum">Enum type.</typeparam>
+            <returns>Collection of localized strings from the given enum.</returns>
+        </member>
+        <member name="M:Braco.Utilities.EnumItemManager.GetEnumItemForString``1(System.String)">
+            <summary>
+            Gets information about the enum based on its localized variant.
+            </summary>
+            <typeparam name="TEnum">Type of enum.</typeparam>
+            <param name="value">Localized value of the enum.</param>
+            <returns>Information about the enum based on its localized variant.</returns>
+        </member>
+        <member name="M:Braco.Utilities.EnumItemManager.GetEnumForString``1(System.String)">
+            <summary>
+            Gets the enum value based on its localized variant.
+            </summary>
+            <typeparam name="TEnum">Type of enum.</typeparam>
+            <param name="value">Localized value of the enum.</param>
+            <returns>Enum value based on its localized variant.</returns>
+        </member>
+        <member name="M:Braco.Utilities.EnumItemManager.GetStringForEnum``1(``0)">
+            <summary>
+            Gets a localized version for the enum value.
+            </summary>
+            <typeparam name="TEnum">Type of enum.</typeparam>
+            <param name="value">Value for which to fetch the localized version.</param>
+            <returns>Localized version for the given enum value.</returns>
+        </member>
+        <member name="T:Braco.Utilities.Validator">
+            <summary>
+            Collection of methods used for validating properties
+            of an object.
+            </summary>
+        </member>
+        <member name="E:Braco.Utilities.Validator.ValidationPerformed">
+            <summary>
+            Event that is fired after a validation has been performed.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Validator.#ctor(System.Object,Braco.Services.Abstractions.ILocalizer)">
+            <summary>
+            Creates a new instance of the validator.
+            </summary>
+            <param name="instance">Instance which will be validated.</param>
+            <param name="localizer">Localizer to use for the validator.</param>
+        </member>
+        <member name="M:Braco.Utilities.Validator.ValidateProperty(System.Object,System.String)">
+            <summary>
+            Validates a property on the given object.
+            </summary>
+            <param name="target">Object to validate.</param>
+            <param name="propertyName">Property to validate on the given object.</param>
+            <returns>If the object is valid.</returns>
+        </member>
+        <member name="M:Braco.Utilities.Validator.ValidateOnPropertyChanged(System.String,Braco.Utilities.MemberCheck[])">
+            <summary>
+            Used to validate a property every time its value changes.
+            </summary>
+            <param name="propertyName">Property to track.</param>
+            <param name="additionalChecks">Additional checks to perform on the property.</param>
+        </member>
+        <member name="M:Braco.Utilities.Validator.Validate(Braco.Utilities.MemberCheck[])">
+            <summary>
+            Validates all of the properties on the view model.
+            Returns true if the validation results in no errors.
+            </summary>
+            <param name="additionalChecks">Checks to perform aside from ones on properties.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Braco.Utilities.Validator.Validate(System.Object,Braco.Utilities.MemberCheck[])">
+            <summary>
+            Validates all of the properties on the given <paramref name="target"/>.
+            Returns true if the validation results in no errors.
+            </summary>
+            <param name="target">Target object to validate.</param>
+            <param name="additionalChecks">Checks to perform aside from ones on properties.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Braco.Utilities.CollectionInfo">
+            <summary>
+            Information about a type - is it a collection and if it is, which
+            types does that collection work with?
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.CollectionInfo.IsCollection">
+            <summary>
+            Defines if the passed in type is IEnumerable (if it
+            implements <see cref="T:System.Collections.IEnumerable"/>).
+            <para>(Arrays also implement <see cref="T:System.Collections.IEnumerable"/>).</para>
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.CollectionInfo.IsArray">
+            <summary>
+            Defines if the passed in type is an array.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.CollectionInfo.ArrayType">
+            <summary>
+            If the passed in type is an array, this will
+            be the type of that array.
+            <para>For example, if the passed in type is of type int[],
+            this collection will contain the type int.</para>
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.CollectionInfo.CollectionTypes">
+            <summary>
+            If the passed in type is an IEnumerable, this will be the
+            collection of types for that IEnumerable. <para>For example,
+            if the passed in type is of type Dictionary&lt;int, string&gt;,
+            this collection will contain types int and string.</para>
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.CollectionInfo.#ctor(System.Type)">
+            <summary>
+            Provides information about a type.
+            </summary>
+            <param name="typeToTest">Type to test if it is a collection.</param>
+            <exception cref="T:System.ArgumentNullException"/>
+        </member>
+        <member name="T:Braco.Utilities.ColumnInfo">
+            <summary>
+            Information about a column.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.ColumnInfo.Name">
+            <summary>
+            Name of the column.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.ColumnInfo.Property">
+            <summary>
+            Property that this column is represented by.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.ColumnInfo.SortDirection">
+            <summary>
+            Sort direction of the column.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.ColumnInfo.IsReadonly">
+            <summary>
+            Is the column read-only?
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.ColumnInfo.DisplayNames">
+            <summary>
+            Localized values for the column header.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.ColumnInfo.DisplayIndex">
+            <summary>
+            Index to use for this column.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.ColumnInfo.LocalizationKey">
+            <summary>
+            Key used for getting localized values.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.ColumnInfo.#ctor(System.Reflection.PropertyInfo)">
+            <summary>
+            Creates a new column info for the given property.
+            </summary>
+            <param name="property">property that this column is represented by.</param>
+        </member>
+        <member name="T:Braco.Utilities.EnumItem">
+            <summary>
+            Holds information about an enum value.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.EnumItem.LocalizedString">
+            <summary>
+            Localized version of the enum.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.EnumItem.Value">
+            <summary>
+            Value of the enum.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.EnumItem.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.EnumItem.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.EnumItem.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.EnumItem.op_Equality(Braco.Utilities.EnumItem,Braco.Utilities.EnumItem)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.EnumItem.op_Inequality(Braco.Utilities.EnumItem,Braco.Utilities.EnumItem)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Utilities.InfoBoxContent">
+            <summary>
+            Model used for info box.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.InfoBoxContent.Title">
+            <summary>
+            Title of the info box.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.InfoBoxContent.Message">
+            <summary>
+            Message to display inside the info box.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.InfoBoxContent.Type">
+            <summary>
+            Type of the info box.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.InfoBoxContent.Duration">
+            <summary>
+            How long should the info box be displayed?
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.InfoBoxContent.Dismissed">
+            <summary>
+            Is the info box dismissed?
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.InfoBoxContent.CancellationTokenSource">
+            <summary>
+            Cancellation token source.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.InfoBoxContent.CancellationToken">
+            <summary>
+            Cancellation token from <see cref="P:Braco.Utilities.InfoBoxContent.CancellationTokenSource"/>.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.InfoBoxContent.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.InfoBoxContent.#ctor(System.String,System.String,Braco.Utilities.InfoBoxType,System.Int32,System.Boolean)">
+            <summary>
+            Creates the info box model with desired values.
+            </summary>
+            <param name="title">title of the info box.</param>
+            <param name="message">message to display inside the info box.</param>
+            <param name="type">type of the info box.</param>
+            <param name="duration">how long should the info box be displayed?</param>
+            <param name="dismissed">is the info box dismissed?</param>
+        </member>
+        <member name="T:Braco.Utilities.MemberCheck">
+            <summary>
+            Used for performing a check on the specified member.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.MemberCheck.Check">
+            <summary>
+            Check to perform.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.MemberCheck.ErrorMessage">
+            <summary>
+            Error message in case check fails.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.MemberCheck.Member">
+            <summary>
+            Member to check.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.MemberCheck.Skip">
+            <summary>
+            Should the check be skipped on this member?
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.MemberCheck.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.MemberCheck.#ctor(System.Linq.Expressions.Expression{System.Func{System.Boolean}},System.String,System.String,System.Boolean)">
+            <summary>
+            Defines the member check using the given values.
+            </summary>
+            <param name="check">check to perform.</param>
+            <param name="errorMessage">error message in case check fails.</param>
+            <param name="member">member to check.</param>
+            <param name="skip">should the check be skipped on this member?</param>
+        </member>
+        <member name="M:Braco.Utilities.MemberCheck.Deconstruct(System.Linq.Expressions.Expression{System.Func{System.Boolean}}@,System.String@,System.String@,System.Boolean@)">
+            <summary>
+            Used for deconstructing the model.
+            </summary>
+            <param name="check"></param>
+            <param name="errorMessage"></param>
+            <param name="member"></param>
+            <param name="skip"></param>
+        </member>
+        <member name="T:Braco.Utilities.PercentageProgress">
+            <summary>
+            Progress manager that manages progress in percentages - the
+            <see cref="P:Braco.Utilities.PercentageProgress.Value"/> property can range from 0 to 100. This can be
+            useful for report progress on things you know the maximum of in advance.
+            <para>There is one requirement for this report progress correctly -
+            either use constructor that takes in a maximum or set it yourself
+            using the <see cref="M:Braco.Utilities.PercentageProgress.Initialize(System.Double)"/> method.</para>
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.PercentageProgress.MaximumPercentage">
+            <summary>
+            Maximum possible percentage value (100%).
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.PercentageProgress.Value">
+            <summary>
+            Current percentage value.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.PercentageProgress.Active">
+            <summary>
+            Flag indicating if the progress is being tracked.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.PercentageProgress.#ctor">
+            <summary>
+            Creates an instance without initializing. Make sure to
+            use <see cref="M:Braco.Utilities.PercentageProgress.Initialize(System.Double)"/> method on your own
+            when you determine the maximum.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.PercentageProgress.#ctor(System.Double)">
+            <summary>
+            Creates an instance and initializes the progress
+            reporting value with the given maximum.
+            </summary>
+            <param name="maximum">Value that means the task is done (e.g.
+            end of file has been reached at 2 GB - 2 GB is maximum).</param>
+        </member>
+        <member name="M:Braco.Utilities.PercentageProgress.Initialize(System.Double)">
+            <summary>
+            Initializes the progress reporting value.
+            </summary>
+            <param name="maximum">Value that means the task is done (e.g.
+            end of file has been reached at 2 GB - 2 GB is maximum).</param>
+        </member>
+        <member name="M:Braco.Utilities.PercentageProgress.Report(System.Double)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.PercentageProgress.Reset">
+            <summary>
+            Resets the progress reporter to starting phase.
+            </summary>
+        </member>
+        <member name="T:Braco.Utilities.Prield">
+            <summary>
+            Pr(operty) or (F)ield - encapsulates the <see cref="T:System.Reflection.MemberInfo"/> and
+            exposes the getter and setter.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Prield.IsProperty">
+            <summary>
+            Defines whether or not this <see cref="T:Braco.Utilities.Prield"/> is a property.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Prield.IsIndexer">
+            <summary>
+            Defines whether or not this <see cref="T:Braco.Utilities.Prield"/> is an indexer.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Prield.DeclaringType">
+            <summary>
+            Gets the declaring type of the <see cref="P:Braco.Utilities.Prield.Member"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Prield.ReflectedType">
+            <summary>
+            Gets the reflected type of the <see cref="P:Braco.Utilities.Prield.Member"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Prield.Type">
+            <summary>
+            Gets <see cref="P:Braco.Utilities.Prield.Type"/> of the property or field.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Prield.Member">
+            <summary>
+            The encapsulated <see cref="T:System.Reflection.PropertyInfo"/> or <see cref="T:System.Reflection.FieldInfo"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Prield.Prop">
+            <summary>
+            <see cref="P:Braco.Utilities.Prield.Member"/> cast into <see cref="T:System.Reflection.PropertyInfo"/> (using 'as' keyword).
+            <para>Make sure to use it alongside <see cref="P:Braco.Utilities.Prield.IsProperty"/>
+            as it may not be a property and return null.</para>
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Prield.Field">
+            <summary>
+            <see cref="P:Braco.Utilities.Prield.Member"/> cast into <see cref="T:System.Reflection.FieldInfo"/> (using 'as' keyword).
+            <para>Make sure to use it alongside <see cref="P:Braco.Utilities.Prield.IsProperty"/>
+            as it may not be a field and return null.</para>
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Prield.#ctor(System.Reflection.MemberInfo)">
+            <summary>
+            Sets up the field or property.
+            </summary>
+            <param name="member"><see cref="T:System.Reflection.PropertyInfo"/> or <see cref="T:System.Reflection.FieldInfo"/>.</param>
+        </member>
+        <member name="M:Braco.Utilities.Prield.GetValue(System.Object,System.Object[])">
+            <summary>
+            Gets a value from the target's field or property.
+            </summary>
+            <param name="target">Object whose field or property value will be fetched.</param>
+            <param name="indexerParams">If <see cref="P:Braco.Utilities.Prield.Member"/> is an indexer, pass the index parameters here</param>
+            <returns>Value from the field or property</returns>
+        </member>
+        <member name="M:Braco.Utilities.Prield.SetValue(System.Object,System.Object,System.Object[])">
+            <summary>
+            Sets a value of the target's field or property.
+            </summary>
+            <param name="target">Object whose field or property value will be set.</param>
+            <param name="value">Value to set the target's property to.</param>
+            <param name="indexerParams">If <see cref="P:Braco.Utilities.Prield.Member"/> is an indexer, pass the index parameters here</param>
+        </member>
+        <member name="M:Braco.Utilities.Prield.GetAttribute``1">
+            <summary>
+            Used for getting custom attribute from the prield.
+            </summary>
+            <typeparam name="T">Type of attribute.</typeparam>
+            <returns>Custom attribute (if defined) from the prield.</returns>
+        </member>
+        <member name="M:Braco.Utilities.Prield.GetAttributes``1">
+            <summary>
+            Used for getting custom attributes from the prield.
+            </summary>
+            <typeparam name="T">Type of attribute.</typeparam>
+            <returns>Custom attributes (if defined) from the prield.</returns>
+        </member>
+        <member name="M:Braco.Utilities.Prield.ToString">
+            <summary>
+            String representation of the <see cref="T:Braco.Utilities.Prield"/>.
+            </summary>
+            <returns>/>String representation of the <see cref="T:Braco.Utilities.Prield"/>.</returns>
+        </member>
+        <member name="T:Braco.Utilities.ValidationErrors">
+            <summary>
+            Validation errors for a member.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.ValidationErrors.Member">
+            <summary>
+            Member on which the validation was performed.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.ValidationErrors.Errors">
+            <summary>
+            Errors that have been found on the member.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.ValidationErrors.ErrorString">
+            <summary>
+            Gets a string constructed from <see cref="P:Braco.Utilities.ValidationErrors.Errors"/>.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.ValidationErrors.#ctor(System.String)">
+            <summary>
+            Creates validation errors for the given member.
+            </summary>
+            <param name="member"></param>
+        </member>
+        <member name="M:Braco.Utilities.ValidationErrors.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.ValidationErrors.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.ValidationErrors.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Utilities.AssemblyGetter">
+            <summary>
+            <see cref="T:Braco.Services.Abstractions.ResourceGetter"/> for assembly name.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.AssemblyGetter._typeFromAssembly">
+            <summary>
+            Represents type from target assembly.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.AssemblyGetter.#ctor(System.Object)">
+            <summary>
+            Create an instance of the <see cref="T:Braco.Utilities.AssemblyGetter"/>.
+            </summary>
+            <param name="instanceFromAssembly">Instance that can be passed in from the
+            assembly whose name should be extracted.</param>
+        </member>
+        <member name="M:Braco.Utilities.AssemblyGetter.#ctor(System.Type)">
+            <summary>
+            Create an instance of the <see cref="T:Braco.Utilities.AssemblyGetter"/>.
+            </summary>
+            <param name="typeFromAssembly">Type from assembly whose name should be extracted.</param>
+        </member>
+        <member name="M:Braco.Utilities.AssemblyGetter.GetAssembly">
+            <summary>
+            Used for getting the target assembly.
+            </summary>
+            <returns>Assembly that the <see cref="F:Braco.Utilities.AssemblyGetter._typeFromAssembly"/> resides in.</returns>
+        </member>
+        <member name="M:Braco.Utilities.AssemblyGetter.GetAssemblyName">
+            <summary>
+            Used for getting name of the assembly.
+            </summary>
+            <returns>Name of the assembly that the <see cref="F:Braco.Utilities.AssemblyGetter._typeFromAssembly"/> resides in.</returns>
+        </member>
+        <member name="T:Braco.Utilities.NumberUtilities">
+            <summary>
+            Utilities for number types such as <see cref="T:System.Int32"/>,
+            <see cref="T:System.Double"/>, <see cref="T:System.Decimal"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.NumberUtilities.Rng">
+            <summary>
+            Random number generator.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.NumberUtilities.PercentageRoll(System.Double)">
+            <summary>
+            Does a random roll and checks if it succeeded.
+            </summary>
+            <param name="percentage">Percentage to win the roll.</param>
+            <returns>True if rolled below or equal to the percentage,
+            otherwise false.</returns>
+        </member>
+        <member name="T:Braco.Utilities.PathUtilities">
+            <summary>
+            Utilities for paths.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.PathUtilities.GetFileNameWithoutInvalidChars(System.String)">
+            <summary>
+            Gets file name without invalid characters in it.
+            </summary>
+            <param name="fileName">File name to clean.</param>
+            <returns>File name without invalid characters.</returns>
+        </member>
+        <member name="M:Braco.Utilities.PathUtilities.GetPathWithoutInvalidChars(System.String)">
+            <summary>
+            Gets path without invalid characters in it.
+            </summary>
+            <param name="path">Path to clean.</param>
+            <returns>Path without invalid characters.</returns>
+        </member>
+        <member name="M:Braco.Utilities.PathUtilities.FileNameContainsInvalidChars(System.String)">
+            <summary>
+            Checks if the given file name has invalid characters.
+            </summary>
+            <param name="fileName">File name to check.</param>
+            <returns>If the given file name has invalid characters.</returns>
+        </member>
+        <member name="M:Braco.Utilities.PathUtilities.PathContainsInvalidChars(System.String)">
+            <summary>
+            Checks if the given path has invalid characters.
+            </summary>
+            <param name="path">Path to check.</param>
+            <returns>If the given path has invalid characters.</returns>
+        </member>
+        <member name="M:Braco.Utilities.PathUtilities.GetExtensionWithDot(System.String)">
+            <summary>
+            Gets the extension with the dot included.
+            </summary>
+            <param name="extension">Extension to get the dot with.</param>
+            <returns>Extension with the dot at the start. Or null if extension is null</returns>
+        </member>
+        <member name="T:Braco.Utilities.ReflectionUtilities">
+            <summary>
+            Utilities for performing reflection.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.ReflectionUtilities.PropChangedName">
+            <summary>
+            Name of the <see cref="E:System.ComponentModel.INotifyPropertyChanged.PropertyChanged"/> event.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.ReflectionUtilities.ListenForPropertyChanges(System.Object,System.String,System.Action{System.Object})">
+            <summary>
+            Subscribes to <see cref="E:System.ComponentModel.INotifyPropertyChanged.PropertyChanged"/> event
+            (if it exists) on the target object and calls the given method if the
+            changed property name matches the given property name.
+            </summary>
+            <param name="target">Object to subscribe to for changes.</param>
+            <param name="property">Property to track for changes on the target object.</param>
+            <param name="onPropertyChanged">Method to invoke when the given property on the target object changes.</param>
+        </member>
+        <member name="M:Braco.Utilities.ReflectionUtilities.ListenForPropertyChanges(System.Object,System.Action{System.Object,System.String})">
+            <summary>
+            Subscribes to <see cref="E:System.ComponentModel.INotifyPropertyChanged.PropertyChanged"/> event
+            (if it exists) on the target object.
+            </summary>
+            <param name="target">Object to subscribe to for changes.</param>
+            <param name="onPropertyChanged">Method to invoke when a property on the target object changes.</param>
+        </member>
+        <member name="M:Braco.Utilities.ReflectionUtilities.InvokePropertyChanged(System.Object,System.String)">
+            <summary>
+            Raises <see cref="E:System.ComponentModel.INotifyPropertyChanged.PropertyChanged"/> event
+            on the given object for the given property.
+            <para>Note: requires </para>
+            </summary>
+            <param name="target">Object that contains the event.</param>
+            <param name="property">Property for which we are raising the event.</param>
+        </member>
+        <member name="M:Braco.Utilities.ReflectionUtilities.FindType(System.String)">
+            <summary>
+            Tries to find type by name in the current <see cref="T:System.AppDomain"/>.
+            </summary>
+            <param name="typeName">Name of the type to find (can be full or assembly qualified name as well).</param>
+            <returns>Type found using the given name (or null if not found).</returns>
+        </member>
+        <member name="M:Braco.Utilities.ReflectionUtilities.FindAssignableTypes(System.Type)">
+            <summary>
+            Finds all of the types that are assignable from <paramref name="baseType"/>
+            in the current app domain.
+            </summary>
+            <param name="baseType">Type which the types need to be assignable from.</param>
+            <returns>Types that are assignable from <paramref name="baseType"/>.</returns>
+        </member>
+        <member name="M:Braco.Utilities.ReflectionUtilities.FindAssignableTypes(System.Type,System.Reflection.Assembly[])">
+            <summary>
+            Finds all of the types that are assignable from <paramref name="baseType"/>
+            in the given <paramref name="assemblies"/>.
+            </summary>
+            <param name="baseType">Type which the types need to be assignable from.</param>
+            <param name="assemblies">Assemblies to search through.</param>
+            <returns>Types that are assignable from <paramref name="baseType"/>.</returns>
+        </member>
+    </members>
+</doc>

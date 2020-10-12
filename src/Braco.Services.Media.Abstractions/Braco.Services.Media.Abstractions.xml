@@ -1,0 +1,185 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Braco.Services.Media.Abstractions</name>
+    </assembly>
+    <members>
+        <member name="T:Braco.Services.Media.Abstractions.IMediaSplitter">
+            <summary>
+            Defines a service that splits media.
+            </summary>
+        </member>
+        <member name="M:Braco.Services.Media.Abstractions.IMediaSplitter.SplitAsync(Braco.Services.Media.Abstractions.MediaSplitRequest,System.Threading.CancellationToken)">
+            <summary>
+            Splits media asynchronously.
+            </summary>
+            <param name="request">Splitting specification.</param>
+            <param name="cancellationToken">Token used for signalling cancellation.</param>
+            <returns>Information about split media or null if it failed.</returns>
+        </member>
+        <member name="T:Braco.Services.Media.Abstractions.IMediaDownloader">
+            <summary>
+            Defines a service that downloads media from a source.
+            </summary>
+        </member>
+        <member name="M:Braco.Services.Media.Abstractions.IMediaDownloader.DownloadAsync(Braco.Services.Media.Abstractions.MediaDownloadRequest,System.Threading.CancellationToken)">
+            <summary>
+            Downloads media asynchronously.
+            </summary>
+            <param name="request">Data required for downloading the media.</param>
+            <param name="cancellationToken">Token used for signalling cancellation.</param>
+            <returns>Information about downloaded media or null if it failed.</returns>
+        </member>
+        <member name="M:Braco.Services.Media.Abstractions.IMediaDownloader.IsUriInValidFormat(System.String,System.String@)">
+            <summary>
+            Determines if the uri is in valid format.
+            <para>If there is a minor tweak required, true will be returned and
+            the uri given out as <paramref name="formatted"/> parameter.</para>
+            </summary>
+            <param name="uri">Uri to check if it is valid.</param>
+            <param name="formatted">Tweaked uri to be correct.</param>
+            <returns>If the given uri is in valid format or not.</returns>
+        </member>
+        <member name="T:Braco.Services.Media.Abstractions.MediaData">
+            <summary>
+            Data received upon sending request to download media.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Media.Abstractions.MediaData.Title">
+            <summary>
+            Media title.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Media.Abstractions.MediaData.Duration">
+            <summary>
+            Duration of the media.
+            </summary>
+        </member>
+        <member name="T:Braco.Services.Media.Abstractions.RemoteResourceDownloadInfo">
+            <summary>
+            Contains information for downloading a remote resource.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Media.Abstractions.RemoteResourceDownloadInfo.Uri">
+            <summary>
+            Remote location of the resource.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Media.Abstractions.RemoteResourceDownloadInfo.ChunkSize">
+            <summary>
+            How many chunks to download at a time.
+            </summary>
+        </member>
+        <member name="T:Braco.Services.Media.Abstractions.TimeRange">
+            <summary>
+            Holds two <see cref="T:System.TimeSpan"/>s which form a time range.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Media.Abstractions.TimeRange.Start">
+            <summary>
+            Starting time.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Media.Abstractions.TimeRange.End">
+            <summary>
+            Ending time.
+            </summary>
+        </member>
+        <member name="M:Braco.Services.Media.Abstractions.TimeRange.#ctor(System.TimeSpan,System.TimeSpan)">
+            <summary>
+            Constructs a time range from given times.
+            <para>They don't have to be in correct order, they will
+            be fixed automatically.</para>
+            </summary>
+            <param name="start">Start of the time range.</param>
+            <param name="end">End of the time range.</param>
+        </member>
+        <member name="M:Braco.Services.Media.Abstractions.TimeRange.Contains(System.TimeSpan)">
+            <summary>
+            Checks if this time range contains specific time point.
+            </summary>
+            <param name="timePoint">Time point to check if it is within this time range.</param>
+            <returns>If the given time point is within this time range.</returns>
+        </member>
+        <member name="T:Braco.Services.Media.Abstractions.MediaDownloadRequest">
+            <summary>
+            Request data for <see cref="M:Braco.Services.Media.Abstractions.IMediaDownloader.DownloadAsync(Braco.Services.Media.Abstractions.MediaDownloadRequest,System.Threading.CancellationToken)"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Media.Abstractions.MediaDownloadRequest.DownloadInfo">
+            <summary>
+            Uri to the media to download.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Media.Abstractions.MediaDownloadRequest.Directory">
+            <summary>
+            Directory to which the media should be downloaded.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Media.Abstractions.MediaDownloadRequest.DataCallback">
+            <summary>
+            Callback for when the media data is received from download request.
+            </summary>
+        </member>
+        <member name="T:Braco.Services.Media.Abstractions.MediaSplitRequest">
+            <summary>
+            Request data for <see cref="M:Braco.Services.Media.Abstractions.IMediaSplitter.SplitAsync(Braco.Services.Media.Abstractions.MediaSplitRequest,System.Threading.CancellationToken)"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Media.Abstractions.MediaSplitRequest.SourceFile">
+            <summary>
+            Source file to split.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Media.Abstractions.MediaSplitRequest.DestinationFile">
+            <summary>
+            Destination (output) file to use once the media has been split.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Media.Abstractions.MediaSplitRequest.Start">
+            <summary>
+            Starting time (if left null, start of the media will be used).
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Media.Abstractions.MediaSplitRequest.End">
+            <summary>
+            Ending time (if left null, end of the media will be used).
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Media.Abstractions.MediaSplitRequest.SplitRanges">
+            <summary>
+            Ranges to split in the middle of the media.
+            </summary>
+        </member>
+        <member name="T:Braco.Services.Media.Abstractions.MediaDownloadResponse">
+            <summary>
+            Response data for <see cref="M:Braco.Services.Media.Abstractions.IMediaDownloader.DownloadAsync(Braco.Services.Media.Abstractions.MediaDownloadRequest,System.Threading.CancellationToken)"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Media.Abstractions.MediaDownloadResponse.File">
+            <summary>
+            Media file.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Media.Abstractions.MediaDownloadResponse.Data">
+            <summary>
+            Data about the media.
+            </summary>
+        </member>
+        <member name="T:Braco.Services.Media.Abstractions.MediaSplitResponse">
+            <summary>
+            Response data for <see cref="M:Braco.Services.Media.Abstractions.IMediaSplitter.SplitAsync(Braco.Services.Media.Abstractions.MediaSplitRequest,System.Threading.CancellationToken)"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Media.Abstractions.MediaSplitResponse.SplitFile">
+            <summary>
+            Split media file.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Media.Abstractions.MediaSplitResponse.SourceFile">
+            <summary>
+            Source file that was used for splitting.
+            </summary>
+        </member>
+    </members>
+</doc>

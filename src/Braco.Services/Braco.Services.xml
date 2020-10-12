@@ -1,0 +1,816 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Braco.Services</name>
+    </assembly>
+    <members>
+        <member name="T:Braco.Services.DI">
+            <summary>
+            Shortcuts for fetching injected services.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.DI.Configuration">
+            <summary>
+            Gets the configuration defined in the project.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.DI.ReadOnlyConfiguration">
+            <summary>
+            Gets the read-only configuration defined in the project.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.DI.Mapper">
+            <summary>
+            Gets the mapper used for this project.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.DI.Localizer">
+            <summary>
+            Gets the localizer used for this project.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.DI.Paths">
+            <summary>
+            Paths that are used commonly throughout the application.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.DI.Resources">
+            <summary>
+            Resources that are used for the project.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.DI.Provider">
+            <summary>
+            Provider used for fetching services.
+            </summary>
+        </member>
+        <member name="M:Braco.Services.DI.Get``1">
+            <summary>
+            Gets a service of the specified type using the <see cref="P:Braco.Services.DI.Provider"/>.
+            </summary>
+            <typeparam name="T">Type of service to get.</typeparam>
+        </member>
+        <member name="T:Braco.Services.Initializer">
+            <summary>
+            Used for setting up various services and their provider.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.Initializer.InitializerSectionName">
+            <summary>
+            Name of the section within configuration that will contain data
+            required for setting up services.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.Initializer.ReadOnlyConfigName">
+            <summary>
+            Read-only configuration file name.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.Initializer.ReadOnlyConfigExtension">
+            <summary>
+            Read-only configuration file extension.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.Initializer.ReadOnlyGeneralConfig">
+            <summary>
+            General read-only configuration file.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.Initializer.ReadOnlyDebuggingConfig">
+            <summary>
+            Read-only configuration file for development environment.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.Initializer.ReadOnlyNonDebuggingConfig">
+            <summary>
+            Read-only configuration file for production environment.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.Initializer._serviceSetups">
+            <summary>
+            Collection of implementations of service setuping members.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.Initializer._postServiceBuildInitializers">
+            <summary>
+            Collection of implementations of initializers triggered after the service
+            provider has been built.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Initializer.Services">
+            <summary>
+            Service collection used for setting up the provider.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Initializer.Configuration">
+            <summary>
+            Read-only configuration used in the project.
+            </summary>
+        </member>
+        <member name="M:Braco.Services.Initializer.#ctor(System.Boolean)">
+            <summary>
+            Creates an instance of the initializer.
+            </summary>
+            <param name="addEverything">Specifies if <see cref="M:Braco.Services.Initializer.AddEverything"/>
+            should be called instantly.</param>
+        </member>
+        <member name="M:Braco.Services.Initializer.Run(System.Action{Microsoft.Extensions.Configuration.ConfigurationBuilder})">
+            <summary>
+            Used for setting up the services and <see cref="P:Braco.Services.DI.Provider"/>.
+            </summary>
+            <param name="configure">Optional method for providing additional
+            setup for the <see cref="T:Microsoft.Extensions.Configuration.ConfigurationBuilder"/>.</param>
+        </member>
+        <member name="M:Braco.Services.Initializer.AddServiceSetups(Braco.Services.ISetupService[])">
+            <summary>
+            Helper for adding multiple setups at once.
+            </summary>
+            <param name="serviceSetups">Setups to add to <see cref="F:Braco.Services.Initializer._serviceSetups"/>.</param>
+        </member>
+        <member name="M:Braco.Services.Initializer.AddServiceSetups(System.Type[])">
+            <summary>
+            Helper for adding multiple setups at once by type.
+            </summary>
+            <param name="serviceSetupTypes">Service setup types to instantiate and add to <see cref="F:Braco.Services.Initializer._serviceSetups"/>.</param>
+        </member>
+        <member name="M:Braco.Services.Initializer.AddAllServiceSetups">
+            <summary>
+            Adds all <see cref="T:Braco.Services.ISetupService"/>s from current domain and creates
+            an instance of each one by using the parameterless constructor.
+            </summary>
+        </member>
+        <member name="M:Braco.Services.Initializer.AddAllServiceSetups(System.Reflection.Assembly[])">
+            <summary>
+            Adds all <see cref="T:Braco.Services.ISetupService"/>s from given assemblies and creates
+            an instance of each one by using the parameterless constructor.
+            </summary>
+            <param name="assemblies">Assemblies from which to load all <see cref="T:Braco.Services.ISetupService"/>s.</param>
+        </member>
+        <member name="M:Braco.Services.Initializer.AddPostServiceBuildInitializers(Braco.Services.IInitializeAfterBuildingServices[])">
+            <summary>
+            Helper for adding multiple initializers at once.
+            </summary>
+            <param name="postServiceBuildInitializers">Initializers to add to <see cref="F:Braco.Services.Initializer._postServiceBuildInitializers"/>.</param>
+        </member>
+        <member name="M:Braco.Services.Initializer.AddPostServiceBuildInitializers(System.Type[])">
+            <summary>
+            Helper for adding multiple initializers at once by type.
+            </summary>
+            <param name="postServiceBuildInitializerTypes">Initializer types to instantiate and add to <see cref="F:Braco.Services.Initializer._postServiceBuildInitializers"/>.</param>
+        </member>
+        <member name="M:Braco.Services.Initializer.AddAllPostServiceBuildInitializers">
+            <summary>
+            Adds all <see cref="T:Braco.Services.IInitializeAfterBuildingServices"/> from current domain and creates
+            an instance of each one. Service injection into constructor is supported.
+            </summary>
+        </member>
+        <member name="M:Braco.Services.Initializer.AddAllPostServiceBuildInitializers(System.Reflection.Assembly[])">
+            <summary>
+            Adds all <see cref="T:Braco.Services.IInitializeAfterBuildingServices"/> from given assemblies and creates
+            an instance of each one. Service injection into constructor is supported.
+            </summary>
+            <param name="assemblies">Assemblies from which to load all <see cref="T:Braco.Services.IInitializeAfterBuildingServices"/>.</param>
+        </member>
+        <member name="M:Braco.Services.Initializer.AddEverything">
+            <summary>
+            Helper that calls <see cref="M:Braco.Services.Initializer.AddAllServiceSetups"/>
+            and <see cref="M:Braco.Services.Initializer.AddAllPostServiceBuildInitializers"/>.
+            </summary>
+        </member>
+        <member name="M:Braco.Services.Initializer.RemoveServiceSetups(System.Type[])">
+            <summary>
+            Removes the service setups of given types.
+            </summary>
+            <param name="serviceSetupsToRemove">Types of service setups to remove.</param>
+            <returns>How many of them were removed.</returns>
+        </member>
+        <member name="M:Braco.Services.Initializer.RemovePostServiceBuildInitializers(System.Type[])">
+            <summary>
+            Removes the initializers of given types.
+            </summary>
+            <param name="initializersToRemove">Types of initializers to remove.</param>
+            <returns>How many of them were removed.</returns>
+        </member>
+        <member name="M:Braco.Services.Initializer.LoadConfiguration(System.Action{Microsoft.Extensions.Configuration.ConfigurationBuilder})">
+            <summary>
+            Used for loading the read-only configuration.
+            </summary>
+            <param name="configure">Optional method for providing additional
+            setup for the <see cref="T:Microsoft.Extensions.Configuration.ConfigurationBuilder"/>.</param>
+            <returns>Configuration instance.</returns>
+        </member>
+        <member name="M:Braco.Services.Initializer.RunSpecificInitializer``1(System.Action{Microsoft.Extensions.Configuration.ConfigurationBuilder})">
+            <summary>
+            Used for running the specific initializer implementation.
+            </summary>
+            <typeparam name="TInitializer">Type of initializer to use.</typeparam>
+            <param name="configure">Optional method for providing additional
+            setup for the <see cref="T:Microsoft.Extensions.Configuration.ConfigurationBuilder"/>.</param>
+        </member>
+        <member name="M:Braco.Services.Initializer.RunDefaultInitializer(System.Action{Microsoft.Extensions.Configuration.ConfigurationBuilder})">
+            <summary>
+            Used for running the <see cref="T:Braco.Services.Initializer"/> with default setup.
+            </summary>
+            <param name="configure">Optional method for providing additional
+            setup for the <see cref="T:Microsoft.Extensions.Configuration.ConfigurationBuilder"/>.</param>
+        </member>
+        <member name="T:Braco.Services.IHaveConfigurationSection">
+            <summary>
+            Defines that the inheriting member has a dedicated
+            section inside the configuration.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.IHaveConfigurationSection.ConfigurationSection">
+            <summary>
+            Name of the section inside the configuration.
+            </summary>
+        </member>
+        <member name="T:Braco.Services.IInitializeAfterBuildingServices">
+            <summary>
+            Defines that the inheriting member will initialize after
+            the <see cref="T:System.IServiceProvider"/> has been setup.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.IInitializeAfterBuildingServices.InitializersSection">
+            <summary>
+            Name of the section where configuration for members that inherit
+            <see cref="T:Braco.Services.IInitializeAfterBuildingServices"/> should be placed.
+            </summary>
+        </member>
+        <member name="M:Braco.Services.IInitializeAfterBuildingServices.Initialize(System.IServiceProvider,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Configuration.IConfigurationSection)">
+            <summary>
+            Method used for initializing after the service provider
+            has been built.
+            </summary>
+            <param name="provider">Service provider for this project.</param>
+            <param name="configuration">Read-only configuration.</param>
+            <param name="section">Section in the configuration dedicated to this <see cref="T:Braco.Services.IInitializeAfterBuildingServices"/>.</param>
+        </member>
+        <member name="T:Braco.Services.ISetupService">
+            <summary>
+            Defines that the inheriting member will setup one or more services.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.ISetupService.ServicesSetupSection">
+            <summary>
+            Name of the section where configuration for <see cref="T:Braco.Services.ISetupService"/>s
+            should be placed.
+            </summary>
+        </member>
+        <member name="M:Braco.Services.ISetupService.Setup(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Configuration.IConfigurationSection)">
+            <summary>
+            Used for setting up the desired service(s).
+            </summary>
+            <param name="services">Collection of services to add the service(s) to.</param>
+            <param name="configuration">Read-only configuration.</param>
+            <param name="section">Section in the configuration dedicated to this <see cref="T:Braco.Services.ISetupService"/>.</param>
+        </member>
+        <member name="T:Braco.Services.Configuration">
+            <summary>
+            Collection of <see cref="T:Braco.Services.ConfigurationItem"/>s.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.Configuration.Item(System.String)">
+            <summary>
+            Gets configuration item by key.
+            </summary>
+            <param name="key">Key of the configuration item.</param>
+            <returns>Configuration item, if it exists.</returns>
+        </member>
+        <member name="M:Braco.Services.Configuration.#ctor(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Creates a configuration with optional initial configuration.
+            </summary>
+            <param name="initialConfiguration">Initial configuration values.</param>
+        </member>
+        <member name="M:Braco.Services.Configuration.SetItemValue(System.String,System.Object)">
+            <summary>
+            Sets value of an item.
+            </summary>
+            <param name="key">Item's key.</param>
+            <param name="value">Item's value.</param>
+        </member>
+        <member name="M:Braco.Services.Configuration.Parse(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Parses stringified configuration data.
+            </summary>
+            <param name="stringifiedData">Strigified data.</param>
+        </member>
+        <member name="M:Braco.Services.Configuration.Stringify">
+            <summary>
+            Stringifies the configuration.
+            </summary>
+            <returns>Stringified version of the configuration.</returns>
+        </member>
+        <member name="T:Braco.Services.ConfigurationItem">
+            <summary>
+            Represents an item in the configuration.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.ConfigurationItem.Key">
+            <summary>
+            Key of the item.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.ConfigurationItem.Type">
+            <summary>
+            Type of the item.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.ConfigurationItem.Value">
+            <summary>
+            Value of the item.
+            </summary>
+        </member>
+        <member name="M:Braco.Services.ConfigurationItem.#ctor(System.String,System.Type)">
+            <summary>
+            Creates a configuration item.
+            </summary>
+            <param name="key">Key of the item.</param>
+            <param name="type">Type of the item.</param>
+        </member>
+        <member name="M:Braco.Services.ConfigurationItem.#ctor(System.String,System.Object)">
+            <summary>
+            Creates a configuration item.
+            </summary>
+            <param name="key">Key of the item.</param>
+            <param name="value">Value of the item.</param>
+        </member>
+        <member name="M:Braco.Services.ConfigurationItem.#ctor(System.String,System.String,System.Type)">
+            <summary>
+            Creates a configuration item.
+            </summary>
+            <param name="key">Key of the item.</param>
+            <param name="value">Value of the item.</param>
+            <param name="type">Type of the item.</param>
+        </member>
+        <member name="M:Braco.Services.ConfigurationItem.StringValue">
+            <summary>
+            Gets string representation of the item.
+            </summary>
+            <returns>String representation of the item.</returns>
+        </member>
+        <member name="M:Braco.Services.ConfigurationItem.GetValue``1">
+            <summary>
+            Tries to convert the value to specified type.
+            </summary>
+            <typeparam name="T">Type of value to get.</typeparam>
+            <returns>Value converted to type <typeparamref name="T"/> or
+            default value if conversion didn't succeed.</returns>
+        </member>
+        <member name="M:Braco.Services.ConfigurationItem.ConvertToLine">
+            <summary>
+            Converts the item into a line for storing it.
+            </summary>
+            <returns>Item converted into a line format.</returns>
+        </member>
+        <member name="M:Braco.Services.ConfigurationItem.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.ConfigurationItem.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.ConfigurationItem.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.ConfigurationItem.CreateFromLine(System.String)">
+            <summary>
+            Creates a configuration item from stored line.
+            </summary>
+            <param name="line">Line that was created using <see cref="M:Braco.Services.ConfigurationItem.ConvertToLine"/>.</param>
+            <returns>instance of the item if it is valid, otherwise null.</returns>
+        </member>
+        <member name="T:Braco.Services.FileConfigurationServiceSetup">
+            <summary>
+            Used for setting up <see cref="T:Braco.Services.FileConfigurationService"/> as <see cref="T:Braco.Services.Abstractions.IConfigurationService"/>.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.FileConfigurationServiceSetup.SectionName">
+            <summary>
+            Name of the section used for <see cref="P:Braco.Services.FileConfigurationServiceSetup.ConfigurationSection"/>.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.FileConfigurationServiceSetup.FilePathKey">
+            <summary>
+            Key for the file path configuration value inside current section.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.FileConfigurationServiceSetup.InitialConfigurationSectionName">
+            <summary>
+            Key for the initial configuration section nested inside current section.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.FileConfigurationServiceSetup.ConfigurationSection">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.FileConfigurationServiceSetup.Setup(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Configuration.IConfigurationSection)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Services.JsonLocalizerSetup">
+            <summary>
+            Used for setting up <see cref="T:Braco.Services.JsonLocalizer"/> as <see cref="T:Braco.Services.Abstractions.ILocalizer"/>.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.JsonLocalizerSetup.SectionName">
+            <summary>
+            Name of the section used for <see cref="P:Braco.Services.JsonLocalizerSetup.ConfigurationSection"/>.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.JsonLocalizerSetup.CurrentCultureKey">
+            <summary>
+            Key for the current culture configuration value inside current section.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.JsonLocalizerSetup.CulturesSectionName">
+            <summary>
+            Name of the section for the culture collection inside current section.
+            This should be an array of strings.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.JsonLocalizerSetup.ConfigurationSection">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.JsonLocalizerSetup.Setup(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Configuration.IConfigurationSection)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Services.MapperSetup">
+            <summary>
+            Default setup for <see cref="T:AutoMapper.IMapper"/>. Simply adds
+            a mapper to the service collection.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.MapperSetup.ConfigurationSection">
+            <summary>
+            Not used.
+            </summary>
+        </member>
+        <member name="M:Braco.Services.MapperSetup.Setup(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Configuration.IConfigurationSection)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Services.OtherServicesSetup">
+            <summary>
+            Sets up the service implementations for the specific abstractions:
+            <para><see cref="T:Braco.Services.FileAuthService"/> for <see cref="T:Braco.Services.Abstractions.IAuthService"/>.</para>
+            <para><see cref="T:Braco.Services.SecurityService"/> for <see cref="T:Braco.Services.Abstractions.ISecurityService"/>.</para>
+            <para><see cref="T:Braco.Services.WindowsProcessStarter"/> for <see cref="T:Braco.Services.Abstractions.IProcessStarter"/>.</para>
+            <para>Note: adding to the service collection for the same abstraction twice will make
+            the second call for adding the service override the first one.</para>
+            </summary>
+        </member>
+        <member name="P:Braco.Services.OtherServicesSetup.ConfigurationSection">
+            <summary>
+            Not used.
+            </summary>
+        </member>
+        <member name="M:Braco.Services.OtherServicesSetup.Setup(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Configuration.IConfigurationSection)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Services.PathManagerSetup">
+            <summary>
+            Used for setting up <see cref="T:Braco.Services.PathManager"/> as <see cref="T:Braco.Services.Abstractions.IPathManager"/>.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.PathManagerSetup.SectionName">
+            <summary>
+            Name of the section used for <see cref="P:Braco.Services.PathManagerSetup.ConfigurationSection"/>.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.PathManagerSetup.AppNameKey">
+            <summary>
+            Key for the current culture configuration value inside current section.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.PathManagerSetup.ConfigurationSection">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.PathManagerSetup.Setup(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Configuration.IConfigurationSection)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Services.ResourceManagerSetup">
+            <summary>
+            Used for setting up <see cref="T:Braco.Services.ResourceManager"/> as <see cref="T:Braco.Services.Abstractions.IResourceManager"/>.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.ResourceManagerSetup.SectionName">
+            <summary>
+            Name of the section used for <see cref="P:Braco.Services.ResourceManagerSetup.ConfigurationSection"/>.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.ResourceManagerSetup.LocationKey">
+            <summary>
+            Key for the location configuration value inside current section.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.ResourceManagerSetup.LocationSeparatorKey">
+            <summary>
+            Key for the location separator configuration value inside current section.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.ResourceManagerSetup.AddFromAppDomainKey">
+            <summary>
+            Key for the flag configuration value inside current section that indicates
+            if all of the <see cref="T:Braco.Services.Abstractions.ResourceGetter"/>s should be added from current app domain.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.ResourceManagerSetup.ConfigurationSection">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.ResourceManagerSetup.Setup(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Configuration.IConfigurationSection)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Services.FileAuthService">
+            <summary>
+            Implementation of <see cref="T:Braco.Services.Abstractions.IAuthService"/> using file as storage.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.FileAuthService.FileKey">
+            <summary>
+            Key used for the file.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.FileAuthService.FileName">
+            <summary>
+            Name of the file.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.FileAuthService.CurrentUser">
+            <inheritdoc/>
+        </member>
+        <member name="P:Braco.Services.FileAuthService.IsAuthenticated">
+            <inheritdoc/>
+        </member>
+        <member name="P:Braco.Services.FileAuthService.UnauthenticatedLocation">
+            <inheritdoc/>
+        </member>
+        <member name="E:Braco.Services.FileAuthService.AuthActionOccurred">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.FileAuthService.#ctor(Braco.Services.Abstractions.ISecurityService,Braco.Services.Abstractions.IPathManager)">
+            <summary>
+            Creates an instance of the file auth service.
+            </summary>
+            <param name="securityService">Security service that is required
+            for securing the data.</param>
+            <param name="pathManager">Path manager used in the project.</param>
+        </member>
+        <member name="M:Braco.Services.FileAuthService.LogIn(System.String,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.FileAuthService.LogOut">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.FileAuthService.Register(System.String,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Services.FileConfigurationService">
+            <summary>
+            <see cref="T:Braco.Services.Abstractions.IConfigurationService"/> implementation using file storage.
+            </summary>
+        </member>
+        <member name="E:Braco.Services.FileConfigurationService.SettingChanged">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.FileConfigurationService.#ctor(System.String,System.Collections.Generic.IDictionary{System.String,System.Object},Braco.Services.Abstractions.ISecurityService)">
+            <summary>
+            Creates an instance of the service.
+            </summary>
+            <param name="filePath">Path to the file where configuration will reside.</param>
+            <param name="initialConfiguration">Initial values for the configuration.</param>
+            <param name="securityService">Service used for encrypting the configuration. If you don't provide it
+            (null), no encryption will be used for the configuration.</param>
+        </member>
+        <member name="P:Braco.Services.FileConfigurationService.Item(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.FileConfigurationService.Get``1(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.FileConfigurationService.Set(System.String,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.FileConfigurationService.Load">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.FileConfigurationService.Save">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Services.JsonLocalizer">
+            <summary>
+            Implementation of <see cref="T:Braco.Services.Abstractions.ILocalizer"/> using JSON files.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.JsonLocalizer.FolderKey">
+            <summary>
+            Key for the folder that will be used.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.JsonLocalizer.FolderName">
+            <summary>
+            Name of the folder that will be used.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.JsonLocalizer.Culture">
+            <inheritdoc/>
+        </member>
+        <member name="E:Braco.Services.JsonLocalizer.LanguageChanged">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.JsonLocalizer.#ctor(Braco.Services.Abstractions.IPathManager,System.String,System.String[])">
+            <summary>
+            Creates an instance of the localizer.
+            </summary>
+            <param name="currentCulture">Culture that is currently active.</param>
+            <param name="cultures">Possible cultures.</param>
+        </member>
+        <member name="M:Braco.Services.JsonLocalizer.ChangeLanguage(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.JsonLocalizer.GetAllValues(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="P:Braco.Services.JsonLocalizer.Item(System.String,System.String,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="P:Braco.Services.JsonLocalizer.Item(System.String,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="P:Braco.Services.JsonLocalizer.Item(System.String,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="P:Braco.Services.JsonLocalizer.Item(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.JsonLocalizer.Format(System.String,System.Collections.Generic.IEnumerable{System.Object})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.JsonLocalizer.Format(System.String,System.String,System.Collections.Generic.IEnumerable{System.Object})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.JsonLocalizer.Format(System.String,System.Int32,System.Collections.Generic.IEnumerable{System.Object})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.JsonLocalizer.Format(System.String,System.String,System.Int32,System.Collections.Generic.IEnumerable{System.Object})">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Services.PathManager">
+            <summary>
+            Default implementation of <see cref="T:Braco.Services.Abstractions.IPathManager"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.PathManager.AppDirectory">
+            <inheritdoc/>
+        </member>
+        <member name="P:Braco.Services.PathManager.AppDataDirectory">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.PathManager.#ctor(System.String)">
+            <summary>
+            Creates an instance for managing paths.
+            </summary>
+            <param name="appName">Name of the application. If left null,
+            calling assembly's name will be used.</param>
+        </member>
+        <member name="M:Braco.Services.PathManager.GetFile(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.PathManager.GetDirectory(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.PathManager.AddFileToDirectory(System.String,System.IO.DirectoryInfo,System.String,System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.PathManager.AddFile(System.String,System.String,System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.PathManager.AddDirectory(System.String,System.String,System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Services.ResourceManager">
+            <summary>
+            Default implementation of <see cref="T:Braco.Services.Abstractions.IResourceManager"/>.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.ResourceManager.DefaultLocationSeparator">
+            <summary>
+            Default separator used for <see cref="P:Braco.Services.ResourceManager.LocationSeparator"/>.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.ResourceManager.DefaultLocation">
+            <summary>
+            Default location where the resources are located.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.ResourceManager.Item(System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="P:Braco.Services.ResourceManager.Location">
+            <inheritdoc/>
+        </member>
+        <member name="P:Braco.Services.ResourceManager.LocationSeparator">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.ResourceManager.#ctor">
+            <summary>
+            Creates an instance of the manager.
+            </summary>
+        </member>
+        <member name="M:Braco.Services.ResourceManager.#ctor(System.String)">
+            <summary>
+            Creates an instance of the manager with location specified.
+            </summary>
+            <param name="location">Location where the resources will be held.</param>
+        </member>
+        <member name="M:Braco.Services.ResourceManager.#ctor(System.String,System.String)">
+            <summary>
+            Creates an instance of the manager with location and separator specified.
+            </summary>
+            <param name="location">Location where the resources will be held.</param>
+            <param name="locationSeparator">Separator used for separating multiple resources.</param>
+        </member>
+        <member name="M:Braco.Services.ResourceManager.Add``1(``0)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.ResourceManager.AddFromAppDomain(System.AppDomain)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.ResourceManager.AddFromAssembly(System.Reflection.Assembly)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.ResourceManager.AddRange(System.Object[])">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.ResourceManager.AddRange(System.Type[])">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.ResourceManager.Get``1(System.Object[])">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.ResourceManager.Get``2(System.Object[])">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.ResourceManager.Set``1(``0)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.ResourceManager.Set(System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.ResourceManager.Set(System.Type,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Services.SecurityService">
+            <summary>
+            <see cref="T:Braco.Services.Abstractions.ISecurityService"/> implementation.
+            Handles encryption, decryption and hashing.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.SecurityService.HexStringFormat">
+            <summary>
+            Format identifier for hexadecimal characters.
+            </summary>
+        </member>
+        <member name="M:Braco.Services.SecurityService.Encrypt(System.String,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.SecurityService.Decrypt(System.String,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.SecurityService.GenerateSecureRandomByteArray(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.SecurityService.Hash(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.SecurityService.Hash(System.Security.SecureString)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.SecurityService.MatchesHash(System.String,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.SecurityService.MatchesHash(System.Security.SecureString,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Services.WindowsProcessStarter">
+            <summary>
+            Implementation of <see cref="T:Braco.Services.Abstractions.IProcessStarter"/> for Windows OS.
+            </summary>
+        </member>
+        <member name="M:Braco.Services.WindowsProcessStarter.#ctor(Braco.Services.Abstractions.IPathManager)">
+            <summary>
+            Creates an instance of the manager.
+            </summary>
+            <param name="pathManager">Path manager for the project.</param>
+        </member>
+        <member name="M:Braco.Services.WindowsProcessStarter.OpenDirectory(System.IO.DirectoryInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.WindowsProcessStarter.OpenFile(System.IO.FileInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.WindowsProcessStarter.ExecuteCommand(System.String,System.IO.DirectoryInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.WindowsProcessStarter.ExecuteCommand(System.String)">
+            <inheritdoc/>
+        </member>
+    </members>
+</doc>

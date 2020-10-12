@@ -1,0 +1,1118 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Braco.Utilities.Wpf.Controls</name>
+    </assembly>
+    <members>
+        <member name="T:Braco.Utilities.Wpf.Controls.IsSelectedProperty">
+            <summary>
+            Property used to indicate that a button is selected.
+            </summary>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.Controls.SetupOnClickProperty">
+            <summary>
+            Used for setting up down arrow part of the <see cref="T:System.Windows.Controls.ComboBox"/>
+            to open it on mouse up.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.SetupOnClickProperty.#ctor">
+            <summary>
+            Creates an instance of the attached property.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.SetupOnClickProperty.OnValueChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.Controls.KeyReactiveProperty">
+            <summary>
+            Makes the <see cref="T:System.Windows.Controls.ComboBox"/> open on <see cref="T:System.Windows.Controls.TextBox"/>'s Focus event and allows for collection
+            traversal using up and down keys. If the combo box is open, enter will
+            close it, ot if it isn't, down key will open it.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.KeyReactiveProperty.#ctor">
+            <summary>
+            Creates an instance of the attached property.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.KeyReactiveProperty.OnValueChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.Controls.SelectionMapperProperty">
+            <summary>
+            Maps values from <see cref="P:System.Windows.Controls.ComboBox.Text"/> into editable <see cref="T:System.Windows.Controls.TextBox"/>'s text.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.SelectionMapperProperty.#ctor">
+            <summary>
+            Creates an instance of the attached property.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.SelectionMapperProperty.OnValueChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.Controls.LostFocusFillerProperty">
+            <summary>
+            Used for adding items to the <see cref="T:System.Windows.Controls.ComboBox"/> when the <see cref="T:System.Windows.Controls.TextBox"/> loses focus.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.LostFocusFillerProperty.#ctor">
+            <summary>
+            Creates an instance of the attached property.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.LostFocusFillerProperty.OnValueChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.LostFocusFillerProperty.Construct(System.Windows.Controls.ComboBox)">
+            <summary>
+            Uses item construction method on the data context of the
+            <see cref="T:System.Windows.Controls.ComboBox"/> to perform changes.
+            <para>The construction method must have return type of <see cref="T:System.Boolean"/> and
+            take in two parameters - first of type string (text from <see cref="T:System.Windows.Controls.TextBox"/>) and
+            second of type <see cref="T:System.Object"/> (items source of the <see cref="T:System.Windows.Controls.ComboBox"/>).</para>
+            </summary>
+            <param name="comboBox"><see cref="T:System.Windows.Controls.ComboBox"/> for which to call the method.</param>
+            <returns>If the construction went through successfully.</returns>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.Controls.AutoCompleteProperty">
+            <summary>
+            Used for enabling automcomplete while typing in the textbox. It can be
+            implemented on the data context of combobox (method must be named <see cref="F:Braco.Utilities.Wpf.Controls.AutoCompleteProperty.customAutoCompleteMethodName"/>,
+            take in current text from textbox and items in the combobox and return index of the item that should be selected
+            or -1 if none should be).
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.AutoCompleteProperty.#ctor">
+            <summary>
+            Creates an instance of the attached property.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.AutoCompleteProperty.OnValueChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.Controls.SetFocusProperty">
+            <summary>
+            Used for setting focus on a control.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.SetFocusProperty.OnValueChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.Controls.DropCommandProperty">
+            <summary>
+            Used for setting up the drop command on the <see cref="T:System.Windows.Controls.Page"/> data context to
+            execute once something is dropped onto the control.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.DropCommandProperty.OnValueChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.Controls.NoNavigation">
+            <summary>
+            Used for disabling navigation.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.NoNavigation.OnValueChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.Controls.HasTextProperty">
+            <summary>
+            HasText attached property for <see cref="T:System.Windows.Controls.PasswordBox"/>.
+            True if the <see cref="T:System.Windows.Controls.PasswordBox"/> that it is attached to
+            has some text in it.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.HasTextProperty.SetValue(System.Windows.DependencyObject)">
+            <summary>
+            Sets the HasText property based on if the caller
+            <see cref="T:System.Windows.Controls.PasswordBox"/> has any text.
+            </summary>
+            <param name="sender">Pa</param>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.Controls.MonitorPasswordProperty">
+            <summary>
+            MonitorPassword attached property for <see cref="T:System.Windows.Controls.PasswordBox"/>.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.MonitorPasswordProperty.OnValueChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>
+            Fired whenever the MonitorPassword property changes.
+            </summary>
+            <param name="sender">Object for which the MonitorPassword property value changed.</param>
+            <param name="e">Arguments for the event.</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.MonitorPasswordProperty.PasswordBox_PasswordChanged(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Fired when the <see cref="T:System.Windows.Controls.PasswordBox"/>'s password changes.
+            </summary>
+            <param name="sender"><see cref="T:System.Windows.Controls.PasswordBox"/> that had its password changed.</param>
+            <param name="e">Arguments for the event.</param>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.Controls.BracoGrid">
+            <summary>
+            <see cref="T:System.Windows.Controls.Grid"/> with quick row and column definitions.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.BracoGrid.DefinitionsSeparator">
+            <summary>
+            Defines what should be used for separating row / column definitions.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.BracoGrid.MultiplierSeparator">
+            <summary>
+            Defines what should be used for separating row / column multiplier specifications.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.BracoGrid.MultiplierPattern">
+            <summary>
+            Defines the pattern that the multiplier rows / columns need to match
+            in order to be multiplied.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.BracoGrid.Rows">
+            <summary>
+            Defines rows to use in the grid
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.BracoGrid.RowsProperty">
+            <summary>
+            Dependency property for <see cref="P:Braco.Utilities.Wpf.Controls.BracoGrid.Rows"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.BracoGrid.Columns">
+            <summary>
+            Defines Columns to use in the grid
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.BracoGrid.ColumnsProperty">
+            <summary>
+            Dependency property for <see cref="P:Braco.Utilities.Wpf.Controls.BracoGrid.Columns"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.BracoGrid.SpacedRows">
+            <summary>
+            Defines how should the rows be spaced in the grid.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.BracoGrid.SpacedRowsProperty">
+            <summary>
+            Dependency property for <see cref="P:Braco.Utilities.Wpf.Controls.BracoGrid.SpacedRows"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.BracoGrid.SpacedColumns">
+            <summary>
+            Defines how should the columns be spaced in the grid.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.BracoGrid.SpacedColumnsProperty">
+            <summary>
+            Dependency property for <see cref="P:Braco.Utilities.Wpf.Controls.BracoGrid.SpacedColumns"/>.
+            </summary>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.Controls.DropContainer">
+            <summary>
+            Interaction logic for DropContainer.xaml
+            </summary>
+            <summary>
+            DropContainer
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.DropContainer.#ctor">
+            <summary>
+            Creates an instance of the control.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.DropContainer.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.Controls.ImageButton">
+            <summary>
+            Interaction logic for xaml
+            </summary>
+            <summary>
+            ImageButton
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.ImageButton.ImageControlName">
+            <summary>
+            Name of the <see cref="T:System.Windows.Controls.Image"/> control.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.ImageButton.SvgExtension">
+            <summary>
+            Svg file extension.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.ImageButton.PngExtension">
+            <summary>
+            Png file extension.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.ImageButton.IsPressed">
+            <summary>
+            Determines if the button is pressed or not.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.ImageButton.IsPressedProperty">
+            <summary>
+            Dependency property for <see cref="P:Braco.Utilities.Wpf.Controls.ImageButton.IsPressed"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.ImageButton.ButtonSize">
+            <summary>
+            Size of the button that contains the image.
+            <para>Make sure to use a value equal to or greater than 0 in order to change the size.</para>
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.ImageButton.ButtonSizeProperty">
+            <summary>
+            Dependency property for <see cref="P:Braco.Utilities.Wpf.Controls.ImageButton.ButtonSize"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.ImageButton.IsSvg">
+            <summary>
+            Determines if the button is pressed or not.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.ImageButton.IsSvgProperty">
+            <summary>
+            Dependency property for <see cref="P:Braco.Utilities.Wpf.Controls.ImageButton.IsSvg"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.ImageButton.ImageSubfolder">
+            <summary>
+            Subfolder in which the image resides.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.ImageButton.ImageSubfolderProperty">
+            <summary>
+            Dependency property for <see cref="P:Braco.Utilities.Wpf.Controls.ImageButton.ImageSubfolder"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.ImageButton.Source">
+            <summary>
+            <see cref="T:System.Windows.Media.ImageSource"/> to use for the image.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.ImageButton.SourceProperty">
+            <summary>
+            Dependency property for <see cref="P:Braco.Utilities.Wpf.Controls.ImageButton.Source"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.ImageButton.FileName">
+            <summary>
+            File name for the image.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.ImageButton.FileNameProperty">
+            <summary>
+            Dependency property for <see cref="P:Braco.Utilities.Wpf.Controls.ImageButton.FileName"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.ImageButton.Extension">
+            <summary>
+            Extension of the image file.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.ImageButton.ExtensionProperty">
+            <summary>
+            Dependency property for <see cref="P:Braco.Utilities.Wpf.Controls.ImageButton.Extension"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.ImageButton.Command">
+            <summary>
+            Command to execute on click.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.ImageButton.CommandProperty">
+            <summary>
+            Dependency property for <see cref="P:Braco.Utilities.Wpf.Controls.ImageButton.Command"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.ImageButton.CommandParameter">
+            <summary>
+            Parameter for the command.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.ImageButton.CommandParameterProperty">
+            <summary>
+            Dependency property for <see cref="P:Braco.Utilities.Wpf.Controls.ImageButton.CommandParameter"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.ImageButton.FileNameGetter">
+            <summary>
+            Getter used to determine the file name.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.ImageButton.FileNameGetterProperty">
+            <summary>
+            Dependency property for <see cref="P:Braco.Utilities.Wpf.Controls.ImageButton.FileNameGetter"/>.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.ImageButton.#ctor">
+            <summary>
+            Creates an instance of the control.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.ImageButton.FetchFileNameFromGetter(System.Object[])">
+            <summary>
+            Method used to fetch the file name from <see cref="P:Braco.Utilities.Wpf.Controls.ImageButton.FileNameGetter"/>.
+            </summary>
+            <param name="params">Parameters for the file name getter.</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.ImageButton.GetImage">
+            <summary>
+            Gets the image from data.
+            </summary>
+            <returns>Loaded <see cref="T:System.Windows.Media.Imaging.BitmapImage"/> or null if some
+            data isn't valid.</returns>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.ImageButton.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.Controls.InfoBox">
+            <summary>
+            Interaction logic for InfoBox.xaml
+            </summary>
+            <summary>
+            InfoBox
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.InfoBox.Title">
+            <summary>
+            Title of the info box.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.InfoBox.TitleProperty">
+            <summary>
+            Dependency property for <see cref="P:Braco.Utilities.Wpf.Controls.InfoBox.Title"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.InfoBox.Message">
+            <summary>
+            Message that is placed inside the info box.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.InfoBox.MessageProperty">
+            <summary>
+            Dependency property for <see cref="P:Braco.Utilities.Wpf.Controls.InfoBox.Message"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.InfoBox.DismissCommand">
+            <summary>
+            What to execute once the info box gets dismissed.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.InfoBox.DismissCommandProperty">
+            <summary>
+            Dependency property for <see cref="P:Braco.Utilities.Wpf.Controls.InfoBox.DismissCommand"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.InfoBox.Dismiss">
+            <summary>
+            Should the info box be dismissed.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.InfoBox.DismissProperty">
+            <summary>
+            Dependency property for <see cref="P:Braco.Utilities.Wpf.Controls.InfoBox.Dismiss"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.InfoBox.OuterBorderThickness">
+            <summary>
+            Thickness of the outer border.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.InfoBox.OuterBorderThicknessProperty">
+            <summary>
+            Dependency property for <see cref="P:Braco.Utilities.Wpf.Controls.InfoBox.OuterBorderThickness"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.InfoBox.OuterBorderBrush">
+            <summary>
+            Brush used on the outer border.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.InfoBox.OuterBorderBrushProperty">
+            <summary>
+            Dependency property for <see cref="P:Braco.Utilities.Wpf.Controls.InfoBox.OuterBorderBrush"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.InfoBox.SeparatorBrush">
+            <summary>
+            Brush used for title and message separator.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.InfoBox.SeparatorBrushProperty">
+            <summary>
+            Dependency property for <see cref="P:Braco.Utilities.Wpf.Controls.InfoBox.SeparatorBrush"/>.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.InfoBox.#ctor">
+            <summary>
+            Creates an instance of the control.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.InfoBox.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.Controls.InputField">
+            <summary>
+            Represents an input field with a label.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.InputField.Label">
+            <summary>
+            Label for the input field.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.InputField.LabelProperty">
+            <summary>
+            Dependency property for <see cref="P:Braco.Utilities.Wpf.Controls.InputField.Label"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.InputField.IsRequired">
+            <summary>
+            Determines if the field is required or not.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.InputField.IsRequiredProperty">
+            <summary>
+            Dependency property for <see cref="P:Braco.Utilities.Wpf.Controls.InputField.IsRequired"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.InputField.Info">
+            <summary>
+            Info about the field.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.InputField.InfoProperty">
+            <summary>
+            Dependency property for <see cref="P:Braco.Utilities.Wpf.Controls.InputField.Info"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.InputField.ContentToTheRight">
+            <summary>
+            Content placed to the right of the label.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.InputField.ContentToTheRightProperty">
+            <summary>
+            Dependency property for <see cref="P:Braco.Utilities.Wpf.Controls.InputField.ContentToTheRight"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.InputField.PanelMargin">
+            <summary>
+            Margin used for the top panel.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.InputField.PanelMarginProperty">
+            <summary>
+            Dependency property for <see cref="P:Braco.Utilities.Wpf.Controls.InputField.PanelMargin"/>.
+            </summary>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.Controls.ItemGroup">
+            <summary>
+            Represents an item group.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.ItemGroup.Header">
+            <summary>
+            Header for the item group.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.ItemGroup.HeaderProperty">
+            <summary>
+            Dependency property for <see cref="P:Braco.Utilities.Wpf.Controls.ItemGroup.Header"/>.
+            </summary>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.Controls.Menu">
+            <summary>
+            Interaction logic for Menu.xaml
+            </summary>
+            <summary>
+            Menu
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.Menu.#ctor">
+            <summary>
+            Creates an instance of the control.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.Menu.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.Controls.Pagination">
+            <summary>
+            Interaction logic for Pagination.xaml
+            </summary>
+            <summary>
+            Pagination
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.Pagination.NumPages">
+            <summary>
+            Defines how many pages are there.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.Pagination.NumPagesProperty">
+            <summary>
+            Dependency property for <see cref="F:Braco.Utilities.Wpf.Controls.Pagination.NumPagesProperty"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.Pagination.CurrentPage">
+            <summary>
+            Currently selected page.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.Pagination.CurrentPageProperty">
+            <summary>
+            Dependency property for <see cref="P:Braco.Utilities.Wpf.Controls.Pagination.CurrentPage"/>.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.Pagination.#ctor">
+            <summary>
+            Creates an instance of the control.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.Pagination.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.Controls.TitleBar">
+            <summary>
+            Interaction logic for TitleBar.xaml
+            </summary>
+            <summary>
+            TitleBar
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.TitleBar.SettingsVisibility">
+            <summary>
+            Determines if the settings button will be visible.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.TitleBar.SettingsVisibilityProperty">
+            <summary>
+            Dependency property for <see cref="P:Braco.Utilities.Wpf.Controls.TitleBar.SettingsVisibility"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.TitleBar.MinimizeVisibility">
+            <summary>
+            Determines if the minimize button will be visible.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.TitleBar.MinimizeVisibilityProperty">
+            <summary>
+            Dependency property for <see cref="P:Braco.Utilities.Wpf.Controls.TitleBar.MinimizeVisibility"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.TitleBar.MaximizeVisibility">
+            <summary>
+            Determines if the maximize button will be visible.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.TitleBar.MaximizeVisibilityProperty">
+            <summary>
+            Dependency property for <see cref="P:Braco.Utilities.Wpf.Controls.TitleBar.MaximizeVisibility"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.TitleBar.Title">
+            <summary>
+            Defines the title.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.TitleBar.TitleProperty">
+            <summary>
+            Dependency property for <see cref="P:Braco.Utilities.Wpf.Controls.TitleBar.Title"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.TitleBar.Logo">
+            <summary>
+            Defines the <see cref="T:System.Windows.Media.ImageSource"/> of the logo.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.TitleBar.LogoProperty">
+            <summary>
+            Dependency property for <see cref="P:Braco.Utilities.Wpf.Controls.TitleBar.Logo"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.TitleBar.CloseToolTip">
+            <summary>
+            ToolTip for the close button.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.TitleBar.CloseToolTipProperty">
+            <summary>
+            Dependency property for <see cref="P:Braco.Utilities.Wpf.Controls.TitleBar.CloseToolTip"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.TitleBar.IconSize">
+            <summary>
+            Size of icons on the right.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.TitleBar.IconSizeProperty">
+            <summary>
+            Dependency property for <see cref="P:Braco.Utilities.Wpf.Controls.TitleBar.IconSize"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.TitleBar.LogoWidth">
+            <summary>
+            Width of logo on the left.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.TitleBar.LogoWidthProperty">
+            <summary>
+            Dependency property for <see cref="P:Braco.Utilities.Wpf.Controls.TitleBar.LogoWidth"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.TitleBar.LogoHeight">
+            <summary>
+            Height of logo on the left.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.TitleBar.LogoHeightProperty">
+            <summary>
+            Dependency property for <see cref="P:Braco.Utilities.Wpf.Controls.TitleBar.LogoHeight"/>.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.TitleBar.#ctor">
+            <summary>
+            Creates an instance of the control.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.TitleBar.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.Controls.ComboBoxToggleButtonStyleConverter">
+            <summary>
+            Fetches appropriate toggle button style for the <see cref="T:System.Windows.Controls.ComboBox"/>.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.ComboBoxToggleButtonStyleConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.ComboBoxToggleButtonStyleConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.Controls.ImageButtonConverter">
+            <summary>
+            Used for fetching file name from getter of the <see cref="T:Braco.Utilities.Wpf.Controls.ImageButton"/>.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.ImageButtonConverter.Convert(System.Object[],System.Type,System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.ImageButtonConverter.ConvertBack(System.Object,System.Type[],System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.ImageButtonSizeConverter.SizeSeparator">
+            <summary>
+            Used for separating values when specifying size
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.ImageButtonSizeConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.ImageButtonSizeConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.Controls.Spaced">
+            <summary>
+            Defines how can grid's rows or columns be spaced.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.Spaced.None">
+            <summary>
+            No spacing will be added.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.Spaced.Between">
+            <summary>
+            Spacing will be added between the rows / columns.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.Spaced.Around">
+            <summary>
+            Spacing will be added and the rows / columns.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.Spaced.AroundAndBetween">
+            <summary>
+            Spacing will be added  both between and around rows / columns.
+            </summary>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.Controls.SpacedExtensions">
+            <summary>
+            Extensions for quicker checks with <see cref="T:Braco.Utilities.Wpf.Controls.Spaced"/> enum.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.SpacedExtensions.Between(Braco.Utilities.Wpf.Controls.Spaced)">
+            <summary>
+            Checks if the value is either <see cref="F:Braco.Utilities.Wpf.Controls.Spaced.Between"/>
+            or <see cref="F:Braco.Utilities.Wpf.Controls.Spaced.AroundAndBetween"/>.
+            </summary>
+            <param name="spaced">Enum value to check.</param>
+            <returns>If the value is either <see cref="F:Braco.Utilities.Wpf.Controls.Spaced.Between"/>
+            or <see cref="F:Braco.Utilities.Wpf.Controls.Spaced.AroundAndBetween"/>.</returns>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.SpacedExtensions.Around(Braco.Utilities.Wpf.Controls.Spaced)">
+            <summary>
+            Checks if the value is either <see cref="F:Braco.Utilities.Wpf.Controls.Spaced.Around"/>
+            or <see cref="F:Braco.Utilities.Wpf.Controls.Spaced.AroundAndBetween"/>.
+            </summary>
+            <param name="spaced">Enum value to check.</param>
+            <returns>If the value is either <see cref="F:Braco.Utilities.Wpf.Controls.Spaced.Around"/>
+            or <see cref="F:Braco.Utilities.Wpf.Controls.Spaced.AroundAndBetween"/>.</returns>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.Controls.ResourceKeys">
+            <inheritdoc/>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.ResourceKeys.ShadowButtonStyle">
+            <summary>
+            ShadowButton style.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.ResourceKeys.EditableComboBoxToggleButtonStyle">
+            <summary>
+            EditableComboBoxToggleButton style.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.ResourceKeys.ReadOnlyComboBoxToggleButtonStyle">
+            <summary>
+            ReadOnlyComboBoxToggleButton style.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.ResourceKeys.LogoImage">
+            <summary>
+            Logo image.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.ResourceKeys.DownIcon">
+            <summary>
+            Icon that is used for opening the <see cref="T:System.Windows.Controls.ComboBox"/>.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.ResourceKeys.SettingsIcon">
+            <summary>
+            Icon that is used for settings button on the title bar.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.ResourceKeys.MinimizeIcon">
+            <summary>
+            Icon that is used for minimize button on the title bar.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.ResourceKeys.CloseIcon">
+            <summary>
+            Icon that is used for close button on the title bar.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.ResourceKeys.CancelIcon">
+            <summary>
+            Icon that is used for cancel button on the info box.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.ResourceKeys.QuestionMarkIcon">
+            <summary>
+            Icon that is used for info tooltip on input field.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.ResourceKeys.PreviousPageIcon">
+            <summary>
+            Icon that is used for previous page button.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.ResourceKeys.DropContainerLabel">
+            <summary>
+            Text displayed when drop container doesn't contain any items.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.ResourceKeys.ApplicationName">
+            <summary>
+            Application name tooltip.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.ResourceKeys.ApplicationCloseToolTip">
+            <summary>
+            Tooltip for the close button on title bar of main window.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.ResourceKeys.WindowCloseToolTip">
+            <summary>
+            Tooltip for the close button on title bar of other windows.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.ResourceKeys.WindowPreviousPageButtonToolTip">
+            <summary>
+            Tooltip for the previous page button on the window.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.ResourceKeys.TitleBarSettingsButtonToolTip">
+            <summary>
+            Tooltip for settings button on title bar.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.ResourceKeys.TitleBarMinimizeButtonToolTip">
+            <summary>
+            Tooltip for settings button on title bar.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.ResourceKeys.TitleBarMaximizeButtonToolTip">
+            <summary>
+            Tooltip for maximize button on title bar.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Controls.ResourceKeys.TitleBarRestoreButtonToolTip">
+            <summary>
+            Tooltip for restore button on title bar.
+            </summary>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.Controls.StoredItem`1">
+            <summary>
+            Helper for working with toggle button (part of combo box) control hierarchy.
+            </summary>
+            <typeparam name="T">Type of value to store.</typeparam>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.StoredItem`1.DownArrow">
+            <summary>
+            Arrow button used for opening the <see cref="P:Braco.Utilities.Wpf.Controls.StoredItem`1.ComboBox"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.StoredItem`1.ToggleButton">
+            <summary>
+            Toggle button for the <see cref="P:Braco.Utilities.Wpf.Controls.StoredItem`1.ComboBox"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.StoredItem`1.ComboBox">
+            <summary>
+            ComboBox.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.StoredItem`1.TextBox">
+            <summary>
+            Editable part of <see cref="P:Braco.Utilities.Wpf.Controls.StoredItem`1.ComboBox"/>, if available.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.StoredItem`1.Value">
+            <summary>
+            Value of the attached property.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.StoredItem`1.Text">
+            <summary>
+            Text of the <see cref="P:Braco.Utilities.Wpf.Controls.StoredItem`1.TextBox"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.StoredItem`1.LastSelectedIndex">
+            <summary>
+            Last selected index of the <see cref="P:Braco.Utilities.Wpf.Controls.StoredItem`1.ComboBox"/>.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.StoredItem`1.#ctor(System.Windows.Controls.Primitives.ToggleButton)">
+            <summary>
+            Creates the item.
+            </summary>
+            <param name="toggleButton">Toggle button for the <see cref="P:Braco.Utilities.Wpf.Controls.StoredItem`1.ComboBox"/>.</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.StoredItem`1.#ctor(System.Windows.Controls.Primitives.ToggleButton,Braco.Utilities.Wpf.Controls.ImageButton,System.Windows.Controls.ComboBox,System.Windows.Controls.TextBox,`0)">
+            <summary>
+            Creates the item.
+            </summary>
+            <param name="toggleButton">Toggle button for the <see cref="P:Braco.Utilities.Wpf.Controls.StoredItem`1.ComboBox"/>.</param>
+            <param name="downArrow">Arrow button used for opening the <see cref="P:Braco.Utilities.Wpf.Controls.StoredItem`1.ComboBox"/>.</param>
+            <param name="comboBox">ComboBox.</param>
+            <param name="textBox">Editable part of <see cref="P:Braco.Utilities.Wpf.Controls.StoredItem`1.ComboBox"/>, if available.</param>
+            <param name="value">Value of the attached property.</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.StoredItem`1.#ctor(System.Windows.Controls.Primitives.ToggleButton,Braco.Utilities.Wpf.Controls.ImageButton,System.Windows.Controls.ComboBox,`0)">
+            <summary>
+            Creates the item.
+            </summary>
+            <param name="toggleButton">Toggle button for the <see cref="P:Braco.Utilities.Wpf.Controls.StoredItem`1.ComboBox"/>.</param>
+            <param name="downArrow">Arrow button used for opening the <see cref="P:Braco.Utilities.Wpf.Controls.StoredItem`1.ComboBox"/>.</param>
+            <param name="comboBox">ComboBox.</param>
+            <param name="value">Value of the attached property.</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.StoredItem`1.SetupRest(Braco.Utilities.Wpf.Controls.ImageButton,System.Windows.Controls.ComboBox,System.Windows.Controls.TextBox,`0)">
+            <summary>
+            Sets up the rest of the properties.
+            </summary>
+            <param name="downArrow">Arrow button used for opening the <see cref="P:Braco.Utilities.Wpf.Controls.StoredItem`1.ComboBox"/>.</param>
+            <param name="comboBox">ComboBox.</param>
+            <param name="textBox">Editable part of <see cref="P:Braco.Utilities.Wpf.Controls.StoredItem`1.ComboBox"/>, if available.</param>
+            <param name="value">Value of the attached property.</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.StoredItem`1.SetupRest(Braco.Utilities.Wpf.Controls.ImageButton,System.Windows.Controls.ComboBox,`0)">
+            <summary>
+            Sets up the rest of the properties.
+            </summary>
+            <param name="downArrow">Arrow button used for opening the <see cref="P:Braco.Utilities.Wpf.Controls.StoredItem`1.ComboBox"/>.</param>
+            <param name="comboBox">ComboBox.</param>
+            <param name="value">Value of the attached property.</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.StoredItem`1.CloseComboBoxAndShowText(System.String)">
+            <summary>
+            Closes the <see cref="P:Braco.Utilities.Wpf.Controls.StoredItem`1.ComboBox"/>, sets the text of
+            the <see cref="P:Braco.Utilities.Wpf.Controls.StoredItem`1.TextBox"/> to <paramref name="text"/> and
+            moves the cursor to the end of the <see cref="P:Braco.Utilities.Wpf.Controls.StoredItem`1.TextBox"/>.
+            </summary>
+            <param name="text">Text to input into <see cref="P:Braco.Utilities.Wpf.Controls.StoredItem`1.TextBox"/>.</param>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.Controls.ToggleButtonAttachedPropertiesHelper`1">
+            <summary>
+            Helper for working with attached properties of a toggle button
+            (part of combo box).
+            </summary>
+            <typeparam name="T">Type of value for <see cref="T:Braco.Utilities.Wpf.Controls.StoredItem`1"/>.</typeparam>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.ToggleButtonAttachedPropertiesHelper`1.Storage">
+            <summary>
+            Collection of items 
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.ToggleButtonAttachedPropertiesHelper`1.Item(System.Object)">
+            <summary>
+            Gets the <see cref="T:System.Windows.Controls.ComboBox"/> for the given item.
+            </summary>
+            <param name="item">A property from <see cref="T:Braco.Utilities.Wpf.Controls.StoredItem`1"/> that
+            contains the <see cref="T:System.Windows.Controls.ComboBox"/>.</param>
+            <returns><see cref="T:System.Windows.Controls.ComboBox"/> from <see cref="T:Braco.Utilities.Wpf.Controls.StoredItem`1"/>
+            if it is found.</returns>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.ToggleButtonAttachedPropertiesHelper`1.#ctor(System.Boolean,System.Action{Braco.Utilities.Wpf.Controls.StoredItem{`0}})">
+            <summary>
+            Creates the helper.
+            </summary>
+            <param name="editable">Is the <see cref="T:System.Windows.Controls.ComboBox"/> editable?</param>
+            <param name="onReady">Action to perform once data is loaded.</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.ToggleButtonAttachedPropertiesHelper`1.#ctor(System.Boolean,System.Action{Braco.Utilities.Wpf.Controls.StoredItem{`0},System.Object})">
+            <summary>
+            Creates the helper.
+            </summary>
+            <param name="editable">Is the <see cref="T:System.Windows.Controls.ComboBox"/> editable?</param>
+            <param name="onReady">Action to perform once data is loaded. The second parameter
+            is selected item from the <see cref="T:System.Windows.Controls.ComboBox"/>.</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.ToggleButtonAttachedPropertiesHelper`1.OnValueChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>
+            Handles value changed event of the attached property.
+            </summary>
+            <param name="sender">Object that raised the event.</param>
+            <param name="e">Arguments for the event.</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.ToggleButtonAttachedPropertiesHelper`1.Find(System.Object)">
+            <summary>
+            Finds the <see cref="T:Braco.Utilities.Wpf.Controls.StoredItem`1"/> based on one
+            of its properties.
+            </summary>
+            <param name="item">Item that needs to match one of
+            the properties of a <see cref="T:Braco.Utilities.Wpf.Controls.StoredItem`1"/>.</param>
+            <returns><see cref="T:Braco.Utilities.Wpf.Controls.StoredItem`1"/> if given item is part of it.</returns>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.Controls.Windows.MainWindow">
+            <summary>
+            Interaction logic for MainWindow.xaml
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.Windows.MainWindow.#ctor">
+            <summary>
+            Creates an instance of the window.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.Windows.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.Controls.Windows.PopupWindow">
+            <summary>
+            Interaction logic for PopupWindow.xaml
+            </summary>
+            <summary>
+            PopupWindow
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.Windows.PopupWindow.#ctor">
+            <summary>
+            Creates an instance of the window.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.Windows.PopupWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.Controls.Windows.MainWindowViewModel">
+            <summary>
+            Represents data of the main window.
+            </summary>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.Controls.Windows.PopupWindowViewModel">
+            <summary>
+            Represents data of the popup window.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Controls.Windows.PopupWindowViewModel.Title">
+            <summary>
+            Title for the popup window.
+            </summary>
+        </member>
+        <member name="T:Braco.Utilities.Wpf.Validator">
+            <summary>
+            Interaction logic for Validator.xaml
+            </summary>
+            <summary>
+            Validator
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Validator.Validate">
+            <summary>
+            Object to validate (Pass in property name). Can also be a binding to error message.
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Validator.ValidateProperty">
+            <summary>
+            Dependency property for <see cref="P:Braco.Utilities.Wpf.Validator.Validate"/>.
+            </summary>
+        </member>
+        <member name="P:Braco.Utilities.Wpf.Validator.VisibilityOption">
+            <summary>
+            Option for <see cref="T:Braco.Utilities.Wpf.StringToVisibilityConverter"/> parameter. Defaults to null which
+            will result in default behavior (collapse when there is no error, show when there is).
+            </summary>
+        </member>
+        <member name="F:Braco.Utilities.Wpf.Validator.VisibilityOptionProperty">
+            <summary>
+            Dependency property for <see cref="P:Braco.Utilities.Wpf.Validator.VisibilityOption"/>.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Validator.#ctor">
+            <summary>
+            Creates an instance of the control.
+            </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.Validator.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+    </members>
+</doc>
