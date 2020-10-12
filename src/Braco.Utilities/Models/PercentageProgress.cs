@@ -78,5 +78,9 @@ namespace Braco.Utilities
 			Value = 0;
 			Active = false;
 		}
+
+		/// <inheritdoc/>
+		public override string ToString()
+			=> $"{Value}% ({(Active ? "A" : "Ina")}ctive)";
 	}
 }

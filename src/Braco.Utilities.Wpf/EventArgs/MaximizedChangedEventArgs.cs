@@ -27,5 +27,9 @@ namespace Braco.Utilities.Wpf
 			IsMaximized = isMaximized;
 			Window = window;
 		}
+
+		/// <inheritdoc/>
+		public override string ToString()
+			=> $"Window was {(IsMaximized ? "" : "not ")} maximized on {Window}";
 	}
 }

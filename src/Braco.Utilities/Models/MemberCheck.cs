@@ -61,6 +61,10 @@ namespace Braco.Utilities
             errorMessage = ErrorMessage;
             member = Member;
             skip = Skip;
-        }
-    }
+		}
+
+		/// <inheritdoc/>
+		public override string ToString()
+			=> $"Check for {Member} (Skip: {Skip})";
+	}
 }

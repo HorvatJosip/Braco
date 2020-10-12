@@ -16,5 +16,9 @@ namespace Braco.Services.Media.Abstractions
 		/// Duration of the media.
 		/// </summary>
 		public TimeSpan? Duration { get; set; }
+
+		/// <inheritdoc/>
+		public override string ToString()
+			=> $"Media: {Title}{(Duration.HasValue ? $" ({Duration})" : "")}";
 	}
 }

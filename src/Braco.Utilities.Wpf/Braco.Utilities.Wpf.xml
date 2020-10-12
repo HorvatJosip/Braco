@@ -12,6 +12,9 @@
             <see cref="P:Braco.Services.Abstractions.IAuthService.UnauthenticatedLocation"/>.
             </summary>
         </member>
+        <member name="M:Braco.Utilities.Wpf.AuthorizeAttribute.ToString">
+            <inheritdoc/>
+        </member>
         <member name="T:Braco.Utilities.Wpf.PageAttribute">
             <summary>
             Specifies certain information about a page.
@@ -41,6 +44,9 @@
             </summary>
             <param name="subfolders">Subfolders the page is placed in.</param>
         </member>
+        <member name="M:Braco.Utilities.Wpf.PageAttribute.ToString">
+            <inheritdoc/>
+        </member>
         <member name="T:Braco.Utilities.Wpf.WindowAttribute">
             <summary>
             Specifies certain information about a window.
@@ -68,6 +74,9 @@
             Generates an instance of the attribute with type name.
             </summary>
             <param name="typeName">Name of the type of window (e.g. MainWindow).</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowAttribute.ToString">
+            <inheritdoc/>
         </member>
         <member name="T:Braco.Utilities.Wpf.BaseAttachedProperty`2">
             <summary>
@@ -460,6 +469,9 @@
             <param name="isMaximized">Is the window maximized?</param>
             <param name="window">Window that had the maximized state changed.</param>
         </member>
+        <member name="M:Braco.Utilities.Wpf.MaximizedChangedEventArgs.ToString">
+            <inheritdoc/>
+        </member>
         <member name="T:Braco.Utilities.Wpf.PageChangedEventArgs">
             <summary>
             Event args for <see cref="E:Braco.Utilities.Wpf.IWindowService.PageChanged"/> event.
@@ -482,6 +494,9 @@
             <param name="page">Page that changed.</param>
             <param name="window">Window on which the page changed.</param>
         </member>
+        <member name="M:Braco.Utilities.Wpf.PageChangedEventArgs.ToString">
+            <inheritdoc/>
+        </member>
         <member name="T:Braco.Utilities.Wpf.WindowChangedEventArgs">
             <summary>
             Event args for <see cref="E:Braco.Utilities.Wpf.IWindowService.WindowChanged"/> event.
@@ -497,6 +512,9 @@
             Creates an instance of the arguments.
             </summary>
             <param name="window">Window that changed.</param>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.WindowChangedEventArgs.ToString">
+            <inheritdoc/>
         </member>
         <member name="T:Braco.Utilities.Wpf.Extensions.ComboBoxExtensions">
             <summary>
@@ -1028,6 +1046,9 @@
         <member name="M:Braco.Utilities.Wpf.WindowInfo.GetHashCode">
             <inheritdoc/>
         </member>
+        <member name="M:Braco.Utilities.Wpf.WindowInfo.ToString">
+            <inheritdoc/>
+        </member>
         <member name="T:Braco.Utilities.Wpf.ResourceManagerInitializer">
             <summary>
             Used for initializing the project's <see cref="T:Braco.Services.Abstractions.IResourceManager"/>
@@ -1290,6 +1311,9 @@
             <summary>
             Triggered when the window closes.
             </summary>
+        </member>
+        <member name="M:Braco.Utilities.Wpf.OpenWindowOptions.ToString">
+            <inheritdoc/>
         </member>
         <member name="T:Braco.Utilities.Wpf.ImageGetter">
             <summary>

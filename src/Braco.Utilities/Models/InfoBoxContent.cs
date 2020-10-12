@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Braco.Utilities.Extensions;
+using System.Text;
 using System.Threading;
 
 namespace Braco.Utilities
@@ -66,5 +68,20 @@ namespace Braco.Utilities
             Duration = duration;
             Dismissed = dismissed;
         }
-    }
+
+		/// <inheritdoc/>
+		public override string ToString()
+		{
+			var builder = new StringBuilder($"[{Type}] ");
+
+			if (Title.IsNotNullOrEmpty())
+			{
+				builder.Append($"{Title} | ");
+			}
+
+			builder.Append(Message);
+
+			return builder.ToString();
+		}
+	}
 }

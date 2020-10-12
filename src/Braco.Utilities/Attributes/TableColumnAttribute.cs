@@ -29,6 +29,10 @@ namespace Braco.Utilities
         {
             ResourceName = resourceName;
             DisplayIndex = displayIndex;
-        }
-    }
+		}
+
+		/// <inheritdoc/>
+		public override string ToString()
+			=> $"Column[{DisplayIndex}] ({ResourceName})";
+	}
 }

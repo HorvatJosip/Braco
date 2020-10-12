@@ -17,6 +17,10 @@
 		public LanguageChangedEventArgs(string culture)
         {
             Culture = culture;
-        }
-    }
+		}
+
+		/// <inheritdoc/>
+		public override string ToString()
+			=> $"Language change to: {Culture}";
+	}
 }

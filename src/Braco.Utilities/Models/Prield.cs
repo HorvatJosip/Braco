@@ -163,6 +163,6 @@ namespace Braco.Utilities
         /// <returns>/>String representation of the <see cref="Prield"/>.</returns>
         public override string ToString() => Member.ToString();
 
-        #endregion
-    }
+		#endregion
+	}
 }

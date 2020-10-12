@@ -178,5 +178,9 @@ namespace Braco.Services.Abstractions
 			=> method.ReturnType != typeof(void) &&
 				method.Name.StartsWith(GetterMethodPrefix) &&
 				method.Name != GetterMethodPrefix;
+
+		/// <inheritdoc/>
+		public override string ToString()
+			=> _definedGetters?.ToString();
 	}
 }

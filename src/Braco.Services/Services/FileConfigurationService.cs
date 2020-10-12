@@ -106,7 +106,7 @@ namespace Braco.Services
 		/// <inheritdoc/>
 		public bool Save()
 		{
-			var stringifiedConfig = string.Join(Environment.NewLine, _configuration.Stringify());
+			var stringifiedConfig = _configuration.Stringify().Join(Environment.NewLine);
 
 			var fileContent = _securityService?.Encrypt(stringifiedConfig, GetLock()) ?? stringifiedConfig;
 

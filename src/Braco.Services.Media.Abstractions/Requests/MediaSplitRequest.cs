@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading;
 
 namespace Braco.Services.Media.Abstractions
@@ -34,5 +35,9 @@ namespace Braco.Services.Media.Abstractions
 		/// Ranges to split in the middle of the media.
 		/// </summary>
 		public IEnumerable<TimeRange> SplitRanges { get; set; }
+
+		/// <inheritdoc/>
+		public override string ToString()
+			=> $"Split {SourceFile} -> {DestinationFile} starting at {Start}, ending at {End}{(SplitRanges?.Count() > 0 ? $" and with following split ranges: {string.Join(", ", SplitRanges)}" : "")}";
 	}
 }

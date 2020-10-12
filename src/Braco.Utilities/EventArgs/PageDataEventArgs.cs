@@ -31,6 +31,10 @@
             Page = page;
             PageSize = pageSize;
             NumPages = numPages;
-        }
-    }
+		}
+
+		/// <inheritdoc/>
+		public override string ToString()
+			=> $"Page {Page} / {NumPages} (Rows per page: {PageSize})";
+	}
 }

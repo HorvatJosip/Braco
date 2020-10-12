@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Braco.Utilities.Extensions;
+using System;
 
 namespace Braco.Utilities.Wpf
 {
@@ -34,5 +35,9 @@ namespace Braco.Utilities.Wpf
 		{
 			Subfolders = subfolders;
 		}
+
+		/// <inheritdoc/>
+		public override string ToString()
+			=> $"Page [Pages/{(Subfolders.IsNotNullOrEmpty() ? $"{Subfolders.Join("/")}/" : "")}{Name ?? "PageName.xaml"}] | Can go to previous page: {AllowGoingToPreviousPage}";
 	}
 }

@@ -17,11 +17,11 @@ namespace Braco.Utilities
     {
         #region Fields
 
-        private Func<IEnumerable<T>, IEnumerable<T>> lastMultiSort;
-        private Func<T, bool> lastFilter;
-        private string lastSearchQuery, lastSortColumn;
+        private Func<IEnumerable<T>, IEnumerable<T>> _lastMultiSort;
+        private Func<T, bool> _lastFilter;
+        private string _lastSearchQuery, _lastSortColumn;
 
-        private readonly IList<PropertyInfo> searchProperties = new List<PropertyInfo>();
+        private readonly IList<PropertyInfo> _searchProperties = new List<PropertyInfo>();
 
         #endregion
 
@@ -194,7 +194,7 @@ namespace Braco.Utilities
                 // If it exists...
                 if (searchAttribute != null)
                     // Define that this property is included in searches
-                    searchProperties.Add(property);
+                    _searchProperties.Add(property);
 
                 // Add the column information into the list
                 ColumnInfos.Add(info);
@@ -242,25 +242,25 @@ namespace Braco.Utilities
             IEnumerable<T> filteredItems = AllItems;
 
             // If there is some search query...
-            if (lastSearchQuery.IsNotNullOrWhiteSpace())
+            if (_lastSearchQuery.IsNotNullOrWhiteSpace())
                 // Filter items to those where...
                 filteredItems = filteredItems.Where(item =>
                     // Search query matches some searched properties' value(s)
-                    lastSearchQuery.PartialSearch(searchProperties.Select(prop =>
+                    _lastSearchQuery.PartialSearch(_searchProperties.Select(prop =>
                         prop.GetValue(item)?.ToString()).ToArray()
                     )
                 );
 
             // If a filter was assigned...
-            if (lastFilter != null)
+            if (_lastFilter != null)
                 // Apply it on the remaining items
-                filteredItems = filteredItems.Where(lastFilter);
+                filteredItems = filteredItems.Where(_lastFilter);
 
             // If the data should be sorted...
-            if (lastSortColumn != null)
+            if (_lastSortColumn != null)
             {
                 // Get the display column from the info collection
-                var column = GetDisplayColumn(lastSortColumn);
+                var column = GetDisplayColumn(_lastSortColumn);
 
                 // Define the new sort direction
                 column.SortDirection = column.SortDirection switch
@@ -291,9 +291,9 @@ namespace Braco.Utilities
             }
 
             // If the data should be sorted by multiple columns...
-            if (lastMultiSort != null)
+            if (_lastMultiSort != null)
                 // Apply it on the remaining items
-                filteredItems = lastMultiSort(filteredItems);
+                filteredItems = _lastMultiSort(filteredItems);
 
             // Update the filtered items
             FilteredItems.RenewData(filteredItems);
@@ -345,7 +345,7 @@ namespace Braco.Utilities
                 return;
 
             // Keep track of the filter
-            lastFilter = filter;
+            _lastFilter = filter;
 
             // Apply all of the alterations at once
             UpdateAlterations();
@@ -360,7 +360,7 @@ namespace Braco.Utilities
         public void Search(string query)
         {
             // Keep track of the query
-            lastSearchQuery = query;
+            _lastSearchQuery = query;
 
             // Apply all of the alterations at once
             UpdateAlterations();
@@ -373,10 +373,10 @@ namespace Braco.Utilities
         public void Sort(string columnName)
         {
             // Keep track of the column name
-            lastSortColumn = columnName;
+            _lastSortColumn = columnName;
 
             // Disable multi sorting
-            lastMultiSort = null;
+            _lastMultiSort = null;
 
             // Apply all of the alterations at once
             UpdateAlterations();
@@ -389,15 +389,15 @@ namespace Braco.Utilities
         public void MultiSort(Func<IEnumerable<T>, IEnumerable<T>> multiSort)
         {
             // If the given sort method is the same...
-            if (multiSort == lastMultiSort)
+            if (multiSort == _lastMultiSort)
                 // Bail
                 return;
 
             // Keep track of the method
-            lastMultiSort = multiSort;
+            _lastMultiSort = multiSort;
 
             // Disable sorting
-            lastSortColumn = null;
+            _lastSortColumn = null;
 
             // Apply all of the alterations at once
             UpdateAlterations();
@@ -443,6 +443,10 @@ namespace Braco.Utilities
             return numPages;
         }
 
-        #endregion
-    }
+		/// <inheritdoc/>
+		public override string ToString()
+			=> $"DataManager";
+
+		#endregion
+	}
 }

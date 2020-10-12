@@ -52,6 +52,10 @@ namespace Braco.Utilities
             Property = property;
             Name = property.Name;
             IsReadonly = property.GetSetMethod()?.IsPublic != true;
-        }
-    }
+		}
+
+		/// <inheritdoc/>
+		public override string ToString()
+			=> $"Column for {Property} ({Name}: {(IsReadonly ? "R" : "Not r")}ead-only)";
+	}
 }

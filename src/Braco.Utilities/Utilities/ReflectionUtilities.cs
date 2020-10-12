@@ -63,7 +63,8 @@ namespace Braco.Utilities
         /// <summary>
         /// Raises <see cref="INotifyPropertyChanged.PropertyChanged"/> event
         /// on the given object for the given property.
-        /// <para>Note: requires </para>
+        /// <para>Note: requires PropertyChanged.Fody injection using
+		/// <see cref="PropertyChanged.AddINotifyPropertyChangedInterfaceAttribute"/>.</para>
         /// </summary>
         /// <param name="target">Object that contains the event.</param>
         /// <param name="property">Property for which we are raising the event.</param>

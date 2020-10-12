@@ -352,7 +352,11 @@ namespace Braco.Utilities.Wpf
 		/// <inheritdoc/>
 		public override bool Equals(object obj) => obj is WindowInfo info && info.Window == Window;
 		/// <inheritdoc/>
-		public override int GetHashCode() => Window.GetHashCode(); 
+		public override int GetHashCode() => Window.GetHashCode();
+
+		/// <inheritdoc/>
+		public override string ToString()
+			=> $"Window: {Window}, Page: {Page}";
 
 		#endregion
 	}

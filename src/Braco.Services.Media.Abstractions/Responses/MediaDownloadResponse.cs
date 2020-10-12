@@ -18,5 +18,9 @@ namespace Braco.Services.Media.Abstractions
 		/// Data about the media.
 		/// </summary>
 		public MediaData Data { get; set; }
+
+		/// <inheritdoc/>
+		public override string ToString()
+			=> $"Downloaded to {File} (Data: {Data})";
 	}
 }

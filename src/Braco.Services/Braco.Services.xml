@@ -199,6 +199,9 @@
             setup for the <see cref="T:Microsoft.Extensions.Configuration.ConfigurationBuilder"/>.</param>
             <returns>Configuration instance.</returns>
         </member>
+        <member name="M:Braco.Services.Initializer.ToString">
+            <inheritdoc/>
+        </member>
         <member name="M:Braco.Services.Initializer.RunSpecificInitializer``1(System.Action{Microsoft.Extensions.Configuration.ConfigurationBuilder})">
             <summary>
             Used for running the specific initializer implementation.
@@ -301,6 +304,9 @@
             Stringifies the configuration.
             </summary>
             <returns>Stringified version of the configuration.</returns>
+        </member>
+        <member name="M:Braco.Services.Configuration.ToString">
+            <inheritdoc/>
         </member>
         <member name="T:Braco.Services.ConfigurationItem">
             <summary>
@@ -516,6 +522,32 @@
             <inheritdoc/>
         </member>
         <member name="M:Braco.Services.ResourceManagerSetup.Setup(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Configuration.IConfigurationSection)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Braco.Services.WindowsProcessStarterSetup">
+            <summary>
+            Used for setting up <see cref="T:Braco.Services.WindowsProcessStarter"/> as <see cref="T:Braco.Services.Abstractions.IProcessStarter"/>.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.WindowsProcessStarterSetup.SectionName">
+            <summary>
+            Name of the section used for <see cref="P:Braco.Services.WindowsProcessStarterSetup.ConfigurationSection"/>.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.WindowsProcessStarterSetup.DefaultTerminateAfterKey">
+            <summary>
+            Key for the default terminate after configuration value inside current section.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.WindowsProcessStarterSetup.DefaultUseShellExecuteKey">
+            <summary>
+            Key for the default use shell execute configuration value inside current section.
+            </summary>
+        </member>
+        <member name="P:Braco.Services.WindowsProcessStarterSetup.ConfigurationSection">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.WindowsProcessStarterSetup.Setup(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Configuration.IConfigurationSection)">
             <inheritdoc/>
         </member>
         <member name="T:Braco.Services.FileAuthService">
@@ -794,11 +826,37 @@
             Implementation of <see cref="T:Braco.Services.Abstractions.IProcessStarter"/> for Windows OS.
             </summary>
         </member>
-        <member name="M:Braco.Services.WindowsProcessStarter.#ctor(Braco.Services.Abstractions.IPathManager)">
+        <member name="F:Braco.Services.WindowsProcessStarter.ExplorerFileName">
+            <summary>
+            Name of the explorer executable file.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.WindowsProcessStarter.CmdFileName">
+            <summary>
+            Name of the command prompt executable file.
+            </summary>
+        </member>
+        <member name="F:Braco.Services.WindowsProcessStarter.TerminateFlag">
+            <summary>
+            Parameter that specifies cmd to carry out 
+            the command specified by string and then terminate.
+            <para>To check for other parameters, open a command prompt and run "cmd /?"</para>
+            </summary>
+        </member>
+        <member name="F:Braco.Services.WindowsProcessStarter.AdminVerb">
+            <summary>
+            To start a process as admin, specify this as <see cref="P:System.Diagnostics.ProcessStartInfo.Verb"/>.
+            </summary>
+        </member>
+        <member name="M:Braco.Services.WindowsProcessStarter.#ctor(Braco.Services.Abstractions.IPathManager,System.Boolean,System.Boolean)">
             <summary>
             Creates an instance of the manager.
             </summary>
             <param name="pathManager">Path manager for the project.</param>
+            <param name="defaultTerminateAfter">Default value that will be used for "terminateAfter"
+            argument if not specified in the argument list.</param>
+            <param name="defaultUseShellExecute">Default value that will be used for "useShellExecute"
+            argument if not specified in the argument list.</param>
         </member>
         <member name="M:Braco.Services.WindowsProcessStarter.OpenDirectory(System.IO.DirectoryInfo)">
             <inheritdoc/>
@@ -806,10 +864,60 @@
         <member name="M:Braco.Services.WindowsProcessStarter.OpenFile(System.IO.FileInfo)">
             <inheritdoc/>
         </member>
+        <member name="M:Braco.Services.WindowsProcessStarter.ExecuteCommand(System.String,System.IO.DirectoryInfo,System.Boolean,System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.WindowsProcessStarter.ExecuteCommand(System.String,System.IO.DirectoryInfo,System.Boolean)">
+            <inheritdoc/>
+        </member>
         <member name="M:Braco.Services.WindowsProcessStarter.ExecuteCommand(System.String,System.IO.DirectoryInfo)">
             <inheritdoc/>
         </member>
+        <member name="M:Braco.Services.WindowsProcessStarter.ExecuteCommand(System.String,System.Boolean,System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.WindowsProcessStarter.ExecuteCommand(System.String,System.Boolean)">
+            <inheritdoc/>
+        </member>
         <member name="M:Braco.Services.WindowsProcessStarter.ExecuteCommand(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.WindowsProcessStarter.OpenDirectoryAsAdmin(System.IO.DirectoryInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.WindowsProcessStarter.OpenFileAsAdmin(System.IO.FileInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.WindowsProcessStarter.ExecuteCommandAsAdmin(System.String,System.IO.DirectoryInfo,System.Boolean,System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.WindowsProcessStarter.ExecuteCommandAsAdmin(System.String,System.IO.DirectoryInfo,System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.WindowsProcessStarter.ExecuteCommandAsAdmin(System.String,System.IO.DirectoryInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.WindowsProcessStarter.ExecuteCommandAsAdmin(System.String,System.Boolean,System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.WindowsProcessStarter.ExecuteCommandAsAdmin(System.String,System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.WindowsProcessStarter.ExecuteCommandAsAdmin(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Braco.Services.WindowsProcessStarter.Generate(System.String,System.String,System.IO.DirectoryInfo,System.Boolean,System.Boolean)">
+            <summary>
+            Used for quickly generating <see cref="T:System.Diagnostics.ProcessStartInfo"/>.
+            </summary>
+            <param name="fileName">Name of the file to run.</param>
+            <param name="arguments">Arguments for running the file.</param>
+            <param name="workingDirectory">Directory where to position before running.</param>
+            <param name="useShellExecute">Should the system shell be used to start the process?</param>
+            <param name="runAsAdmin">Should the process be started as administrator?</param>
+            <returns>Instance of the configured <see cref="T:System.Diagnostics.ProcessStartInfo"/>.</returns>
+        </member>
+        <member name="M:Braco.Services.WindowsProcessStarter.Start(System.Diagnostics.ProcessStartInfo)">
             <inheritdoc/>
         </member>
     </members>

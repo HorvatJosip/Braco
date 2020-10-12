@@ -77,5 +77,9 @@ namespace Braco.Services.Abstractions
 		/// <returns><see cref="Message"/> instance.</returns>
 		public static Message FromInformation(string content)
 			=> new Message(Information, content);
+
+		/// <inheritdoc/>
+		public override string ToString()
+			=> $"[{Type}] {Content}";
 	}
 }

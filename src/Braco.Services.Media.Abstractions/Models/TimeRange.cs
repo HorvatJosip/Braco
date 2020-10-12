@@ -45,5 +45,9 @@ namespace Braco.Services.Media.Abstractions
 		/// <returns>If the given time point is within this time range.</returns>
 		public bool Contains(TimeSpan timePoint)
 			=> timePoint >= Start && timePoint <= End;
+
+		/// <inheritdoc/>
+		public override string ToString()
+			=> $"Time range {Start} - {End}";
 	}
 }

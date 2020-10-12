@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <ApplicationIcon>icon.ico</ApplicationIcon>
-    <Version>0.1.2</Version>
+    <Version>0.2.0</Version>
     <Authors>Josip Horvat</Authors>
     <Description>Abstractions for media services.</Description>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
@@ -30,7 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Braco.Services.Abstractions" Version="0.6.2" />
+    <PackageReference Include="Braco.Services.Abstractions" Version="0.7.2" />
   </ItemGroup>
 
 </Project>

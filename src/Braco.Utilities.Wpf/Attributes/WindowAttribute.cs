@@ -37,5 +37,9 @@ namespace Braco.Utilities.Wpf
 		{
 			TypeName = typeName;
 		}
+
+		/// <inheritdoc/>
+		public override string ToString()
+			=> $"{Type?.Name ?? TypeName ?? "WindowName"}";
 	}
 }

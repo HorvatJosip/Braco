@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Braco.Utilities.Extensions;
+using System;
 using System.Collections.Generic;
 
 namespace Braco.Utilities
@@ -21,7 +22,7 @@ namespace Braco.Utilities
         /// <summary>
         /// Gets a string constructed from <see cref="Errors"/>.
         /// </summary>
-        public string ErrorString => string.Join(Environment.NewLine, Errors);
+        public string ErrorString => Errors.Join(Environment.NewLine);
 
 		/// <summary>
 		/// Creates validation errors for the given member.

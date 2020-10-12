@@ -40,6 +40,9 @@
             </summary>
             <param name="action">Action that was performed.</param>
         </member>
+        <member name="M:Braco.Services.Abstractions.AuthEventArgs.ToString">
+            <inheritdoc/>
+        </member>
         <member name="T:Braco.Services.Abstractions.LanguageChangedEventArgs">
             <summary>
             Arguments for the <see cref="E:Braco.Services.Abstractions.ILocalizer.LanguageChanged"/> event.
@@ -55,6 +58,9 @@
             Creates an instance of the arguments.
             </summary>
             <param name="culture">Culture to which we changed.</param>
+        </member>
+        <member name="M:Braco.Services.Abstractions.LanguageChangedEventArgs.ToString">
+            <inheritdoc/>
         </member>
         <member name="T:Braco.Services.Abstractions.SettingChangedEventArgs">
             <summary>
@@ -83,6 +89,9 @@
             <param name="setting">Setting that changed.</param>
             <param name="oldValue">Old value of the setting.</param>
             <param name="newValue">New value of the setting.</param>
+        </member>
+        <member name="M:Braco.Services.Abstractions.SettingChangedEventArgs.ToString">
+            <inheritdoc/>
         </member>
         <member name="T:Braco.Services.Abstractions.IAuthService">
             <summary>
@@ -382,6 +391,25 @@
             <param name="file">File to open.</param>
             <returns>Process that was started by opening the file.</returns>
         </member>
+        <member name="M:Braco.Services.Abstractions.IProcessStarter.ExecuteCommand(System.String,System.IO.DirectoryInfo,System.Boolean,System.Boolean)">
+            <summary>
+            Used for executing a command.
+            </summary>
+            <param name="command">Command to execute.</param>
+            <param name="workingDirectory">Working directory in which to execute the command.</param>
+            <param name="terminateAfter">Should the process terminate after execution finishes?</param>
+            <param name="useShellExecute">Should the system shell be used to start the process?</param>
+            <returns>Process that was started by running the command.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.IProcessStarter.ExecuteCommand(System.String,System.IO.DirectoryInfo,System.Boolean)">
+            <summary>
+            Used for executing a command.
+            </summary>
+            <param name="command">Command to execute.</param>
+            <param name="workingDirectory">Working directory in which to execute the command.</param>
+            <param name="terminateAfter">Should the process terminate after execution finishes?</param>
+            <returns>Process that was started by running the command.</returns>
+        </member>
         <member name="M:Braco.Services.Abstractions.IProcessStarter.ExecuteCommand(System.String,System.IO.DirectoryInfo)">
             <summary>
             Used for executing a command.
@@ -390,12 +418,101 @@
             <param name="workingDirectory">Working directory in which to execute the command.</param>
             <returns>Process that was started by running the command.</returns>
         </member>
+        <member name="M:Braco.Services.Abstractions.IProcessStarter.ExecuteCommand(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Used for executing a command in the current directory.
+            </summary>
+            <param name="command">Command to execute.</param>
+            <param name="terminateAfter">Should the process terminate after execution finishes?</param>
+            <param name="useShellExecute">Should the system shell be used to start the process?</param>
+            <returns>Process that was started by running the command.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.IProcessStarter.ExecuteCommand(System.String,System.Boolean)">
+            <summary>
+            Used for executing a command. in the current directory
+            </summary>
+            <param name="command">Command to execute.</param>
+            <param name="terminateAfter">Should the process terminate after execution finishes?</param>
+            <returns>Process that was started by running the command.</returns>
+        </member>
         <member name="M:Braco.Services.Abstractions.IProcessStarter.ExecuteCommand(System.String)">
             <summary>
             Used for executing a command in the current directory.
             </summary>
             <param name="command">Command to execute.</param>
             <returns>Process that was started by running the command.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.IProcessStarter.OpenDirectoryAsAdmin(System.IO.DirectoryInfo)">
+            <summary>
+            Used for opening a directory as admin.
+            </summary>
+            <param name="directory">Directory to open.</param>
+            <returns>Process that was started by opening the directory.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.IProcessStarter.OpenFileAsAdmin(System.IO.FileInfo)">
+            <summary>
+            Used for opening a file as admin.
+            </summary>
+            <param name="file">File to open.</param>
+            <returns>Process that was started by opening the file.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.IProcessStarter.ExecuteCommandAsAdmin(System.String,System.IO.DirectoryInfo,System.Boolean,System.Boolean)">
+            <summary>
+            Used for executing a command as admin.
+            </summary>
+            <param name="command">Command to execute.</param>
+            <param name="workingDirectory">Working directory in which to execute the command.</param>
+            <param name="terminateAfter">Should the process terminate after execution finishes?</param>
+            <param name="useShellExecute">Should the system shell be used to start the process?</param>
+            <returns>Process that was started by running the command.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.IProcessStarter.ExecuteCommandAsAdmin(System.String,System.IO.DirectoryInfo,System.Boolean)">
+            <summary>
+            Used for executing a command as admin.
+            </summary>
+            <param name="command">Command to execute.</param>
+            <param name="workingDirectory">Working directory in which to execute the command.</param>
+            <param name="terminateAfter">Should the process terminate after execution finishes?</param>
+            <returns>Process that was started by running the command.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.IProcessStarter.ExecuteCommandAsAdmin(System.String,System.IO.DirectoryInfo)">
+            <summary>
+            Used for executing a command as admin.
+            </summary>
+            <param name="command">Command to execute.</param>
+            <param name="workingDirectory">Working directory in which to execute the command.</param>
+            <returns>Process that was started by running the command.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.IProcessStarter.ExecuteCommandAsAdmin(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Used for executing a command in the current directory as admin.
+            </summary>
+            <param name="command">Command to execute.</param>
+            <param name="terminateAfter">Should the process terminate after execution finishes?</param>
+            <param name="useShellExecute">Should the system shell be used to start the process?</param>
+            <returns>Process that was started by running the command.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.IProcessStarter.ExecuteCommandAsAdmin(System.String,System.Boolean)">
+            <summary>
+            Used for executing a command. in the current directory as admin.
+            </summary>
+            <param name="command">Command to execute.</param>
+            <param name="terminateAfter">Should the process terminate after execution finishes?</param>
+            <returns>Process that was started by running the command.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.IProcessStarter.ExecuteCommandAsAdmin(System.String)">
+            <summary>
+            Used for executing a command in the current directory as admin.
+            </summary>
+            <param name="command">Command to execute.</param>
+            <returns>Process that was started by running the command.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.IProcessStarter.Start(System.Diagnostics.ProcessStartInfo)">
+            <summary>
+            Used for starting a process.
+            </summary>
+            <param name="startInfo">Options for starting the process.</param>
+            <returns>The started process.</returns>
         </member>
         <member name="T:Braco.Services.Abstractions.IResourceManager">
             <summary>
@@ -631,6 +748,9 @@
             <param name="content">Content of the message-</param>
             <returns><see cref="T:Braco.Services.Abstractions.Message"/> instance.</returns>
         </member>
+        <member name="M:Braco.Services.Abstractions.Message.ToString">
+            <inheritdoc/>
+        </member>
         <member name="T:Braco.Services.Abstractions.ResourceGetter">
             <summary>
             Base class for fetching logic of a specific resource.
@@ -728,6 +848,9 @@
             <param name="method">Method to test if it is a getter.</param>
             <returns>If the method is a getter or not.</returns>
         </member>
+        <member name="M:Braco.Services.Abstractions.ResourceGetter.ToString">
+            <inheritdoc/>
+        </member>
         <member name="T:Braco.Services.Abstractions.Response`1">
             <summary>
             Represents a response from a service.
@@ -793,6 +916,9 @@
             <param name="unfinishedReason">Reason why the request didn't finish.</param>
             <param name="errors">Error messages to add to the response.</param>
             <returns>Instance of the response that is unfinished.</returns>
+        </member>
+        <member name="M:Braco.Services.Abstractions.Response`1.ToString">
+            <inheritdoc/>
         </member>
     </members>
 </doc>

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Braco.Utilities.Extensions;
+using System.Collections.Generic;
 
 namespace Braco.Utilities
 {
@@ -12,5 +13,9 @@ namespace Braco.Utilities
         /// List of validations for every property.
         /// </summary>
         public List<ValidationErrors> ValidationErrors { get; set; }
-    }
+
+		/// <inheritdoc/>
+		public override string ToString()
+			=> ValidationErrors.Join(" | ");
+	}
 }

@@ -12,5 +12,9 @@ namespace Braco.Utilities
 		/// Key for localization.
 		/// </summary>
         public string Key { get; set; }
-    }
+
+		/// <inheritdoc/>
+		public override string ToString()
+			=> $"Localized [{Key}]";
+	}
 }

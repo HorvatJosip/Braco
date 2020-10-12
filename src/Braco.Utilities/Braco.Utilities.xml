@@ -14,11 +14,17 @@
             Key for localization.
             </summary>
         </member>
+        <member name="M:Braco.Utilities.LocalizedAttribute.ToString">
+            <inheritdoc/>
+        </member>
         <member name="T:Braco.Utilities.SearchAttribute">
             <summary>
             Indicates that the decorated property should be
             included when performing search.
             </summary>
+        </member>
+        <member name="M:Braco.Utilities.SearchAttribute.ToString">
+            <inheritdoc/>
         </member>
         <member name="T:Braco.Utilities.SettingAttribute">
             <summary>
@@ -45,6 +51,9 @@
             property name will be used.
             </summary>
         </member>
+        <member name="M:Braco.Utilities.SettingAttribute.ToString">
+            <inheritdoc/>
+        </member>
         <member name="T:Braco.Utilities.TableColumnAttribute">
             <summary>
             Specifies that the marked property is shown
@@ -68,6 +77,9 @@
             </summary>
             <param name="resourceName">Name of the resource for getting localized header value.</param>
             <param name="displayIndex">Column index in the table.</param>
+        </member>
+        <member name="M:Braco.Utilities.TableColumnAttribute.ToString">
+            <inheritdoc/>
         </member>
         <member name="T:Braco.Utilities.RelayCommand">
             <summary>
@@ -247,6 +259,9 @@
             <param name="pageSize">number of rows to be displayed on the page.</param>
             <param name="numPages">total number of pages that exist.</param>
         </member>
+        <member name="M:Braco.Utilities.PageDataEventArgs.ToString">
+            <inheritdoc/>
+        </member>
         <member name="T:Braco.Utilities.ValidationPerformedEventArgs">
             <summary>
             Event arguments for the event that will be raised
@@ -257,6 +272,9 @@
             <summary>
             List of validations for every property.
             </summary>
+        </member>
+        <member name="M:Braco.Utilities.ValidationPerformedEventArgs.ToString">
+            <inheritdoc/>
         </member>
         <member name="T:Braco.Utilities.Extensions.CollectionExtensions">
             <summary>
@@ -1056,6 +1074,9 @@
             <param name="columnName">Display name of the column to find.</param>
             <returns></returns>
         </member>
+        <member name="M:Braco.Utilities.DataManager`1.ToString">
+            <inheritdoc/>
+        </member>
         <member name="T:Braco.Utilities.EnumItemManager">
             <summary>
             Used for localization of enums.
@@ -1097,6 +1118,9 @@
             <typeparam name="TEnum">Type of enum.</typeparam>
             <param name="value">Value for which to fetch the localized version.</param>
             <returns>Localized version for the given enum value.</returns>
+        </member>
+        <member name="M:Braco.Utilities.EnumItemManager.ToString">
+            <inheritdoc/>
         </member>
         <member name="T:Braco.Utilities.Validator">
             <summary>
@@ -1148,6 +1172,9 @@
             <param name="additionalChecks">Checks to perform aside from ones on properties.</param>
             <returns></returns>
         </member>
+        <member name="M:Braco.Utilities.Validator.ToString">
+            <inheritdoc/>
+        </member>
         <member name="T:Braco.Utilities.CollectionInfo">
             <summary>
             Information about a type - is it a collection and if it is, which
@@ -1188,6 +1215,9 @@
             </summary>
             <param name="typeToTest">Type to test if it is a collection.</param>
             <exception cref="T:System.ArgumentNullException"/>
+        </member>
+        <member name="M:Braco.Utilities.CollectionInfo.ToString">
+            <inheritdoc/>
         </member>
         <member name="T:Braco.Utilities.ColumnInfo">
             <summary>
@@ -1234,6 +1264,9 @@
             Creates a new column info for the given property.
             </summary>
             <param name="property">property that this column is represented by.</param>
+        </member>
+        <member name="M:Braco.Utilities.ColumnInfo.ToString">
+            <inheritdoc/>
         </member>
         <member name="T:Braco.Utilities.EnumItem">
             <summary>
@@ -1320,6 +1353,9 @@
             <param name="duration">how long should the info box be displayed?</param>
             <param name="dismissed">is the info box dismissed?</param>
         </member>
+        <member name="M:Braco.Utilities.InfoBoxContent.ToString">
+            <inheritdoc/>
+        </member>
         <member name="T:Braco.Utilities.MemberCheck">
             <summary>
             Used for performing a check on the specified member.
@@ -1367,6 +1403,9 @@
             <param name="errorMessage"></param>
             <param name="member"></param>
             <param name="skip"></param>
+        </member>
+        <member name="M:Braco.Utilities.MemberCheck.ToString">
+            <inheritdoc/>
         </member>
         <member name="T:Braco.Utilities.PercentageProgress">
             <summary>
@@ -1422,6 +1461,9 @@
             <summary>
             Resets the progress reporter to starting phase.
             </summary>
+        </member>
+        <member name="M:Braco.Utilities.PercentageProgress.ToString">
+            <inheritdoc/>
         </member>
         <member name="T:Braco.Utilities.Prield">
             <summary>
@@ -1676,7 +1718,8 @@
             <summary>
             Raises <see cref="E:System.ComponentModel.INotifyPropertyChanged.PropertyChanged"/> event
             on the given object for the given property.
-            <para>Note: requires </para>
+            <para>Note: requires PropertyChanged.Fody injection using
+            <see cref="T:PropertyChanged.AddINotifyPropertyChangedInterfaceAttribute"/>.</para>
             </summary>
             <param name="target">Object that contains the event.</param>
             <param name="property">Property for which we are raising the event.</param>

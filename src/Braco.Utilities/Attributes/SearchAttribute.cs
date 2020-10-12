@@ -8,6 +8,9 @@ namespace Braco.Utilities
     /// </summary>
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
     public class SearchAttribute : Attribute
-    {
-    }
+	{
+		/// <inheritdoc/>
+		public override string ToString()
+			=> $"Search";
+	}
 }

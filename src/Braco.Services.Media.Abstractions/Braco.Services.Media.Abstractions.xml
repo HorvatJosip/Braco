@@ -55,6 +55,9 @@
             Duration of the media.
             </summary>
         </member>
+        <member name="M:Braco.Services.Media.Abstractions.MediaData.ToString">
+            <inheritdoc/>
+        </member>
         <member name="T:Braco.Services.Media.Abstractions.RemoteResourceDownloadInfo">
             <summary>
             Contains information for downloading a remote resource.
@@ -69,6 +72,9 @@
             <summary>
             How many chunks to download at a time.
             </summary>
+        </member>
+        <member name="M:Braco.Services.Media.Abstractions.RemoteResourceDownloadInfo.ToString">
+            <inheritdoc/>
         </member>
         <member name="T:Braco.Services.Media.Abstractions.TimeRange">
             <summary>
@@ -101,6 +107,9 @@
             <param name="timePoint">Time point to check if it is within this time range.</param>
             <returns>If the given time point is within this time range.</returns>
         </member>
+        <member name="M:Braco.Services.Media.Abstractions.TimeRange.ToString">
+            <inheritdoc/>
+        </member>
         <member name="T:Braco.Services.Media.Abstractions.MediaDownloadRequest">
             <summary>
             Request data for <see cref="M:Braco.Services.Media.Abstractions.IMediaDownloader.DownloadAsync(Braco.Services.Media.Abstractions.MediaDownloadRequest,System.Threading.CancellationToken)"/>.
@@ -120,6 +129,9 @@
             <summary>
             Callback for when the media data is received from download request.
             </summary>
+        </member>
+        <member name="M:Braco.Services.Media.Abstractions.MediaDownloadRequest.ToString">
+            <inheritdoc/>
         </member>
         <member name="T:Braco.Services.Media.Abstractions.MediaSplitRequest">
             <summary>
@@ -151,6 +163,9 @@
             Ranges to split in the middle of the media.
             </summary>
         </member>
+        <member name="M:Braco.Services.Media.Abstractions.MediaSplitRequest.ToString">
+            <inheritdoc/>
+        </member>
         <member name="T:Braco.Services.Media.Abstractions.MediaDownloadResponse">
             <summary>
             Response data for <see cref="M:Braco.Services.Media.Abstractions.IMediaDownloader.DownloadAsync(Braco.Services.Media.Abstractions.MediaDownloadRequest,System.Threading.CancellationToken)"/>.
@@ -166,6 +181,9 @@
             Data about the media.
             </summary>
         </member>
+        <member name="M:Braco.Services.Media.Abstractions.MediaDownloadResponse.ToString">
+            <inheritdoc/>
+        </member>
         <member name="T:Braco.Services.Media.Abstractions.MediaSplitResponse">
             <summary>
             Response data for <see cref="M:Braco.Services.Media.Abstractions.IMediaSplitter.SplitAsync(Braco.Services.Media.Abstractions.MediaSplitRequest,System.Threading.CancellationToken)"/>.
@@ -180,6 +198,9 @@
             <summary>
             Source file that was used for splitting.
             </summary>
+        </member>
+        <member name="M:Braco.Services.Media.Abstractions.MediaSplitResponse.ToString">
+            <inheritdoc/>
         </member>
     </members>
 </doc>

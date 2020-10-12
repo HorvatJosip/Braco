@@ -5,7 +5,7 @@
     <UseWPF>true</UseWPF>
     <ApplicationIcon>icon.ico</ApplicationIcon>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>0.6.8</Version>
+    <Version>0.7.1</Version>
     <Authors>Josip Horvat</Authors>
     <Company>Josip Horvat</Company>
     <Description>Controls and some helpers for them that may be commonly used for WPF projects.</Description>
@@ -32,7 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Braco.Utilities.Wpf" Version="0.6.9" />
+    <PackageReference Include="Braco.Utilities.Wpf" Version="0.7.1" />
     <PackageReference PrivateAssets="All" Include="PropertyChanged.Fody" Version="3.2.9" />
     <PackageReference Include="SharpVectors.Reloaded" Version="1.6.0" />
     <PackageReference Include="System.Windows.Interactivity.WPF" Version="2.0.20525" />

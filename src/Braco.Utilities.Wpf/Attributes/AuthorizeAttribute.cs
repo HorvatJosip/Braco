@@ -11,6 +11,9 @@ namespace Braco.Utilities.Wpf
     /// </summary>
     [AttributeUsage(AttributeTargets.Class)]
     public class AuthorizeAttribute : Attribute
-    {
-    }
+	{
+		/// <inheritdoc/>
+		public override string ToString()
+			=> $"Authorize";
+	}
 }

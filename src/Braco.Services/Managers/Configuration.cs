@@ -59,5 +59,9 @@ namespace Braco.Services
 		/// </summary>
 		/// <returns>Stringified version of the configuration.</returns>
         public IEnumerable<string> Stringify() => configuration.Select(item => item.ConvertToLine());
-    }
+
+		/// <inheritdoc/>
+		public override string ToString()
+			=> Stringify().Join(" | ");
+	}
 }

@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 
 namespace Braco.Services
 {
@@ -325,6 +326,22 @@ namespace Braco.Services
 			configure?.Invoke(configBuilder);
 
 			return configBuilder.Build();
+		}
+
+		/// <inheritdoc/>
+		public override string ToString()
+		{
+			var builder = new StringBuilder();
+
+			builder.Append("Service Setups: ");
+
+			builder.Append(_serviceSetups.Where(setup => setup != null).Select(setup => setup.GetType().Name).Join(", "));
+
+			builder.Append(" | Service Initializers: ");
+
+			builder.Append(_postServiceBuildInitializerTypes.Concat(_postServiceBuildInitializers.Select(x => x?.GetType())).Where(x => x != null).Select(x => x.Name).Join(", "));
+
+			return builder.ToString();
 		}
 
 		/// <summary>

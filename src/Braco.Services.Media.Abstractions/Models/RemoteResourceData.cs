@@ -14,5 +14,9 @@
 		/// How many chunks to download at a time.
 		/// </summary>
 		public int ChunkSize { get; set; }
+
+		/// <inheritdoc/>
+		public override string ToString()
+			=> $"Download from {Uri} in chunks of {ChunkSize}";
 	}
 }

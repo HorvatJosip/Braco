@@ -17,6 +17,10 @@
         public AuthEventArgs(AuthAction action)
         {
             Action = action;
-        }
-    }
+		}
+
+		/// <inheritdoc/>
+		public override string ToString()
+			=> $"Auth action: {Action}";
+	}
 }

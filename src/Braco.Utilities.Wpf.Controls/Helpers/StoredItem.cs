@@ -112,5 +112,9 @@ namespace Braco.Utilities.Wpf.Controls
 
 			LastSelectedIndex = null;
 		}
+
+		/// <inheritdoc/>
+		public override string ToString()
+			=> $"{Text}: {Value} (last selected index: {LastSelectedIndex})";
 	}
 }

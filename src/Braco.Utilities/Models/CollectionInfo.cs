@@ -1,13 +1,14 @@
-﻿using System;
+﻿using Braco.Utilities.Extensions;
+using System;
 using System.Collections;
 
 namespace Braco.Utilities
 {
-    /// <summary>
-    /// Information about a type - is it a collection and if it is, which
-    /// types does that collection work with?
-    /// </summary>
-    public class CollectionInfo
+	/// <summary>
+	/// Information about a type - is it a collection and if it is, which
+	/// types does that collection work with?
+	/// </summary>
+	public class CollectionInfo
     {
         #region Properties
 
@@ -71,7 +72,13 @@ namespace Braco.Utilities
             }
         }
 
-        #endregion
-    }
+		#endregion
+
+		/// <inheritdoc/>
+		public override string ToString()
+			=> IsArray
+				? $"{ArrayType}[]"
+				: $"Collection<{CollectionTypes.Join(", ")}>";
+	}
 
 }

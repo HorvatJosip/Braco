@@ -27,5 +27,9 @@ namespace Braco.Utilities.Wpf
 			Page = page;
 			Window = window;
 		}
+
+		/// <inheritdoc/>
+		public override string ToString()
+			=> $"Changed to page {Page} on window {Window}";
 	}
 }

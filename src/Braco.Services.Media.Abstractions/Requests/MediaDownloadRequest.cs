@@ -23,5 +23,9 @@ namespace Braco.Services.Media.Abstractions
 		/// Callback for when the media data is received from download request.
 		/// </summary>
 		public Action<MediaData> DataCallback { get; set; }
+
+		/// <inheritdoc/>
+		public override string ToString()
+			=> $"{DownloadInfo} into {Directory}";
 	}
 }

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Braco.Utilities.Extensions;
+using System;
+using System.Linq;
+using System.Text;
 
 namespace Braco.Utilities.Wpf
 {
@@ -42,5 +45,9 @@ namespace Braco.Utilities.Wpf
         /// Triggered when the window closes.
         /// </summary>
         public Action<WindowViewModel, PageViewModel> OnClosed { get; set; }
-    }
+
+		/// <inheritdoc/>
+		public override string ToString()
+			=> GetType().GetProperties().Select(prop => $"{prop.Name}: {prop.GetValue(this)}").Join(", ");
+	}
 }

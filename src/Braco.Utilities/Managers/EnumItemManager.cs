@@ -120,6 +120,10 @@ namespace Braco.Utilities
             }
 
             return null;
-        }
-    }
+		}
+
+		/// <inheritdoc/>
+		public override string ToString()
+			=> _values.Join(" | ");
+	}
 }

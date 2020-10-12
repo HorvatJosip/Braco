@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace Braco.Services.Abstractions
 {
@@ -78,5 +79,20 @@ namespace Braco.Services.Abstractions
 		/// <returns>Instance of the response that is unfinished.</returns>
 		public static T FromErrors(string unfinishedReason, params string[] errors)
 			=> Unfinished(unfinishedReason, errors.Select(error => Message.FromError(error)).ToArray());
+
+		/// <inheritdoc/>
+		public override string ToString()
+		{
+			var builder = new StringBuilder($"{(Finished ? "F" : "Unf")}inished");
+
+			if(Messages?.Count > 0)
+			{
+				builder.Append(": ");
+
+				builder.Append(string.Join(" | ", Messages));
+			}
+
+			return builder.ToString();
+		}
 	}
 }

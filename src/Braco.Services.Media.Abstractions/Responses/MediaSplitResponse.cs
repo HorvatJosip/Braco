@@ -18,5 +18,9 @@ namespace Braco.Services.Media.Abstractions
 		/// Source file that was used for splitting.
 		/// </summary>
 		public FileInfo SourceFile { get; set; }
+
+		/// <inheritdoc/>
+		public override string ToString()
+			=> $"Split {SourceFile} -> {SplitFile}";
 	}
 }

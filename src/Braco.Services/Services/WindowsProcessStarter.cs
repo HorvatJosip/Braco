@@ -10,60 +10,182 @@ namespace Braco.Services
 	/// </summary>
     public class WindowsProcessStarter : IProcessStarter
     {
-		private const string explorerFileName = "explorer.exe";
-        private const string cmdFileName = "cmd.exe";
-        private const string commandFormat = "/C {0}";
+		/// <summary>
+		/// Name of the explorer executable file.
+		/// </summary>
+		public const string ExplorerFileName = "explorer.exe";
+		/// <summary>
+		/// Name of the command prompt executable file.
+		/// </summary>
+        public const string CmdFileName = "cmd.exe";
+
+		/// <summary>
+		/// Parameter that specifies cmd to carry out 
+		/// the command specified by string and then terminate.
+		/// <para>To check for other parameters, open a command prompt and run "cmd /?"</para>
+		/// </summary>
+		public const string TerminateFlag = "/C";
+
+		/// <summary>
+		/// To start a process as admin, specify this as <see cref="ProcessStartInfo.Verb"/>.
+		/// </summary>
+		public const string AdminVerb = "runas";
+
 		private readonly IPathManager _pathManager;
+		private readonly bool _defaultTerminateAfter;
+		private readonly bool _defaultUseShellExecute;
 
 		/// <summary>
 		/// Creates an instance of the manager.
 		/// </summary>
 		/// <param name="pathManager">Path manager for the project.</param>
-		public WindowsProcessStarter(IPathManager pathManager)
+		/// <param name="defaultTerminateAfter">Default value that will be used for "terminateAfter"
+		/// argument if not specified in the argument list.</param>
+		/// <param name="defaultUseShellExecute">Default value that will be used for "useShellExecute"
+		/// argument if not specified in the argument list.</param>
+		public WindowsProcessStarter(IPathManager pathManager, bool defaultTerminateAfter, bool defaultUseShellExecute)
 		{
-			_pathManager = pathManager;
+			_pathManager = pathManager ?? throw new ArgumentNullException(nameof(pathManager));
+			_defaultTerminateAfter = defaultTerminateAfter;
+			_defaultUseShellExecute = defaultUseShellExecute;
 		}
 
 		/// <inheritdoc/>
-        public Process OpenDirectory(DirectoryInfo directory)
-        {
-            if (directory == null) throw new ArgumentNullException(nameof(directory));
-            if (!directory.Exists) throw new ArgumentException("Cannot open a directory that doesn't exist.", nameof(directory));
-
-            return Process.Start(new ProcessStartInfo(explorerFileName, directory.FullName)
-            {
-                UseShellExecute = true
-            });
-        }
+		public Process OpenDirectory(DirectoryInfo directory)
+			=> OpenDirectory(directory, runAsAdmin: false);
 
 		/// <inheritdoc/>
         public Process OpenFile(FileInfo file)
-        {
-            if (file == null) throw new ArgumentNullException(nameof(file));
-            if (!file.Exists) throw new ArgumentException("Cannot open a file that doesn't exist.", nameof(file));
-
-            return Process.Start(new ProcessStartInfo(file.FullName)
-            {
-                UseShellExecute = true
-            });
-        }
+			=> OpenFile(file, runAsAdmin: false);
 
 		/// <inheritdoc/>
-        public Process ExecuteCommand(string command, DirectoryInfo workingDirectory)
-        {
-            if (command == null) throw new ArgumentNullException(nameof(command));
-            if (workingDirectory == null) throw new ArgumentNullException(nameof(workingDirectory));
-
-            return Process.Start(new ProcessStartInfo
-            {
-                WorkingDirectory = workingDirectory.FullName,
-                Arguments = string.Format(commandFormat, command),
-                FileName = cmdFileName,
-            });
-        }
+		public Process ExecuteCommand(string command, DirectoryInfo workingDirectory, bool terminateAfter, bool useShellExecute)
+			=> ExecuteCommand(command, workingDirectory, terminateAfter, useShellExecute, runAsAdmin: false);
 
 		/// <inheritdoc/>
-        public Process ExecuteCommand(string command)
-            => ExecuteCommand(command, _pathManager.AppDirectory);
-    }
+		public Process ExecuteCommand(string command, DirectoryInfo workingDirectory, bool terminateAfter)
+			=> ExecuteCommand(command, workingDirectory, terminateAfter, useShellExecute: _defaultUseShellExecute);
+
+		/// <inheritdoc/>
+		public Process ExecuteCommand(string command, DirectoryInfo workingDirectory)
+			=> ExecuteCommand(command, workingDirectory, terminateAfter: _defaultTerminateAfter);
+
+		/// <inheritdoc/>
+		public Process ExecuteCommand(string command, bool terminateAfter, bool useShellExecute)
+			=> ExecuteCommand(command, workingDirectory: null, terminateAfter, useShellExecute);
+
+		/// <inheritdoc/>
+		public Process ExecuteCommand(string command, bool terminateAfter)
+			=> ExecuteCommand(command, terminateAfter, useShellExecute: _defaultUseShellExecute);
+
+		/// <inheritdoc/>
+		public Process ExecuteCommand(string command)
+			=> ExecuteCommand(command, terminateAfter: _defaultTerminateAfter);
+
+		/// <inheritdoc/>
+		public Process OpenDirectoryAsAdmin(DirectoryInfo directory)
+			=> OpenDirectory(directory, runAsAdmin: true);
+
+		/// <inheritdoc/>
+		public Process OpenFileAsAdmin(FileInfo file)
+			=> OpenFile(file, runAsAdmin: true);
+
+		/// <inheritdoc/>
+		public Process ExecuteCommandAsAdmin(string command, DirectoryInfo workingDirectory, bool terminateAfter, bool useShellExecute)
+			=> ExecuteCommand(command, workingDirectory, terminateAfter, useShellExecute, runAsAdmin: true);
+
+		/// <inheritdoc/>
+		public Process ExecuteCommandAsAdmin(string command, DirectoryInfo workingDirectory, bool terminateAfter)
+			=> ExecuteCommandAsAdmin(command, workingDirectory, terminateAfter, useShellExecute: _defaultUseShellExecute);
+
+		/// <inheritdoc/>
+		public Process ExecuteCommandAsAdmin(string command, DirectoryInfo workingDirectory)
+			=> ExecuteCommandAsAdmin(command, workingDirectory, terminateAfter: _defaultTerminateAfter);
+
+		/// <inheritdoc/>
+		public Process ExecuteCommandAsAdmin(string command, bool terminateAfter, bool useShellExecute)
+			=> ExecuteCommandAsAdmin(command, workingDirectory: null, terminateAfter, useShellExecute);
+
+		/// <inheritdoc/>
+		public Process ExecuteCommandAsAdmin(string command, bool terminateAfter)
+			=> ExecuteCommandAsAdmin(command, terminateAfter, useShellExecute: _defaultUseShellExecute);
+
+		/// <inheritdoc/>
+		public Process ExecuteCommandAsAdmin(string command)
+			=> ExecuteCommandAsAdmin(command, terminateAfter: _defaultTerminateAfter);
+
+		private Process OpenFile(FileInfo file, bool runAsAdmin)
+		{
+			if (file == null) throw new ArgumentNullException(nameof(file));
+
+			return Start(Generate
+			(
+				fileName: file.FullName,
+				arguments: string.Empty,
+				workingDirectory: null,
+				useShellExecute: true,
+				runAsAdmin: runAsAdmin
+			));
+		}
+
+		private Process OpenDirectory(DirectoryInfo directory, bool runAsAdmin)
+		{
+			if (directory == null) throw new ArgumentNullException(nameof(directory));
+
+			return Start(Generate
+			(
+				fileName: ExplorerFileName,
+				arguments: $"\"{directory.FullName}\"",
+				workingDirectory: null,
+				useShellExecute: true,
+				runAsAdmin: runAsAdmin
+			));
+		}
+
+		private Process ExecuteCommand(string command, DirectoryInfo workingDirectory, bool terminateAfter, bool useShellExecute, bool runAsAdmin)
+		{
+			if (command == null) throw new ArgumentNullException(nameof(command));
+
+			return Start(Generate
+			(
+				fileName: CmdFileName,
+				arguments: $"{(terminateAfter ? $"{TerminateFlag} " : "")}{command}",
+				workingDirectory: workingDirectory,
+				useShellExecute: useShellExecute,
+				runAsAdmin: runAsAdmin
+			));
+		}
+
+		/// <summary>
+		/// Used for quickly generating <see cref="ProcessStartInfo"/>.
+		/// </summary>
+		/// <param name="fileName">Name of the file to run.</param>
+		/// <param name="arguments">Arguments for running the file.</param>
+		/// <param name="workingDirectory">Directory where to position before running.</param>
+		/// <param name="useShellExecute">Should the system shell be used to start the process?</param>
+		/// <param name="runAsAdmin">Should the process be started as administrator?</param>
+		/// <returns>Instance of the configured <see cref="ProcessStartInfo"/>.</returns>
+		public ProcessStartInfo Generate(string fileName, string arguments, DirectoryInfo workingDirectory, bool useShellExecute, bool runAsAdmin)
+		{
+			var instance = new ProcessStartInfo
+			{
+				FileName = fileName,
+				Arguments = arguments,
+				WorkingDirectory = workingDirectory?.FullName ?? _pathManager.AppDirectory.FullName,
+				UseShellExecute = useShellExecute,
+				ErrorDialog = true
+			};
+
+			if (runAsAdmin)
+			{
+				instance.Verb = AdminVerb;
+			}
+
+			return instance;
+		}
+
+		/// <inheritdoc/>
+		public Process Start(ProcessStartInfo startInfo)
+			=> Process.Start(startInfo);
+	}
 }

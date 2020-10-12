@@ -27,5 +27,9 @@ namespace Braco.Utilities
 		/// property name will be used.
 		/// </summary>
 		public string Key { get; set; }
+
+		/// <inheritdoc/>
+		public override string ToString()
+			=> $"[{Key}] Load: {Load}, Update on change: {UpdateOnValueChanged}";
 	}
 }

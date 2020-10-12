@@ -260,6 +260,10 @@ namespace Braco.Utilities
 
             // Return the result of validations
             return valid;
-        }
-    }
+		}
+
+		/// <inheritdoc/>
+		public override string ToString()
+			=> $"Validator for {_instance}";
+	}
 }

@@ -31,6 +31,10 @@
             Setting = setting;
             OldValue = oldValue;
             NewValue = newValue;
-        }
-    }
+		}
+
+		/// <inheritdoc/>
+		public override string ToString()
+			=> $"{Setting}: {OldValue} -> {NewValue}";
+	}
 }

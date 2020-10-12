@@ -972,6 +972,9 @@
             </summary>
             <param name="text">Text to input into <see cref="P:Braco.Utilities.Wpf.Controls.StoredItem`1.TextBox"/>.</param>
         </member>
+        <member name="M:Braco.Utilities.Wpf.Controls.StoredItem`1.ToString">
+            <inheritdoc/>
+        </member>
         <member name="T:Braco.Utilities.Wpf.Controls.ToggleButtonAttachedPropertiesHelper`1">
             <summary>
             Helper for working with attached properties of a toggle button

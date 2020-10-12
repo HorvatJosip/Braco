@@ -20,5 +20,9 @@ namespace Braco.Utilities.Wpf
 		{
 			Window = window;
 		}
+
+		/// <inheritdoc/>
+		public override string ToString()
+			=> $"Changed to window {Window}";
 	}
 }
