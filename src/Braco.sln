@@ -13,11 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Braco.Utilities.Wpf", "Brac
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Braco.Utilities.Wpf.Controls", "Braco.Utilities.Wpf.Controls\Braco.Utilities.Wpf.Controls.csproj", "{0A07DE57-4002-4921-A805-1229AF638AF2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Braco.SampleWpfClient", "Braco.SampleWpfClient\Braco.SampleWpfClient.csproj", "{4AB8969A-9C44-4AA2-9216-982994BBBAC6}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Braco.Services.Media.Abstractions", "Braco.Services.Media.Abstractions\Braco.Services.Media.Abstractions.csproj", "{03CC88A4-6839-42D6-B839-DF09891D0F06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Braco.Services.Media", "Braco.Services.Media\Braco.Services.Media.csproj", "{5D5B10D4-CB70-4E30-8267-DF69D392EC2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Braco.Services.Media", "Braco.Services.Media\Braco.Services.Media.csproj", "{5D5B10D4-CB70-4E30-8267-DF69D392EC2D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,10 +43,6 @@ Global
 		{0A07DE57-4002-4921-A805-1229AF638AF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A07DE57-4002-4921-A805-1229AF638AF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A07DE57-4002-4921-A805-1229AF638AF2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4AB8969A-9C44-4AA2-9216-982994BBBAC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4AB8969A-9C44-4AA2-9216-982994BBBAC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4AB8969A-9C44-4AA2-9216-982994BBBAC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4AB8969A-9C44-4AA2-9216-982994BBBAC6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{03CC88A4-6839-42D6-B839-DF09891D0F06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{03CC88A4-6839-42D6-B839-DF09891D0F06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03CC88A4-6839-42D6-B839-DF09891D0F06}.Release|Any CPU.ActiveCfg = Release|Any CPU
