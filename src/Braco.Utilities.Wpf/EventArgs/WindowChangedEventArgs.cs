@@ -3,7 +3,7 @@ using System;
 namespace Braco.Utilities.Wpf
 {
 	/// <summary>
-	/// Event args for <see cref="IWindowService.WindowChanged"/> event.
+	/// Event args for window changes.
 	/// </summary>
 	public class WindowChangedEventArgs : EventArgs
 	{

@@ -131,6 +131,9 @@ namespace Braco.Utilities.Wpf.Controls
 			set { SetValue(HorizontalScrollBarVisibilityProperty, value); }
 		}
 
+		/// <summary>
+		/// Dependency property for <see cref="HorizontalScrollBarVisibility"/>.
+		/// </summary>
 		public static readonly DependencyProperty HorizontalScrollBarVisibilityProperty =
 			DependencyProperty.Register(nameof(HorizontalScrollBarVisibility), typeof(ScrollBarVisibility), typeof(DropContainer), new PropertyMetadata(ScrollBarVisibility.Disabled));
 

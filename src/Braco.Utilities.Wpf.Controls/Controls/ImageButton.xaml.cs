@@ -12,7 +12,7 @@ namespace Braco.Utilities.Wpf.Controls
 	public partial class ImageButton : UserControl
 	{
 		/// <summary>
-		/// Name of the <see cref="WpfImage"/> control.
+		/// Name of the <see cref="System.Windows.Controls.Image"/> control.
 		/// </summary>
 		public const string ImageControlName = "TheImage";
 

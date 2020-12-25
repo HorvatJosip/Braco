@@ -166,8 +166,10 @@ namespace Braco.Utilities.Wpf
 			pageVM.OnLoaded(WindowViewModel, _pageData, PreviousPageViewModel);
 		}
 
+		/// <inheritdoc/>
 		public override bool Equals(object obj)
 			=> obj is UnorderedFrameManager other && other.GetHashCode() == GetHashCode();
+		/// <inheritdoc/>
 		public override int GetHashCode()
 			=> new { Frame = _frame, Window = WindowViewModel?.GetType() }.GetHashCode();
 

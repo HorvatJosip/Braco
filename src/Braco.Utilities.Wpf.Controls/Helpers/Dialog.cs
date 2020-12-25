@@ -83,6 +83,7 @@ namespace Braco.Utilities.Wpf.Controls
 		/// Opens a dialog with given content.
 		/// </summary>
 		/// <typeparam name="TPage">Dialog page to open.</typeparam>
+		/// <typeparam name="TResult">Type of object the dialog will return.</typeparam>
 		/// <param name="content">Content to show on the dialog.</param>
 		/// <param name="fallbackResult">Result to return if not set.</param>
 		public static TResult ForResult<TPage, TResult>(DialogContent content, TResult fallbackResult = default)
@@ -92,6 +93,7 @@ namespace Braco.Utilities.Wpf.Controls
 		/// <summary>
 		/// Opens a dialog with given content on a page registered as <see cref="DialogPageViewModel"/>.
 		/// </summary>
+		/// <typeparam name="TResult">Type of object the dialog will return.</typeparam>
 		/// <param name="content">Content to show on the dialog.</param>
 		/// <param name="fallbackResult">Result to return if not set.</param>
 		public static TResult ForResult<TResult>(DialogContent content, TResult fallbackResult = default)
@@ -101,6 +103,7 @@ namespace Braco.Utilities.Wpf.Controls
 		/// Opens a dialog with given content.
 		/// </summary>
 		/// <typeparam name="TPage">Dialog page to open.</typeparam>
+		/// <typeparam name="TResult">Type of object the dialog will return.</typeparam>
 		/// <param name="content">Content to show on the dialog.</param>
 		/// <param name="onClosed">Method to execute once the dialog closes.</param>
 		/// <param name="fallbackResult">Result to return if not set.</param>
@@ -111,6 +114,7 @@ namespace Braco.Utilities.Wpf.Controls
 		/// <summary>
 		/// Opens a dialog with given content on a page registered as <see cref="DialogPageViewModel"/>.
 		/// </summary>
+		/// <typeparam name="TResult">Type of object the dialog will return.</typeparam>
 		/// <param name="content">Content to show on the dialog.</param>
 		/// <param name="onClosed">Method to execute once the dialog closes.</param>
 		/// <param name="fallbackResult">Result to return if not set.</param>
@@ -121,6 +125,7 @@ namespace Braco.Utilities.Wpf.Controls
 		/// Opens a dialog with given content and window open options.
 		/// </summary>
 		/// <typeparam name="TPage">Dialog page to open.</typeparam>
+		/// <typeparam name="TResult">Type of object the dialog will return.</typeparam>
 		/// <param name="content">Content to show on the dialog.</param>
 		/// <param name="openOptionsSetup">Used for setting up window opening options.</param>
 		/// <param name="fallbackResult">Result to return if not set.</param>
@@ -131,6 +136,7 @@ namespace Braco.Utilities.Wpf.Controls
 		/// <summary>
 		/// Opens a dialog with given content and window open options.
 		/// </summary>
+		/// <typeparam name="TResult">Type of object the dialog will return.</typeparam>
 		/// <param name="content">Content to show on the dialog.</param>
 		/// <param name="openOptionsSetup">Used for setting up window opening options.</param>
 		/// <param name="fallbackResult">Result to return if not set.</param>

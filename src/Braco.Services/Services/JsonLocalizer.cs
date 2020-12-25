@@ -38,6 +38,7 @@ namespace Braco.Services
 		/// <summary>
 		/// Creates an instance of the localizer.
 		/// </summary>
+		/// <param name="fileManager">File manager to use.</param>
 		/// <param name="currentCulture">Culture that is currently active.</param>
 		/// <param name="cultures">Possible cultures.</param>
         public JsonLocalizer(IFileManager fileManager, string currentCulture, params string[] cultures)

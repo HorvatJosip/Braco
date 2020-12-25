@@ -19,15 +19,15 @@ namespace Braco.Utilities
 
         /// <summary>
         /// Information about all columns that should be created
-        /// for the type <typeparamref name="T"/>.
+        /// for the type used in the collections.
         /// </summary>
         public IList<ColumnInfo> ColumnInfos { get; protected set; }
 
-        /// <summary>
-        /// Information about display columns that should be created
-        /// for the type <typeparamref name="T"/>.
-        /// </summary>
-        public IList<ColumnInfo> DisplayColumnInfos
+		/// <summary>
+		/// Information about display columns that should be created
+		/// for the type used in the collections.
+		/// </summary>
+		public IList<ColumnInfo> DisplayColumnInfos
             => ColumnInfos?.Where(c => c.DisplayNames?.Count > 0).ToList();
 
         private int _page;

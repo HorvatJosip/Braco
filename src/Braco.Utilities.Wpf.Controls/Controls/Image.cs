@@ -159,7 +159,7 @@ namespace Braco.Utilities.Wpf.Controls
 		}
 
 		/// <summary>
-		/// Updates <see cref="Source"/> using the following dependency properties:
+		/// Updates <see cref="System.Windows.Controls.Image.Source"/> using the following dependency properties:
 		/// <para><see cref="Subfolder"/>, <see cref="FileName"/>, <see cref="FileNameGetter"/>,
 		/// <see cref="Extension"/>, <see cref="IsSvg"/>, <see cref="CloseFileAfterLoad"/> and
 		/// <see cref="FileNameGetterParameter"/>. The <see cref="Visibility"/> of the control will be

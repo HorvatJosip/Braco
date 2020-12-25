@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <LangVersion>9.0</LangVersion>
     <ApplicationIcon>icon.ico</ApplicationIcon>
-    <Version>0.7.1</Version>
+    <Version>0.8.1</Version>
     <Authors>Josip Horvat</Authors>
     <Description>Utilities that may be commonly used for many different projects.</Description>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
@@ -21,9 +21,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="10.0.0" />
-    <PackageReference PrivateAssets="All" Include="PropertyChanged.Fody" Version="3.2.9" />
-    <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="Braco.Services.Abstractions" Version="0.8.0" />
+    <PackageReference PrivateAssets="All" Include="PropertyChanged.Fody" Version="3.3.1" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,10 +36,6 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Braco.Services.Abstractions\Braco.Services.Abstractions.csproj" />
   </ItemGroup>
 
 </Project>

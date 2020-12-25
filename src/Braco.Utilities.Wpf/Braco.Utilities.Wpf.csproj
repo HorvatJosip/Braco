@@ -5,7 +5,7 @@
     <OutputType>WinExe</OutputType>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>icon.ico</ApplicationIcon>
-    <Version>0.7.1</Version>
+    <Version>0.8.0</Version>
     <Authors>Josip Horvat</Authors>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/HorvatJosip/braco</PackageProjectUrl>
@@ -22,7 +22,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference PrivateAssets="All" Include="PropertyChanged.Fody" Version="3.2.9" />
+    <PackageReference Include="Braco.Services" Version="0.8.0" />
+    <PackageReference PrivateAssets="All" Include="PropertyChanged.Fody" Version="3.3.1" />
     <PackageReference Include="System.ServiceModel.Primitives" Version="4.8.0" />
     <PackageReference Include="WindowsAPICodePack-Shell" Version="1.1.1" />
   </ItemGroup>
@@ -36,10 +37,6 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Braco.Services\Braco.Services.csproj" />
   </ItemGroup>
 
 </Project>

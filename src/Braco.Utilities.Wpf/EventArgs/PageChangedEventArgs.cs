@@ -3,7 +3,7 @@ using System;
 namespace Braco.Utilities.Wpf
 {
 	/// <summary>
-	/// Event args for <see cref="IWindowService.PageChanged"/> event.
+	/// Event args for page changes.
 	/// </summary>
 	public class PageChangedEventArgs : EventArgs
 	{

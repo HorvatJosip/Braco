@@ -72,7 +72,7 @@ namespace Braco.Utilities.Wpf.Controls
 		/// <summary>
 		/// Called when one of the columns was sorted.
 		/// <para>By default extracts column name from <paramref name="parameters"/> and sorts using
-		/// the <see cref="DataManager.Sort(string)"/> method.</para>
+		/// the <see cref="DataManager{T}.Sort(string)"/> method.</para>
 		/// </summary>
 		/// <param name="parameters">Parameters for the sort command.</param>
 		protected virtual void OnTableSort(List<object> parameters)

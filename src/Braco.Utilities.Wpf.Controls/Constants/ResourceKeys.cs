@@ -180,6 +180,9 @@ namespace Braco.Utilities.Wpf.Controls
 
 		#region Image File Name Getters
 
+		/// <summary>
+		/// File name getter for the sort icon.
+		/// </summary>
 		public const string SortIconFileNameGetter = "ImageFileNameGetters.SortIcon";
 
 		#endregion

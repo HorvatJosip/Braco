@@ -4,8 +4,12 @@ using System.Windows.Media;
 
 namespace Braco.Utilities.Wpf
 {
+	/// <summary>
+	/// Converts the given string to a resource using <see cref="BrushConverter"/>.
+	/// </summary>
 	public class StringToBrushConverter : BaseConverter<StringToBrushConverter>
 	{
+		/// <inheritdoc/>
 		public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 		{
 			if(value is string colorString)
@@ -18,6 +22,7 @@ namespace Braco.Utilities.Wpf
 			return null;
 		}
 
+		/// <inheritdoc/>
 		public override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
 		{
 			throw new NotImplementedException();

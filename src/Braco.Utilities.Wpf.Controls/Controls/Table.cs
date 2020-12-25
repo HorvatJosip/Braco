@@ -22,6 +22,10 @@ namespace Braco.Utilities.Wpf.Controls
 
 		private IEnumerable<Image> _images;
 
+		/// <summary>
+		/// Creates an instance of the control and subscribes to the control loaded event
+		/// in order to initialize data using the manager.
+		/// </summary>
 		public Table()
 		{
 			Loaded += Table_Loaded;

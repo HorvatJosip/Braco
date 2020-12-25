@@ -7,10 +7,18 @@ using System.Linq;
 
 namespace Braco.Utilities.Wpf
 {
+	/// <summary>
+	/// Used for setting up localized collections (types that inherit <see cref="IHaveLocalizedCollection"/>) to
+	/// initialize and to update whenever the language changes (<see cref="ILocalizer.LanguageChanged"/>).
+	/// </summary>
 	public class LocalizedCollectionsSetup : ISetupService
 	{
+		/// <summary>
+		/// Not used.
+		/// </summary>
 		public string ConfigurationSection { get; }
 
+		/// <inheritdoc/>
 		public void Setup(IServiceCollection services, IConfiguration configuration, IConfigurationSection section)
 		{
 			var types = ReflectionUtilities

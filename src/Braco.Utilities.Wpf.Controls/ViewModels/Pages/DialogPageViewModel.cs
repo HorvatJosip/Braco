@@ -9,7 +9,14 @@ namespace Braco.Utilities.Wpf.Controls
 	[AutoMap(sourceType: typeof(DialogContent))]
 	public class DialogPageViewModel : PageViewModel
 	{
+		/// <summary>
+		/// Content of the dialog.
+		/// </summary>
 		public string Content { get; set; }
+
+		/// <summary>
+		/// Buttons to use for the dialog.
+		/// </summary>
 		public IEnumerable<ImageButtonViewModel> Buttons { get; set; }
 	}
 }

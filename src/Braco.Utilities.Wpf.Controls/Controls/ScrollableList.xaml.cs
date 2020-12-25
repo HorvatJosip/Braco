@@ -41,8 +41,7 @@ namespace Braco.Utilities.Wpf.Controls
 			DependencyProperty.Register(nameof(ListItems), typeof(IEnumerable), typeof(ScrollableList), new PropertyMetadata(null));
 
 		/// <summary>
-		/// Template of an item shown in the <see cref="ItemsControl.ItemTemplate"/> when
-		/// <see cref="ShowListItems"/> is set to true.
+		/// Template of an item shown in the <see cref="ItemsControl.ItemTemplate"/>.
 		/// </summary>
 		public DataTemplate ItemTemplate
 		{
@@ -81,6 +80,9 @@ namespace Braco.Utilities.Wpf.Controls
 			set { SetValue(HorizontalScrollBarVisibilityProperty, value); }
 		}
 
+		/// <summary>
+		/// Dependency property for <see cref="HorizontalScrollBarVisibility"/>.
+		/// </summary>
 		public static readonly DependencyProperty HorizontalScrollBarVisibilityProperty =
 			DependencyProperty.Register(nameof(HorizontalScrollBarVisibility), typeof(ScrollBarVisibility), typeof(ScrollableList), new PropertyMetadata(ScrollBarVisibility.Disabled));
 

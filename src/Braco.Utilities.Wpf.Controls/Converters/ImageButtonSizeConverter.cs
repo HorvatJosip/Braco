@@ -5,6 +5,11 @@ using System.Linq;
 
 namespace Braco.Utilities.Wpf.Controls
 {
+	/// <summary>
+	/// Used for converting image button size string into an actual size.
+	/// The parameter defines if we are working with width (<see cref="bool.TrueString"/>) or
+	/// height (<see cref="bool.FalseString"/>).
+	/// </summary>
 	public class ImageButtonSizeConverter : BaseConverter<ImageButtonSizeConverter>
 	{
 		/// <summary>
