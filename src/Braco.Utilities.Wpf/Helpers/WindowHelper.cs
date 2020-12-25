@@ -8,7 +8,7 @@ namespace Braco.Utilities.Wpf
 {
 	// Maximizing fix: https://stackoverflow.com/a/8082816/6287403
 	/// <summary>
-	/// Helper for dealing with <see cref="Window"/>.
+	/// Helper for dealing with <see cref="System.Windows.Window"/>.
 	/// <para>Handles maximization issues.</para>
 	/// </summary>
 	public static class WindowHelper
@@ -19,7 +19,7 @@ namespace Braco.Utilities.Wpf
 		/// </summary>
 		/// <param name="window">Window to initialize.</param>
 		/// <param name="fixMaximization">Should the maximization bug be fixed?</param>
-		public static void Initialize(Window window, bool fixMaximization = true)
+		public static void Initialize(System.Windows.Window window, bool fixMaximization = true)
 		{
 			var initMethod = window?.GetType().GetMethod(nameof(IComponentConnector.InitializeComponent));
 
@@ -34,7 +34,7 @@ namespace Braco.Utilities.Wpf
 		/// </summary>
 		/// <param name="window">Window for which to fix the
 		/// maximization issue.</param>
-		public static void FixMaximization(Window window)
+		public static void FixMaximization(System.Windows.Window window)
 		{
 			if (window == null)
 				return;
@@ -243,8 +243,8 @@ namespace Braco.Utilities.Wpf
 		/// <summary> Determine if 2 RECT are equal (deep compare) </summary>
 		public override bool Equals(object obj)
 		{
-			if (!(obj is Rect)) { return false; }
-			return (this == (RECT)obj);
+			if (obj is not Rect) return false;
+			return this == (RECT)obj;
 		}
 
 		/// <summary>Return the HashCode for this struct (not garanteed to be unique)</summary>

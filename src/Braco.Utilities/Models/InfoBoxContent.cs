@@ -28,9 +28,9 @@ namespace Braco.Utilities
         public InfoBoxType Type { get; set; }
 
 		/// <summary>
-		/// How long should the info box be displayed?
+		/// How long should the info box be displayed (in seconds)?
 		/// </summary>
-        public int Duration { get; set; } = 10;
+        public double Duration { get; set; } = 10;
 
 		/// <summary>
 		/// Is the info box dismissed?
@@ -55,11 +55,11 @@ namespace Braco.Utilities
 		/// <summary>
 		/// Creates the info box model with desired values.
 		/// </summary>
-		/// <param name="title">title of the info box.</param>
-		/// <param name="message">message to display inside the info box.</param>
-		/// <param name="type">type of the info box.</param>
-		/// <param name="duration">how long should the info box be displayed?</param>
-		/// <param name="dismissed">is the info box dismissed?</param>
+		/// <param name="title">Title of the info box.</param>
+		/// <param name="message">Message to display inside the info box.</param>
+		/// <param name="type">Type of the info box.</param>
+		/// <param name="duration">How long should the info box be displayed (in seconds)?</param>
+		/// <param name="dismissed">Is the info box dismissed?</param>
 		public InfoBoxContent(string title, string message, InfoBoxType type, int duration = 10, bool dismissed = false)
         {
             Title = title;

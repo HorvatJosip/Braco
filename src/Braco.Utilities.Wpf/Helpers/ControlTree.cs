@@ -217,7 +217,7 @@ namespace Braco.Utilities.Wpf
 			{
 				var child = VisualTreeHelper.GetChild(parent, i);
 				// If the child is not of the request child type child
-				if (!(child is T))
+				if (child is not T converted)
 				{
 					// recursively drill down the tree
 					foundChild = FindChild<T>(child);
@@ -228,7 +228,7 @@ namespace Braco.Utilities.Wpf
 				else
 				{
 					// child element found.
-					foundChild = (T)child;
+					foundChild = converted;
 					break;
 				}
 			}

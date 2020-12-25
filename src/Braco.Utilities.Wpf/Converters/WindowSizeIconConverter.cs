@@ -1,5 +1,6 @@
 using System;
 using System.Globalization;
+using System.Windows;
 
 namespace Braco.Utilities.Wpf
 {
@@ -10,14 +11,12 @@ namespace Braco.Utilities.Wpf
 	{
 		/// <inheritdoc/>
 		public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-		{
-			if(value is bool isMaximized)
+			=> value switch
 			{
-				return isMaximized ? ResourceKeys.RestoreIcon : ResourceKeys.MaximizeIcon;
-			}
-
-			return null;
-		}
+				bool isMaximized => isMaximized ? ResourceKeys.RestoreIcon : ResourceKeys.MaximizeIcon,
+				WindowState windowState => windowState == WindowState.Maximized ? ResourceKeys.RestoreIcon : ResourceKeys.MaximizeIcon,
+				_ => null
+			};
 
 		/// <inheritdoc/>
 		public override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 
-namespace Braco.Utilities.Wpf
+namespace Braco.Utilities.Wpf.Controls
 {
     /// <summary>
     /// Interaction logic for Validator.xaml
@@ -80,24 +80,25 @@ namespace Braco.Utilities.Wpf
             // Otherwise...
             else
             {
-                // Context that defines what is bound to the page or window
-                var context = instance.DataContext;
-
-                // Type of the item that is bound
-                var type = context?.GetType();
-
                 // Get name of the property that needs to be validated
                 var toValidate = instance.Validate?.ToString();
 
                 // Get the property that needs to be validated (in case a string is passed into Validate dependency property)
-                var property = type.GetNestedPrield(context, toValidate);
+                var property = instance.DataContext.GetType().GetNestedPrield(instance.DataContext, toValidate);
 
                 // Extract name from property or, if it's null, use the Validate property value
                 var name = property?.Member.Name ?? toValidate;
 
+				// If the validator isn't directly on a page...
+				if(instance.DataContext is not Page page)
+				{
+					// Get the page on which it is located
+					page = ControlTree.FindAncestor<Page>(instance);
+				}
+
 				// Listen for validations to update the label
-				type.GetEvent(nameof(Utilities.Validator.ValidationPerformed)).AddEventHandler(
-					context,
+				page.DataContext.GetType().GetEvent(nameof(Utilities.Validator.ValidationPerformed)).AddEventHandler(
+					page.DataContext,
 					new EventHandler<ValidationPerformedEventArgs>((sender, args) =>
 						UpdateLabel(args.ValidationErrors.Find(x => x.Member == name)?.ErrorString)
 					)

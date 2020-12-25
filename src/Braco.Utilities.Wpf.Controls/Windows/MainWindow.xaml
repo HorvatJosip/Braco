@@ -6,7 +6,9 @@
         Title="{DynamicResource {x:Static local:ResourceKeys.ApplicationName}}"
         Width="1200" Height="800"
         ResizeMode="{Binding ResizeMode}"
-        WindowStartupLocation="CenterScreen" WindowStyle="None">
+        WindowStartupLocation="CenterScreen"
+        WindowState="{Binding WindowState}"
+        WindowStyle="None">
 	<!-- Border around the window -->
 	<Border Padding="10 6"
 	        Background="{DynamicResource brushSecondary}"
@@ -15,13 +17,19 @@
 		<!-- Window content holder -->
 		<local:BracoGrid Background="{DynamicResource brushSecondary}" Rows="Auto, 10, *">
 			<local:TitleBar Title="{DynamicResource {x:Static local:ResourceKeys.ApplicationName}}"
+			                ClickCommand="{Binding TitleBarClickCommand}"
+			                CloseCommand="{Binding CloseCommand}"
 			                CloseToolTip="{DynamicResource {x:Static local:ResourceKeys.ApplicationCloseToolTip}}"
+			                DoubleClickCommand="{Binding TitleBarDoubleClickCommand}"
 			                Logo="{Binding LogoPath, Converter={utils:StringToRootPackUriConverter}}"
+			                MaximizeCommand="{Binding MaximizeCommand}"
+			                MinimizeCommand="{Binding MinimizeCommand}"
+			                SettingsCommand="{Binding SettingsCommand}"
 			                SettingsVisibility="{Binding SettingsCommand, Converter={utils:NullToVisibilityConverter}}" />
 
 			<Grid Grid.Row="2">
 				<!-- Page -->
-				<Frame local:NoNavigation.Value="True" Source="{Binding Page, Converter={utils:PageTypeToFrameSourceConverter}}" />
+				<Frame local:NoNavigationProperty.Value="True" Focusable="False" Source="{Binding Page, Converter={utils:PageTypeToFrameSourceConverter}}" />
 
 				<!-- Info Box -->
 				<local:InfoBox Title="{Binding InfoBox.Title}"

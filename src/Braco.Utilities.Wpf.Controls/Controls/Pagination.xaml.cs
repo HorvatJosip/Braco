@@ -58,8 +58,6 @@ namespace Braco.Utilities.Wpf.Controls
 
 			FirstPageButtonPanel.Visibility = Visibility.Collapsed;
 
-			buttonStyle = (Style)Application.Current.FindResource(ResourceKeys.ShadowButtonStyle);
-
 			FirstPageButton.Width = size;
 			FirstPageButton.Height = size;
 			FirstPageButton.Margin = new Thickness(margin);
@@ -75,7 +73,7 @@ namespace Braco.Utilities.Wpf.Controls
 
 		private static void OnCurrentPageChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
 		{
-			if (!(d is Pagination pagination && e.NewValue is int page && page > 0))
+			if (d is not Pagination pagination || e.NewValue is not int page || page < 1)
 				return;
 
 			pagination.GeneratePageButtons();
@@ -83,7 +81,7 @@ namespace Braco.Utilities.Wpf.Controls
 
 		private static void OnNumPagesChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
 		{
-			if (!(d is Pagination pagination && e.NewValue is int numPages && numPages > 0))
+			if (d is not Pagination pagination || e.NewValue is not int numPages || numPages < 1)
 				return;
 
 			if (pagination.CurrentPage == 1)

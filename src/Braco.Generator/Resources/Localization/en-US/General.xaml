@@ -1,0 +1,11 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:Braco.Generator"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+
+	<system:String x:Key="{x:Static local:ResourceKeys.ApplicationName}">Braco Generator</system:String>
+	<system:String x:Key="{x:Static local:ResourceKeys.ApplicationCloseToolTip}">Close the Application</system:String>
+
+	<system:String x:Key="{x:Static local:ResourceKeys.WindowCloseToolTip}">Close the Window</system:String>
+	<system:String x:Key="{x:Static local:ResourceKeys.WindowPreviousPageButtonToolTip}">Return to previous page</system:String>
+
+</ResourceDictionary>

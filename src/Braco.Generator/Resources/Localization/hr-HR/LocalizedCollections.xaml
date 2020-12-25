@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime"
+                    xmlns:local="clr-namespace:Braco.Generator">
+
+	<system:String x:Key="{x:Static local:LocalizationKeys.LocalizedCollections_ConstantsTab}">Konstante</system:String>
+	<system:String x:Key="{x:Static local:LocalizationKeys.LocalizedCollections_FontsTab}">Fontovi</system:String>
+	<system:String x:Key="{x:Static local:LocalizationKeys.LocalizedCollections_ImagesTab}">Slike</system:String>
+	<system:String x:Key="{x:Static local:LocalizationKeys.LocalizedCollections_LocalizationTab}">Lokalizacija</system:String>
+	<system:String x:Key="{x:Static local:LocalizationKeys.LocalizedCollections_PagesTab}">Stranice</system:String>
+
+</ResourceDictionary>

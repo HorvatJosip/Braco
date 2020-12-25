@@ -7,11 +7,11 @@
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type local:InputField}">
 					<StackPanel>
-						<local:BracoGrid Margin="{TemplateBinding PanelMargin}" Columns="Auto, Auto, Auto, *">
-							<TextBlock VerticalAlignment="Center"
-							           FontSize="{DynamicResource fontSizeLarge}"
-							           FontWeight="Bold"
-							           Text="{TemplateBinding Label}" />
+						<local:BracoGrid Margin="{TemplateBinding PanelMargin}" Columns="3xAuto, *">
+							<ContentPresenter VerticalAlignment="Center"
+							                  Content="{TemplateBinding Label}"
+							                  TextBlock.FontSize="{DynamicResource fontSizeLarge}"
+							                  TextBlock.FontWeight="Bold" />
 
 							<TextBlock Grid.Column="1" Margin="2 0 0 0" VerticalAlignment="Center"
 							           FontSize="{DynamicResource fontSizeVeryLarge}"
@@ -49,10 +49,42 @@
 							<ContentPresenter HorizontalAlignment="Center" Content="{TemplateBinding Content}" />
 
 							<Border Grid.Row="1" Padding="5">
-								<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{utils:RelativeBinding Header}" />
+								<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{TemplateBinding Header}" />
 							</Border>
 						</local:BracoGrid>
 					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<Style TargetType="{x:Type local:ValidatedField}">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type local:ValidatedField}">
+					<StackPanel>
+						<ContentPresenter Content="{TemplateBinding Content}" />
+
+						<local:Validator Validate="{TemplateBinding Validate}" />
+					</StackPanel>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<Style TargetType="{x:Type local:ValidatedInputField}">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type local:ValidatedInputField}">
+					<local:ValidatedField Validate="{TemplateBinding Validate}">
+						<local:InputField ContentToTheRight="{TemplateBinding ContentToTheRight}"
+						                  Info="{TemplateBinding Info}"
+						                  IsRequired="{TemplateBinding IsRequired}"
+						                  Label="{TemplateBinding Label}"
+						                  PanelMargin="{TemplateBinding PanelMargin}">
+							<ContentPresenter Content="{TemplateBinding Content}" />
+						</local:InputField>
+					</local:ValidatedField>
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>

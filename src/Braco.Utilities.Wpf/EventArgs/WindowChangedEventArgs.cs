@@ -8,15 +8,15 @@ namespace Braco.Utilities.Wpf
 	public class WindowChangedEventArgs : EventArgs
 	{
 		/// <summary>
-		/// Window that changed.
+		/// View model of a window that changed.
 		/// </summary>
-		public Type Window { get; }
+		public WindowViewModel Window { get; }
 
 		/// <summary>
 		/// Creates an instance of the arguments.
 		/// </summary>
-		/// <param name="window">Window that changed.</param>
-		public WindowChangedEventArgs(Type window)
+		/// <param name="window">View model of a window that changed.</param>
+		public WindowChangedEventArgs(WindowViewModel window)
 		{
 			Window = window;
 		}

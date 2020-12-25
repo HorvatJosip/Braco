@@ -14,13 +14,16 @@
 		<!-- Window content holder -->
 		<local:BracoGrid Background="{DynamicResource brushSecondary}" Rows="Auto, 10, *">
 			<local:TitleBar Title="{Binding Title}"
+			                ClickCommand="{Binding TitleBarClickCommand}"
+			                CloseCommand="{Binding CloseCommand}"
 			                CloseToolTip="{DynamicResource {x:Static local:ResourceKeys.WindowCloseToolTip}}"
-			                Logo="{Binding LogoPath}"
+			                DoubleClickCommand="{Binding TitleBarDoubleClickCommand}"
+			                Logo="{Binding LogoPath, Converter={utils:StringToRootPackUriConverter}}"
 			                MaximizeVisibility="Collapsed" MinimizeVisibility="Collapsed" SettingsVisibility="Collapsed" />
 
 			<Grid Grid.Row="2">
 				<!-- Page -->
-				<Frame local:NoNavigation.Value="True" Source="{Binding Page, Converter={utils:PageTypeToFrameSourceConverter}}" />
+				<Frame local:NoNavigationProperty.Value="True" Focusable="False" Source="{Binding Page, Converter={utils:PageTypeToFrameSourceConverter}}" />
 
 				<!-- Info Box -->
 				<local:InfoBox Title="{Binding InfoBox.Title}"

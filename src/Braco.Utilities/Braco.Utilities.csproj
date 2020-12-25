@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>9.0</LangVersion>
     <ApplicationIcon>icon.ico</ApplicationIcon>
     <Version>0.7.1</Version>
     <Authors>Josip Horvat</Authors>
@@ -22,7 +22,6 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.0.0" />
-    <PackageReference Include="Braco.Services.Abstractions" Version="0.7.2" />
     <PackageReference PrivateAssets="All" Include="PropertyChanged.Fody" Version="3.2.9" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
   </ItemGroup>
@@ -36,6 +35,10 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Braco.Services.Abstractions\Braco.Services.Abstractions.csproj" />
   </ItemGroup>
 
 </Project>

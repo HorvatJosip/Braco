@@ -1,0 +1,119 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>Generator.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Images\Cancel.svg" />
+    <None Remove="Resources\Images\Close.svg" />
+    <None Remove="Resources\Images\Confirm.svg" />
+    <None Remove="Resources\Images\Constants.svg" />
+    <None Remove="Resources\Images\Directory.svg" />
+    <None Remove="Resources\Images\Down.svg" />
+    <None Remove="Resources\Images\Eraser.svg" />
+    <None Remove="Resources\Images\Fonts.svg" />
+    <None Remove="Resources\Images\Heading.svg" />
+    <None Remove="Resources\Images\Images.svg" />
+    <None Remove="Resources\Images\Localization.svg" />
+    <None Remove="Resources\Images\Logo" />
+    <None Remove="Resources\Images\Maximize.svg" />
+    <None Remove="Resources\Images\Minimize.svg" />
+    <None Remove="Resources\Images\Minus.svg" />
+    <None Remove="Resources\Images\NumberOne.svg" />
+    <None Remove="Resources\Images\OpenExistingProject.svg" />
+    <None Remove="Resources\Images\Pages.svg" />
+    <None Remove="Resources\Images\Pause.svg" />
+    <None Remove="Resources\Images\Play.svg" />
+    <None Remove="Resources\Images\Plus.svg" />
+    <None Remove="Resources\Images\PreviousPage.svg" />
+    <None Remove="Resources\Images\QuestionMark.svg" />
+    <None Remove="Resources\Images\Replay.svg" />
+    <None Remove="Resources\Images\Restore.svg" />
+    <None Remove="Resources\Images\Settings.svg" />
+    <None Remove="Resources\Images\SortAscending.svg" />
+    <None Remove="Resources\Images\SortDefault.svg" />
+    <None Remove="Resources\Images\SortDescending.svg" />
+    <None Remove="Resources\Images\Volume.svg" />
+    <None Remove="Templates\PageBackend.txt" />
+    <None Remove="Templates\PageFrontend.txt" />
+    <None Remove="Templates\PageViewModel.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Templates\PageViewModel.txt" />
+    <EmbeddedResource Include="Templates\PageBackend.txt" />
+    <EmbeddedResource Include="Templates\PageFrontend.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Braco.Utilities.Wpf.Controls\Braco.Utilities.Wpf.Controls.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\Cancel.svg" />
+    <Resource Include="Resources\Images\Close.svg" />
+    <Resource Include="Resources\Images\Confirm.svg" />
+    <Resource Include="Resources\Images\Constants.svg" />
+    <Resource Include="Resources\Images\Directory.svg" />
+    <Resource Include="Resources\Images\Down.svg" />
+    <Resource Include="Resources\Images\Eraser.svg" />
+    <Resource Include="Resources\Images\Fonts.svg" />
+    <Resource Include="Resources\Images\Heading.svg" />
+    <Resource Include="Resources\Images\Images.svg" />
+    <Resource Include="Resources\Images\Localization.svg" />
+    <Resource Include="Resources\Images\Logo" />
+    <Resource Include="Resources\Images\Maximize.svg" />
+    <Resource Include="Resources\Images\Minimize.svg" />
+    <Resource Include="Resources\Images\Minus.svg" />
+    <Resource Include="Resources\Images\NumberOne.svg" />
+    <Resource Include="Resources\Images\OpenExistingProject.svg" />
+    <Resource Include="Resources\Images\Pages.svg" />
+    <Resource Include="Resources\Images\Pause.svg" />
+    <Resource Include="Resources\Images\Play.svg" />
+    <Resource Include="Resources\Images\Plus.svg" />
+    <Resource Include="Resources\Images\PreviousPage.svg" />
+    <Resource Include="Resources\Images\QuestionMark.svg" />
+    <Resource Include="Resources\Images\Replay.svg" />
+    <Resource Include="Resources\Images\Restore.svg" />
+    <Resource Include="Resources\Images\Settings.svg" />
+    <Resource Include="Resources\Images\SortAscending.svg" />
+    <Resource Include="Resources\Images\SortDefault.svg" />
+    <Resource Include="Resources\Images\SortDescending.svg" />
+    <Resource Include="Resources\Images\Volume.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="PropertyChanged.Fody" Version="3.2.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Resources\Localization\en-US\Errors.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Localization\en-US\LocalizedCollections.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Localization\en-US\Pages\LocalizationPage.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Localization\hr-HR\Errors.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
+  </ItemGroup>
+
+</Project>

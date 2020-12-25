@@ -30,39 +30,56 @@ namespace Braco.Utilities.Wpf
                 : null;
         }
 
-        private IEnumerable<string> Choose(string title, string selectedFile, bool allowMultiple, params (string label, string extensions)[] filters)
-        {
-            // Create an open file dialog
-            using var dialog = new CommonOpenFileDialog
-            {
-                EnsureFileExists = true,
-                EnsurePathExists = true,
-                Multiselect = allowMultiple,
-                DefaultFileName = selectedFile,
-                Title = title
-            };
+		/// <inheritdoc/>
+		public string ChooseFile(string title, params (string label, string extensions)[] filters)
+			=> Choose(title, null, null, false, filters)?.ElementAt(0);
+
+		/// <inheritdoc/>
+		public string ChooseFile(string title, string initialDirectory, params (string label, string extensions)[] filters)
+			=> Choose(title, initialDirectory, null, false, filters)?.ElementAt(0);
+
+		/// <inheritdoc/>
+		public string ChooseFile(string title, string initialDirectory, string selectedFile, params (string label, string extensions)[] filters)
+			=> Choose(title, initialDirectory, selectedFile, false, filters)?.ElementAt(0);
+
+		/// <inheritdoc/>
+		public IList<string> ChooseFiles(string title, params (string label, string extensions)[] filters)
+			=> Choose(title, null, null, true, filters)?.ToList();
+
+		/// <inheritdoc/>
+		public IList<string> ChooseFiles(string title, string initialDirectory, params (string label, string extensions)[] filters)
+			=> Choose(title, initialDirectory, null, true, filters)?.ToList();
+
+		/// <inheritdoc/>
+		public IList<string> ChooseFiles(string title, string initialDirectory, string selectedFile, params (string label, string extensions)[] filters)
+			=> Choose(title, initialDirectory, selectedFile, true, filters)?.ToList();
+
+		private IEnumerable<string> Choose(string title, string initialDirectory, string selectedFile, bool allowMultiple, params (string label, string extensions)[] filters)
+		{
+			// Create an open file dialog
+			using var dialog = new CommonOpenFileDialog
+			{
+				EnsureFileExists = true,
+				EnsurePathExists = true,
+				Multiselect = allowMultiple,
+				DefaultFileName = selectedFile,
+				InitialDirectory = initialDirectory,
+				Title = title
+			};
 
 			// The extensionList can use a semicolon(";") or comma (",") to separate extensions.
 			// Extensions can be prefaced with a period (".") or with the file wild card specifier "*.".
 			filters.ForEach(filter => dialog.Filters.Add(new CommonFileDialogFilter(
-                rawDisplayName: filter.label,
-                extensionList: filter.extensions
-            )));
+				rawDisplayName: filter.label,
+				extensionList: filter.extensions
+			)));
 
-            // If the user chose something...
-            return dialog.ShowDialog() == CommonFileDialogResult.Ok
-                // Return the selected file(s)
-                ? dialog.FileNames
-                // Otherwise, just return null
-                : null;
-        }
-
-		/// <inheritdoc/>
-        public IList<string> ChooseFiles(string title, string selectedFile = null, params (string label, string extensions)[] filters)
-            => Choose(title, selectedFile, true, filters)?.ToList();
-
-		/// <inheritdoc/>
-        public string ChooseFile(string title, string selectedFile, params (string label, string extensions)[] filters)
-            => Choose(title, selectedFile, false, filters)?.ElementAt(0);
-    }
+			// If the user chose something...
+			return dialog.ShowDialog() == CommonFileDialogResult.Ok
+				// Return the selected file(s)
+				? dialog.FileNames
+				// Otherwise, just return null
+				: null;
+		}
+	}
 }

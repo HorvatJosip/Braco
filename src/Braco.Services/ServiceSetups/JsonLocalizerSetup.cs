@@ -45,7 +45,7 @@ namespace Braco.Services
 					// Just use the first one
 					currentCulture = cultures[0];
 
-				return new JsonLocalizer(provider.GetService<IPathManager>(), currentCulture, cultures);
+				return new JsonLocalizer(provider.GetService<IFileManager>(), currentCulture, cultures);
 			});
 		}
 	}

@@ -1,0 +1,9 @@
+﻿<UserControl x:Class="Braco.Utilities.Wpf.Controls.ScrollableList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:utils="clr-namespace:Braco.Utilities.Wpf;assembly=Braco.Utilities.Wpf"
+			 xmlns:local="clr-namespace:Braco.Utilities.Wpf.Controls">
+	<ScrollViewer local:TopScrollPriorityProperty.Value="{utils:RelativeBinding ShouldAlwaysScrollWithin}" HorizontalScrollBarVisibility="{utils:RelativeBinding HorizontalScrollBarVisibility}" VerticalScrollBarVisibility="{utils:RelativeBinding VerticalScrollBarVisibility}">
+		<ItemsControl Focusable="{utils:RelativeBinding IsListFocusable}" ItemTemplate="{utils:RelativeBinding ItemTemplate}" ItemsPanel="{utils:RelativeBinding ListPanelTemplate}" ItemsSource="{utils:RelativeBinding ListItems}" />
+	</ScrollViewer>
+</UserControl>

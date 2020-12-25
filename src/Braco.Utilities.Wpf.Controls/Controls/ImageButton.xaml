@@ -1,39 +1,33 @@
 <UserControl x:Class="Braco.Utilities.Wpf.Controls.ImageButton"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Braco.Utilities.Wpf.Controls"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:utils="clr-namespace:Braco.Utilities.Wpf;assembly=Braco.Utilities.Wpf" d:DesignHeight="450"
-             d:DesignWidth="800" mc:Ignorable="d">
+             xmlns:utils="clr-namespace:Braco.Utilities.Wpf;assembly=Braco.Utilities.Wpf">
 	<Button x:Name="Button"
-			Width="{utils:RelativeBinding ButtonSize, Converter={local:ImageButtonSizeConverter}, ConverterParameter=True}"
-			Height="{utils:RelativeBinding ButtonSize, Converter={local:ImageButtonSizeConverter}, ConverterParameter=False}"
-	        Margin="5" Padding="0"
+	        Width="{utils:RelativeBinding ButtonSize,
+	                                      Converter={local:ImageButtonSizeConverter},
+	                                      ConverterParameter=True}"
+	        Height="{utils:RelativeBinding ButtonSize,
+	                                       Converter={local:ImageButtonSizeConverter},
+	                                       ConverterParameter=False}"
+	        Margin="5" Padding="0" Background="Transparent"
+	        BorderThickness="0"
 	        CommandParameter="{utils:RelativeBinding CommandParameter}"
 	        Cursor="Hand">
 		<Button.Template>
 			<ControlTemplate>
-				<Image x:Name="TheImage">
-					<Image.Style>
-						<Style TargetType="{x:Type Image}">
-							<Setter Property="Source">
-								<Setter.Value>
-									<MultiBinding Converter="{local:ImageButtonConverter}">
-										<!-- Image button itself -->
-										<utils:RelativeBinding AncestorType="{x:Type local:ImageButton}" Path="." />
-
-										<!-- Page view model -->
-										<utils:RelativeBinding AncestorType="{x:Type Page}" Path="DataContext" />
-
-										<!-- Data context of the image button -->
-										<utils:RelativeBinding AncestorType="{x:Type local:ImageButton}" Path="DataContext" />
-									</MultiBinding>
-								</Setter.Value>
-							</Setter>
-						</Style>
-					</Image.Style>
-				</Image>
+				<Border Background="Transparent">
+					<local:Image x:Name="TheImage"
+					             CloseFileAfterLoad="{utils:RelativeBinding CloseFileAfterLoad}"
+					             Extension="{utils:RelativeBinding Extension}"
+					             FileName="{utils:RelativeBinding FileName}"
+					             FileNameGetter="{utils:RelativeBinding FileNameGetter}"
+					             FileNameGetterParameter="{utils:RelativeBinding FileNameGetterParameter}"
+					             IsSvg="{utils:RelativeBinding IsSvg}"
+					             Path="{utils:RelativeBinding Path}"
+					             Subfolder="{utils:RelativeBinding Subfolder}"
+					             VisibilityParameter="{utils:RelativeBinding VisibilityParameter}" />
+				</Border>
 
 				<ControlTemplate.Triggers>
 					<Trigger Property="IsEnabled" Value="False">

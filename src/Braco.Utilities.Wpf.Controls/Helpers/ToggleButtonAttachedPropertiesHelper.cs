@@ -60,7 +60,7 @@ namespace Braco.Utilities.Wpf.Controls
 		public void OnValueChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
 		{
 			// If sender isn't the toggle button...
-			if (!(sender is ToggleButton toggleButton))
+			if (sender is not ToggleButton toggleButton)
 				// Bail
 				return;
 

@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Braco.Services.Media.Abstra
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Braco.Services.Media", "Braco.Services.Media\Braco.Services.Media.csproj", "{5D5B10D4-CB70-4E30-8267-DF69D392EC2D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Braco.Generator", "Braco.Generator\Braco.Generator.csproj", "{9AE7F92F-6FEB-448A-B88C-9CA5F3595466}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{5D5B10D4-CB70-4E30-8267-DF69D392EC2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D5B10D4-CB70-4E30-8267-DF69D392EC2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D5B10D4-CB70-4E30-8267-DF69D392EC2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AE7F92F-6FEB-448A-B88C-9CA5F3595466}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AE7F92F-6FEB-448A-B88C-9CA5F3595466}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AE7F92F-6FEB-448A-B88C-9CA5F3595466}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AE7F92F-6FEB-448A-B88C-9CA5F3595466}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

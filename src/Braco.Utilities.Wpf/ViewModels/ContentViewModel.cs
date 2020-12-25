@@ -24,9 +24,9 @@ namespace Braco.Utilities.Wpf
 		/// </summary>
 		protected readonly ILocalizer _localizer;
 		/// <summary>
-		/// Window service.
+		/// Windows manager.
 		/// </summary>
-		protected readonly IWindowService _windowService;
+		protected readonly IWindowsManager _windows;
 		/// <summary>
 		/// Configuration.
 		/// </summary>
@@ -79,7 +79,7 @@ namespace Braco.Utilities.Wpf
 				_config.SettingChanged += (sender, e) => OnSettingChanged(e.Setting, e.OldValue, e.NewValue);
 
 			// Assign other services
-			_windowService = DI.Get<IWindowService>();
+			_windows = DI.Get<IWindowsManager>();
 			_readOnlyConfig = DI.ReadOnlyConfiguration;
 			_mapper = DI.Mapper;
 		}
@@ -110,7 +110,7 @@ namespace Braco.Utilities.Wpf
 		/// <param name="message">Message for the info box.</param>
 		/// <param name="duration">Duration in seconds until it dismisses.</param>
 		public void ShowInfoBox(InfoBoxType type, string title, string message, int? duration = null)
-			=> _windowService.ShowInfoBox(type, title, message, duration);
+			=> _windows.ActiveWindow.ShowInfoBox(type, title, message, duration);
 
 		/// <summary>
 		/// Shows the info box.
@@ -119,7 +119,7 @@ namespace Braco.Utilities.Wpf
 		/// <param name="message">Message for the info box.</param>
 		/// <param name="duration">Duration in seconds until it dismisses.</param>
 		public void ShowInfoBox(InfoBoxType type, string message, int? duration = null)
-			=> _windowService.ShowInfoBox(type, message, duration);
+			=> _windows.ActiveWindow.ShowInfoBox(type, message, duration);
 
 		/// <summary>
 		/// Shows an error in the info box.
@@ -128,7 +128,7 @@ namespace Braco.Utilities.Wpf
 		/// <param name="message">Message for the info box.</param>
 		/// <param name="duration">Duration in seconds until it dismisses.</param>
 		public void ShowErrorInInfoBox(string title, string message, int? duration = null)
-			=> _windowService.ShowErrorInInfoBox(title, message, duration);
+			=> _windows.ActiveWindow.ShowErrorInInfoBox(title, message, duration);
 
 		/// <summary>
 		/// Shows an error in the info box.
@@ -136,7 +136,23 @@ namespace Braco.Utilities.Wpf
 		/// <param name="message">Message for the info box.</param>
 		/// <param name="duration">Duration in seconds until it dismisses.</param>
 		public void ShowErrorInInfoBox(string message, int? duration = null)
-			=> _windowService.ShowErrorInInfoBox(message, duration);
+			=> _windows.ActiveWindow.ShowErrorInInfoBox(message, duration);
+
+		/// <summary>
+		/// Opens a window if it isn't already open.
+		/// </summary>
+		/// <param name="options">Options for opening the window.</param>
+		public bool OpenWindow<TWindow>(OpenWindowOptions options = null) where TWindow : WindowViewModel
+			=> _windows.Open<TWindow>(options);
+
+		/// <summary>
+		/// Opens a window if it isn't already open and sets its page.
+		/// </summary>
+		/// <param name="options">Options for opening the window.</param>
+		public bool OpenWindow<TWindow, TPage>(OpenWindowOptions options = null)
+			where TWindow : WindowViewModel
+			where TPage : PageViewModel
+			=> _windows.Open<TWindow, TPage>(options);
 
 		#endregion
 	}

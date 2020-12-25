@@ -1,0 +1,8 @@
+﻿using Braco.Utilities.Wpf;
+
+namespace {0}
+{{{2}
+	public class {1}PageViewModel : PageViewModel
+	{{
+	}}
+}}

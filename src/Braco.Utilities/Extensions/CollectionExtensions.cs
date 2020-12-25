@@ -58,32 +58,57 @@ namespace Braco.Utilities.Extensions
 		public static bool IsNotNullOrEmpty(this IEnumerable collection)
 			=> !IsNullOrEmpty(collection);
 
-        /// <summary>
-        /// Loops through the collection and performs
-        /// the <paramref name="action"/> on each item.
-        /// </summary>
-        /// <typeparam name="T">Type of items in the collection.</typeparam>
-        /// <param name="collection">Collection to loop through.</param>
-        /// <param name="action">Action to perform on each element of the colleciton.</param>
-        public static void ForEach<T>(this IEnumerable<T> collection, Action<T> action)
-            => collection.ForEach((item, _) => action?.Invoke(item));
+		/// <summary>
+		/// Loops through the collection and performs
+		/// the <paramref name="action"/> on each item.
+		/// </summary>
+		/// <typeparam name="T">Type of items in the collection.</typeparam>
+		/// <param name="collection">Collection to loop through.</param>
+		/// <param name="action">Action to perform on each element of the colleciton.
+		/// <para>The first and only parameter that is given is the current item in the collection.</para>
+		/// </param>
+		public static void ForEach<T>(this IEnumerable<T> collection, Action<T> action)
+            => collection.ForEach((item, _, __) => action?.Invoke(item));
 
-        /// <summary>
-        /// Loops through the collection and performs
-        /// the <paramref name="action"/> on each item.
-        /// </summary>
-        /// <typeparam name="T">Type of items in the collection.</typeparam>
-        /// <param name="collection">Collection to loop through.</param>
-        /// <param name="action">Action to perform on each element of the colleciton.
-        /// The second parameter that is given is index of the item in the collection.</param>
-        public static void ForEach<T>(this IEnumerable<T> collection, Action<T, int> action)
+		/// <summary>
+		/// Loops through the collection and performs
+		/// the <paramref name="action"/> on each item.
+		/// </summary>
+		/// <typeparam name="T">Type of items in the collection.</typeparam>
+		/// <param name="collection">Collection to loop through.</param>
+		/// <param name="action">Action to perform on each element of the colleciton.
+		/// <para>The first parameter that is given is the current item in the collection.</para>
+		/// <para>The second parameter that is given is index of the item in the collection.</para>
+		/// </param>
+		public static void ForEach<T>(this IEnumerable<T> collection, Action<T, int> action)
+            => collection.ForEach((item, i, _) => action?.Invoke(item, i));
+
+		/// <summary>
+		/// Loops through the collection and performs
+		/// the <paramref name="action"/> on each item.
+		/// </summary>
+		/// <typeparam name="T">Type of items in the collection.</typeparam>
+		/// <param name="collection">Collection to loop through.</param>
+		/// <param name="action">Action to perform on each element of the colleciton.
+		/// <para>The first parameter that is given is the current item in the collection.</para>
+		/// <para>The second parameter that is given is index of the item in the collection.</para>
+		/// <para>The third parameter that is given is a method that will break out of the loop.</para>
+		/// </param>
+		public static void ForEach<T>(this IEnumerable<T> collection, Action<T, int, Action> action)
         {
             if (collection.IsNullOrEmpty())
                 return;
 
+			var @break = false;
+			var breakMethod = new Action(() => @break = true);
             var i = 0;
-            foreach (var item in collection)
-                action?.Invoke(item, i++);
+
+			foreach (var item in collection)
+			{
+				action?.Invoke(item, i++, breakMethod);
+
+				if (@break) break;
+			}
         }
 
         /// <summary>
@@ -217,7 +242,7 @@ namespace Braco.Utilities.Extensions
 		/// <returns>Item from the collection, if found.</returns>
 		public static T FindParent<T>(this IList<T> items, T item)
         {
-            if (!(items?.Count > 0)) return default;
+            if (items.IsNullOrEmpty()) return default;
 
             T itemParent = default;
             var found = false;
@@ -358,6 +383,15 @@ namespace Braco.Utilities.Extensions
             // Return whether or not the item is in the collection
             return targetValues.Contains(item);
         }
+
+		/// <summary>
+		/// Checks if the item is not inside a collection of values.
+		/// </summary>
+		/// <typeparam name="T">Type to check.</typeparam>
+		/// <param name="item">Item to check.</param>
+		/// <param name="targetValues">Collection to check the item against.</param>
+		public static bool NotIn<T>(this T item, params T[] targetValues)
+			=> !In(item, targetValues);
 
 		/// <summary>
 		/// Shorthand for calling <see cref="string.Join{T}(string, IEnumerable{T})"/>.

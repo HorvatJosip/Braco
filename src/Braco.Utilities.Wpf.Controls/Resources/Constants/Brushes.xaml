@@ -1,19 +1,18 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:Braco.Utilities.Wpf.Controls">
 	<!-- InfoBoxType Brushes -->
-	<SolidColorBrush x:Key="InfoBoxType_Success_Brush" Color="{DynamicResource success}"/>
-	<SolidColorBrush x:Key="InfoBoxType_Information_Brush" Color="{DynamicResource information}"/>
-	<SolidColorBrush x:Key="InfoBoxType_Warning_Brush" Color="{DynamicResource warning}"/>
-	<SolidColorBrush x:Key="InfoBoxType_Error_Brush" Color="{DynamicResource error}"/>
+	<SolidColorBrush x:Key="{x:Static local:ResourceKeys.SuccessBrush}" Color="{DynamicResource success}" />
+	<SolidColorBrush x:Key="{x:Static local:ResourceKeys.InformationBrush}" Color="{DynamicResource information}" />
+	<SolidColorBrush x:Key="{x:Static local:ResourceKeys.WarningBrush}" Color="{DynamicResource warning}" />
+	<SolidColorBrush x:Key="{x:Static local:ResourceKeys.ErrorBrush}" Color="{DynamicResource error}" />
 
 	<!-- Other Brushes -->
-	<SolidColorBrush x:Key="brushPrimary" Color="{DynamicResource primary}"/>
-	<SolidColorBrush x:Key="brushPrimaryHover" Color="{DynamicResource primaryHover}"/>
-	<SolidColorBrush x:Key="brushPrimaryLight" Color="{DynamicResource primaryLight}"/>
-	<SolidColorBrush x:Key="brushSecondary" Color="{DynamicResource secondary}"/>
-	<SolidColorBrush x:Key="brushSecondaryHover" Color="{DynamicResource secondaryHover}"/>
-	<SolidColorBrush x:Key="brushTertiary" Color="{DynamicResource tertiary}"/>
-	<SolidColorBrush x:Key="brushTertiaryHover" Color="{DynamicResource tertiaryHover}"/>
-	<SolidColorBrush x:Key="brushScroll" Color="{DynamicResource scroll}"/>
-	<SolidColorBrush x:Key="brushPlaceholder" Color="{DynamicResource placeholder}"/>
+	<SolidColorBrush x:Key="{x:Static local:ResourceKeys.PrimaryBrush}" Color="{DynamicResource primary}" />
+	<SolidColorBrush x:Key="{x:Static local:ResourceKeys.PrimaryHoverBrush}" Color="{DynamicResource primaryHover}" />
+	<SolidColorBrush x:Key="{x:Static local:ResourceKeys.PrimaryLightBrush}" Color="{DynamicResource primaryLight}" />
+	<SolidColorBrush x:Key="{x:Static local:ResourceKeys.SecondaryBrush}" Color="{DynamicResource secondary}" />
+	<SolidColorBrush x:Key="{x:Static local:ResourceKeys.SecondaryHoverBrush}" Color="{DynamicResource secondaryHover}" />
+	<SolidColorBrush x:Key="{x:Static local:ResourceKeys.TertiaryBrush}" Color="{DynamicResource tertiary}" />
+	<SolidColorBrush x:Key="{x:Static local:ResourceKeys.TertiaryHoverBrush}" Color="{DynamicResource tertiaryHover}" />
+	<SolidColorBrush x:Key="{x:Static local:ResourceKeys.ScrollBrush}" Color="{DynamicResource scroll}" />
+	<SolidColorBrush x:Key="{x:Static local:ResourceKeys.PlaceholderBrush}" Color="{DynamicResource placeholder}" />
 </ResourceDictionary>

@@ -22,7 +22,7 @@ namespace Braco.Utilities.Wpf
 		{
 			ReflectionUtilities
 				.FindAssignableTypes(typeof(ContentViewModel))
-				.Where(type => !type.In(typeof(ContentViewModel), typeof(PageViewModel), typeof(WindowViewModel)))
+				.Where(type => !type.IsAbstract && type.NotIn(typeof(ContentViewModel), typeof(PageViewModel), typeof(WindowViewModel)))
 				.ForEach(type => services.AddSingleton(type));
 		}
 	}

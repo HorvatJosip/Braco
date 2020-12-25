@@ -7,12 +7,12 @@ namespace Braco.Utilities.Wpf.Controls
 	/// <summary>
 	/// Used for disabling navigation.
 	/// </summary>
-	public class NoNavigation : BaseAttachedProperty<NoNavigation, bool>
+	public class NoNavigationProperty : BaseAttachedProperty<NoNavigationProperty, bool>
 	{
 		/// <inheritdoc/>
 		public override void OnValueChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
 		{
-			if (!(e.NewValue is bool noNavigation && sender is Frame frame)) return;
+			if (e.NewValue is not bool noNavigation || sender is not Frame frame) return;
 
 			frame.NavigationUIVisibility = noNavigation 
 				? NavigationUIVisibility.Hidden 

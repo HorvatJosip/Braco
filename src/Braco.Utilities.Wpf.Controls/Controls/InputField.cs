@@ -11,9 +11,9 @@ namespace Braco.Utilities.Wpf.Controls
 		/// <summary>
 		/// Label for the input field.
 		/// </summary>
-		public string Label
+		public object Label
 		{
-			get { return (string)GetValue(LabelProperty); }
+			get { return (object)GetValue(LabelProperty); }
 			set { SetValue(LabelProperty, value); }
 		}
 
@@ -21,7 +21,7 @@ namespace Braco.Utilities.Wpf.Controls
 		/// Dependency property for <see cref="Label"/>.
 		/// </summary>
 		public static readonly DependencyProperty LabelProperty =
-			DependencyProperty.Register(nameof(Label), typeof(string), typeof(InputField), new PropertyMetadata(null));
+			DependencyProperty.Register(nameof(Label), typeof(object), typeof(InputField), new PropertyMetadata(null));
 
 		/// <summary>
 		/// Determines if the field is required or not.
@@ -58,7 +58,7 @@ namespace Braco.Utilities.Wpf.Controls
 		/// </summary>
 		public object ContentToTheRight
 		{
-			get { return (object)GetValue(ContentToTheRightProperty); }
+			get { return GetValue(ContentToTheRightProperty); }
 			set { SetValue(ContentToTheRightProperty, value); }
 		}
 
@@ -83,5 +83,12 @@ namespace Braco.Utilities.Wpf.Controls
 		public static readonly DependencyProperty PanelMarginProperty =
 			DependencyProperty.Register(nameof(PanelMargin), typeof(Thickness), typeof(InputField), new PropertyMetadata(new Thickness(0, 20, 0, 0)));
 
+		/// <summary>
+		/// Creates a new instance of the <see cref="InputField"/>.
+		/// </summary>
+		public InputField()
+		{
+			Focusable = false;
+		}
 	}
 }

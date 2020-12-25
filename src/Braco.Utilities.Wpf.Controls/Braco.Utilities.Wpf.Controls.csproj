@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>icon.ico</ApplicationIcon>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -32,10 +32,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Braco.Utilities.Wpf" Version="0.7.1" />
     <PackageReference PrivateAssets="All" Include="PropertyChanged.Fody" Version="3.2.9" />
     <PackageReference Include="SharpVectors.Reloaded" Version="1.6.0" />
     <PackageReference Include="System.Windows.Interactivity.WPF" Version="2.0.20525" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Braco.Utilities.Wpf\Braco.Utilities.Wpf.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -48,7 +51,7 @@
     <Page Update="Controls\InfoBox.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Controls\Menu.xaml">
+    <Page Update="Controls\Menus.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\Pagination.xaml">
@@ -69,16 +72,13 @@
     <Page Update="Resources\Constants\Numbers.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Resources\Styles\Buttons.xaml">
+    <Page Update="Resources\Styles\ShadowButton.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Resources\Styles\Controls.xaml">
+    <Page Update="Resources\Styles\General.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Resources\Styles\Inputs.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Resources\Styles\Labels.xaml">
+    <Page Update="Resources\Styles\Label.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Resources\Styles\Panels.xaml">

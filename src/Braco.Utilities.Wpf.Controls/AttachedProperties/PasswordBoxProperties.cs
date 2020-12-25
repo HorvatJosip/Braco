@@ -18,7 +18,7 @@ namespace Braco.Utilities.Wpf.Controls
 		public static void SetValue(DependencyObject sender)
 		{
 			// If the incoming ui element isn't a passwordbox...
-			if (!(sender is PasswordBox passwordBox))
+			if (sender is not PasswordBox passwordBox)
 				// Bail
 				return;
 
@@ -40,7 +40,7 @@ namespace Braco.Utilities.Wpf.Controls
 		public override void OnValueChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
 		{
 			// If the incoming ui element isn't a passwordbox...
-			if (!(sender is PasswordBox passwordBox))
+			if (sender is not PasswordBox passwordBox)
 				// Bail
 				return;
 

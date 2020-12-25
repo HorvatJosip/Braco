@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Braco.Utilities.Extensions;
+using System;
 using System.Reflection;
 
 namespace Braco.Utilities.Wpf
@@ -8,7 +9,7 @@ namespace Braco.Utilities.Wpf
         static void Main(string[] args)
         {
             Console.WriteLine(Assembly.GetCallingAssembly().FullName);
-            Console.WriteLine(string.Join(", ", args));
+            Console.WriteLine(args.Join(", "));
         }
     }
 }

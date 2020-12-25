@@ -1,7 +1,6 @@
 ﻿using Braco.Utilities.Extensions;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -94,7 +93,7 @@ namespace Braco.Utilities.Wpf.Controls
 
 		private static void OnSpacedRowsChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
 		{
-			if(d is BracoGrid grid && e.NewValue is Spaced)
+			if (d is BracoGrid grid && e.NewValue is Spaced)
 			{
 				grid.GenerateRowDefinitions();
 			}
@@ -117,13 +116,13 @@ namespace Braco.Utilities.Wpf.Controls
 
 		private static void OnSpacedColumnsChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
 		{
-			if(d is BracoGrid grid && e.NewValue is Spaced)
+			if (d is BracoGrid grid && e.NewValue is Spaced)
 			{
 				grid.GenerateColumnDefinitions();
 			}
 		}
 
-		private void GenerateDefinitions<T>(ICollection<T> collection, string value, Spaced spaced, Func<GridLength, T> creator /*Action<GridLength> adder, Action clear*/)
+		private void GenerateDefinitions<T>(ICollection<T> collection, string value, Spaced spaced, Func<GridLength, T> creator)
 		{
 			if (value.IsNullOrEmpty()) return;
 
@@ -134,40 +133,39 @@ namespace Braco.Utilities.Wpf.Controls
 				collection.Add(creator(_oneStarLength));
 			}
 
-			var definitions = value.WithoutWhiteSpace().Split(DefinitionsSeparator).ToList();
-
-			for (int i = 0; i < definitions.Count; i++)
-			{
-				var definition = definitions[i];
-
-				if (spaced.Between() && i != 0)
+			value
+				.WithoutWhiteSpace()
+				.Split(DefinitionsSeparator)
+				.ForEach((definition, i) =>
 				{
-					collection.Add(creator(_oneStarLength));
-				}
-
-				if (Regex.IsMatch(definition, MultiplierPattern))
-				{
-					var split = definition.Split(MultiplierSeparator);
-
-					var times = int.Parse(split[0]);
-
-					var gridLength = split[1].Convert<GridLength>();
-
-					for (int j = 0; j < times; j++)
+					if (spaced.Between() && i != 0)
 					{
-						if (spaced.Between() && j != 0)
-						{
-							collection.Add(creator(_oneStarLength));
-						}
-
-						collection.Add(creator(gridLength));
+						collection.Add(creator(_oneStarLength));
 					}
-				}
-				else
-				{
-					collection.Add(creator(definition.Convert<GridLength>()));
-				}
-			}
+
+					if (Regex.IsMatch(definition, MultiplierPattern))
+					{
+						var split = definition.Split(MultiplierSeparator);
+
+						var times = int.Parse(split[0]);
+
+						var gridLength = split[1].Convert<GridLength>();
+
+						for (int j = 0; j < times; j++)
+						{
+							if (spaced.Between() && j != 0)
+							{
+								collection.Add(creator(_oneStarLength));
+							}
+
+							collection.Add(creator(gridLength));
+						}
+					}
+					else
+					{
+						collection.Add(creator(definition.Convert<GridLength>()));
+					}
+				});
 
 			if (spaced.Around())
 			{

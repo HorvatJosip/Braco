@@ -29,11 +29,8 @@ namespace Braco.Utilities.Wpf
 		/// </summary>
 		/// <param name="path">Path of the bound member.</param>
 		/// <param name="type">Type of the ancestor to look for.</param>
-		public TwoWayBinding(string path, Type type) : this(path, type, false)
-		{
-			Mode = BindingMode.TwoWay;
-			UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
-		}
+		public TwoWayBinding(string path, Type type) 
+			: this(path, type, false) { }
 
 		/// <summary>
 		/// Creates an instance of the binding that binds to

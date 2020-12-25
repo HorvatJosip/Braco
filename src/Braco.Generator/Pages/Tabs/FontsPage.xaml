@@ -1,0 +1,85 @@
+<utils:BasePage x:Class="Braco.Generator.FontsPage" x:TypeArguments="local:FontsPageViewModel"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:controls="clr-namespace:Braco.Utilities.Wpf.Controls;assembly=Braco.Utilities.Wpf.Controls"
+                xmlns:local="clr-namespace:Braco.Generator"
+                xmlns:utils="clr-namespace:Braco.Utilities.Wpf;assembly=Braco.Utilities.Wpf">
+	<controls:BracoGrid MaxWidth="800" Rows="Auto, Auto">
+		<controls:ScrollableList ListItems="{Binding FontFamilies}">
+			<controls:ScrollableList.MaxHeight>
+				<MultiBinding Converter="{utils:RemainingSizeCalculationConverter}" ConverterParameter="20">
+					<utils:RelativeBinding AncestorType="{x:Type Page}" Path="ActualHeight" />
+					<Binding ElementName="AddFontFamilyButton" Path="ActualHeight" />
+				</MultiBinding>
+			</controls:ScrollableList.MaxHeight>
+			
+			<controls:ScrollableList.ItemTemplate>
+				<DataTemplate>
+					<controls:BracoGrid Rows="Auto, *">
+						<Grid Margin="0 0 0 10">
+							<controls:ValidatedInputField Info="Name of the font family. To find it, open the font file and on the top left, it should be the value next to the label 'Font name:', just below buttons 'Print' and 'Install'"
+							                              IsRequired="True" Label="Family Name" Validate="Name">
+								<TextBox Text="{utils:TwoWayBinding Name, UpdateSourceTrigger=LostFocus}" />
+							</controls:ValidatedInputField>
+
+							<StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+								<controls:ImageButton ButtonSize="25"
+								                      Command="{utils:RelativeBinding RemoveFontFamilyCommand,
+								                                                      {x:Type Page},
+								                                                      True}"
+								                      CommandParameter="{Binding .}"
+								                      FileName="Minus">
+									<controls:ImageButton.ToolTip>
+										<TextBlock>
+											<Run Text="Remove " /><Run Text="{Binding Name}" />
+										</TextBlock>
+									</controls:ImageButton.ToolTip>
+								</controls:ImageButton>
+
+								<controls:ImageButton ButtonSize="25"
+								                      Command="{utils:RelativeBinding AddFontsToFamilyCommand,
+								                                                      {x:Type Page},
+								                                                      True}"
+								                      CommandParameter="{Binding .}"
+								                      FileName="Plus" ToolTip="Add font files for the font family" />
+							</StackPanel>
+						</Grid>
+
+						<controls:ScrollableList Grid.Row="1" ListItems="{Binding Fonts}">
+							<controls:ScrollableList.ItemTemplate>
+								<DataTemplate>
+									<controls:BracoGrid Margin="4" Columns="*, Auto">
+										<TextBlock FontSize="{DynamicResource {x:Static local:ResourceKeys.VeryLargeFontSize}}" Text="{Binding Name}" />
+
+										<controls:ImageButton Grid.Column="1" VerticalAlignment="Center" ButtonSize="25"
+										                      Command="{utils:RelativeBinding RemoveFontFromFamilyCommand,
+										                                                      {x:Type Page},
+										                                                      True}"
+										                      FileName="Minus">
+											<controls:ImageButton.CommandParameter>
+												<MultiBinding Converter="{local:RemoveFontFromFamilyConverter}">
+													<utils:RelativeBinding AncestorType="{x:Type controls:ScrollableList}" Path="DataContext" />
+													<Binding Path="." />
+												</MultiBinding>
+											</controls:ImageButton.CommandParameter>
+											<controls:ImageButton.ToolTip>
+												<TextBlock>
+													<Run Text="Remove " /><Run Text="{Binding Name}" />
+												</TextBlock>
+											</controls:ImageButton.ToolTip>
+										</controls:ImageButton>
+									</controls:BracoGrid>
+								</DataTemplate>
+							</controls:ScrollableList.ItemTemplate>
+						</controls:ScrollableList>
+					</controls:BracoGrid>
+				</DataTemplate>
+			</controls:ScrollableList.ItemTemplate>
+		</controls:ScrollableList>
+
+		<controls:ImageButton x:Name="AddFontFamilyButton"
+		                      Grid.Row="1" Margin="0 10 0 0" ButtonSize="40"
+		                      Command="{Binding AddFontFamilyCommand}"
+		                      FileName="Plus" ToolTip="Add new font family" />
+	</controls:BracoGrid>
+</utils:BasePage>

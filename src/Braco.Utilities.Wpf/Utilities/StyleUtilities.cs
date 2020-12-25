@@ -11,7 +11,7 @@ namespace Braco.Utilities.Wpf
 	{
 		/// <summary>
 		/// Overrides metadata for given style types.
-		/// <para>You may want to define a style with target type <see cref="Window"/>
+		/// <para>You may want to define a style with target type <see cref="System.Windows.Window"/>
 		/// and then use it by calling this method.</para>
 		/// </summary>
 		/// <param name="types">Types to override styles for.</param>

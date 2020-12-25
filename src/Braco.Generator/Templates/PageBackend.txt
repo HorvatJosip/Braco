@@ -1,0 +1,15 @@
+﻿using Braco.Utilities.Wpf;
+
+namespace {0}
+{{
+	/// <summary>
+	/// Interaction logic for {1}Page.xaml
+	/// </summary>
+	public partial class {1}Page : BasePage<{1}PageViewModel>
+	{{
+		public {1}Page()
+		{{
+			InitializeComponent();
+		}}
+	}}
+}}

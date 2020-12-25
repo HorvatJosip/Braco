@@ -1,6 +1,7 @@
 ﻿using Braco.Services.Abstractions;
 using Braco.Utilities.Extensions;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -9,29 +10,18 @@ using System.Reflection;
 namespace Braco.Utilities
 {
 	/// <summary>
-	/// Data manager that performs some common functions on a data set.
+	/// Base class for a manager that should performs common altering functions on a collection.
 	/// </summary>
-	/// <typeparam name="T">Type of data to use.</typeparam>
     [PropertyChanged.AddINotifyPropertyChangedInterface]
-    public class DataManager<T>
-    {
-        #region Fields
-
-        private Func<IEnumerable<T>, IEnumerable<T>> _lastMultiSort;
-        private Func<T, bool> _lastFilter;
-        private string _lastSearchQuery, _lastSortColumn;
-
-        private readonly IList<PropertyInfo> _searchProperties = new List<PropertyInfo>();
-
-        #endregion
-
+	public abstract class DataManager
+	{ 
         #region Properties
 
         /// <summary>
         /// Information about all columns that should be created
         /// for the type <typeparamref name="T"/>.
         /// </summary>
-        public IList<ColumnInfo> ColumnInfos { get; }
+        public IList<ColumnInfo> ColumnInfos { get; protected set; }
 
         /// <summary>
         /// Information about display columns that should be created
@@ -40,56 +30,56 @@ namespace Braco.Utilities
         public IList<ColumnInfo> DisplayColumnInfos
             => ColumnInfos?.Where(c => c.DisplayNames?.Count > 0).ToList();
 
-        private int page;
+        private int _page;
 
         /// <summary>
         /// Current page.
         /// </summary>
         public int Page
         {
-            get => page;
+            get => _page;
             set
             {
                 // If we aren't already on the given page...
-                if (value != page)
+                if (value != _page)
                 {
                     // Update the page
-                    page = value;
+                    _page = value;
 
                     // Update page data
                     UpdatePageData();
 
                     // Notify the listeners that the page has changed
-                    PageChanged?.Invoke(this, new PageDataEventArgs(page, PageSize, NumPages));
+                    PageChanged?.Invoke(this, new PageDataEventArgs(_page, PageSize, NumPages));
                 }
             }
         }
 
-        private int pageSize;
+        private int _pageSize;
 
         /// <summary>
         /// Number of records that can be placed on a page.
         /// </summary>
         public int PageSize
         {
-            get => pageSize;
+            get => _pageSize;
             set
             {
                 // If the given page size is different and valid...
-                if (value != pageSize && value > 0)
+                if (value != _pageSize && value > 0)
                 {
                     // Update the size
-                    pageSize = value;
+                    _pageSize = value;
 
                     // Return to first page if a page is being displayed
-                    if (page > 0)
-                        page = 1;
+                    if (_page > 0)
+                        _page = 1;
 
                     // Update page data
                     UpdatePageData();
 
                     // Notify the listeners that the page size has changed
-                    PageSizeChanged?.Invoke(this, new PageDataEventArgs(Page, pageSize, NumPages));
+                    PageSizeChanged?.Invoke(this, new PageDataEventArgs(Page, _pageSize, NumPages));
                 }
             }
         }
@@ -97,35 +87,12 @@ namespace Braco.Utilities
         /// <summary>
         /// Number of pages currently being displayed.
         /// </summary>
-        public int NumPages => CalculateNumberOfPages(FilteredItems);
+        public abstract int NumPages { get; }
 
         /// <summary>
         /// Number of pages that can be displayed.
         /// </summary>
-        public int MaxPages => CalculateNumberOfPages(AllItems);
-
-        /// <summary>
-        /// Data that is defined on the current page. If page is 0 or below,
-        /// this will be empty.
-        /// </summary>
-        public ObservableCollection<T> PageItems { get; } = new ObservableCollection<T>();
-
-        /// <summary>
-        /// Items that are result of filtering using, for example, a search query.
-        /// </summary>
-        public ObservableCollection<T> FilteredItems { get; } = new ObservableCollection<T>();
-
-        /// <summary>
-        /// Data that is being managed. This is the only collection that should be altered from outside.
-        /// Others are managed using the appropriate methods.
-        /// </summary>
-        public ObservableCollection<T> AllItems { get; } = new ObservableCollection<T>();
-
-        /// <summary>
-        /// Collection that contains data that was given when
-        /// constructing the paged collection.
-        /// </summary>
-        public IList<T> OriginalCollection { get; } = new List<T>();
+        public abstract int MaxPages { get; }
 
         #endregion
 
@@ -145,6 +112,129 @@ namespace Braco.Utilities
         /// Raised when page size changes.
         /// </summary>
         public event EventHandler<PageDataEventArgs> PageSizeChanged;
+
+		/// <summary>
+		/// Called whenever something updates data.
+		/// </summary>
+		public event EventHandler<PageDataEventArgs> DataUpdated;
+
+		#endregion
+
+		#region Methods
+
+		/// <summary>
+		/// Gets a display column with given display name.
+		/// </summary>
+		/// <param name="columnName">Display name of the column to find.</param>
+		/// <returns></returns>
+		public ColumnInfo GetDisplayColumn(string columnName)
+			=> DisplayColumnInfos.FirstOrDefault(c => c.DisplayNames.Contains(columnName));
+
+		/// <summary>
+		/// Invokes property changed for <see cref="NumPages"/> and
+		/// raises <see cref="NumPagesChanged"/> event.
+		/// </summary>
+		public void NotifyNumPagesChanged()
+        {
+            // Invoke property changed for the property
+            ReflectionUtilities.RaisePropertyChanged(this, nameof(NumPages));
+
+            // Notify the listeners that the number of pages has changed
+            NumPagesChanged?.Invoke(this, new PageDataEventArgs(Page, PageSize, NumPages));
+        }
+
+		/// <summary>
+		/// Applies all alterations that have been previously applied.
+		/// </summary>
+		public abstract void UpdateAlterations();
+
+		/// <summary>
+		/// Updates data for the page.
+		/// </summary>
+		protected abstract void UpdatePageData();
+
+		/// <summary>
+		/// Gets data that is defined on the current page. If page is 0 or below,
+		/// this will be empty.
+		/// </summary>
+		public abstract ICollection GetPageItems();
+
+		/// <summary>
+		/// Gets data that is the result of different alterations.
+		/// </summary>
+		public abstract ICollection GetFilteredItems();
+
+		/// <summary>
+		/// Gets all items that are used by the manager.
+		/// </summary>
+		public abstract ICollection GetAllItems();
+
+		/// <summary>
+		/// Get data from the collection that contains data that was given when
+		/// constructing the paged collection.
+		/// </summary>
+		public abstract ICollection GetOriginalCollection();
+
+		/// <summary>
+		/// Invokes <see cref="DataUpdated"/> event.
+		/// </summary>
+		protected void NotifyDataUpdate()
+			=> DataUpdated?.Invoke(this, new PageDataEventArgs(Page, PageSize, NumPages));
+
+		/// <inheritdoc/>
+		public override string ToString()
+			=> $"DataManager: Page {Page} / {NumPages} (rows per page: {PageSize}, total items: {GetAllItems()?.Count})";
+
+		#endregion
+	}
+
+	/// <summary>
+	/// Implementation of <see cref="DataManager"/> that provides
+	/// filtering, searching and single and multi column sorting.
+	/// </summary>
+	/// <typeparam name="T">Type of data to use.</typeparam>
+    public class DataManager<T> : DataManager
+    {
+        #region Fields
+
+        private Func<IEnumerable<T>, IEnumerable<T>> _lastMultiSort;
+        private Func<T, bool> _lastFilter;
+        private string _lastSearchQuery, _lastSortColumn;
+
+        private readonly IList<PropertyInfo> _searchProperties = new List<PropertyInfo>();
+
+        #endregion
+
+        #region Properties
+
+        /// <inheritdoc/>
+        public override int NumPages => CalculateNumberOfPages(FilteredItems);
+
+        /// <inheritdoc/>
+        public override int MaxPages => CalculateNumberOfPages(AllItems);
+
+		/// <summary>
+		/// Data that is defined on the current page. If page is 0 or below,
+		/// this will be empty.
+		/// </summary>
+		public ObservableCollection<T> PageItems { get; } = new ObservableCollection<T>();
+
+        /// <summary>
+        /// Items that are result of filtering using, for example, a search query.
+        /// </summary>
+        public ObservableCollection<T> FilteredItems { get; } = new ObservableCollection<T>();
+
+        /// <summary>
+        /// Data that is being managed. This is the only collection that should be altered from outside.
+        /// Others are managed using the appropriate methods.
+        /// </summary>
+        public ObservableCollection<T> AllItems { get; } = new ObservableCollection<T>();
+
+        /// <summary>
+        /// Collection that contains data that was given when
+        /// constructing the paged collection.
+        /// </summary>
+        public IList<T> OriginalCollection { get; } = new List<T>();
 
         #endregion
 
@@ -216,24 +306,11 @@ namespace Braco.Utilities
         #region Methods
 
         /// <summary>
-        /// Invokes property changed for <see cref="NumPages"/> and
-        /// raises <see cref="NumPagesChanged"/> event.
-        /// </summary>
-        public void NotifyNumPagesChanged()
-        {
-            // Invoke property changed for the property
-            ReflectionUtilities.InvokePropertyChanged(this, nameof(NumPages));
-
-            // Notify the listeners that the number of pages has changed
-            NumPagesChanged?.Invoke(this, new PageDataEventArgs(Page, PageSize, NumPages));
-        }
-
-        /// <summary>
         /// Applies all alterations that have been previously applied
         /// using <see cref="Filter(Func{T, bool})"/>, <see cref="Search(string)"/>
         /// and <see cref="Sort(string)"/> methods.
         /// </summary>
-        public void UpdateAlterations()
+        public override void UpdateAlterations()
         {
             // Get number of pages before altering anything
             var currentNumberOfPages = NumPages;
@@ -244,12 +321,14 @@ namespace Braco.Utilities
             // If there is some search query...
             if (_lastSearchQuery.IsNotNullOrWhiteSpace())
                 // Filter items to those where...
-                filteredItems = filteredItems.Where(item =>
-                    // Search query matches some searched properties' value(s)
-                    _lastSearchQuery.PartialSearch(_searchProperties.Select(prop =>
-                        prop.GetValue(item)?.ToString()).ToArray()
-                    )
-                );
+                filteredItems = filteredItems.Where
+				(
+					// Search query matches some searched properties' value(s)
+					item => _lastSearchQuery.PartialSearch(_searchProperties.Select
+					(
+						prop => prop.GetValue(item)?.ToString()).ToArray()
+					)
+				);
 
             // If a filter was assigned...
             if (_lastFilter != null)
@@ -305,6 +384,9 @@ namespace Braco.Utilities
             if (NumPages != currentNumberOfPages)
                 // Signal it
                 NotifyNumPagesChanged();
+
+			// Notify that data has been updated
+			NotifyDataUpdate();
         }
 
         /// <summary>
@@ -372,6 +454,16 @@ namespace Braco.Utilities
         /// <param name="columnName">Name of the column used for sorting.</param>
         public void Sort(string columnName)
         {
+			// Go through all of the columns...
+			DisplayColumnInfos.ForEach(column =>
+			{
+				// Skip the new one that will be sorted
+				if (column.Name == columnName) return;
+
+				// Reset the sort direction of other columns
+				column.SortDirection = SortDirection.None;
+			});
+
             // Keep track of the column name
             _lastSortColumn = columnName;
 
@@ -403,15 +495,8 @@ namespace Braco.Utilities
             UpdateAlterations();
         }
 
-        /// <summary>
-        /// Gets a display column with given display name.
-        /// </summary>
-        /// <param name="columnName">Display name of the column to find.</param>
-        /// <returns></returns>
-        public ColumnInfo GetDisplayColumn(string columnName)
-            => DisplayColumnInfos.FirstOrDefault(c => c.DisplayNames.Contains(columnName));
-
-        private void UpdatePageData()
+        /// <inheritdoc/>
+        protected override void UpdatePageData()
         {
             // If an invalid page is given...
             if (Page <= 0)
@@ -444,8 +529,16 @@ namespace Braco.Utilities
         }
 
 		/// <inheritdoc/>
-		public override string ToString()
-			=> $"DataManager";
+		public override ICollection GetPageItems() => new List<T>(PageItems);
+
+		/// <inheritdoc/>
+		public override ICollection GetFilteredItems() => new List<T>(FilteredItems);
+
+		/// <inheritdoc/>
+		public override ICollection GetAllItems() => new List<T>(AllItems);
+
+		/// <inheritdoc/>
+		public override ICollection GetOriginalCollection() => new Collection<T>(OriginalCollection);
 
 		#endregion
 	}

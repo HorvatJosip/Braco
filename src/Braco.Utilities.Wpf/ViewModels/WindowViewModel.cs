@@ -14,7 +14,7 @@ namespace Braco.Utilities.Wpf
 		/// <summary>
 		/// Page that is active on this window.
 		/// </summary>
-		public Type Page { get; set; }
+		public PageViewModel Page { get; set; }
 
 		/// <summary>
 		/// Path to the logo image.
@@ -42,6 +42,11 @@ namespace Braco.Utilities.Wpf
 		public ResizeMode ResizeMode { get; set; }
 
 		/// <summary>
+		/// State of the window.
+		/// </summary>
+		public WindowState WindowState { get; set; }
+
+		/// <summary>
 		/// Size of the previous page button.
 		/// </summary>
 		public string PreviousPageButtonSize { get; set; } = "35 x 35";
@@ -67,9 +72,13 @@ namespace Braco.Utilities.Wpf
 		/// </summary>
 		public ICommand CloseCommand { get; protected set; }
 		/// <summary>
-		/// Command that will fire when the window is being dragged.
+		/// Command that will fire when the window title bar has been clicked.
 		/// </summary>
-		public ICommand DragCommand { get; protected set; }
+		public ICommand TitleBarClickCommand { get; protected set; }
+		/// <summary>
+		/// Command that will fire when the window title bar has been double clicked.
+		/// </summary>
+		public ICommand TitleBarDoubleClickCommand { get; protected set; }
 		/// <summary>
 		/// Command that will fire when the info box is dismissed.
 		/// </summary>
@@ -89,26 +98,31 @@ namespace Braco.Utilities.Wpf
 		public WindowViewModel()
 		{
 			// Listen for page changes on the current window
-			_windowService.PageChanged += (sender, e) =>
+			_windows.PageChanged += (sender, e) =>
 			{
-				if (e.Window == GetType())
+				if (e.Window.GetType() == GetType())
+				{
 					Page = e.Page;
+
+					OnPageChanged(e.Page);
+				}
 			};
 
-			// Subscribe to maximized changes
-			_windowService.MaximizedChanged += (sender, e) =>
+			// Subscribe to data changes
+			_windows.WindowDataChanged += (sender, e) =>
 			{
-				if (e.Window == GetType())
-					IsMaximized = e.IsMaximized;
+				if (e.Window.GetType() == GetType())
+					IsMaximized = e.Data.State == WindowState.Maximized;
 			};
 
 			// Setup the window commands
-			MinimizeCommand = new RelayCommand(() => _windowService.Minimize());
-			MaximizeCommand = new RelayCommand(() => _windowService.MaximizeOrRestore());
-			CloseCommand = new RelayCommand(() => _windowService.Close());
-			DragCommand = new RelayCommand(() => _windowService.DragMove());
-			DismissInfoBoxCommand = new RelayCommand(() => _windowService.DismissInfoBox());
-			GoToPreviousPageCommand = new RelayCommand(() => _windowService.GoToPreviousPage());
+			MinimizeCommand = new RelayCommand(() => _windows.ActiveWindow.Minimize());
+			MaximizeCommand = new RelayCommand(() => _windows.ActiveWindow.MaximizeOrRestore());
+			CloseCommand = new RelayCommand(() => _windows.ActiveWindow.Close());
+			TitleBarClickCommand = new RelayCommand(() => _windows.ActiveWindow.DragMove());
+			TitleBarDoubleClickCommand = new RelayCommand(() => _windows.ActiveWindow.MaximizeOrRestore());
+			DismissInfoBoxCommand = new RelayCommand(() => _windows.ActiveWindow.DismissInfoBox());
+			GoToPreviousPageCommand = new RelayCommand(() => (_windows.ActiveWindow.LastFrameManager ?? _windows.ActiveWindow.GetFrameManager())?.GoToPreviousPage());
 		}
 
 		#endregion
@@ -123,6 +137,11 @@ namespace Braco.Utilities.Wpf
 		/// Occurs when the window gets closed.
 		/// </summary>
 		public virtual void OnClosed() { }
+		/// <summary>
+		/// Occurs when a page changes on the current window.
+		/// </summary>
+		/// <param name="page">Page to which user navigated.</param>
+		protected virtual void OnPageChanged(PageViewModel page) { }
 
 		#endregion
 	}

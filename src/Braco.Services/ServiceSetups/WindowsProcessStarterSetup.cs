@@ -36,7 +36,7 @@ namespace Braco.Services
 				var defaultUseShellExecute = bool.TryParse(section[DefaultUseShellExecuteKey], out var useShellExecute) ? useShellExecute : true;
 #pragma warning restore IDE0075 // Simplify conditional expression
 
-				return new WindowsProcessStarter(provider.GetService<IPathManager>(), defaultTerminateAfter, defaultUseShellExecute);
+				return new WindowsProcessStarter(provider.GetService<IFileManager>(), defaultTerminateAfter, defaultUseShellExecute);
 			});
 		}
 	}

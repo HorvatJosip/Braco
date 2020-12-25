@@ -1,17 +1,16 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-	<Color x:Key="success">#0cc221</Color>
-	<Color x:Key="error">#FF0000</Color>
-	<Color x:Key="warning">#d4a004</Color>
-	<Color x:Key="information">#1c96c7</Color>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:Braco.Utilities.Wpf.Controls">
+	<Color x:Key="{x:Static local:ResourceKeys.SuccessColor}">#0cc221</Color>
+	<Color x:Key="{x:Static local:ResourceKeys.InformationColor}">#1c96c7</Color>
+	<Color x:Key="{x:Static local:ResourceKeys.WarningColor}">#d4a004</Color>
+	<Color x:Key="{x:Static local:ResourceKeys.ErrorColor}">#FF0000</Color>
 
-	<Color x:Key="primary">#04d8d1</Color>
-	<Color x:Key="primaryHover">#008783</Color>
-	<Color x:Key="primaryLight">#ccfaff</Color>
-	<Color x:Key="secondary">#ffffff</Color>
-	<Color x:Key="secondaryHover">#dedede</Color>
-	<Color x:Key="tertiary">#323232</Color>
-	<Color x:Key="tertiaryHover">#120e0e</Color>
-	<Color x:Key="scroll">#15ebe4</Color>
-	<Color x:Key="placeholder">#767676</Color>
+	<Color x:Key="{x:Static local:ResourceKeys.PrimaryColor}">#04d8d1</Color>
+	<Color x:Key="{x:Static local:ResourceKeys.PrimaryHoverColor}">#008783</Color>
+	<Color x:Key="{x:Static local:ResourceKeys.PrimaryLightColor}">#ccfaff</Color>
+	<Color x:Key="{x:Static local:ResourceKeys.SecondaryColor}">#ffffff</Color>
+	<Color x:Key="{x:Static local:ResourceKeys.SecondaryHoverColor}">#dedede</Color>
+	<Color x:Key="{x:Static local:ResourceKeys.TertiaryColor}">#323232</Color>
+	<Color x:Key="{x:Static local:ResourceKeys.TertiaryHoverColor}">#120e0e</Color>
+	<Color x:Key="{x:Static local:ResourceKeys.ScrollColor}">#15ebe4</Color>
+	<Color x:Key="{x:Static local:ResourceKeys.PlaceholderColor}">#767676</Color>
 </ResourceDictionary>

@@ -31,21 +31,21 @@ namespace Braco.Services
 		/// </summary>
 		public const string AdminVerb = "runas";
 
-		private readonly IPathManager _pathManager;
+		private readonly IFileManager _fileManager;
 		private readonly bool _defaultTerminateAfter;
 		private readonly bool _defaultUseShellExecute;
 
 		/// <summary>
 		/// Creates an instance of the manager.
 		/// </summary>
-		/// <param name="pathManager">Path manager for the project.</param>
+		/// <param name="fileManager">File manager for the project.</param>
 		/// <param name="defaultTerminateAfter">Default value that will be used for "terminateAfter"
 		/// argument if not specified in the argument list.</param>
 		/// <param name="defaultUseShellExecute">Default value that will be used for "useShellExecute"
 		/// argument if not specified in the argument list.</param>
-		public WindowsProcessStarter(IPathManager pathManager, bool defaultTerminateAfter, bool defaultUseShellExecute)
+		public WindowsProcessStarter(IFileManager fileManager, bool defaultTerminateAfter, bool defaultUseShellExecute)
 		{
-			_pathManager = pathManager ?? throw new ArgumentNullException(nameof(pathManager));
+			_fileManager = fileManager ?? throw new ArgumentNullException(nameof(fileManager));
 			_defaultTerminateAfter = defaultTerminateAfter;
 			_defaultUseShellExecute = defaultUseShellExecute;
 		}
@@ -171,7 +171,7 @@ namespace Braco.Services
 			{
 				FileName = fileName,
 				Arguments = arguments,
-				WorkingDirectory = workingDirectory?.FullName ?? _pathManager.AppDirectory.FullName,
+				WorkingDirectory = workingDirectory?.FullName ?? _fileManager.AppDirectory.FullName,
 				UseShellExecute = useShellExecute,
 				ErrorDialog = true
 			};

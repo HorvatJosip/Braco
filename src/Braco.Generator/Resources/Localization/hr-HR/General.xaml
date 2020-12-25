@@ -1,0 +1,11 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:Braco.Generator"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+
+	<system:String x:Key="{x:Static local:ResourceKeys.ApplicationName}">Braco Generator</system:String>
+	<system:String x:Key="{x:Static local:ResourceKeys.ApplicationCloseToolTip}">Ugasi aplikaciju</system:String>
+
+	<system:String x:Key="{x:Static local:ResourceKeys.WindowCloseToolTip}">Zatvori prozor</system:String>
+	<system:String x:Key="{x:Static local:ResourceKeys.WindowPreviousPageButtonToolTip}">Vrati se na prethodnu stranicu</system:String>
+
+</ResourceDictionary>

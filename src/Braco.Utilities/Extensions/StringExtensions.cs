@@ -100,9 +100,18 @@ namespace Braco.Utilities.Extensions
         /// <param name="value">Current string.</param>
         /// <param name="before">String to prepend to the current string.</param>
         /// <param name="after">String to append to the current string.</param>
-        /// <returns></returns>
+        /// <returns>String with <paramref name="before"/> prepended and <paramref name="after"/> appended.</returns>
         public static string SurroundWith(this string value, string before, string after)
             => $"{before}{value}{after}";
+
+		/// <summary>
+		/// Takes in a string and surrounds it with two strings of same value.
+		/// </summary>
+		/// <param name="value">Current string.</param>
+		/// <param name="beforeAndAfter">String to prepend and append to the current string.</param>
+		/// <returns>String with <paramref name="beforeAndAfter"/> prepended and appended.</returns>
+		public static string SurroundWith(this string value, string beforeAndAfter)
+			=> value.SurroundWith(beforeAndAfter, beforeAndAfter);
 
         /// <summary>
         /// Removes all of the whitespace from a string.
@@ -202,6 +211,15 @@ namespace Braco.Utilities.Extensions
 
             return Regex.Replace(trim ? value.Trim() : value, "\\s+", with);
         }
+
+		/// <summary>
+		/// Formats a string using the given parameters.
+		/// </summary>
+		/// <param name="format">Format to use for the output.</param>
+		/// <param name="formatParameters">Parameters to use to replace the format templates.</param>
+		/// <returns>A string formatted using the given parameters.</returns>
+		public static string Format(this string format, params object[] formatParameters)
+			=> string.Format(format, formatParameters);
 
         /// <summary>
         /// Creates a secure string out of the given one.

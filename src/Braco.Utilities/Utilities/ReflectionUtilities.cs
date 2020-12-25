@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection;
 
 namespace Braco.Utilities
@@ -68,7 +69,8 @@ namespace Braco.Utilities
         /// </summary>
         /// <param name="target">Object that contains the event.</param>
         /// <param name="property">Property for which we are raising the event.</param>
-        public static bool InvokePropertyChanged(object target, string property)
+		/// <returns>If it was invoked or not.</returns>
+        public static bool RaisePropertyChanged(object target, string property)
         {
             // Get the type from the target object
             var type = target?.GetType();
@@ -157,9 +159,26 @@ namespace Braco.Utilities
 					}
 				}
 			}
-
+			
 			// Return the list
 			return types;
 		}
+
+		/// <summary>
+		/// Used for registering a specific <see cref="TypeConverter"/>.
+		/// <para>Common usage would be registering a converter for already defined type such as
+		/// a collection of specific type. </para>
+		/// <para>Example: you want to have <see cref="List{T}"/> be loaded
+		/// using <see cref="SettingAttribute"/>. For <typeparamref name="T"/>, you want to
+		/// provide the list (<see cref="List{T}"/>) and for <typeparamref name="TConverter"/>, you
+		/// want to provide <see cref="TypeConverter"/> that is used for converting <see cref="List{T}"/>.</para>
+		/// </summary>
+		/// <typeparam name="T">Type which is being converter using <typeparamref name="TConverter"/>.</typeparam>
+		/// <typeparam name="TConverter"><see cref="TypeConverter"/> for <typeparamref name="T"/>.</typeparam>
+		/// <returns>The newly created <see cref="TypeDescriptionProvider"/> that was used
+		/// to add the specified attributes.</returns>
+		public static TypeDescriptionProvider RegisterConverter<T, TConverter>()
+			where TConverter : TypeConverter
+			=> TypeDescriptor.AddAttributes(typeof(T), new TypeConverterAttribute(typeof(TConverter)));
     }
 }

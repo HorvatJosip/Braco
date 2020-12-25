@@ -40,7 +40,7 @@ namespace Braco.Services
 		/// </summary>
 		/// <param name="currentCulture">Culture that is currently active.</param>
 		/// <param name="cultures">Possible cultures.</param>
-        public JsonLocalizer(IPathManager pathManager, string currentCulture, params string[] cultures)
+        public JsonLocalizer(IFileManager fileManager, string currentCulture, params string[] cultures)
         {
             if(!IsCultureValid(currentCulture)) 
                 throw new ArgumentException($"{currentCulture} is not a valid culture.", nameof(currentCulture));
@@ -48,7 +48,7 @@ namespace Braco.Services
             if (!currentCulture.In(cultures))
                 throw new ArgumentException("Current culture must be part of given cultures", nameof(currentCulture));
 
-			_localesDir = pathManager.AddDirectory(FolderKey, Path.Combine(pathManager.AppDirectory.FullName, FolderName));
+			_localesDir = fileManager.AddDirectory(FolderKey, Path.Combine(fileManager.AppDirectory.FullName, FolderName));
 
             _localesByCulture = new Dictionary<string, JObject>();
             cultures.ToHashSet().ForEach(culture =>
@@ -56,7 +56,7 @@ namespace Braco.Services
                 if(!IsCultureValid(culture))
                     throw new ArgumentException($"{culture} is not a valid culture.", nameof(cultures));
 
-                var file = pathManager.AddFileToDirectory(culture, _localesDir, $"{culture}.json");
+                var file = fileManager.AddFileToDirectory(culture, _localesDir, $"{culture}.json");
                 _localesByCulture.Add(culture, JObject.Parse(File.ReadAllText(file.FullName)));
             });
 

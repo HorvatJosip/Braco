@@ -73,7 +73,7 @@ namespace Braco.Utilities.Wpf
 				if(attr?.Subfolders?.Count() > 0)
 				{
 					// Construct them for the uri
-					subfolders = string.Join(FolderSeparator, attr.Subfolders) + FolderSeparator;
+					subfolders = attr.Subfolders.Join(FolderSeparator) + FolderSeparator;
 				}
 
 				// Create a page uri from gathered data

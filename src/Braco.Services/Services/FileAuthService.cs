@@ -40,12 +40,12 @@ namespace Braco.Services
 		/// </summary>
 		/// <param name="securityService">Security service that is required
 		/// for securing the data.</param>
-		/// <param name="pathManager">Path manager used in the project.</param>
-        public FileAuthService(ISecurityService securityService, IPathManager pathManager)
+		/// <param name="fileManager">Path manager used in the project.</param>
+        public FileAuthService(ISecurityService securityService, IFileManager fileManager)
         {
             _securityService = securityService ?? throw new ArgumentNullException(nameof(securityService));
 
-            _authFile = pathManager.AddFileToDirectory(FileKey, pathManager.AppDataDirectory, FileName);
+            _authFile = fileManager.AddFileToDirectory(FileKey, fileManager.AppDataDirectory, FileName);
         }
 
 		/// <inheritdoc/>

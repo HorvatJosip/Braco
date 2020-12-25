@@ -1,10 +1,11 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:sys="clr-namespace:System;assembly=System.Runtime">
-	<sys:Double x:Key="fontSizeSmaller">10</sys:Double>
-	<sys:Double x:Key="fontSizeSmall">13</sys:Double>
-    <sys:Double x:Key="fontSizeMedium">16</sys:Double>
-	<sys:Double x:Key="fontSizeLarge">19</sys:Double>
-    <sys:Double x:Key="fontSizeVeryLarge">23</sys:Double>
-	<sys:Double x:Key="fontSizeExtremelyLarge">30</sys:Double>
+                    xmlns:local="clr-namespace:Braco.Utilities.Wpf.Controls"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+	<system:Double x:Key="{x:Static local:ResourceKeys.SmallerFontSize}">10</system:Double>
+	<system:Double x:Key="{x:Static local:ResourceKeys.SmallFontSize}">13</system:Double>
+	<system:Double x:Key="{x:Static local:ResourceKeys.MediumFontSize}">16</system:Double>
+	<system:Double x:Key="{x:Static local:ResourceKeys.LargeFontSize}">19</system:Double>
+	<system:Double x:Key="{x:Static local:ResourceKeys.VeryLargeFontSize}">23</system:Double>
+	<system:Double x:Key="{x:Static local:ResourceKeys.ExtremelyLargeFontSize}">30</system:Double>
 </ResourceDictionary>

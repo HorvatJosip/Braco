@@ -34,7 +34,7 @@ namespace Braco.Services
         /// <summary>
         /// Paths that are used commonly throughout the application.
         /// </summary>
-        public static IPathManager Paths => Get<IPathManager>();
+        public static IFileManager Paths => Get<IFileManager>();
 
 		/// <summary>
 		/// Resources that are used for the project.

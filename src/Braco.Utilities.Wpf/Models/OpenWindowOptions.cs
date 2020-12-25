@@ -1,14 +1,13 @@
 ﻿using Braco.Utilities.Extensions;
 using System;
 using System.Linq;
-using System.Text;
 
 namespace Braco.Utilities.Wpf
 {
-    /// <summary>
-    /// Defines options about opening a window.
-    /// </summary>
-    public class OpenWindowOptions
+	/// <summary>
+	/// Defines options about opening a window.
+	/// </summary>
+	public class OpenWindowOptions
     {
         /// <summary>
         /// What should be done with the previously active window.
@@ -44,7 +43,7 @@ namespace Braco.Utilities.Wpf
         /// <summary>
         /// Triggered when the window closes.
         /// </summary>
-        public Action<WindowViewModel, PageViewModel> OnClosed { get; set; }
+        public Action<WindowViewModel> OnClosed { get; set; }
 
 		/// <inheritdoc/>
 		public override string ToString()

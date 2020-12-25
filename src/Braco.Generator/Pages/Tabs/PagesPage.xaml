@@ -1,0 +1,24 @@
+﻿<utils:BasePage x:Class="Braco.Generator.PagesPage" x:TypeArguments="local:PagesPageViewModel"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:controls="clr-namespace:Braco.Utilities.Wpf.Controls;assembly=Braco.Utilities.Wpf.Controls"
+                xmlns:local="clr-namespace:Braco.Generator"
+                xmlns:utils="clr-namespace:Braco.Utilities.Wpf;assembly=Braco.Utilities.Wpf">
+	<controls:BracoGrid MaxWidth="800" Rows="5xAuto" SpacedRows="Between">
+		<controls:ValidatedInputField IsRequired="True" Label="Page Name" Validate="Name">
+			<TextBox controls:SetFocusProperty.Value="True" Text="{utils:TwoWayBinding Name}" />
+		</controls:ValidatedInputField>
+		<controls:ValidatedInputField Grid.Row="2" IsRequired="True" Label="Namespace"
+		                              Validate="Namespace">
+			<TextBox Text="{utils:TwoWayBinding Namespace}" />
+		</controls:ValidatedInputField>
+		<controls:InputField Grid.Row="4" Label="Subfolders" Info="Subfolders separated by '/'">
+			<TextBox Text="{utils:TwoWayBinding Subfolders}" />
+		</controls:InputField>
+		<CheckBox Grid.Row="6" Content="Allow going back to previous page" IsChecked="{utils:TwoWayBinding AllowGoingBackToPreviousPage}" />
+
+		<Button Grid.Row="8" Width="100" HorizontalAlignment="Center"
+		        Command="{Binding GenerateCommand}"
+		        Content="Generate" />
+	</controls:BracoGrid>
+</utils:BasePage>

@@ -1,0 +1,8 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:system="clr-namespace:System;assembly=System.Runtime">
+
+	<system:String x:Key="NewProjectPageViewModel_ProjectName_Required_Error">You must enter the project name</system:String>
+
+	<system:String x:Key="PagesPageViewModel_Name_Required_Error">You must enter the name of the page</system:String>
+	<system:String x:Key="PagesPageViewModel_Namespace_Required_Error">You must enter the namespace in which the page will reside</system:String>
+
+</ResourceDictionary>

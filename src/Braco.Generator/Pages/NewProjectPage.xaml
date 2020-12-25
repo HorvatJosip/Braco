@@ -1,0 +1,75 @@
+﻿<utils:BasePage x:Class="Braco.Generator.NewProjectPage" x:TypeArguments="local:NewProjectPageViewModel"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:controls="clr-namespace:Braco.Utilities.Wpf.Controls;assembly=Braco.Utilities.Wpf.Controls"
+                xmlns:local="clr-namespace:Braco.Generator"
+                xmlns:utils="clr-namespace:Braco.Utilities.Wpf;assembly=Braco.Utilities.Wpf">
+	<controls:BracoGrid Width="800" Rows="4xAuto" SpacedRows="AroundAndBetween">
+		<controls:ValidatedField Grid.Row="1" Validate="ProjectName">
+			<controls:InputField Label="Braco Project Name">
+				<TextBox controls:SetFocusProperty.Value="True" Text="{utils:TwoWayBinding ProjectName}">
+					<TextBox.InputBindings>
+						<KeyBinding Key="Enter" Command="{Binding CreateProjectCommand}" />
+					</TextBox.InputBindings>
+				</TextBox>
+			</controls:InputField>
+		</controls:ValidatedField>
+
+		<StackPanel Grid.Row="3">
+			<CheckBox Margin="0 0 0 20" Content="Create new WPF project" IsChecked="{utils:TwoWayBinding CreateNewWPFProject}" />
+
+			<controls:InputField Label="Existing WPF project location" Visibility="{Binding CreateNewWPFProject, Converter={utils:BoolToVisibilityConverter}, ConverterParameter={x:Static utils:VisibilityHelpers.InvertParam}}">
+				<controls:ValidatedField Validate="ExistingProjectLocation">
+					<controls:BracoGrid Columns="*, Auto">
+						<TextBox Text="{utils:TwoWayBinding ExistingProjectLocation}">
+							<TextBox.InputBindings>
+								<KeyBinding Key="Enter" Command="{Binding CreateProjectCommand}" />
+							</TextBox.InputBindings>
+						</TextBox>
+						<controls:ImageButton Grid.Column="1" Margin="3 0 0 0" ButtonSize="30"
+						                      Command="{Binding PickExistingProjectLocationCommand}"
+						                      FileName="{x:Static local:ResourceKeys.DirectoryIcon}"
+						                      ToolTip="Choose location of the existing project" />
+					</controls:BracoGrid>
+				</controls:ValidatedField>
+			</controls:InputField>
+
+			<StackPanel Visibility="{Binding CreateNewWPFProject, Converter={utils:BoolToVisibilityConverter}}">
+				<controls:ValidatedField Validate="NewProjectName">
+					<controls:InputField Label="New WPF project name">
+						<TextBox Text="{utils:TwoWayBinding NewProjectName}">
+							<TextBox.InputBindings>
+								<KeyBinding Key="Enter" Command="{Binding CreateProjectCommand}" />
+							</TextBox.InputBindings>
+						</TextBox>
+					</controls:InputField>
+				</controls:ValidatedField>
+
+				<controls:InputField Label="New WPF project location">
+					<controls:ValidatedField Validate="NewProjectLocation">
+						<controls:BracoGrid Columns="*, Auto">
+							<TextBox Text="{utils:TwoWayBinding NewProjectLocation}">
+								<TextBox.InputBindings>
+									<KeyBinding Key="Enter" Command="{Binding CreateProjectCommand}" />
+								</TextBox.InputBindings>
+							</TextBox>
+							<controls:ImageButton Grid.Column="1" Margin="3 0 0 0" ButtonSize="30"
+							                      Command="{Binding PickNewProjectLocationCommand}"
+							                      FileName="{x:Static local:ResourceKeys.DirectoryIcon}"
+							                      ToolTip="Choose location of the new project" />
+						</controls:BracoGrid>
+					</controls:ValidatedField>
+				</controls:InputField>
+			</StackPanel>
+		</StackPanel>
+
+		<StackPanel Grid.Row="5">
+			<CheckBox Margin="0 10 0 0" Content="Open the WPF project" IsChecked="{Binding StartWPFProject}" />
+			<CheckBox Margin="0 10 0 0" Content="Open it in Visual Studio Code" IsChecked="{Binding StartWPFProjectWithVSCode}" IsEnabled="{Binding StartWPFProject}" />
+		</StackPanel>
+
+		<Button Grid.Row="7"
+		        Command="{Binding CreateProjectCommand}"
+		        Content="Create" />
+	</controls:BracoGrid>
+</utils:BasePage>

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0-windows</TargetFramework>
     <OutputType>WinExe</OutputType>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>icon.ico</ApplicationIcon>
@@ -22,8 +22,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Braco.Services" Version="0.7.2" />
     <PackageReference PrivateAssets="All" Include="PropertyChanged.Fody" Version="3.2.9" />
+    <PackageReference Include="System.ServiceModel.Primitives" Version="4.8.0" />
     <PackageReference Include="WindowsAPICodePack-Shell" Version="1.1.1" />
   </ItemGroup>
 
@@ -36,6 +36,10 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Braco.Services\Braco.Services.csproj" />
   </ItemGroup>
 
 </Project>

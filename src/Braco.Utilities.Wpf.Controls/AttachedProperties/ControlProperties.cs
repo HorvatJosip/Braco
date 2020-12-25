@@ -14,7 +14,7 @@ namespace Braco.Utilities.Wpf.Controls
 		public override void OnValueChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
 		{
 			// If the focus prerequisites aren't present...
-			if (!(e.NewValue is bool shouldFocus && sender is Control control))
+			if (e.NewValue is not bool shouldFocus || sender is not Control control)
 				// Bail
 				return;
 
@@ -49,20 +49,22 @@ namespace Braco.Utilities.Wpf.Controls
 		/// <inheritdoc/>
 		public override void OnValueChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
 		{
-			if (!(e.NewValue is string commandName && sender is UIElement uiElement))
+			if (e.NewValue is not string commandName || sender is not UIElement uiElement)
 				return;
 
 			void Control_Drop(object sender, DragEventArgs e)
 			{
-				var viewModel = ControlTree.FindAncestor<Page>((DependencyObject)sender)?.DataContext;
+				if (sender is not FrameworkElement frameworkElement) return;
 
+				var viewModel = ControlTree.FindAncestor<Page>(frameworkElement)?.DataContext;
+				
 				if 
 				(
 					viewModel != null &&
 					e.Data.GetDataPresent(DataFormats.FileDrop) &&
 					viewModel.GetType().GetProperty(commandName)?.GetValue(viewModel) is ICommand command
 				)
-					command.Execute(e.Data.GetData(DataFormats.FileDrop));
+					command.Execute(new FileDropCommandRequest(frameworkElement.DataContext, (string[])e.Data.GetData(DataFormats.FileDrop)));
 			}
 
 			uiElement.Drop -= Control_Drop;

@@ -26,7 +26,10 @@ namespace Braco.Utilities.Extensions
             BindingFlags.InvokeMethod | BindingFlags.Instance;
 
 		/// <summary>
-		/// Indicator that means a field is a backing field.
+		/// Indicator that means a field is a backing field (if field name contains it).
+		/// <para>Note: this might change in the future. This is compiler based. 
+		/// So, if you use it, be careful upon compiling new version of the code.
+		/// Test that the code that uses this is working properly.</para>
 		/// </summary>
         public const string BackingFieldIndicator = "k__BackingField";
 
@@ -35,19 +38,21 @@ namespace Braco.Utilities.Extensions
 		/// </summary>
         public const string NestedPrieldSeparator = ".";
 
-        #endregion
+		#endregion
 
-        #region Methods
+		#region Methods
 
-        /// <summary>
-        /// Used to get all the fields and properties defined by a type.
-        /// </summary>
-        /// <param name="type">Type to get the fields and properties from.</param>
-        /// <param name="skipBackingFields">If there are backing fields for the properties,
-        /// should they be skipped or not?</param>
-        /// <param name="flags"><see cref="BindingFlags"/> used for accessing the fields and properties.</param>
-        /// <returns>Collection of fields and properties.</returns>
-        public static List<Prield> GetPrields(this Type type, bool skipBackingFields = true, BindingFlags flags = DefaultPrieldFlags)
+		/// <summary>
+		/// Used to get all the fields and properties defined by a type.
+		/// </summary>
+		/// <param name="type">Type to get the fields and properties from.</param>
+		/// <param name="skipBackingFields">If there are backing fields for the properties,
+		/// should they be skipped or not?
+		/// <para>Note: this should be used carefully (see <see cref="BackingFieldIndicator"/>).</para>
+		/// </param>
+		/// <param name="flags"><see cref="BindingFlags"/> used for accessing the fields and properties.</param>
+		/// <returns>Collection of fields and properties.</returns>
+		public static List<Prield> GetPrields(this Type type, bool skipBackingFields = true, BindingFlags flags = DefaultPrieldFlags)
         {
             if (type == null) throw new NullReferenceException();
 

@@ -7,7 +7,8 @@ namespace Braco.Services
 {
 	/// <summary>
 	/// Default setup for <see cref="IMapper"/>. Simply adds
-	/// a mapper to the service collection.
+	/// a mapper to the service collection and adds profile definitions and
+	/// classes decorated with <see cref="AutoMapAttribute"/> to the mapper configuration.
 	/// </summary>
 	public class MapperSetup : ISetupService
 	{

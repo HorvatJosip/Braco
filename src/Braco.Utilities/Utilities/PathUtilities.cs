@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using Braco.Utilities.Extensions;
+using System.IO;
 using System.Linq;
 
 namespace Braco.Utilities
@@ -60,6 +61,22 @@ namespace Braco.Utilities
 
             return extension.StartsWith('.') ? extension : $".{extension}";
         }
+
+		/// <summary>
+		/// Checks if all of the given extensions are equal.
+		/// <para>Note: if no extensions or only one extension is provided, false is returned.</para>
+		/// </summary>
+		/// <param name="extensionsToTest">Collection of extensions to test if they are all equal.</param>
+		/// <returns>If all of the given extensions are equal or not.</returns>
+		public static bool AreExtensionsEqual(params string[] extensionsToTest)
+		{
+			if (extensionsToTest.IsNullOrEmpty() || extensionsToTest.Length == 1) return false;
+
+			return extensionsToTest
+				.Select(extension => GetExtensionWithDot(extension))
+				.ToHashSet()
+				.Count == 1;
+		}
 
         #endregion
     }

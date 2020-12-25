@@ -11,7 +11,7 @@ namespace Braco.Utilities.Wpf
     public class WindowAttribute : Attribute
     {
 		/// <summary>
-		/// Type of window to instantiate. Should inherit from <see cref="Window"/>.
+		/// Type of window to instantiate. Should inherit from <see cref="System.Windows.Window"/>.
 		/// </summary>
 		public Type Type { get; }
 
@@ -23,7 +23,7 @@ namespace Braco.Utilities.Wpf
 		/// <summary>
 		/// Generates an instance of the attribute with given type.
 		/// </summary>
-		/// <param name="type">Type of window to instantiate. Should inherit <see cref="Window"/>.</param>
+		/// <param name="type">Type of window to instantiate. Should inherit <see cref="System.Windows.Window"/>.</param>
 		public WindowAttribute(Type type)
 		{
 			Type = type;

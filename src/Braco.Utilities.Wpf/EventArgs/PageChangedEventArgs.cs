@@ -10,19 +10,19 @@ namespace Braco.Utilities.Wpf
 		/// <summary>
 		/// Page that changed.
 		/// </summary>
-		public Type Page { get; }
+		public PageViewModel Page { get; }
 
 		/// <summary>
 		/// Window on which the page changed.
 		/// </summary>
-		public Type Window { get; }
+		public WindowViewModel Window { get; }
 
 		/// <summary>
 		/// Creates an instance of the arguments.
 		/// </summary>
 		/// <param name="page">Page that changed.</param>
 		/// <param name="window">Window on which the page changed.</param>
-		public PageChangedEventArgs(Type page, Type window)
+		public PageChangedEventArgs(PageViewModel page, WindowViewModel window)
 		{
 			Page = page;
 			Window = window;
